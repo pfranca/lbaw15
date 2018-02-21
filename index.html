@@ -1,138 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <!-- Theme Made By www.w3schools.com - No Copyright -->
   <title>Q & A</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href=" css/q&a.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 
 </head>
+
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
 
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>  
-      <a class="navbar-brand" href="#myPage">Coorperative  Q&A</a>
+  <div class="modal fade" id="registerModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Register</h5>
 
+        </div>
+        <div class="modal-body">
+          <form role="form">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Name" />
+              <input type="email" class="form-control" placeholder="Email" />
+              <input type="password" class="form-control" placeholder="Password" />
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#loginModal" data-dismiss="modal">Login</button>
+          <button type="button" class="btn btn-primary btn-sm">Register</button>
+        </div>
+      </div>
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#myPage">HOME</a></li>
-        <li><a href="#themes">THEMES</a></li>
-        <li class="dropdown">
-            <a href="http://phpoll.com/login" class="dropdown-toggle" data-toggle="dropdown">Log In <span class="caret"></span></a>
-            <ul class="dropdown-menu dropdown-lr animated slideInRight" role="menu">
-              <div class="col-lg-12">
-                <div class="text-center"><h3><b>Log In</b></h3></div>
-                <form id="ajax-login-form" method="post" role="form" autocomplete="off">
-                  <div class="form-group">
-                      <label for="username"> <small>Username</small></label>
-                      <input type="text" name="username" id="username"  class="form-control" placeholder="Username" value="" autocomplete="off">
-                  </div>
+  </div>
 
-                  <div class="form-group">
-                      <label for="password"><small>Password</small></label>
-                      <input type="password" name="password" id="password" class="form-control" placeholder="Password" autocomplete="off">
-                  </div>
-                  <div class ="checkboxWithText" >
-                      <input type="checkbox" id="x"/><span class="sizeLetter">Remember Me</span>
-                  </div>
-                  <div class="form-group">
-                    <div class="col-xs-5">
-                        <input type="submit" name="login-submit" id="login-submit" class="form-control btn btn-success btn-sm " value="Log In">
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </ul>
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Login</h5>
+
+        </div>
+        <div class="modal-body">
+          <form role="form">
+            <div class="form-group">
+              <input type="email" class="form-control" placeholder="Email" />
+              <input type="password" class="form-control" placeholder="Password" />
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#registerModal" data-dismiss="modal">Register</button>
+          <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='./html/indexLogged.html'">Login</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Cooperative Q & A</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+    <span class="navbar-toggler-icon"></span>
+      </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#band">HOME</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#themes">THEMES</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">LOGIN</a>
         </li>
       </ul>
     </div>
-  </div>
-</nav>
+  </nav>
 
 
-<!-- Container (First Section) -->
-  <div id="band" class="container" style="background-image: url('img/homebg.jpg'); width: 100%; height: 100%;background-size: cover; overflow: hidden;">
+<div class="fluid bg-dark">
+  <div id="band" class="container-fluid" style="background-image: url('img/homebg.jpg'); width: 100%; height: 100%;background-size: cover; overflow: hidden;">
     <div class="row text-center">
-     <div class="col-md-12 tittle-section">
-          <div class="col-md-12">
-            <div class="tittle">Questions & Answers</div>
-          </div>
-          
-          <div class="col-md-12">
-            <div class="about">oiahd oidhos oidhfoandlf daoikfnadlk aidfjald faidf ajfadjfma dpifajfçapa apojoidhos oidhfoandlf daoikfnadlk aidfjald faidf ajfadjfma dpifajfçapa apojoidhos oidhfoandlf daoikfnadlk aidfjald faidf ajfadjfma dpifajfçapa apojoidhos oidhfoandlf daoikfnadlk aidfjald faidf ajfadjfma dpifajfçapa apojas</div>
-          </div>
-          <div class="col-md-12">
-            <a href="#themes" class="btn btn-circle js-scroll-trigger btn-themes">
+      <div class="col-md-12 tittle-section">
+        <div class="col-md-12">
+          <div class="tittle">Questions & Answers</div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="about">Our mission is to share and grow the world’s knowledge. A vast amount of the knowledge that would be valuable to many people is currently only available to a few — either locked in people’s heads, or only accessible to select groups. We want
+            to connect the people who have knowledge to the people who need it, to bring together people with different perspectives so they can understand each other better, and to empower everyone to share their knowledge for the benefit of the rest
+            of the world.</div>
+        </div>
+        <div class="col-md-12">
+          <a href="#themes" class="btn btn-circle js-scroll-trigger btn-themes">
               <i class="fa fa-angle-double-down animated"></i>
             </a>
-          </div>
-          
+        </div>
+
       </div>
     </div>
   </div>
 
-<!-- Container (THEMES Section) -->
-<div id="themes" class="bg-2">
-  <div class="container">
-    <h3 class="text-center">Q&A Themes</h3>
-    <p class="text-center">All the themes that are available in our website.<br> Just take a moment and answer it!<br></p>
-    
-    
-    <div class="row text-center">
-      <div class="col-sm-4">
-        <div class="thumbnail">
-          <img src="img/1.jpg" alt="Paris" width="400" height="300">
-          <p><strong>Football</strong></p>
-          <p>12 answers</p>
-          <button class="btn" onclick="window.location.href='./html/question3.html'">Answer Now</button>
+  <!-- Container (THEMES Section) -->
+  <div id="themes" class="bg-dark">
+    <div class="container-fluid bg-dark">
+      <h3 class="text-center">Q&A Themes</h3>
+      <p class="text-center">All the themes that are available in our website.<br> Just take a moment and answer it!<br></p>
+
+      <div class="row">
+        <div class="col-sm-12 col-md-4">
+          <div class="card mb-4">
+            <div class="card-body text-center">
+              <img class="card-img-top" src="img/1.jpg" alt="Paris">
+              <h5 class="card-title">Football</h5>
+              <p class="card-text">12 answers</p>
+              <button class="btn" onclick="window.location.href='./html/question3.html'">Answer Now</button>
+
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="thumbnail">
-          <img src="img/2.jpeg" alt="New York" width="400" height="300">
-          <p><strong>Music</strong></p>
-          <p>8 answers</p>
-          <button class="btn" onclick="window.location.href='./html/question3.html'">Answer Now</button>
+        <div class="col-sm-12 col-md-4">
+          <div class="card mb-4">
+            <div class="card-body text-center">
+              <img class="card-img-top" src="img/2.jpeg" alt="Paris">
+              <h5 class="card-title">Music</h5>
+              <p class="card-text">8 answers</p>
+              <button class="btn" onclick="window.location.href='./html/question3.html'">Answer Now</button>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="thumbnail">
-          <img src="img/3.jpeg" alt="San Francisco" width="400" height="300">
-          <p><strong>Fashion</strong></p>
-          <p>42 answers</p>
-          <button class="btn" onclick="window.location.href ='./html/question3.html'">Answer Now</button>
+        <div class="col-sm-12 col-md-4">
+          <div class="card mb-4">
+            <div class="card-body text-center">
+              <img class="card-img-top" src="img/3.jpeg" alt="Paris">
+              <h5 class="card-title">Fashion</h5>
+              <p class="card-text">42 answers</p>
+              <button class="btn" onclick="window.location.href='./html/question3.html'">Answer Now</button>
+
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
-<!--
-To use this code on your website, get a free API key from Google.
-Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
--->
-
-<!-- Footer -->
-<footer class="text-center">
-  <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+  <!-- Footer -->
+  <footer class="text-center">
+    <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
     <span class="glyphicon glyphicon-chevron-up"></span>
   </a><br><br>
-  <p>Cooperative Q&A <a href="https://www.w3schools.com" data-toggle="tooltip" title="Visit w3schools">www.cooperativeq&a.com</a></p> 
-</footer>
+    <p>Cooperative Q&A <a href="#" data-toggle="tooltip" title="Cooperative q&a">www.cooperativeq&a.com</a></p>
+  </footer>
 
 </body>
+
 </html>
