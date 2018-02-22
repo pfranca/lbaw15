@@ -9,10 +9,6 @@ body {
       font-size: 20px;
       color: #111;
   }
-
-
-
-
   .sizeLetter {
     font-size:  12px;
     margin-left: 6px;
@@ -51,12 +47,13 @@ body {
   }
 
   .bg-2 {
-      background: #2d2d30;
+      background: white;
       color: #bdbdbd;
 
       /*background: white;
       color: #2d2d30;*/
   }
+
 
 .tittle-section{
   padding: 10%;
@@ -70,11 +67,20 @@ body {
   color: white;
 }
 
-.btn-themes{
+.btn-arrow{
   border-radius: 10%;
+  margin-top: 5%;
 }
 
-  .bg-2 h3 {color: #fff;}
+.txt-color{
+  color: bg-dark ;
+}
+
+.btn-bg2{
+  margin-top: 6%;
+  margin-bottom: 4%;
+}
+  .bg-2 h3 {color: black;}
   .bg-2 p {font-style: italic;}
   .list-group-item:first-child {
       border-top-right-radius: 0;
@@ -109,6 +115,7 @@ body {
     border-radius: 15px;
     background-color: #3bd3ba;
     transition: .5s;
+    margin-bottom: 6%;
   }
   .btn-sm {
       font-size: 15px;
@@ -197,6 +204,7 @@ body {
 display: inline-block;
 margin-bottom: 5px;
 }
+
 
 .btn-icon {
   background-color: bg-dark;
