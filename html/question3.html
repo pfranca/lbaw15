@@ -1,26 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <!-- Theme Made By www.w3schools.com - No Copyright -->
   <title>Q & A</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href=" css/q&a.css">
+  <link rel="stylesheet" href=" ../css/q&a.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 
 </head>
+
+<!--img/3.jpeg-->
+
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
-        
-    <p>Pergunta</p>
-    <p>Resposta</p>
-    <div class="form-group">
-        <textarea class="form-control" rows="5" id="comment"></textarea>
+
+    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Register</h5>
+  
+          </div>
+          <div class="modal-body">
+            <form role="form">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Name" />
+                <input type="email" class="form-control" placeholder="Email" />
+                <input type="password" class="form-control" placeholder="Password" />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#loginModal" data-dismiss="modal">Login</button>
+            <button type="button" class="btn btn-primary btn-sm">Register</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Login</h5>
+  
+          </div>
+          <div class="modal-body">
+            <form role="form">
+              <div class="form-group">
+                <input type="email" class="form-control" placeholder="Email" />
+                <input type="password" class="form-control" placeholder="Password" />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#registerModal" data-dismiss="modal">Register</button>
+            <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='indexLogged.html'">Login</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Cooperative Q & A</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+        </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#band">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#themes">THEMES</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">LOGIN</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  
+  
+  <div class="fluid bg-dark">
+    <div id="band" class="container-fluid" style="background-image: url('../img/3.jpeg'); width: 100%; height: 100%;background-size: cover; overflow: hidden;">
+      <div class="row text-center">
+        <div class="col-md-12 tittle-section">
+          <div class="col-md-12">
+            <div class="tittle">Questions & Answers</div>
+          </div>
+  
+          <div class="col-md-12">
+            <div class="about">Our mission is to share and grow the world’s knowledge. A vast amount of the knowledge that would be valuable to many people is currently only available to a few — either locked in people’s heads, or only accessible to select groups. We want
+              to connect the people who have knowledge to the people who need it, to bring together people with different perspectives so they can understand each other better, and to empower everyone to share their knowledge for the benefit of the rest
+              of the world.</div>
+          </div>
+        </div>
+      </div>
+    </div>
     </div>
 
-</body>
+  
+    <!-- Container (THEMES Section) -->
+    <div id="themes" class="bg-white" style="margin-top: 4%;">
+
+      <div class="container-fluid bg-white col-md-10">
+            <ul class="list-group">
+                <li class="list-group-item" style="margin-bottom: 1%;">
+                    <a data-toggle="upvote" href="#upvote">
+                    <i class="far fa-thumbs-up"></i>
+                    </a>
+                    <span class="label label-primary">13</span>
+                    <a data-toggle="upvote" href="#downvote">
+                    <i class="far fa-thumbs-down"></i>
+                    </a>
+                    Resposta 1
+                    </li>
+
+                    <li class="list-group-item list-group-item-secondary" style="margin-bottom: 1%;">
+                        <a data-toggle="upvote" href="#upvote">
+                        <i class="far fa-thumbs-up"></i>
+                        </a>
+                        <span class="label label-primary">13</span>
+                        <a data-toggle="upvote" href="#downvote">
+                        <i class="far fa-thumbs-down"></i>
+                        </a>
+                        Resposta 2
+                    </li>
+
+
+                        <li class="list-group-item"style="margin-bottom: 1%;" >
+                                <a data-toggle="upvote" href="#upvote">
+                                <i class="far fa-thumbs-up"></i>
+                                </a>
+                                <span class="label label-primary">13</span>
+                                <a data-toggle="upvote" href="#downvote">
+                                <i class="far fa-thumbs-down"></i>
+                                </a>
+                                Resposta 3
+                                </li>
+
+
+                                <li class="list-group-item list-group-item-secondary" style="margin-bottom: 1%;">
+                                        <a data-toggle="upvote" href="#upvote">
+                                        <i class="far fa-thumbs-up"></i>
+                                        </a>
+                                        <span class="label label-primary">13</span>
+                                        <a data-toggle="upvote" href="#downvote">
+                                        <i class="far fa-thumbs-down"></i>
+                                        </a>
+                                        Resposta 4
+                                        </li>
+            </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- Footer -->
+    <footer class="text-center">
+      <p>Cooperative Q&A <a href="#" data-toggle="tooltip" title="Cooperative q&a">www.cooperativeq&a.com</a></p>
+    </footer>
+  
+  </body>
+
 </html>
