@@ -1,13 +1,17 @@
 body {
       font: 400 15px/1.8 Lato, sans-serif;
       color: #777;
+
   }
   h3, h4 {
       margin: 10px 0 30px 0;
-      letter-spacing: 10px;      
+      letter-spacing: 10px;
       font-size: 20px;
       color: #111;
   }
+
+
+
 
   .sizeLetter {
     font-size:  12px;
@@ -28,7 +32,7 @@ body {
   }
   .carousel-inner img {
       -webkit-filter: grayscale(90%);
-      filter: grayscale(90%); /* make all photos black and white */ 
+      filter: grayscale(90%); /* make all photos black and white */
       width: 100%; /* Set width to 100% */
       margin: auto;
   }
@@ -135,7 +139,7 @@ body {
       height: 400px;
       -webkit-filter: grayscale(100%);
       filter: grayscale(100%);
-  }  
+  }
   .navbar {
       font-family: Montserrat, sans-serif;
       margin-bottom: 0;
@@ -145,7 +149,7 @@ body {
       letter-spacing: 4px;
       opacity: 0.9;
   }
-  .navbar li a, .navbar .navbar-brand { 
+  .navbar li a, .navbar .navbar-brand {
       color: #d5d5d5 !important;
   }
   .navbar-nav li a:hover {
@@ -179,7 +183,7 @@ body {
   footer a:hover {
       color: #777;
       text-decoration: none;
-  }  
+  }
   .form-control {
       border-radius: 15px;
   }
@@ -190,4 +194,16 @@ body {
   .checkboxWithText{
 display: inline-block;
 margin-bottom: 5px;
+}
+
+.btn-icon {
+  background-color: bg-dark;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  padding-right: 0;
+  padding-left: 0;
+}
+.question{
+  margin:10px;
 }
