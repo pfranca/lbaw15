@@ -56,7 +56,7 @@ body {
 
 
 .tittle-section{
-  padding: 10%;
+  padding: 3%;
 }
 .tittle{
   font-size: 12vmin;
@@ -70,6 +70,10 @@ body {
 .btn-arrow{
   border-radius: 10%;
   margin-top: 5%;
+}
+
+.sct-margin{
+  margin-top: 10%;
 }
 
 .txt-color{
@@ -216,4 +220,13 @@ margin-bottom: 5px;
 }
 .question{
   margin:10px;
+  margin-bottom:0px;
+}
+
+.answer{
+  margin-left:10px;
+  margin-right:10px;
+  border: 1px solid white;
+  border-top:none;
+  color:black;
 }
