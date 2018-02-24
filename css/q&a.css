@@ -72,12 +72,16 @@ body {
   margin-top: 5%;
 }
 
-.sct-margin{
+.txt-color{
+  color: bg-dark ;
+}
+
+.sct-main{
   margin-top: 10%;
 }
 
-.txt-color{
-  color: bg-dark ;
+.name-top{
+  margin-top: 4%;
 }
 
 .btn-bg2{
