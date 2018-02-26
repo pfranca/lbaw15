@@ -332,3 +332,8 @@ textarea{
   display:block;
   margin:0px auto;
 }
+
+
+buttonDown{
+  margin-bottom: 0px;
+}
