@@ -326,8 +326,6 @@ textarea {
 }
 
 textarea{
-  margin:0px 0px;
-  padding:5px;
   line-height:30px;
   height:100x !important;
   width:96%;
