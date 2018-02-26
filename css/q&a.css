@@ -344,9 +344,30 @@ align-items: center;
   margin-bottom: 0px;
 }
 
-.mostVotedAnswer{
+.mostVotedAnswerBox{
   background-color:#fff;
   border:1px solid rgba(0,0,0,.125);
   margin-bottom:1%;
   padding:15px;
+}
+
+.mostVotedAnswer{
+  margin-left:15px;
+margin-right:15px;
+border-left:2px solid grey;
+padding-left:15px;
+padding-right:15px;
+min-height: 89px;
+display:flex;
+align-items: center;
+}
+
+.collapse{
+  display:none!important;
+}
+
+.collapse.show{display:block!important}
+
+.collapse.show.d-flex{
+  display:flex!important;
 }
