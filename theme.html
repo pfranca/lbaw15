@@ -19,12 +19,42 @@
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
 
 
+
+  <div class="modal fade" id="questionModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header" style="padding: 35px 50px">
+          <h5 class="modal-title">Register</h5>
+
+        </div>
+        <div class="modal-body">
+          <form role="form">
+            <div class="form-group">
+              <textarea class="form-control" rows="8"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer" style="padding-right: 50px;">
+          <button type="button" class="buttonDown btn btn-primary btn-sm">Submit Question</button>
+          <button type="button" class="buttonDown btn btn-secondary btn-sm" data-toggle="modal" data-target="#" data-dismiss="modal">Exit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="indexLogged.html">Cooperative Q & A</a>
+
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
                 <span class="navbar-toggler-icon"></span>
           </button>
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <form class="form-inline mx-auto col-12 col-sm-12 col-lg-6 col-md-12">
+        <input class="form-control col-sm-10 col-9 col-lg-9" type="text" placeholder="Search">
+        <button class="btnsearch col-sm-2 col-3 col-lg-3" type="submit">Search</button>
+      </form>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
           <a class="nav-link" href="#">FEED</a>
@@ -48,43 +78,18 @@
   </nav>
 
 
-  <div class="fluid bg-secondary">
-    <div class="jumbotron-fluid bg-dark">
-      <h1 class="display-3" style="margin-bottom:0;">Sports</h1>
-    </div>
- 
 
+  <div class="">
+    <div class="col-lg-12 bg-dark fluid">
+      <h1 class="display-3 col-lg-9 mx-auto" style="display:inline-block;">Sports</h3>
+          <button  type="button" class="btn btn-secondary col-lg-3 float-right align-middle" data-toggle="modal" data-target="#questionModal" data-dismiss="modal"  style="margin-top:21px; margin-bottom:0px;">Submit Question</button>
+      </div>
+  </div>
 
     <div id="themes" class="bg-white">
-        <div class="input-group">
-            <input class="form-control"
-                   placeholder="Search">
-            <div class="input-group-addon" ><i class="fa fa-search"></i></div>
-        </div>
-        <div>
-          <button type="button" class="btn"   data-toggle="modal" data-target="#questionModal" data-dismiss="modal">Submit Question</button>
-        </div>
-        <div class="modal fade" id="questionModal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header" style="padding: 35px 50px">
-                  <h5 class="modal-title">Register</h5>
-        
-                </div>
-                <div class="modal-body">
-                  <form role="form">
-                    <div class="form-group">
-                      <textarea class="form-control" rows="8"></textarea>
-                    </div>
-                  </form>
-                </div>
-                <div class="modal-footer" style="padding-right: 50px;">
-                    <button type="button" class="buttonDown btn btn-primary btn-sm" >Submit Question</button>
-                  <button type="button" class="buttonDown btn btn-secondary btn-sm"   data-toggle="modal" data-target="#" data-dismiss="modal">Exit</button>
-                </div>
-              </div>
-            </div>
-          </div>
+
+
+
       <div class="container-fluid bg-white col-md-11">
         <ul class="list-group">
           <li class="d-flex flex-row list-group-item align-items-start">
@@ -104,14 +109,14 @@
                                           </a>
               </div>
             </div>
-            <div class="w-100 mostVotedAnswer text-justify align-middle" >
+            <div class="w-100 mostVotedAnswer text-justify align-middle">
               What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
               specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
               and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
               <br> Why do we use it? It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,
               as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many
               web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-              
+
             </div>
             <div>
               <a class="btn-icon d-flex justify-content-center align-items-center" data-toggle="collapse" href="#question1" aria-expanded="false" aria-controls="collapseExample">
@@ -121,7 +126,7 @@
             </div>
           </li>
 
-          <li id ="question1" class="collapse mostVotedAnswerBox d-flex flex-row list-group-item" >
+          <li id="question1" class="collapse mostVotedAnswerBox d-flex flex-row list-group-item">
 
             <div class="p-1">
               <div>
@@ -139,7 +144,7 @@
                                           </a>
               </div>
             </div>
-            <div class="w-100 mostVotedAnswer text-justify align-middle" >
+            <div class="w-100 mostVotedAnswer text-justify align-middle">
               What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
               specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
               and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
@@ -186,7 +191,7 @@
             </div>
           </li>
 
-          <li id ="question2" class="collapse mostVotedAnswerBox d-flex flex-row list-group-item" >
+          <li id="question2" class="collapse mostVotedAnswerBox d-flex flex-row list-group-item">
 
             <div class="p-1">
               <div>
@@ -204,7 +209,7 @@
                                           </a>
               </div>
             </div>
-            <div class="w-100 mostVotedAnswer text-justify align-middle" >
+            <div class="w-100 mostVotedAnswer text-justify align-middle">
               What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
               specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
               and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
@@ -250,7 +255,7 @@
             </div>
           </li>
 
-          <li id ="question3" class="collapse mostVotedAnswerBox d-flex flex-row list-group-item" >
+          <li id="question3" class="collapse mostVotedAnswerBox d-flex flex-row list-group-item">
 
             <div class="p-1">
               <div>
@@ -268,7 +273,7 @@
                                           </a>
               </div>
             </div>
-            <div class="w-100 mostVotedAnswer text-justify align-middle" >
+            <div class="w-100 mostVotedAnswer text-justify align-middle">
               What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
               specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
               and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
@@ -280,7 +285,7 @@
 
 
           </li>
-          </ul>
+        </ul>
 
       </div>
     </div>
