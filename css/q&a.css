@@ -332,7 +332,7 @@ align-items: center;
   padding-bottom: 95px;
 }
 
-textarea{
+.textarea{
   line-height:30px;
   height:100x !important;
   width:96%;
@@ -340,7 +340,7 @@ textarea{
   margin:0px auto;
 }
 
-buttonDown{
+.buttonDown{
   margin-bottom: 0px;
 }
 
