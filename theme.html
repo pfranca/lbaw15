@@ -52,7 +52,7 @@
     <div class="jumbotron-fluid bg-dark">
       <h1 class="display-3" style="margin-bottom:0;">Sports</h1>
     </div>
-
+ 
 
 
     <div id="themes" class="bg-white">
@@ -61,7 +61,30 @@
                    placeholder="Search">
             <div class="input-group-addon" ><i class="fa fa-search"></i></div>
         </div>
-
+        <div>
+          <button type="button" class="btn"   data-toggle="modal" data-target="#questionModal" data-dismiss="modal">Submit Question</button>
+        </div>
+        <div class="modal fade" id="questionModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header" style="padding: 35px 50px">
+                  <h5 class="modal-title">Register</h5>
+        
+                </div>
+                <div class="modal-body">
+                  <form role="form">
+                    <div class="form-group">
+                      <textarea class="form-control" rows="8"></textarea>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer" style="padding-right: 50px;">
+                    <button type="button" class="buttonDown btn btn-primary btn-sm" >Submit Question</button>
+                  <button type="button" class="buttonDown btn btn-secondary btn-sm"   data-toggle="modal" data-target="#" data-dismiss="modal">Exit</button>
+                </div>
+              </div>
+            </div>
+          </div>
       <div class="container-fluid bg-white col-md-11">
         <ul class="list-group">
           <li class="d-flex flex-row list-group-item align-items-start">
