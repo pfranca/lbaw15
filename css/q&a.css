@@ -75,6 +75,24 @@ h3, h4 {
   color: white;
 }
 
+.img-profile{
+  width: 160px;
+    height: 160px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.nav-img-profile{
+  max-width:20px;
+  border-radius: 50%;
+}
+
+.tittle-profile{
+  font-size: 8vmin;
+  color: white;
+}
+
 .about {
   color: white;
 }
@@ -87,6 +105,21 @@ h3, h4 {
 .txt-color {
   color: bg-dark;
 }
+
+.bg-profile-title{
+  background-image: url('../img/2.jpeg');
+  width: 100%;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.bg-fav-question{
+  background-image: url('../img/fq.jpg');
+  width: 100%;
+  background-size: cover;
+  overflow: hidden;
+}
+
 
 .sct-main {
   margin-top: 10%;

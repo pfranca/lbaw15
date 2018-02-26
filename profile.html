@@ -20,7 +20,7 @@
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
 
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
     <a class="navbar-brand" href="indexLogged.html">Cooperative Q & A</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
                 <span class="navbar-toggler-icon"></span>
@@ -35,7 +35,7 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown">
-               JON DOE <img class="img-fluid" src="img/3.jpeg" alt="profilePic" style="max-width:30px" />
+               Diogo  <img class="img-fluid nav-img-profile" src="img/user.png" alt="profilePic" />
             </a>
           <div class="dropdown-menu dropdown-menu-right">
             <a class="dropdown-item" href="favQuestions.html">Fav Questions</a>
@@ -50,16 +50,22 @@
 
 
 
-  <div class="fluid bg-dark">
+  <div class="fluid bg-profile-title">
     <div id="band" class="container-fluid" style="background-image: url('../img/3.jpeg'); width: 100%; height: 100%;background-size: cover; overflow: hidden;">
       <div class="row text-center">
         <div class="col-md-12 tittle-section">
+          
           <div class="col-md-12">
-            <div class="tittle">My Profile</div>
+            <img class="img-profile" src="img/user.png">
           </div>
 
           <div class="col-md-12">
-            <div class="about">Diogo Almeida Cunha</div>
+            <div class="tittle-profile">Diogo Cunha</div>
+          </div>
+          
+          <div class="col-md-12">
+            <div class="about">This is what I like to post! Some questions</div>
+          
           </div>
         </div>
       </div>
@@ -79,7 +85,9 @@
           <span class="label label-primary">13</span>
           <a data-toggle="upvote" href="#downvote">
                     <i class="far fa-thumbs-down"></i>
-                    </a> Resposta 1
+                    </a> You need to use jQuery to do this. This approach gives you the abbility to have dynamic images and do them round no matter the size.
+
+My demo has one flaw right now I don't center the image in the container, but ill return to it in a minute (need to finish a script I'm working on).
         </li>
 
         <li class="list-group-item list-group-item-secondary" style="margin-bottom: 1%;">
@@ -89,7 +97,7 @@
           <span class="label label-primary">13</span>
           <a data-toggle="upvote" href="#downvote">
                         <i class="far fa-thumbs-down"></i>
-                        </a> Resposta 2
+                        </a> @abettermap those solution don't have dynamic height, if you read the question, "Usually it's a rectangle form." meaning not always, therefor I get the image height with javascript. Seo value is lost with Toms solution. So read and think best pracitce also before downvoting.
         </li>
 
 
@@ -101,7 +109,7 @@
           <span class="label label-primary">13</span>
           <a data-toggle="upvote" href="#downvote">
                                 <i class="far fa-thumbs-down"></i>
-                                </a> Resposta 3
+                                </a> Evidently I can't remove a downvote until the answer is edited
         </li>
 
 
@@ -112,7 +120,7 @@
           <span class="label label-primary">13</span>
           <a data-toggle="upvote" href="#downvote">
                                         <i class="far fa-thumbs-down"></i>
-                                        </a> Resposta 4
+                                        </a> The answers using background-image have dynamic height in the sense that the image will fill the circular space regardless of what the height is, which I think was the OP's goal. Re: best practices, I think some might argue that not using JS for styling would be best practice. You have a point with SEO, however, so I will edit your response. Feel free to edit further.
         </li>
       </ul>
     </div>
