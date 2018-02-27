@@ -78,50 +78,133 @@
 
     <div class="container-fluid bg-white col-md-10">
       <ul class="list-group">
-        <li class="list-group-item" style="margin-bottom: 1%;">
-          <a data-toggle="upvote" href="#upvote">
-                    <i class="far fa-thumbs-up"></i>
-                    </a>
-          <span class="label label-primary">13</span>
-          <a data-toggle="upvote" href="#downvote">
-                    <i class="far fa-thumbs-down"></i>
-                    </a> You need to use jQuery to do this. This approach gives you the abbility to have dynamic images and do them round no matter the size.
+          <li class="d-flex flex-row list-group-item align-items-start">
+            <div class="p-1">
+              <div>
 
-My demo has one flaw right now I don't center the image in the container, but ill return to it in a minute (need to finish a script I'm working on).
-        </li>
+                <a data-toggle="upvote" href="#upvote">
+                                  <i class="far fa-thumbs-up"></i>
+                                  </a>
+              </div>
+              <div>
+                <span class="label label-primary">13</span>
+              </div>
+              <div>
+                <a data-toggle="upvote" href="#downvote">
+                                          <i class="far fa-thumbs-down"></i>
+                                          </a>
+              </div>
+            </div>
+            <div class="w-100 mostVotedAnswer text-justify align-middle ">
+              What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+              specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+              and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+              <br> Why do we use it? It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,
+              as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many
+              web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
 
-        <li class="list-group-item list-group-item-secondary" style="margin-bottom: 1%;">
-          <a data-toggle="upvote" href="#upvote">
-                        <i class="far fa-thumbs-up"></i>
-                        </a>
-          <span class="label label-primary">13</span>
-          <a data-toggle="upvote" href="#downvote">
-                        <i class="far fa-thumbs-down"></i>
-                        </a> @abettermap those solution don't have dynamic height, if you read the question, "Usually it's a rectangle form." meaning not always, therefor I get the image height with javascript. Seo value is lost with Toms solution. So read and think best pracitce also before downvoting.
-        </li>
+            </div>
+            <div>
+              <a class="btn-icon d-flex justify-content-center align-items-center" data-toggle="collapse" href="#question1" aria-expanded="false" aria-controls="collapseExample">
+                <i class="fas fa-plus"></i>
+              </a>
+
+            </div>
+          </li>
+
+          <li id="question1" class=" collapse mostVotedAnswerBox d-flex flex-row list-group-item list-group-item-secondary" style="background: #e6fff2;">
+
+            <div class="p-1">
+              <div>
+
+                <a data-toggle="upvote" href="#upvote">
+                                  <i class="far fa-thumbs-up"></i>
+                                  </a>
+              </div>
+              <div>
+                <span class="label label-primary">13</span>
+              </div>
+              <div>
+                <a data-toggle="upvote" href="#downvote">
+                                          <i class="far fa-thumbs-down"></i>
+                                          </a>
+              </div>
+            </div>
+            <div class="w-100 mostVotedAnswer text-justify align-middle ">
+              What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+              specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+              and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+              <br> Why do we use it? It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,
+              as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many
+              web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+
+            </div>
+          </li>
+
+          <li class="d-flex flex-row list-group-item align-items-start">
+            <div class="p-1">
+              <div>
+
+                <a data-toggle="upvote" href="#upvote">
+                                  <i class="far fa-thumbs-up"></i>
+                                  </a>
+              </div>
+              <div>
+                <span class="label label-primary">13</span>
+              </div>
+              <div>
+                <a data-toggle="upvote" href="#downvote">
+                                          <i class="far fa-thumbs-down"></i>
+                                          </a>
+              </div>
+            </div>
+            <div class="w-100 mostVotedAnswer text-justify align-middle ">
+             
+              and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+              <br> Why do we use it? It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,
+              as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now 
+              web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+
+            </div>
+            <div>
+              <a class="btn-icon d-flex justify-content-center align-items-center" data-toggle="collapse" href="#question2" aria-expanded="false" aria-controls="collapseExample">
+                <i class="fas fa-plus"></i>
+              </a>
+
+            </div>
+          </li>
+
+          <li id="question2" class=" collapse mostVotedAnswerBox d-flex flex-row list-group-item list-group-item-secondary" style="background: #e6fff2;">
+
+            <div class="p-1">
+              <div>
+
+                <a data-toggle="upvote" href="#upvote">
+                                  <i class="far fa-thumbs-up"></i>
+                                  </a>
+              </div>
+              <div>
+                <span class="label label-primary">13</span>
+              </div>
+              <div>
+                <a data-toggle="upvote" href="#downvote">
+                                          <i class="far fa-thumbs-down"></i>
+                                          </a>
+              </div>
+            </div>
+            <div class="w-100 mostVotedAnswer text-justify align-middle ">
+              What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+              specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+              and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+              <br> Why do we use it? It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,
+              as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many
+              web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+
+            </div>
 
 
+          </li>
 
-        <li class="list-group-item" style="margin-bottom: 1%;">
-          <a data-toggle="upvote" href="#upvote">
-                                <i class="far fa-thumbs-up"></i>
-                                </a>
-          <span class="label label-primary">13</span>
-          <a data-toggle="upvote" href="#downvote">
-                                <i class="far fa-thumbs-down"></i>
-                                </a> Evidently I can't remove a downvote until the answer is edited
-        </li>
-
-
-        <li class="list-group-item list-group-item-secondary" style="margin-bottom: 1%;">
-          <a data-toggle="upvote" href="#upvote">
-                                        <i class="far fa-thumbs-up"></i>
-                                        </a>
-          <span class="label label-primary">13</span>
-          <a data-toggle="upvote" href="#downvote">
-                                        <i class="far fa-thumbs-down"></i>
-                                        </a> The answers using background-image have dynamic height in the sense that the image will fill the circular space regardless of what the height is, which I think was the OP's goal. Re: best practices, I think some might argue that not using JS for styling would be best practice. You have a point with SEO, however, so I will edit your response. Feel free to edit further.
-        </li>
       </ul>
     </div>
   </div>
