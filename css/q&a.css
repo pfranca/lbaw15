@@ -4,7 +4,6 @@ body {
   padding-top: 60px;
   min-height: 100vh;
   position: relative;
-
 }
 
 h3, h4 {
@@ -33,6 +32,14 @@ h3, h4 {
 
 .person:hover {
   border-color: #f1f1f1;
+}
+
+.dropdown-menu {
+  background-color: #343a40;
+}
+
+.dropdown-item:hover {
+  background-color: #343a40;
 }
 
 .carousel-inner img {
@@ -76,20 +83,20 @@ h3, h4 {
   color: white;
 }
 
-.img-profile{
+.img-profile {
   width: 160px;
-    height: 160px;
-    position: relative;
-    overflow: hidden;
-    border-radius: 50%;
-}
-
-.nav-img-profile{
-  max-width:20px;
+  height: 160px;
+  position: relative;
+  overflow: hidden;
   border-radius: 50%;
 }
 
-.tittle-profile{
+.nav-img-profile {
+  max-width: 20px;
+  border-radius: 50%;
+}
+
+.tittle-profile {
   font-size: 8vmin;
   color: white;
 }
@@ -107,20 +114,19 @@ h3, h4 {
   color: bg-dark;
 }
 
-.bg-profile-title{
+.bg-profile-title {
   background-image: url('../img/2.jpeg');
   width: 100%;
   background-size: cover;
   overflow: hidden;
 }
 
-.bg-fav-question{
+.bg-fav-question {
   background-image: url('../img/fq.jpg');
   width: 100%;
   background-size: cover;
   overflow: hidden;
 }
-
 
 .sct-main {
   margin-top: 10%;
@@ -149,7 +155,7 @@ h3, h4 {
   margin-top: 4%;
 }
 
-.list-group-item{
+.list-group-item {
   margin-bottom: 1%;
 }
 
@@ -186,11 +192,10 @@ h3, h4 {
   border-radius: 15px;
   background-color: #3bd3ba;
   transition: .5s;
-  margin-bottom:6%;
+  margin-bottom: 6%;
 }
 
-.btnsearch
-{
+.btnsearch {
   border: 0px solid #fff;
   text-align: center;
   color: #fff;
@@ -201,7 +206,7 @@ h3, h4 {
   border-radius: 15px;
   background-color: #3bd3ba;
   transition: .5s;
-  width:5vw;
+  width: 5vw;
 }
 
 .btn-sm {
@@ -292,13 +297,12 @@ footer a:hover {
   text-decoration: none;
 }
 
-.question-link
-{
+.question-link {
   color: #777;
   text-decoration: none;
 }
 
-.question-link:hover{
+.question-link:hover {
   color: #777;
   text-decoration: underline;
   text-decoration-color: #888;
@@ -327,79 +331,76 @@ textarea {
 }
 
 .question {
-  margin-left:15px;
-margin-right:15px;
-border-left:2px solid grey;
-border-right:2px solid grey;
-padding-left:15px;
-padding-right:15px;
-min-height: 89px;
-display:flex;
-align-items: center;
+  margin-left: 15px;
+  margin-right: 15px;
+  border-left: 2px solid grey;
+  border-right: 2px solid grey;
+  padding-left: 15px;
+  padding-right: 15px;
+  min-height: 89px;
+  display: flex;
+  align-items: center;
 }
 
 .spacebeforefooter {
   padding-bottom: 95px;
 }
 
-.textarea{
-  line-height:30px;
-  height:100x !important;
-  width:96%;
-  display:block;
-  margin:0px auto;
+.textarea {
+  line-height: 30px;
+  height: 100x !important;
+  width: 96%;
+  display: block;
+  margin: 0px auto;
 }
 
-.buttonDown{
+.buttonDown {
   margin-bottom: 0px;
 }
 
-.answer,.mostVotedAnswer{
-  margin-left:15px;
-margin-right:50px;
-border-left:2px solid grey;
-padding-left:15px;
-padding-right:15px;
-min-height: 89px;
-display:flex;
-align-items: center;
+.answer, .mostVotedAnswer {
+  margin-left: 15px;
+  margin-right: 50px;
+  border-left: 2px solid grey;
+  padding-left: 15px;
+  padding-right: 15px;
+  min-height: 89px;
+  display: flex;
+  align-items: center;
 }
 
-.collapse{
-  display:none!important;
+.collapse {
+  display: none!important;
 }
 
-.collapse.show{display:block!important}
-
-.collapse.show.d-flex{
-  display:flex!important;
+.collapse.show {
+  display: block!important
 }
 
+.collapse.show.d-flex {
+  display: flex!important;
+}
 
-#questions li:nth-child(odd),#answers li:nth-child(odd)
-{
+#questions li:nth-child(odd), #answers li:nth-child(odd) {
   background-color: #dfdfdf;
 }
 
-#questions li:nth-child(even),#answers li:nth-child(even)
-{
+#questions li:nth-child(even), #answers li:nth-child(even) {
   background-color: #e6fff2;
 }
 
-.underTabRow
-{
-  margin-left:55px;
-  margin-top:10px;
+.underTabRow {
+  margin-left: 55px;
+  margin-top: 10px;
 }
 
-.underTab
-{
-  margin-right:10px;
+.underTab {
+  margin-right: 10px;
   color: #777;
   text-decoration: none;
 }
 
-.underTab:hover{
+.underTab:hover {
   color: #777;
   text-decoration: underline;
   text-decoration-color: #888;
