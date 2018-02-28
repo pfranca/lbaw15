@@ -1,25 +1,32 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="indexLogged.html">Cooperative Q & A</a>
+
+
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
               <span class="navbar-toggler-icon"></span>
         </button>
+
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <form class="form-inline mx-auto col-12 col-sm-12 col-lg-6 col-md-12">
+      <input class="form-control col-sm-10 col-9 col-lg-9" type="text" placeholder="Search">
+      <button class="btnsearch col-sm-2 col-3 col-lg-3" type="submit">Search</button>
+    </form>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#band">HOME</a>
+        <a class="nav-link" href="#">FEED</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#themes">THEMES</a>
+        <a class="nav-link" href="indexLogged.html#themes">TOPICS</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown">
-             JON DOE <img class="img-fluid" src="img/3.jpeg" alt="profilePic" style="max-width:30px" />
+             Jon Doe  <img class="img-fluid nav-img-profile" src="img/user.png" alt="profilePic" />
           </a>
         <div class="dropdown-menu dropdown-menu-right">
-          <a class="dropdown-item" href="#">Your Profile</a>
-          <a class="dropdown-item" href="#">Your Statistics</a>
+          <a class="dropdown-item" href="favQuestions.html">Fav Questions</a>
+          <a class="dropdown-item" href="profile.html">Your Profile</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Logout</a>
+          <a class="dropdown-item" href="index.html">Logout</a>
         </div>
       </li>
     </ul>
