@@ -22,44 +22,8 @@ h3, h4 {
   padding: 80px 120px;
 }
 
-.person {
-  border: 10px solid transparent;
-  margin-bottom: 25px;
-  width: 80%;
-  height: 80%;
-  opacity: 0.7;
-}
-
-.person:hover {
-  border-color: #f1f1f1;
-}
-
-.dropdown-menu {
+.dropdown-menu,.dropdown-item:hover {
   background-color: #343a40;
-}
-
-.dropdown-item:hover {
-  background-color: #343a40;
-}
-
-.carousel-inner img {
-  -webkit-filter: grayscale(90%);
-  filter: grayscale(90%);
-  /* make all photos black and white */
-  width: 100%;
-  /* Set width to 100% */
-  margin: auto;
-}
-
-.carousel-caption h3 {
-  color: #fff !important;
-}
-
-@media (max-width: 600px) {
-  .carousel-caption {
-    display: none;
-    /* Hide the carousel text when the screen is less than 600 pixels wide */
-  }
 }
 
 .bg-1 {
@@ -70,8 +34,6 @@ h3, h4 {
 .bg-2 {
   background: #white;
   color: #bdbdbd;
-  /*background: white;
-      color: #2d2d30;*/
 }
 
 .tittle-section {
@@ -110,19 +72,16 @@ h3, h4 {
   margin-top: 5%;
 }
 
-.txt-color {
-  color: bg-dark;
-}
-
 .bg-profile-title {
-  background-image: url('../img/2.jpeg');
+  background-image: url('/img/3.jpeg');
   width: 100%;
   background-size: cover;
   overflow: hidden;
+  height: 100%;
 }
 
 .bg-fav-question {
-  background-image: url('../img/fq.jpg');
+  background-image: url('/img/fq.jpg');
   width: 100%;
   background-size: cover;
   overflow: hidden;
@@ -165,47 +124,31 @@ h3, h4 {
   margin-bottom: 1%;
 }
 
-.thumbnail {
-  padding: 0 0 15px 0;
-  border: none;
-  border-radius: 0;
-}
-
-.thumbnail p {
-  margin-top: 15px;
-  color: #555;
-}
-
-.btn {
+.btn,.btnsearch{
   border: 0px solid #fff;
-  display: inline-block;
-  min-width: 170px;
-  padding: .4em;
-  height: 45px;
+  color: #fff;
+  margin: 0;
   text-align: center;
-  color: #fff;
   font-style: normal;
-  letter-spacing: 1px;
-  margin: 0;
-  font-size: 20px;
-  font-weight: 300;
-  border-radius: 15px;
-  background-color: #7395AE;
-  transition: .5s;
-  margin-bottom: 6%;
-}
-
-.btnsearch {
-  border: 0px solid #fff;
-  color: #fff;
-
-  margin: 0;
-  font-size: 100%;
-  height: 38px;
   border-radius: 15px;
   background-color: #7395AE;
   transition: .5s;
   cursor:pointer;
+}
+
+.btn {
+  display: inline-block;
+  min-width: 170px;
+  padding: .4em;
+  height: 45px;
+  letter-spacing: 1px;
+  font-weight: 300;
+  margin-bottom: 6%;
+}
+
+.btnsearch {
+  height: 38px;
+
 }
 
 .btn-sm {
@@ -221,7 +164,7 @@ h3, h4 {
   color: #000;
 }
 
-.modal-header, h4, .close {
+.modal-header{
   background-color: #333;
   color: #fff !important;
   text-align: center;
@@ -230,10 +173,6 @@ h3, h4 {
 
 .modal-header, .modal-body {
   padding: 40px 50px;
-}
-
-.nav-tabs li a {
-  color: #777;
 }
 
 .navbar {
@@ -254,7 +193,7 @@ h3, h4 {
   color: #fff !important;
 }
 
-.navbar-nav li.active a {
+.navbar-nav li:active a {
   color: #fff !important;
   background-color: #29292c !important;
 }
@@ -263,7 +202,7 @@ h3, h4 {
   border-color: transparent;
 }
 
-.open .dropdown-toggle {
+.dropdown-toggle {
   color: #fff;
   background-color: #555 !important;
 }
@@ -315,11 +254,6 @@ textarea {
   resize: none;
 }
 
-.checkboxWithText {
-  display: inline-block;
-  margin-bottom: 5px;
-}
-
 .btn-icon {
   background-color: bg-dark;
   height: 25px;
@@ -343,14 +277,6 @@ textarea {
 
 .spacebeforefooter {
   padding-bottom: 95px;
-}
-
-.textarea {
-  line-height: 30px;
-  height: 100x !important;
-  width: 96%;
-  display: block;
-  margin: 0px auto;
 }
 
 .buttonDown {
