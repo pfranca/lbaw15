@@ -19,13 +19,7 @@ h3, h4 {
 }
 
 .container {
-  padding-top: 10px;
-  padding-bottom:10px;
-}
-
-.display-3
-{
-  display:inline-block;
+  padding: 80px 120px;
 }
 
 .dropdown-menu,.dropdown-item:hover {
@@ -33,19 +27,14 @@ h3, h4 {
 }
 
 .bg-1 {
-  background-image: url('../img/homebg.jpg');
+  background-image: url('img/homebg.jpg');
   max-height: 100%;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  overflow: hidden;
 }
 
 .bg-2 {
   background: #white;
   color: #bdbdbd;
 }
-
 
 .tittle-section {
   padding: 3%;
@@ -84,7 +73,7 @@ h3, h4 {
 }
 
 .bg-profile-title {
-  background-image: url('../img/3.jpeg');
+  background-image: url('/img/3.jpeg');
   width: 100%;
   background-size: cover;
   overflow: hidden;
@@ -92,7 +81,7 @@ h3, h4 {
 }
 
 .bg-fav-question {
-  background-image: url('../img/fq.jpg');
+  background-image: url('/img/fq.jpg');
   width: 100%;
   background-size: cover;
   overflow: hidden;
@@ -135,7 +124,7 @@ h3, h4 {
   margin-bottom: 1%;
 }
 
-.btn,.btnsearch,.btnsubmit{
+.btn,.btnsearch{
   border: 0px solid #fff;
   color: #fff;
   margin: 0;
@@ -147,22 +136,15 @@ h3, h4 {
   cursor:pointer;
 }
 
-.btnsubmit{
-  margin-bottom:30px;
-}
-
-.btn,.btnsubmit{
+.btn {
   display: inline-block;
   min-width: 170px;
   padding: .4em;
   height: 45px;
   letter-spacing: 1px;
   font-weight: 300;
+  margin-bottom: 6%;
   font-size:20px;
-}
-
-.btn{
-  margin-bottom:6%;
 }
 
 .btnsearch {
@@ -332,10 +314,6 @@ textarea {
 
 #questions li:nth-child(even), #answers li:nth-child(even) {
   background-color: #7395AE;
-}
-
-#questions,#answers{
-  margin-top: 4%;
 }
 
 .underTabRow {
