@@ -28,6 +28,20 @@ h3, h4 {
   display:inline-block;
 }
 
+.box-question{
+  box-shadow: 0px 0px 15px; 
+  border-radius: 10px;
+  padding: 2%;
+  margin-bottom: 4%;
+}
+
+.box-best-answer{
+  box-shadow: 5px 6px 55px;
+  border-radius: 10px;
+  background-color: #afc3cf;
+}
+
+
 .dropdown-menu,.dropdown-item:hover {
   background-color: #343a40;
 }
@@ -331,7 +345,8 @@ textarea {
 }
 
 #questions li:nth-child(even), #answers li:nth-child(even) {
-  background-color: #7395AE;
+  background-color: #aec2d0;
+  margin-bottom: 4%;
 }
 
 #questions,#answers{
