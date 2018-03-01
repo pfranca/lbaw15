@@ -184,7 +184,9 @@ h3, h4 {
   letter-spacing: 4px;
   opacity: 0.9;
 }
-
+.nav-link:focus,.nav-link:active{
+  outline:none!important;
+}
 .navbar li a, .navbar .navbar-brand {
   color: #d5d5d5 !important;
 }
@@ -204,7 +206,6 @@ h3, h4 {
 
 .dropdown-toggle {
   color: #fff;
-  background-color: #555 !important;
 }
 
 .dropdown-menu li a {
