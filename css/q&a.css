@@ -404,3 +404,8 @@ textarea {
   text-decoration: underline;
   text-decoration-color: #888;
 }
+
+.submitButton{
+  margin-top: 2%;
+  margin-bottom: 0px;
+}
