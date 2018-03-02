@@ -286,6 +286,7 @@ footer {
   position: absolute;
   bottom: 0;
   width: 100%;
+
 }
 
 footer a {
@@ -339,6 +340,7 @@ textarea {
 
 .spacebeforefooter {
   padding-bottom: 95px;
+  margin-top:4%;
 }
 
 .buttonDown {
@@ -368,16 +370,25 @@ textarea {
   display: flex!important;
 }
 
-#questions li:nth-child(odd), #answers li:nth-child(odd) {
+#favQuestions li, #answersToQuestion li
+{
+  color: #383d41;
+  background-color: #d6d8db;
+  box-shadow: 0px 0px 15px;
+  border-radius: 10px;
+  padding: 2%;
+}
+
+#questions li:nth-child(odd){
   background-color: #dfdfdf;
 }
 
-#questions li:nth-child(even), #answers li:nth-child(even) {
+#questions li:nth-child(even):not(:last-child){
   background-color: #aec2d0;
   margin-bottom: 4%;
 }
 
-#questions,#answers{
+#questions,#answers,#favQuestions{
   margin-top: 4%;
 }
 
