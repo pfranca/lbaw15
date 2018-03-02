@@ -28,6 +28,28 @@ h3, h4 {
   display:inline-block;
 }
 
+.card img{
+  max-height: 212px;
+}
+
+.card img:hover{
+    -webkit-filter: blur(1.5px); /* Chrome, Safari, Opera */
+    filter: blur(1.5px);
+}
+
+#themes h3{
+  font-size: 65px;
+  font-weight: bold;
+}
+
+#themes p{
+  font-size: 15px;
+}
+/*
+#topics-btn p{
+ font-color:black;
+}
+*/
 .box-question{
   box-shadow: 0px 0px 15px; 
   border-radius: 10px;

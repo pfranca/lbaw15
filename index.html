@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href=" css/q&a.css">
+  <script src="js/q&a.js" defer></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -105,72 +106,111 @@
             of the world.</div>
         </div>
         <div class="col-md-12 btn-arrow">
-          <a href="#themes" class="btn btn-circle js-scroll-trigger btn-arrow">
-              <i class="fa fa-angle-double-down animated"></i>
-            </a>
+            <a id="topics-btn" class="btn btn-circle js-scroll-trigger btn-arrow">
+                <p>Our Topics</p>
+              </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Container (THEMES Section) -->
+    <div id="themes" class="bg-2">
+      <div class="container-fluid bg-2">
+        <div class="btn-bg2">
+          <h3 class="text-center ">Q&A Topics</h3>
+          <p class="text-center">This is what people are talking about!<br> Just take a moment and share knowladge!<br></p>
         </div>
 
+        <div class="row row justify-content-center   btn-bg2">
+
+
+          <!-- footbal -->
+          <div class="col-sm-12 col-md-3">
+            <div class="card mb-4">
+              <div class=" text-center" onclick="window.location.href='theme.html'">
+                <img class="card-img-top" src="img/1.jpg" alt="Sports">
+                <h5 class="card-title name-top  text-dark font-weight-bold">Sports</h5>
+              </div>
+            </div>
+          </div>
+          <!-- music -->
+          <div class="col-sm-12 col-md-3">
+            <div class="card mb-4">
+              <div class=" text-center" onclick="window.location.href='theme.html'"">
+                <img class="card-img-top" src="img/2.jpeg" alt="Guitar Player">
+                <h5 class="card-title name-top text-dark font-weight-bold">Music</h5>
+              </div>
+            </div>
+          </div>
+          <!-- fashion -->
+          <div class="col-sm-12 col-md-3">
+            <div class="card mb-4">
+              <div class=" text-center" onclick="window.location.href='theme.html'"">
+                <img class="card-img-top" src="img/3.jpeg" alt="Fashion Shot">
+                <h5 class="card-title name-top  text-dark font-weight-bold">Fashion</h5>
+              </div>
+            </div>
+          </div>
+
+          <!-- footbal -->
+          <div class="col-sm-12 col-md-3">
+            <div class="card mb-4">
+              <div class=" text-center" onclick="window.location.href='theme.html'">
+                <img class="card-img-top" src="img/4.jpg" alt="coding">
+                <h5 class="card-title name-top  text-dark font-weight-bold">IT & Coding</h5>
+              </div>
+            </div>
+          </div>
+          <!-- music -->
+          <div class="col-sm-12 col-md-3">
+            <div class="card mb-4">
+              <div class=" text-center" onclick="window.location.href='theme.html'"">
+                <img class="card-img-top" src="img/5.jpg" alt="mathnscience">
+                <h5 class="card-title name-top text-dark font-weight-bold">Math & Science</h5>
+              </div>
+            </div>
+          </div>
+          <!-- fashion -->
+          <div class="col-sm-12 col-md-3">
+            <div class="card mb-4">
+              <div class=" text-center" onclick="window.location.href='theme.html'"">
+                <img class="card-img-top" src="img/6.jpg" alt="food">
+                <h5 class="card-title name-top  text-dark font-weight-bold">Food & Nutricion</h5>
+              </div>
+            </div>
+          </div>
+          <!-- music -->
+          <div class="col-sm-12 col-md-3">
+            <div class="card mb-4">
+              <div class=" text-center" onclick="window.location.href='theme.html'"">
+                <img class="card-img-top" src="img/7.jpg" alt="history">
+                <h5 class="card-title name-top text-dark font-weight-bold">History</h5>
+              </div>
+            </div>
+          </div>
+          <!-- fashion -->
+          <div class="col-sm-12 col-md-3">
+            <div class="card mb-4">
+              <div class=" text-center" onclick="window.location.href='theme.html'"">
+                <img class="card-img-top" src="img/8.png" alt="random">
+                <h5 class="card-title name-top  text-dark font-weight-bold">Random</h5>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
       </div>
     </div>
   </div>
-
-  <!-- Container (THEMES Section) -->
-  <div id="themes" class="bg-2">
-    <div class="container-fluid bg-2">
-      <div class="btn-bg2">
-        <h3 class="text-center ">Q&A Themes</h3>
-        <p class="text-center">All the themes that are available in our website.<br> Just take a moment and answer it!<br></p>
-      </div>
-
-      <div class="row row justify-content-center   btn-bg2">
-
-
-        <!-- footbal -->
-        <div class="col-sm-12 col-md-3">
-          <div class="card mb-4">
-            <div class=" text-center">
-              <img class="card-img-top" src="img/1.jpg" alt="Paris">
-              <h5 class="card-title name-top  text-dark font-weight-bold">Football</h5>
-              <p class="card-text">12 answers</p>
-              <button class="btn" onclick="window.location.href='theme.html'">Answer Now</button>
-            </div>
-          </div>
-        </div>
-        <!-- music -->
-        <div class="col-sm-12 col-md-3">
-          <div class="card mb-4">
-            <div class=" text-center">
-              <img class="card-img-top" src="img/2.jpeg" alt="Paris">
-              <h5 class="card-title name-top text-dark font-weight-bold">Music</h5>
-              <p class="card-text">8 answers</p>
-              <button class="btn" onclick="window.location.href='theme.html'">Answer Now</button>
-            </div>
-          </div>
-        </div>
-        <!-- fashion -->
-        <div class="col-sm-12 col-md-3">
-          <div class="card mb-4">
-            <div class=" text-center">
-              <img class="card-img-top" src="img/3.jpeg" alt="Paris">
-              <h5 class="card-title name-top  text-dark font-weight-bold">Fashion</h5>
-              <p class="card-text">42 answers</p>
-              <button class="btn" onclick="window.location.href='theme.html'">Answer Now</button>
-            </div>
-          </div>
-        </div>
-
-
-      </div>
-    </div>
+  <!-- Footer -->
+  <div class="spacebeforefooter">
+    <footer class="footer text-center static-bottom">
+      <p>Cooperative Q&A <a href="#" data-toggle="tooltip" title="Cooperative q&a">www.cooperativeq&a.com</a></p>
+    </footer>
   </div>
-</div>
-<!-- Footer -->
-<div class="spacebeforefooter">
-  <footer class="footer text-center static-bottom">
-    <p>Cooperative Q&A <a href="#" data-toggle="tooltip" title="Cooperative q&a">www.cooperativeq&a.com</a></p>
-  </footer>
-</div>
-
 </body>
 
 </html>
