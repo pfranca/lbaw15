@@ -51,7 +51,7 @@ h3, h4 {
 }
 */
 .box-question{
-  box-shadow: 0px 0px 15px; 
+  box-shadow: 0px 0px 15px;
   border-radius: 10px;
   padding: 2%;
   margin-bottom: 4%;
@@ -171,7 +171,7 @@ h3, h4 {
   margin-bottom: 1%;
 }
 
-.btn,.btnsearch,.btnsubmit{
+.btn,.btnsearch,.btnsubmit,.btnModals{
   border: 0px solid #fff;
   color: #fff;
   margin: 0;
@@ -181,13 +181,14 @@ h3, h4 {
   background-color: #7395AE;
   transition: .5s;
   cursor:pointer;
+  line-height: 1.5;
 }
 
 .btnsubmit{
   margin-bottom:30px;
 }
 
-.btn,.btnsubmit{
+.btn,.btnsubmit,.btnModals{
   display: inline-block;
   min-width: 170px;
   padding: .4em;
@@ -197,6 +198,9 @@ h3, h4 {
   font-size:20px;
 }
 
+.btnModals{
+  margin: 5px 0 5px 0;
+}
 .btn{
   margin-bottom:6%;
 }
@@ -224,10 +228,12 @@ h3, h4 {
   color: #fff !important;
   text-align: center;
   font-size: 30px;
+  padding-left:30px;
+  padding-right:30px;
 }
 
-.modal-header, .modal-body {
-  padding: 40px 50px;
+#loginModal .modallabel,#loginModal .modal-body{
+  padding-bottom:0px;
 }
 
 .navbar {
