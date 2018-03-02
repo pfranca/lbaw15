@@ -1,45 +1,133 @@
 <div class="modal fade" id="registerModal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Register</h5>
-
-      </div>
-      <div class="modal-body">
-        <form role="form">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Name" />
-            <input type="email" class="form-control" placeholder="Email" />
-            <input type="password" class="form-control" placeholder="Password" />
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="buttonDown btn btn-secondary btn-sm"   data-toggle="modal" data-target="#loginModal" data-dismiss="modal">Login</button>
-        <button type="button" class="buttonDown btn btn-primary btn-sm" >Register</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Login</h5>
 
       </div>
       <div class="modal-body">
-        <form role="form">
-          <div class="form-group">
-            <input type="email" class="form-control" placeholder="Email" />
-            <input type="password" class="form-control" placeholder="Password" />
-          </div>
-        </form>
+        <div class="container-fluid">
+          <form role="form-horizontal" novalidate="novalidate" id="form2">
+
+            <div class="form-group">
+              <div class="row ">
+                <div class="input-group">
+                  <div class="modallabel col-12 col-md-3 col-lg-2">
+                    <label for="Name2">Name</label>
+                    <span><i class="fas fa-user"></i></span>
+                  </div>
+                  <input class="form-control col-12 col-md-9 col-lg-10" id="Name2" name="Name2" type="text" placeholder="Enter Your Name" aria-required="true" aria-invalid="false" aria-describedby="Name-error">
+                </div>
+                <span id="Name-error" class="help-block valid"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="row ">
+                <div class="input-group">
+                  <div class="modallabel col-12 col-md-3 col-lg-2">
+                    <label for="Email">Email</label>
+                    <span><i class="far fa-envelope"></i></span>
+                  </div>
+                  <input class="form-control col-12 col-md-9 col-lg-10" id="Email2" name="Email2" type="text" placeholder="Enter Your Email" aria-required="true" aria-invalid="false" aria-describedby="Email-error">
+                </div>
+                <span id="Email-error2" class="help-block valid"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="row">
+                <div class="input-group">
+                  <div class="modallabel col-12 col-md-3 col-lg-2">
+                    <label for="Password">Password</label>
+                    <span class=""><i class="fas fa-key"></i></span>
+                  </div>
+                  <input class="form-control col-12 col-md-9 col-lg-10" id="password2" name="password2" type="password" placeholder="Enter Your Password" aria-required="true" aria-invalid="false" aria-describedby="password-error"></div>
+                <span id="password-error2" class="help-block valid"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="row">
+                <div class="input-group">
+                  <div class="modallabel col-12 col-md-3 col-lg-2">
+                    <label for="ConfirmPassword">Password</label>
+                    <span class=""><i class="fas fa-key"></i></span>
+                  </div>
+                  <input class="form-control col-12 col-md-9 col-lg-10" id="password_again2" name="password_again2" type="password" placeholder="Enter Your Password Again" aria-required="true" aria-invalid="false" aria-describedby="password-error"></div>
+                <span id="password_again-error2" class="help-block valid"></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group ml-auto">
+                <button class="btnModals col-md-12 col-lg-3" type="button"><i class="fab fa-google"></i>oogle</button>
+                <button class="btnModals col-md-12 col-lg-3" type="button"><i class="fab fa-facebook-f"></i>acebook</button>
+                <button id="Submit2" class="btnModals col-md-12 col-lg-3" type="Submit">Register</button>
+              </div>
+            </div>
+
+          </form>
+        </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="buttonDown btn btn-secondary btn-sm" data-toggle="modal" data-target="#registerModal" data-dismiss="modal">Register</button>
-        <button type="button" class="buttonDown btn btn-primary btn-sm" onclick="window.location.href='indexLogged.html'">Login</button>
+        <button type="button" class="btnModals btn-sm" data-dismiss="modal">Close</button>
+        <button type="button" class="btnModals btn-sm" data-toggle="modal" data-target="#loginModal" data-dismiss="modal">Login</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Login</h5>
+
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <form role="form-horizontal" novalidate="novalidate" id="form1">
+
+            <div class="form-group">
+              <div class="row ">
+                <div class="input-group">
+                  <div class="modallabel col-12 col-md-3 col-lg-2">
+                    <label for="Email">Email</label>
+                    <span><i class="far fa-envelope"></i></span>
+                  </div>
+                  <input class="form-control col-12 col-md-9 col-lg-10" id="Email" name="Email" type="text" placeholder="Enter Your Email" aria-required="true" aria-invalid="false" aria-describedby="Email-error">
+                </div>
+                <span id="Email-error" class="help-block valid"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="row">
+                <div class="input-group">
+                  <div class="modallabel col-12 col-md-3 col-lg-2">
+                    <label for="Password">Password</label>
+                    <span class=""><i class="fas fa-key"></i></span>
+                  </div>
+                  <input class="form-control col-12 col-md-9 col-lg-10" id="password" name="password" type="password" placeholder="Enter Your Password" aria-required="true" aria-invalid="false" aria-describedby="password-error"></div>
+                <span id="password-error" class="help-block valid"></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group ml-auto">
+                <button class="btnModals col-md-12 col-lg-3" type="button"><i class="fab fa-google"></i>oogle</button>
+                <button class="btnModals col-md-12 col-lg-3" type="button"><i class="fab fa-facebook-f"></i>acebook</button>
+                <button id="Submit" class="btnModals col-md-12 col-lg-3" type="Submit">Login</button>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btnModals btn-sm" data-dismiss="modal">Close</button>
+        <button type="button" class="btnModals btn-sm" data-toggle="modal" data-target="#registerModal" data-dismiss="modal">Register</button>
+
       </div>
     </div>
   </div>
