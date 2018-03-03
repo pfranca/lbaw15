@@ -447,3 +447,12 @@ textarea {
   color: #000058;
   margin-right: 5px;
 }
+
+.widthFormControl{
+  width: 426px !important;
+}
+
+.nameInFormControl{
+  padding-right: 2.5%;
+  margin-left: -1%;
+}

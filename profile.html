@@ -80,7 +80,41 @@
       </div>
     </div>
     <div class="d-flex justify-content-end">
-      <button  type="button" class="buttonPosition submitQuestionButton btnsubmit btn btn-xs" data-toggle="modal" data-target="#questionModal" data-dismiss="modal">Edit Profile</button>
+      <button  type="button" class="buttonPosition submitQuestionButton btnsubmit btn btn-xs" data-toggle="modal" data-target="#profileModal" data-dismiss="modal">Edit Profile</button>
+    </div>
+  </div>
+
+  <div class="modal fade" id="profileModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit Profile</h5>
+        </div>
+        <div class="modal-body">
+          <form role="form" class="form-inline">
+            <div class="form-group">
+              <label class="nameInFormControl" for="usr">Name:</label>
+              <input type="text" class="widthFormControl form-control" id="usr">
+            </div>
+            <div class="form-group">
+              <label class="nameInFormControl" for="usr">Email:</label>
+              <input type="text" class="widthFormControl form-control" id="email">
+            </div>
+            <div class="form-group">
+              <label class="nameInFormControl" for="usr">Naosei:</label>
+              <input type="text" class="widthFormControl form-control" id="naosei">
+            </div>
+            <div class="form-group">
+                <label class="nameInFormControl" for="usr">Bio:</label>
+              <textarea class="form-control" rows="8"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="buttonDown btn btn-primary btn-sm">Submit</button>
+          <button type="button" class="buttonDown btn btn-secondary btn-sm" data-toggle="modal" data-target="#" data-dismiss="modal">Exit</button>
+        </div>
+      </div>
     </div>
   </div>
 
