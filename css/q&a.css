@@ -28,7 +28,8 @@ h3, h4 {
   display:inline-block;
 }
 
-.card img{
+.card-img-top{
+  min-height: 212px;
   max-height: 212px;
 }
 
@@ -216,7 +217,7 @@ h3, h4 {
 
 .btnsearch {
   height: 38px;
-
+  margin-left: -15%;
 }
 
 .btn-sm {
@@ -423,7 +424,42 @@ textarea {
   margin-bottom: 0px;
 }
 
-.nameInQuestion{
+.phraseInQuestion{
   margin-top: 0px;
   margin-bottom: 1%;
+}
+
+
+.submitQuestionButton{
+  margin-bottom: 15px;
+}
+
+.colorLink{
+  color:#007bff;
+}
+
+.buttonPosition{
+  margin-top: -2%;
+  margin-right: 16%;
+  font-size: 15px;
+}
+.nameInQuestion{
+  color: #000058;
+  margin-right: 5px;
+}
+
+.widthFormControl{
+  width: 400px !important;
+  margin-bottom: 1%;
+  margin-top: 1%;
+}
+
+.nameInFormControl{
+  padding-right: 2.5%;
+  margin-left: -1%;
+}
+
+.searchBarNavBar{
+  margin-left: 15%;
+  width:350px !important;
 }
