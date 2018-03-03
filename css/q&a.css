@@ -428,3 +428,7 @@ textarea {
   margin-top: 0px;
   margin-bottom: 1%;
 }
+
+.submitQuestionButton{
+  margin-bottom: 15px;
+}
