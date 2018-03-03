@@ -83,6 +83,9 @@ h3, h4 {
   color: #bdbdbd;
 }
 
+.tittle-section.theme-title-section{
+  padding-bottom:0px;
+}
 
 .tittle-section {
   padding: 3%;
@@ -432,6 +435,7 @@ textarea {
 
 .submitQuestionButton{
   margin-bottom: 15px;
+  margin-right:14%;
 }
 
 .colorLink{
