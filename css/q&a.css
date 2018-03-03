@@ -87,6 +87,11 @@ h3, h4 {
   padding: 3%;
 }
 
+.tittle-section2 {
+  margin-left: 16%;
+  padding: 5%;
+}
+
 .tittle {
   font-size: 12vmin;
   color: white;
@@ -120,11 +125,15 @@ h3, h4 {
 }
 
 .bg-profile-title {
-  background-image: url('../img/3.jpeg');
+  background-image: url('../img/33.jpeg');
   width: 100%;
   background-size: cover;
   overflow: hidden;
   height: 100%;
+}
+
+.text-area-fix{
+  margin-top: 2%;
 }
 
 .bg-fav-question {
@@ -286,6 +295,7 @@ footer {
   position: absolute;
   bottom: 0;
   width: 100%;
+
 }
 
 footer a {
@@ -339,10 +349,15 @@ textarea {
 
 .spacebeforefooter {
   padding-bottom: 95px;
+  margin-top:4%;
 }
 
 .buttonDown {
   margin-bottom: 0px;
+}
+
+.font-theme{
+  font-size: 85%;
 }
 
 .answer, .mostVotedAnswer {
@@ -368,17 +383,22 @@ textarea {
   display: flex!important;
 }
 
-#questions li:nth-child(odd), #answers li:nth-child(odd) {
+#favQuestions li, #answersToQuestion li
+{
+  color: #383d41;
+  background-color: #d6d8db;
+  box-shadow: 0px 0px 15px;
+  border-radius: 10px;
+  padding: 2%;
+}
+
+#questions li:nth-child(odd){
   background-color: #dfdfdf;
 }
 
-#questions li:nth-child(even), #answers li:nth-child(even) {
+#questions li:nth-child(even):not(:last-child){
   background-color: #aec2d0;
   margin-bottom: 4%;
-}
-
-#questions,#answers{
-  margin-top: 4%;
 }
 
 .underTabRow {
@@ -401,4 +421,9 @@ textarea {
 .submitButton{
   margin-top: 2%;
   margin-bottom: 0px;
+}
+
+.nameInQuestion{
+  margin-top: 0px;
+  margin-bottom: 1%;
 }
