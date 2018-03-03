@@ -13,6 +13,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  <!-- Table -->
+
+  <script defer src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script defer src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+  <script defer src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
 
 </head>
 
@@ -59,26 +64,88 @@
 
 
       <div class="row">
-      <div class="col col-md-2 bg-dark text-center">
-        <a class="dropdown-item dash-bording" href="admin.html">Admin</a>
+      <div class="col col-md-2 bg-dark text-center" id="sidebar" style="height: 100%;">
         <a class="dropdown-item dash-bording" href="adminTheme.html">Themes</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item dash-bording" href="adminQuestion.html">Questions</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item dash-bording" href="adminAnswer.html">Answers</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item dash-bording" href="adminRequest.html">Requests</a>
+        <a class="dropdown-item dash-bording" href="adminRequest.html">Moderators</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item dash-bording" href="adminReports.html">Reports</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item dash-bording" href="adminReports.html">Users</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item dash-bording" href="adminReports.html">Moderators</a>
+        <a class="dropdown-item dash-bording" href="adminReports.html"></a>
 
 
       </div>
       
-      <div class="col-6 col-md-10 bd-red">.col-6 .col-md-4</div>
+      <div class=" col-md-10 bd-red" style="background-color: #f2f2f2">
+          <div class="col-md-10 container-fluid" style="margin-top: 4%; margin-bottom: 4%;" >
+            
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Firstname</th>
+                  <th>Lastname</th>
+                  <th>Email</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>John</td>
+                  <td>Doe</td>
+                  <td>john@example.com</td>
+                </tr>
+                <tr>
+                  <td>John</td>
+                  <td>Doe</td>
+                  <td>john@example.com</td>
+                </tr>
+                 <tr>
+                  <td>John</td>
+                  <td>Doe</td>
+                  <td>john@example.com</td>
+                </tr>
+                
+                
+              
+              </tbody>
+            </table>
+            <table class="table">
+              <thead class="thead-light">
+                <tr>
+                  <th>Firstname</th>
+                  <th>Lastname</th>
+                  <th>Email</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>John</td>
+                  <td>Doe</td>
+                  <td>john@example.com</td>
+                </tr>
+                <tr>
+                  <td>July</td>
+                  <td>Dooley</td>
+                  <td>july@example.com</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <ul class="pagination" style="margin-bottom: 12%;">
+              <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+
+          </div>
+      </div>
   </div>
 
   <div class="row col-md-2" style="background-color: black;">
@@ -89,7 +156,7 @@
   </div>
 
   <!-- Footer -->
-  <div class="spacebeforefooter">
+  <div class="">
     <footer class="footer text-center static-bottom">
       <p>Cooperative Q&A <a href="#" data-toggle="tooltip" title="Cooperative q&a">www.cooperativeq&a.com</a></p>
     </footer>

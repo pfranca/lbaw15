@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href=" ../css/q&a.css">
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -17,7 +18,9 @@
 
   <script defer src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script defer src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-  <script defer src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+  <script defer src="admin.js"></script>
+    <!-- Table -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
 
 </head>
 
@@ -64,94 +67,28 @@
 
 
       <div class="row">
-      <div class="col col-md-2 bg-dark text-center" id="sidebar">
+      <div class="col  col-md-2 bg-dark text-center " id="sidebar">
         <a class="dropdown-item dash-bording" href="adminTheme.html">Themes</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item dash-bording" href="adminQuestion.html">Questions</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item dash-bording" href="adminAnswer.html">Answers</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item dash-bording" href="adminRequest.html">Requests</a>
+        <a class="dropdown-item dash-bording" href="adminModerators.html">Moderators</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item dash-bording" href="adminUsers.html">Users</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item dash-bording" href="adminReports.html">Reports</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item dash-bording" href="adminReports.html">Users</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item dash-bording" href="adminReports.html">Moderators</a>
-
-
       </div>
       
-      <div class=" col-md-10 bd-red" style="background-color: #f2f2f2">
-          <div class="col-md-10 container-fluid" style="margin-top: 4%; margin-bottom: 4%;" >
+      <div class=" col-md-10" id="bdAdmin">
+          <div class="col-md-10 container-fluid" id="bdAdminMargin">
             
-            <table class="table">
-              <thead class="thead-dark">
-                <tr>
-                  <th>Firstname</th>
-                  <th>Lastname</th>
-                  <th>Email</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>John</td>
-                  <td>Doe</td>
-                  <td>john@example.com</td>
-                </tr>
-                <tr>
-                  <td>John</td>
-                  <td>Doe</td>
-                  <td>john@example.com</td>
-                </tr>
-                <tr>
-                  <td>Mary</td>
-                  <td>Moe</td>
-                  <td>mary@example.com</td>
-                </tr>
-                <tr>
-                  <td>July</td>
-                  <td>Dooley</td>
-                  <td>july@example.com</td>
-                </tr>
-              </tbody>
-            </table>
-            <table class="table">
-              <thead class="thead-light">
-                <tr>
-                  <th>Firstname</th>
-                  <th>Lastname</th>
-                  <th>Email</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>John</td>
-                  <td>Doe</td>
-                  <td>john@example.com</td>
-                </tr>
-                <tr>
-                  <td>July</td>
-                  <td>Dooley</td>
-                  <td>july@example.com</td>
-                </tr>
-              </tbody>
-            </table>
-
-            <ul class="pagination" style="margin-bottom: 12%;">
-              <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
+            <table id="question" class="display" width="100%"></table>
 
           </div>
       </div>
-  </div>
-
-  <div class="row col-md-2" style="background-color: black;">
-      
   </div>
 
   </div>

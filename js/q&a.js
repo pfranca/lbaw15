@@ -6,7 +6,3 @@ function goToTopic() {
     scrollTop: $("#themes").offset().top
   }, 1000);
 }
-
-$(document).ready(function() {
-    $('#example').DataTable();
-} );

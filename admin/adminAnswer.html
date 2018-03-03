@@ -9,10 +9,18 @@
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href=" ../css/q&a.css">
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  <!-- Table -->
+
+  <script defer src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script defer src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+  <script defer src="admin.js"></script>
+    <!-- Table -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
 
 </head>
 
@@ -59,37 +67,35 @@
 
 
       <div class="row">
-      <div class="col col-md-2 bg-dark text-center">
-        <a class="dropdown-item dash-bording" href="admin.html">Admin</a>
+      <div class="col  col-md-2 bg-dark text-center " id="sidebar">
         <a class="dropdown-item dash-bording" href="adminTheme.html">Themes</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item dash-bording" href="adminQuestion.html">Questions</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item dash-bording" href="adminAnswer.html">Answers</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item dash-bording" href="adminRequest.html">Requests</a>
+        <a class="dropdown-item dash-bording" href="adminModerators.html">Moderators</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item dash-bording" href="adminUsers.html">Users</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item dash-bording" href="adminReports.html">Reports</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item dash-bording" href="adminReports.html">Users</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item dash-bording" href="adminReports.html">Moderators</a>
-
-
       </div>
       
-      <div class="col-6 col-md-10 bd-red">.col-6 .col-md-4</div>
-  </div>
+      <div class=" col-md-10" id="bdAdmin">
+          <div class="col-md-10 container-fluid" id="bdAdminMargin">
+            
+            <table id="answer" class="display" width="100%"></table>
 
-  <div class="row col-md-2" style="background-color: black;">
-      
+          </div>
+      </div>
   </div>
 
   </div>
   </div>
 
   <!-- Footer -->
-  <div class="spacebeforefooter">
+  <div class="">
     <footer class="footer text-center static-bottom">
       <p>Cooperative Q&A <a href="#" data-toggle="tooltip" title="Cooperative q&a">www.cooperativeq&a.com</a></p>
     </footer>
