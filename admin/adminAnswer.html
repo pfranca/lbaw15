@@ -8,11 +8,19 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href=" css/q&a.css">
+  <link rel="stylesheet" href=" ../css/q&a.css">
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  <!-- Table -->
+
+  <script defer src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script defer src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+  <script defer src="admin.js"></script>
+    <!-- Table -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
 
 </head>
 
@@ -35,21 +43,21 @@
       </form>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="theme.html">FEED</a>
+          <a class="nav-link" href="../theme.html">FEED</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="indexLogged.html#themes">TOPICS</a>
+          <a class="nav-link" href="../indexLogged.html#themes">TOPICS</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown">
-               Jon Doe  <img class="img-fluid nav-img-profile" src="img/user.png" alt="profilePic" />
+               Jon Doe  <img class="img-fluid nav-img-profile" src="../img/user.png" alt="profilePic" />
             </a>
           <div class="dropdown-menu dropdown-menu-right">
-            <a class="dropdown-item" href="favQuestions.html">Fav Questions</a>
-            <a class="dropdown-item" href="profile.html">Your Profile</a>
+            <a class="dropdown-item" href="../favQuestions.html">Fav Questions</a>
+            <a class="dropdown-item" href="../profile.html">Your Profile</a>
             <a class="dropdown-item" href="admin.html">Admin</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="index.html">Logout</a>
+            <a class="dropdown-item" href="../index.html">Logout</a>
           </div>
         </li>
       </ul>
@@ -59,32 +67,35 @@
 
 
       <div class="row">
-      <div class="col col-md-2 bg-dark text-center">
-        <a class="dropdown-item dash-bording" href="favQuestions.html">Admin</a>
-        <a class="dropdown-item dash-bording" href="favQuestions.html">Themes</a>
+      <div class="col  col-md-2 bg-dark text-center " id="sidebar">
+        <a class="dropdown-item dash-bording" href="adminTheme.html">Themes</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item dash-bording" href="profile.html">Questions</a>
+        <a class="dropdown-item dash-bording" href="adminQuestion.html">Questions</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item dash-bording" href="admin.html">Answers</a>
+        <a class="dropdown-item dash-bording" href="adminAnswer.html">Answers</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item dash-bording" href="index.html">Requests</a>
+        <a class="dropdown-item dash-bording" href="adminModerators.html">Moderators</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item dash-bording" href="index.html">Reports</a>
-
+        <a class="dropdown-item dash-bording" href="adminUsers.html">Users</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item dash-bording" href="adminReports.html">Reports</a>
+        <div class="dropdown-divider"></div>
       </div>
       
-      <div class="col-6 col-md-10 bd-red">.col-6 .col-md-4</div>
-  </div>
+      <div class=" col-md-10" id="bdAdmin">
+          <div class="col-md-10 container-fluid" id="bdAdminMargin">
+            
+            <table id="answer" class="display" width="100%"></table>
 
-  <div class="row col-md-2" style="background-color: black;">
-      
+          </div>
+      </div>
   </div>
 
   </div>
   </div>
 
   <!-- Footer -->
-  <div class="spacebeforefooter">
+  <div class="">
     <footer class="footer text-center static-bottom">
       <p>Cooperative Q&A <a href="#" data-toggle="tooltip" title="Cooperative q&a">www.cooperativeq&a.com</a></p>
     </footer>
