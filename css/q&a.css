@@ -424,11 +424,26 @@ textarea {
   margin-bottom: 0px;
 }
 
-.nameInQuestion{
+.phraseInQuestion{
   margin-top: 0px;
   margin-bottom: 1%;
 }
 
+
 .submitQuestionButton{
   margin-bottom: 15px;
+}
+
+.colorLink{
+  color:#007bff;
+}
+
+.buttonPosition{
+  margin-top: -2%;
+  margin-right: 16%;
+  font-size: 15px;
+}
+.nameInQuestion{
+  color: #000058;
+  margin-right: 5px;
 }
