@@ -87,6 +87,11 @@ h3, h4 {
   padding: 3%;
 }
 
+.tittle-section2 {
+  margin-left: 16%;
+  padding: 5%;
+}
+
 .tittle {
   font-size: 12vmin;
   color: white;
@@ -120,11 +125,15 @@ h3, h4 {
 }
 
 .bg-profile-title {
-  background-image: url('../img/3.jpeg');
+  background-image: url('../img/33.jpeg');
   width: 100%;
   background-size: cover;
   overflow: hidden;
   height: 100%;
+}
+
+.text-area-fix{
+  margin-top: 2%;
 }
 
 .bg-fav-question {
