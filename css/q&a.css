@@ -83,6 +83,12 @@ h3, h4 {
   color: #bdbdbd;
 }
 
+.dash-bording{
+  padding: 8%;
+  border-bottom-color: white;
+  cursor: pointer;
+  color: white;
+}
 
 .tittle-section {
   padding: 3%;
@@ -353,6 +359,7 @@ textarea {
   margin-top:4%;
 }
 
+
 .buttonDown {
   margin-bottom: 0px;
 }
@@ -446,4 +453,9 @@ textarea {
 .nameInQuestion{
   color: #000058;
   margin-right: 5px;
+}
+
+#sidebar {
+  height: 100%;
+  padding: 0%;
 }
