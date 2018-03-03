@@ -449,10 +449,17 @@ textarea {
 }
 
 .widthFormControl{
-  width: 426px !important;
+  width: 400px !important;
+  margin-bottom: 1%;
+  margin-top: 1%;
 }
 
 .nameInFormControl{
   padding-right: 2.5%;
   margin-left: -1%;
+}
+
+.searchBarNavBar{
+  margin-left: 15%;
+  width:350px !important;
 }
