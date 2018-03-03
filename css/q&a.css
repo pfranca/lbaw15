@@ -347,6 +347,10 @@ textarea {
   margin-bottom: 0px;
 }
 
+.font-theme{
+  font-size: 85%;
+}
+
 .answer, .mostVotedAnswer {
   margin-left: 15px;
   margin-right: 50px;
