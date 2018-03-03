@@ -83,6 +83,16 @@ h3, h4 {
   color: #bdbdbd;
 }
 
+.tittle-section.theme-title-section{
+  padding-bottom:0px;
+}
+
+.dash-bording{
+  padding: 8%;
+  border-bottom-color: white;
+  cursor: pointer;
+  color: white;
+}
 
 .tittle-section {
   padding: 3%;
@@ -319,12 +329,16 @@ footer a:hover {
   text-decoration-color: #888;
 }
 
-.form-control {
-  border-radius: 15px;
+.form-control{
+  border-radius: 15px !important;
 }
 
 textarea {
   resize: none;
+}
+
+.admin-bar{
+  padding-bottom:20%;
 }
 
 .btn-icon {
@@ -352,6 +366,7 @@ textarea {
   padding-bottom: 95px;
   margin-top:4%;
 }
+
 
 .buttonDown {
   margin-bottom: 0px;
@@ -432,6 +447,7 @@ textarea {
 
 .submitQuestionButton{
   margin-bottom: 15px;
+  margin-right:14%;
 }
 
 .colorLink{
@@ -462,4 +478,19 @@ textarea {
 .searchBarNavBar{
   margin-left: 15%;
   width:350px !important;
+}
+
+#sidebar {
+  height: 100%;
+  padding-bottom: 22%;
+  padding-right: 0%;
+}
+
+#bdAdmin{
+  background-color: #f2f2f2;
+}
+
+#bdAdminMargin{
+  margin-top: 4%; 
+  margin-bottom: 4%;
 }
