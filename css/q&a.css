@@ -491,6 +491,11 @@ textarea {
 }
 
 #bdAdminMargin{
-  margin-top: 4%; 
+  margin-top: 4%;
   margin-bottom: 4%;
+}
+
+
+#TopicsNavBar{
+  cursor:pointer;
 }
