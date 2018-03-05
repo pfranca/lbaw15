@@ -6,6 +6,10 @@ body {
   position: relative;
 }
 
+#index{
+  padding-top:62px;
+}
+
 h3, h4 {
   margin: 10px 0 30px 0;
   letter-spacing: 10px;
