@@ -353,6 +353,10 @@ textarea {
 .admin-bar{
   padding-bottom:20%;
 }
+#adminBar
+{
+  height:calc(100vh - 205px);
+}
 
 .btn-icon {
   background-color: bg-dark;
