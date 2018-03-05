@@ -143,7 +143,7 @@ h3, h4 {
 }
 
 .bg-profile-title {
-  background-image: url('../img/33.jpeg');
+  
   width: 100%;
   background-size: cover;
   overflow: hidden;
@@ -502,7 +502,7 @@ textarea {
 }
 
 
-#TopicsNavBar, #add1, #add2, #add3, #add4, #add5, #add6{
+#TopicsNavBar{
   cursor:pointer;
 }
 
