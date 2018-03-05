@@ -1,10 +1,22 @@
-$("#topics-btn").click(goToTopic);
-$("#TopicsNavBar").click(goToTopic);
+$(document).ready(function() {
 
-function goToTopic() {
+  if (window.location.href.indexOf('topics') != -1) {
+    time = 1;
+    goToTopic();
+  };
+});
+
+$("#topics-btn").click({
+  time: 1000
+}, goToTopic);
+$("#TopicsNavBar").click({
+  time: 1000
+}, goToTopic);
+
+function goToTopic(time) {
   $('html, body').animate({
-    scrollTop: $("#themes").offset().top
-  }, 1000);
+    scrollTop: $("#themes").offset().top - 77
+  }, time);
 }
 
 $(".navbar-toggler").click(pushBreadcrombsdown);

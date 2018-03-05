@@ -149,8 +149,12 @@ h3, h4 {
   overflow: hidden;
   height: 100%;
   background-color:#494E53;
+   background-image: url('../img/tec.jpg');
 }
 
+#band{
+  height:calc(100vh - 62px);
+}
 .questionPage
 {
   width:100%;
