@@ -143,19 +143,30 @@ h3, h4 {
 }
 
 .bg-profile-title {
-   background-image: url('../img/tec.jpg');
+
   width: 100%;
   background-size: cover;
   overflow: hidden;
   height: 100%;
+  background-color:#494E53;
 }
 
+.questionPage
+{
+  width:100%;
+  height:100%;
+  background-color:#494E53;
+  color:white;
+  text-align: center;
+  margin:0;
+  font-size:1.3rem;
+}
 .text-area-fix{
   margin-top: 2%;
 }
 
 .bg-fav-question {
-  background-image: url('../img/tec.jpg');
+  background-image: url('../img/fq.jpg');
   width: 100%;
   background-size: cover;
   overflow: hidden;
