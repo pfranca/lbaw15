@@ -198,7 +198,7 @@ h3, h4 {
   text-align: center;
   font-style: normal;
   border-radius: 15px;
-  background-color: #7395AE;
+  background-color: #4da6ff;
   transition: .5s;
   cursor:pointer;
   line-height: 1.5;
@@ -238,9 +238,8 @@ h3, h4 {
 }
 
 .btn:hover, .btn:focus,.btnsearch:hover,.btn:focus {
-  border: 1px solid #333;
-  background-color: #fff;
-  color: #000;
+  background-color: #006699;
+  color: white;
 }
 
 .modal-header{
@@ -498,4 +497,13 @@ textarea {
 
 #TopicsNavBar{
   cursor:pointer;
+}
+
+.dp-divider{
+  margin: 0%;
+}
+
+.topics:hover,.questions:hover,.answers:hover,.moderators:hover,.users:hover,.reports:hover{
+    background-color: #4da6ff;
+    color: white;
 }
