@@ -145,13 +145,11 @@ h3, h4 {
 
 .bg-profile-title {
 
+ background-image: url('../img/tec.jpg');
+  background-image: linear-gradient(to top, rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url('../img/tec.jpg');
   width: 100%;
-
+  background-size: cover;
   overflow: hidden;
-  height: 100%;
-  background-color:#494E53;
-   background-image: url('../img/tec.jpg');
-   background-image: linear-gradient(to top, rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url('../img/tec.jpg');
 }
 
 #band{
@@ -173,8 +171,8 @@ h3, h4 {
 }
 
 .bg-fav-question {
-  background-image: url('../img/fq.jpg');
-  background-image: linear-gradient(to top, rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url('../img/fq.jpg');
+  background-image: url('../img/tec.jpg');
+  background-image: linear-gradient(to top, rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url('../img/tec.jpg');
   width: 100%;
   background-size: cover;
   overflow: hidden;
