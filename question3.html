@@ -20,6 +20,28 @@
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
 
+   <div class="modal fade" id="questionModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Submit Answer</h5>
+
+        </div>
+        <div class="modal-body">
+          <form role="form">
+            <div class="form-group">
+              <textarea class="form-control" rows="8"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="buttonDown btn btn-primary btn-sm">Submit</button>
+          <button type="button" class="buttonDown btn btn-secondary btn-sm" data-toggle="modal" data-target="#" data-dismiss="modal">Exit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="indexLogged.html">Cooperative Q & A</a>
 
@@ -45,7 +67,7 @@
                Jon Doe  <img class="img-fluid nav-img-profile" src="img/user.png" alt="profilePic" />
             </a>
           <div class="dropdown-menu dropdown-menu-right">
-            <a class="dropdown-item" href="favQuestions.html">Fav Questions</a>
+            <a class="dropdown-item" href="favQuestions.html">Following</a>
             <a class="dropdown-item" href="profile.html">Your Profile</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="index.html">Logout</a>
@@ -53,6 +75,18 @@
         </li>
       </ul>
     </div>
+  </nav>
+
+   <nav id="breadcrumbs" class="fixed-top" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="indexLogged.html">Home</a></li>
+      <li class="breadcrumb-item"><a href="theme.html">Sports</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Question</li>
+      <li class="ml-auto">
+        <a href="#" data-toggle="modal" data-target="#questionModal" data-dismiss="modal">Submit Answer</a>
+      </li>
+
+    </ol>
   </nav>
 
   <div class="fluid bg-dark">
@@ -67,147 +101,52 @@
     </div>
   </div>
 
-  <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="indexLogged.html">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Question</li>
-      </ol>
-    </nav>
 
-
-
-  <div id="answersToQuestion" class="bg-white">
-
-    <div class="container col-md-8 text-area-fix">
-      <textarea class="form-control" rows="7"></textarea>
-      <div class="d-flex flex-row-reverse">
-        <div class="p-2">
-          <button  type="button" class="submitButton btn btn-secondary btn-block col-6 col-md-2 col-lg-2" data-toggle="modal" data-target="#questionModal" data-dismiss="modal">Submit Answer</button>
-        </div>
-      </div>
-    </div>
-
+  <div id="questions" class="bg-white">
     <div class="container-fluid bg-white col-md-9">
-      <ul class="list-group">
-        <li class=" list-group-item font-theme list-group-item-secondary">
-            <div class="phraseInQuestion underTabRow d-flex flex-row w-100">
-                <div>submitted 10 dias ago by -  </div><a href="#" class="underTab"  href="profile.html">John Doe</a>
-              </div>
-          <div class="d-flex flex-row ">
-            <div class="p-1">
-              <div>
-
-                <a data-toggle="upvote" href="#upvote">
-                                  <i class="far fa-thumbs-up"></i>
-                                  </a>
-              </div>
-              <div>
-                <span class="label label-primary">13</span>
-              </div>
-              <div>
-                <a data-toggle="upvote" href="#downvote">
-                                          <i class="far fa-thumbs-down"></i>
-                                          </a>
-              </div>
+      <ul class="list-group col-md-12">
+         <li class="list-group-item font-theme align-items-start box-question">
+          <div class="pt-2 col-md-12 ml-auto mr-auto">
+            <div class="md-12 pl-4 pt-2 answer-link">
+              Roger Federer is a Swiss Tennis Player. Many people have called him the greatest male tennis player of all time.
             </div>
-            <div class="w-100 answer text-justify align-middle ">
-              What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
-              specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-              and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-              <br> Why do we use it? It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,
-              as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many
-              web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-
+            <div class="text-right pr-1">
+              <a class="underTab nameInQuestion" href="profile.html">Jon Doe</a>
+              <span class="mr-auto">submitted 10 days ago</span>
+            </div>
+            <div class="col-md-12">
+              <a class="pr-1" data-toggle="upvote" href="#upvote"><i class="far fa-thumbs-up"></i></a>
+              <span class="label label-primary pr-1">1590</span>
+              <a class="pr-4" data-toggle="upvote" href="#downvote"><i class="far fa-thumbs-down"></i></a>
+              <a href="#" class="underTab colorLink">Report</a>
+              <a href="#" class="underTab colorLink">Delete</a>
             </div>
           </div>
-
-          <div class="underTabRow d-flex flex-row w-100">
-            <a href="#" class="underTab colorLink">Edit</a>
-            <a href="#" class="underTab colorLink">Report</a>
-            <a href="#" class="underTab colorLink">Delete</a>
-          </div>
+          
 
         </li>
-        <li class=" list-group-item font-theme list-group-item-secondary">
-            <div class="phraseInQuestion underTabRow d-flex flex-row w-100">
-                <div>submitted 10 dias ago by -  </div><a href="#" class="underTab"  href="profile.html">John Doe</a>
-              </div>
-          <div class="d-flex flex-row ">
-            <div class="p-1">
-              <div>
 
-                <a data-toggle="upvote" href="#upvote">
-                                  <i class="far fa-thumbs-up"></i>
-                                  </a>
-              </div>
-              <div>
-                <span class="label label-primary">13</span>
-              </div>
-              <div>
-                <a data-toggle="upvote" href="#downvote">
-                                          <i class="far fa-thumbs-down"></i>
-                                          </a>
-              </div>
+        <li class="list-group-item font-theme align-items-start box-question">
+          <div class="pt-2 col-md-12 ml-auto mr-auto">
+            <div class="md-12 pl-4 pt-2 answer-link">
+              Roger Federer is a Swiss Tennis Player. Many people have called him the greatest male tennis player of all time.
             </div>
-            <div class="w-100 answer text-justify align-middle ">
-              What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
-              specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-              and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-              <br> Why do we use it? It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,
-              as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many
-              web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-
+            <div class="text-right pr-1">
+              <a class="underTab nameInQuestion" href="profile.html">Jon Doe</a>
+              <span class="mr-auto">submitted 10 days ago</span>
+            </div>
+            <div class="col-md-12">
+              <a class="pr-1" data-toggle="upvote" href="#upvote"><i class="far fa-thumbs-up"></i></a>
+              <span class="label label-primary pr-1">1590</span>
+              <a class="pr-4" data-toggle="upvote" href="#downvote"><i class="far fa-thumbs-down"></i></a>
+              <a href="#" class="underTab colorLink">Report</a>
+              <a href="#" class="underTab colorLink">Delete</a>
             </div>
           </div>
-
-          <div class="underTabRow d-flex flex-row w-100">
-            <a href="#" class="underTab colorLink">Edit</a>
-            <a href="#" class="underTab colorLink">Report</a>
-            <a href="#" class="underTab colorLink">Delete</a>
-          </div>
-
-        </li>
-        <li class=" list-group-item font-theme list-group-item-secondary">
-            <div class="phraseInQuestion underTabRow d-flex flex-row w-100">
-                <div>submitted 10 dias ago by -  </div><a href="#" class="underTab"  href="profile.html">John Doe</a>
-              </div>
-          <div class="d-flex flex-row ">
-            <div class="p-1">
-              <div>
-
-                <a data-toggle="upvote" href="#upvote">
-                                  <i class="far fa-thumbs-up"></i>
-                                  </a>
-              </div>
-              <div>
-                <span class="label label-primary">13</span>
-              </div>
-              <div>
-                <a data-toggle="upvote" href="#downvote">
-                                          <i class="far fa-thumbs-down"></i>
-                                          </a>
-              </div>
-            </div>
-            <div class="w-100 answer text-justify align-middle ">
-              What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
-              specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-              and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-              <br> Why do we use it? It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,
-              as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many
-              web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-
-            </div>
-          </div>
-
-          <div class="underTabRow d-flex flex-row w-100">
-            <a href="#" class="underTab colorLink">Edit</a>
-            <a href="#" class="underTab colorLink">Report</a>
-            <a href="#" class="underTab colorLink">Delete</a>
-          </div>
+          
 
         </li>
       </ul>
-
     </div>
   </div>
   </div>

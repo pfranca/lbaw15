@@ -29,7 +29,7 @@
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
 
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="../indexLogged.html">Cooperative Q & A</a>
+    <a class="navbar-brand" href="/../indexLogged.html">Cooperative Q & A</a>
 
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
@@ -53,7 +53,7 @@
                Jon Doe  <img class="img-fluid nav-img-profile" src="../img/user.png" alt="profilePic" />
             </a>
           <div class="dropdown-menu dropdown-menu-right">
-            <a class="dropdown-item" href="../favQuestions.html">Fav Questions</a>
+            <a class="dropdown-item" href="../favQuestions.html">Following</a>
             <a class="dropdown-item" href="../profile.html">Your Profile</a>
             <a class="dropdown-item" href="admin.html">Admin</a>
             <div class="dropdown-divider"></div>
@@ -64,28 +64,39 @@
     </div>
   </nav>
 
+  <nav id="breadcrumbs" class="fixed-top" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="../profile.html">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Topics</li>
+      <li class="ml-auto">
+        <a id="showAdmin" href="#" data-toggle="collapse" data-target="#sidebar">Show Admin</a>
+      </li>
+
+    </ol>
+  </nav>
 
 
-      <div class="row">
-      <div class="col  col-md-2 bg-dark text-center " id="sidebar">
-        <a class="dropdown-item dash-bording" href="adminTheme.html">Themes</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item dash-bording" href="adminQuestion.html">Questions</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item dash-bording" href="adminAnswer.html">Answers</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item dash-bording" href="adminModerators.html">Moderators</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item dash-bording" href="adminUsers.html">Users</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item dash-bording" href="adminReports.html">Reports</a>
-        <div class="dropdown-divider"></div>
+    <div class="row" id="adminBar">
+      <div class="col  col-md-2 bg-dark text-center collapse " id="sidebar">
+        <a class="dropdown-item dash-bording topics" href="adminTheme.html">Topics</a>
+
+        <div class="dropdown-divider dp-divider"></div>
+        <a class="dropdown-item dash-bording questions" href="adminQuestion.html">Questions</a>
+        <div class="dropdown-divider dp-divider"></div>
+        <a class="dropdown-item dash-bording answers" href="adminAnswer.html">Answers</a>
+        <div class="dropdown-divider dp-divider"></div>
+        <a class="dropdown-item dash-bording moderators" href="adminModerators.html">Moderators</a>
+        <div class="dropdown-divider dp-divider"></div>
+             <a class="dropdown-item dash-bording users" href="adminUsers.html">Users</a>
+        <div class="dropdown-divider dp-divider"></div>
+        <a class="dropdown-item dash-bording reports bg-topics" href="adminReports.html">Reports</a>
+        <div class="dropdown-divider dp-divider"></div>
       </div>
 
-      <div class=" col-md-10" id="bdAdmin">
+      <div class=" col-md-12" id="bdAdmin">
           <div class="col-md-10 container-fluid" id="bdAdminMargin">
 
-            <table id="reports" class="display" width="100%"></table>
+            <table id="theme" class="display" width="100%"></table>
 
           </div>
       </div>
@@ -95,7 +106,7 @@
   </div>
 
   <!-- Footer -->
-  <div class="">
+  <div class="spacebeforefooter" id="ft-admin">
     <footer class="footer text-center static-bottom">
       <p>Cooperative Q&A <a href="#" data-toggle="tooltip" title="Cooperative q&a">www.cooperativeq&a.com</a></p>
     </footer>

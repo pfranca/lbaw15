@@ -1,9 +1,13 @@
 body {
   font: 400 15px/1.8 Lato, sans-serif;
   color: #777;
-  padding-top: 60px;
+  padding-top: 110px;
   min-height: 100vh;
   position: relative;
+}
+
+#index{
+  padding-top:62px;
 }
 
 h3, h4 {
@@ -12,7 +16,11 @@ h3, h4 {
   font-size: 20px;
   color: #111;
 }
-
+#breadcrumbs
+{
+  z-index:999;
+  margin-top:62px;
+}
 .sizeLetter {
   font-size: 12px;
   margin-left: 6px;
@@ -53,7 +61,6 @@ h3, h4 {
 */
 .box-question{
   box-shadow: 0px 0px 15px;
-  border-radius: 10px;
   padding: 2%;
   margin-bottom: 4%;
 }
@@ -136,7 +143,7 @@ h3, h4 {
 }
 
 .bg-profile-title {
-  background-image: url('../img/33.jpeg');
+  
   width: 100%;
   background-size: cover;
   overflow: hidden;
@@ -198,7 +205,7 @@ h3, h4 {
   text-align: center;
   font-style: normal;
   border-radius: 15px;
-  background-color: #7395AE;
+  background-color: #4da6ff;
   transition: .5s;
   cursor:pointer;
   line-height: 1.5;
@@ -238,9 +245,8 @@ h3, h4 {
 }
 
 .btn:hover, .btn:focus,.btnsearch:hover,.btn:focus {
-  border: 1px solid #333;
-  background-color: #fff;
-  color: #000;
+  background-color: #006699;
+  color: white;
 }
 
 .modal-header{
@@ -321,6 +327,13 @@ footer a:hover {
 .question-link {
   color: #777;
   text-decoration: none;
+  font-size:2em;
+}
+.answer-link
+{
+  color: #777;
+  text-decoration: none;
+  font-size:1.5em;
 }
 
 .question-link:hover {
@@ -339,6 +352,10 @@ textarea {
 
 .admin-bar{
   padding-bottom:20%;
+}
+#adminBar
+{
+  height:calc(100vh - 205px);
 }
 
 .btn-icon {
@@ -408,15 +425,6 @@ textarea {
   padding: 2%;
 }
 
-#questions li:nth-child(odd){
-  background-color: #dfdfdf;
-}
-
-#questions li:nth-child(even):not(:last-child){
-  background-color: #aec2d0;
-  margin-bottom: 4%;
-}
-
 .underTabRow {
   margin-left: 55px;
   margin-top: 10px;
@@ -481,9 +489,11 @@ textarea {
 }
 
 #sidebar {
-  height: 100%;
-  padding-bottom: 22%;
   padding-right: 0%;
+}
+
+#ft-admin{
+  margin-top: 0%;
 }
 
 #bdAdmin{
@@ -498,4 +508,17 @@ textarea {
 
 #TopicsNavBar{
   cursor:pointer;
+}
+
+.dp-divider{
+  margin: 0%;
+}
+
+.topics:hover,.questions:hover,.answers:hover,.moderators:hover,.users:hover,.reports:hover{
+    background-color: #006699;
+    color: white;
+}
+
+.bg-topics,.bg-questions,.bg-answers,.bg-moderators,.bg-users,.bg-reports{
+  background-color: #4da6ff;
 }

@@ -37,7 +37,9 @@ var dataSet = [
   ["Unity Butler", "Marketing Designer", "San Francisco", "5384", "2009/12/09", "$85,675"]
 ];
 
+
 $(document).ready(function() {
+
   $('#theme').DataTable({
     data: dataSet,
     columns: [{
@@ -51,9 +53,7 @@ $(document).ready(function() {
       }
     ]
   });
-});
 
-$(document).ready(function() {
   $('#question').DataTable({
     data: dataSet,
     columns: [{
@@ -73,9 +73,7 @@ $(document).ready(function() {
       }
     ]
   });
-});
 
-$(document).ready(function() {
   $('#answer').DataTable({
     data: dataSet,
     columns: [{
@@ -95,10 +93,7 @@ $(document).ready(function() {
       }
     ]
   });
-});
 
-
-$(document).ready(function() {
   $('#moderators').DataTable({
     data: dataSet,
     columns: [{
@@ -109,10 +104,7 @@ $(document).ready(function() {
       }
     ]
   });
-});
 
-
-$(document).ready(function() {
   $('#users').DataTable({
     data: dataSet,
     columns: [{
@@ -123,9 +115,7 @@ $(document).ready(function() {
       }
     ]
   });
-});
 
-$(document).ready(function() {
   $('#reports').DataTable({
     data: dataSet,
     columns: [{
@@ -142,4 +132,26 @@ $(document).ready(function() {
       }
     ]
   });
+  
+  if ($(window).width() > 540) {
+    //if the window is greater than 440px wide then turn on jScrollPane..
+    $("#sidebar").toggleClass("show");
+    $("#bdAdmin").toggleClass("col-md-12 col-md-10");
+  }
+
 });
+
+$("#showAdmin").click(adminExpander);
+
+function adminExpander()
+{
+  if ($("#sidebar").hasClass("show")) {
+    $("#bdAdmin").toggleClass("col-md-10 col-md-12");
+    //$("#bdAdmin").toggleClass("col-md-12");
+
+  } else {
+    //$("#bdAdmin").toggleClass("col-md-10");
+    $("#bdAdmin").toggleClass("col-md-12 col-md-10");
+    
+  }
+}
