@@ -504,6 +504,10 @@ textarea {
 }
 
 .topics:hover,.questions:hover,.answers:hover,.moderators:hover,.users:hover,.reports:hover{
-    background-color: #4da6ff;
+    background-color: #006699;
     color: white;
+}
+
+.bg-topics,.bg-questions,.bg-answers,.bg-moderators,.bg-users,.bg-reports{
+  background-color: #4da6ff;
 }
