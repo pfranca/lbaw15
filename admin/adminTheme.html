@@ -69,15 +69,15 @@
       <li class="breadcrumb-item"><a href="../profile.html">Home</a></li>
       <li class="breadcrumb-item active" aria-current="page">Topics</li>
       <li class="ml-auto">
-        <a href="#" data-toggle="modal" data-target="#questionModal" data-dismiss="modal">Submit Question</a>
+        <a id="showAdmin" href="#" data-toggle="collapse" data-target="#sidebar">Show Admin</a>
       </li>
 
     </ol>
   </nav>
 
 
-      <div class="row">
-      <div class="col  col-md-2 bg-dark text-center " id="sidebar">
+    <div class="row" id="adminBar h-100">
+      <div class="col  col-md-2 bg-dark text-center collapse " id="sidebar">
         <a class="dropdown-item dash-bording topics bg-topics" href="adminTheme.html">Topics</a>
         
         <div class="dropdown-divider dp-divider"></div>
@@ -93,7 +93,7 @@
         <div class="dropdown-divider dp-divider"></div>
       </div>
 
-      <div class=" col-md-10" id="bdAdmin">
+      <div class=" col-md-12" id="bdAdmin">
           <div class="col-md-10 container-fluid" id="bdAdminMargin">
 
             <table id="theme" class="display" width="100%"></table>
@@ -106,7 +106,7 @@
   </div>
 
   <!-- Footer -->
-  <div class="">
+  <div class="spacebeforefooter" id="ft-admin">
     <footer class="footer text-center static-bottom">
       <p>Cooperative Q&A <a href="#" data-toggle="tooltip" title="Cooperative q&a">www.cooperativeq&a.com</a></p>
     </footer>
