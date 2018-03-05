@@ -57,7 +57,6 @@ h3, h4 {
 */
 .box-question{
   box-shadow: 0px 0px 15px;
-  border-radius: 10px;
   padding: 2%;
   margin-bottom: 4%;
 }
@@ -325,6 +324,7 @@ footer a:hover {
 .question-link {
   color: #777;
   text-decoration: none;
+  font-size:2em;
 }
 
 .question-link:hover {
@@ -410,15 +410,6 @@ textarea {
   box-shadow: 0px 0px 15px;
   border-radius: 10px;
   padding: 2%;
-}
-
-#questions li:nth-child(odd){
-  background-color: #dfdfdf;
-}
-
-#questions li:nth-child(even):not(:last-child){
-  background-color: #aec2d0;
-  margin-bottom: 4%;
 }
 
 .underTabRow {
