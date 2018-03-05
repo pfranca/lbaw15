@@ -155,7 +155,8 @@ h3, h4 {
 }
 
 #band{
-  height:calc(100vh - 62px);
+  min-height:calc(100vh - 62px);
+  height:100%;
 }
 .questionPage
 {
