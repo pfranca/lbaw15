@@ -329,6 +329,12 @@ footer a:hover {
   text-decoration: none;
   font-size:2em;
 }
+.answer-link
+{
+  color: #777;
+  text-decoration: none;
+  font-size:1.5em;
+}
 
 .question-link:hover {
   color: #777;
