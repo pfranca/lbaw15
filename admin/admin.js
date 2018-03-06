@@ -51,7 +51,8 @@ $(document).ready(function() {
       {
         title: "image"
       }
-    ]
+    ],
+   
   });
 
   $('#question').DataTable({
