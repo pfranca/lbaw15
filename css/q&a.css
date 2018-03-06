@@ -202,17 +202,18 @@ h3, h4 {
 .list-group-item:first-child {
   border-top-right-radius: 0;
   border-top-left-radius: 0;
-  margin-top: 4%;
+  margin-top:4vh;
+
 }
 
 .list-group-item {
-  margin-bottom: 1%;
+  margin-bottom: 1vh;
 }
 
 .list-group-item:last-child {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
-  margin-bottom: 1%;
+  margin-bottom: 1vh;
 }
 
 .btn,.btnsearch,.btnsubmit,.btnModals{
