@@ -367,8 +367,11 @@ footer a:hover {
   text-decoration-color: #888;
 }
 
-.form-control {
+.search-control,.search-control::placeholder,.search-control:placeholder-shown,.search-control:focus	 {
   border-radius: 15px !important;
+  background-color: #343A40;
+  color:white;
+  border:1px solid #343A40;
 }
 
 textarea {
@@ -394,6 +397,14 @@ textarea {
   border-radius: 50%;
   padding-right: 0;
   padding-left: 0;
+}
+
+.add-topic-btn{
+  margin-bottom: 20px;
+}
+
+.add-topic-btn{
+  margin-top: 20px;
 }
 
 .question {
