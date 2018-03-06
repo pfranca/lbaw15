@@ -372,6 +372,7 @@ textarea {
 }
 #adminBar
 {
+  height:100%; /*backup older browsers */
   height:calc(100vh - 205px);
 }
 
