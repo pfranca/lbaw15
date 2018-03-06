@@ -396,6 +396,14 @@ textarea {
   padding-left: 0;
 }
 
+.add-topic-btn{
+  margin-bottom: 20px;
+}
+
+.add-topic-btn{
+  margin-top: 20px;
+}
+
 .question {
   margin-left: 15px;
   margin-right: 15px;
