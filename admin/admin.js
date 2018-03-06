@@ -1,11 +1,12 @@
 var dataSet = [
-  ["Garrett Winters", "Accountant", "<img id=\"removeBtn\" class=\" mouse-pointer img-fluid nav-img-profile \" src=\"../img/no.png\" alt=\"profilePic\" />", "8422", "2011/07/25", "$170,750"],
-  ["Linia Cox", "Junior Technical Author", "<img id=\"removeBtn\" class=\" mouse-pointer img-fluid nav-img-profile \" src=\"../img/no.png\" alt=\"profilePic\" />", "1562", "2009/01/12", "$86,000"],
-  ["Minion", "Junior Author", "<img id=\"removeBtn\" class=\" mouse-pointer img-fluid nav-img-profile \" src=\"../img/no.png\" alt=\"profilePic\" />", "1562", "2009/01/12", "$86,000"],
-  ["Ashton Cox", "Junior Technical ", "<img id=\"removeBtn\" class=\" mouse-pointer img-fluid nav-img-profile \" src=\"../img/no.png\" alt=\"profilePic\" />", "1562", "2009/01/12", "$86,000"],
-  [" Cox", " Author", "<img id=\"removeBtn\" class=\" mouse-pointer img-fluid nav-img-profile \" src=\"../img/no.png\" alt=\"profilePic\" />", "1562", "2009/01/12", "$86,000"],
-];
+   ["212","Fashion", "Yes" , "<img id=\"removeBtn\" class=\" mouse-pointer img-fluid nav-img-profile \" src=\"../img/no.png\" alt=\"profilePic\" />"],
+    ["412","Sports", "Yes" , "<img id=\"removeBtn\" class=\" mouse-pointer img-fluid nav-img-profile \" src=\"../img/no.png\" alt=\"profilePic\" />"]
+ ];
 
+var dataSet2 = [
+  ["Garrett Winters", "Accountant", "8422", "2011/07/25", "$170,750","$170,750", "<img id=\"removeBtn\" class=\" mouse-pointer img-fluid nav-img-profile \" src=\"../img/no.png\" alt=\"profilePic\" />"],
+  [" Winters", "Bigode", "8422", "2011/07/25", "$170,750","$170,750", "<img id=\"removeBtn\" class=\" mouse-pointer img-fluid nav-img-profile \" src=\"../img/no.png\" alt=\"profilePic\" />"],
+];
 
 $(document).ready(function() {
 
@@ -18,27 +19,36 @@ $(document).ready(function() {
         title: "name"
       },
       {
-        title: "Remove"
+        title: "image"
+      },
+      {
+        title: ""
       }
     ]
   });
 
   $('#question').DataTable({
-    data: dataSet,
+    data: dataSet2,
     columns: [{
-        title: "id"
+        title: "message"
       },
       {
-        title: "userId"
-      },
-      {
-        title: "userName"
-      },
-      {
-        title: "content"
+        title: "karma"
       },
       {
         title: "date"
+      },
+      {
+        title: "reports"
+      },
+      {
+        title: "follow"
+      },
+      {
+        title: "userID"
+      },
+      {
+        title: ""
       }
     ]
   });
