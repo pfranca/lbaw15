@@ -137,6 +137,13 @@ $(document).ready(function() {
     //if the window is greater than 440px wide then turn on jScrollPane..
     $("#sidebar").toggleClass("show");
     $("#bdAdmin").toggleClass("col-md-12 col-md-10");
+
+  }
+
+  if ($(window).height() >= 1024 ) {
+    //if the window is greater than 440px wide then turn on jScrollPane..
+     $("#adminBar").toggleClass("adminBar");
+
   }
 
 });
