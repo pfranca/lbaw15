@@ -15,12 +15,11 @@ $("#TopicsNavBar").click({
 
 function goToTopic(time) {
   $('html, body').animate({
-    scrollTop: $("#themes").offset().top - 77
+    scrollTop: $("#themes").offset().top - 56
   }, time);
 }
 
 $(".navbar-toggler").click(pushBreadcrombsdown);
-
 
 function pushBreadcrombsdown() {
   if ($("#navbarSupportedContent").hasClass("show")) {
