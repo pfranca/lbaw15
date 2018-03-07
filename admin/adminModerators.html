@@ -76,6 +76,27 @@
     </ol>
   </nav>
 
+  <div class="modal fade" id="profileModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add Moderator</h5>
+        </div>
+        <div class="modal-body">
+          <form role="form" class="form-inline">
+            <div class="form-group">
+              <label class="nameInFormControl" for="usr">ID:</label>
+              <input type="text" class="widthFormControl form-control" id="usr">
+            </div>            
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="buttonDown btn btn-primary btn-sm">Submit</button>
+          <button type="button" class="buttonDown btn btn-secondary btn-sm" data-toggle="modal" data-target="#" data-dismiss="modal">Exit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
     <!-- id="adminBar" -->
     <div class="row" id="adminBar">
       <div class="col  col-md-2 bg-dark text-center collapse " id="sidebar">
@@ -96,6 +117,10 @@
 
       <div class=" col-md-12" id="bdAdmin">
           <div class="col-md-10 container-fluid" id="bdAdminMargin">
+
+            <div class="d-flex add-topic-btn">
+              <button  type="button" class="submitQuestionButton btnsubmit btn btn-xs" data-toggle="modal" data-target="#profileModal" data-dismiss="modal">Add Moderator</button>
+            </div>
 
             <table id="theme" class="display" width="100%"></table>
 
