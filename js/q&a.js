@@ -1,12 +1,34 @@
 $(document).ready(function() {
-
+  loadingModals();
   if (window.location.href.indexOf('topics') != -1) {
     time = 1;
     goToTopic();
-  } else if (window.location.href.indexOf('answer') != -1) {
-    $('#questionModal').modal('show');
   }
 });
+
+function loadingModals() {
+  if ($("#modals").hasClass('login')) {
+    $.get('html/loginModals.html', function(result) {
+      $('#modals').append(result);
+    });
+
+    $.getScript("js/LoginValidate.js");
+  };
+  if ($("#modals").hasClass('submitQuestion')) {
+    $.get('html/submitQuestionModal.html', function(result) {
+      $('#modals').append(result);
+    });
+  };
+  if ($("#modals").hasClass('answerQuestion')) {
+    $.get('html/submitAnswerModal.html', function(result) {
+      $('#modals').append(result);
+      if (window.location.href.indexOf('answer') != -1) {
+        $('#answerModal').modal("show");
+      }
+    });
+  };
+
+}
 
 $("#topics-btn").click({
   time: 1000

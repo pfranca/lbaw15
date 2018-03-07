@@ -21,27 +21,10 @@
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
 
-   <div class="modal fade" id="questionModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Submit Answer</h5>
+  <div id="modals" class='answerQuestion'>
 
-        </div>
-        <div class="modal-body">
-          <form role="form">
-            <div class="form-group">
-              <textarea class="form-control" rows="8"></textarea>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="buttonDown btn btn-primary btn-sm">Submit</button>
-          <button type="button" class="buttonDown btn btn-secondary btn-sm" data-toggle="modal" data-target="#" data-dismiss="modal">Exit</button>
-        </div>
-      </div>
-    </div>
   </div>
+
 
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="indexLogged.html">Cooperative Q & A</a>
@@ -85,7 +68,7 @@
       <li class="breadcrumb-item"><a href="topic.html">Sports</a></li>
       <li class="breadcrumb-item active" aria-current="page">Question</li>
       <li class="ml-auto">
-        <a href="#" data-toggle="modal" data-target="#questionModal" data-dismiss="modal">Submit Answer</a>
+        <a id="submitAnswerButton" href="#" data-toggle="modal" data-target="#answerModal" data-dismiss="modal">Submit Answer</a>
       </li>
 
     </ol>
