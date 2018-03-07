@@ -47,7 +47,7 @@
           <div class="dropdown-menu dropdown-menu-right">
             <a class="dropdown-item" href="favQuestions.html">Following</a>
             <a class="dropdown-item" href="profile.html">Your Profile</a>
-<a class="dropdown-item" href="notification.html">Notifications</a>
+            <a class="dropdown-item" href="notification.html">Notifications</a>
             <a class="dropdown-item" href="admin/adminTheme.html">Admin</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="index.html">Logout</a>
@@ -57,7 +57,7 @@
     </div>
   </nav>
 
-<nav id="breadcrumbs" class="fixed-top" aria-label="breadcrumb">
+  <nav id="breadcrumbs" class="fixed-top" aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="indexLogged.html">Home</a></li>
       <li class="breadcrumb-item"><a href="profile.html">Jon Doe</a></li>
@@ -93,8 +93,104 @@
     </div>
   </div>
 
-  <div id="questions" class="bg-white">
-      <h5 class="text-center">inser notifications here</h5>
+  <div id="questions" class="bg-white row">
+    <div class="col-10 mx-auto mt-5">
+      <ul class="list-group">
+        <li class="media list-group-item box-question">
+          <div class="media-body">
+            <h5 class="mt-2 answer-link ml-2">
+              Someone liked your answer
+            </h5>
+            <div class="media-body mt-3 pl-5">
+              <div class="md-12 answer-link">
+                Roger Federer is a Swiss Tennis Player. Many people have called him the greatest male tennis player of all time.
+              </div>
+              <div class="text-right pr-1">
+                <a class="underTab nameInQuestion" href="profile.html">You</a>
+                <span class="mr-auto">submitted 10 days ago</span>
+                <span>in</span>
+                <a class="underTab nameInQuestion" href="topic.html">Random</a>
+              </div>
+              <div class="mt-2">
+                <a class="pr-1" data-toggle="upvote" href="#upvote"><i class="far fa-thumbs-up"></i></a>
+                <span class="label label-primary pr-1">1590</span>
+                <a class="pr-4" data-toggle="upvote" href="#downvote"><i class="far fa-thumbs-down"></i></a>
+                <a href="question3.html" class="underTab colorLink">Go to question</a>
+                <a href="#" class="underTab colorLink">Edit</a>
+                <a href="#" class="underTab colorLink">Delete</a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="media list-group-item box-question">
+          <div class="media-body">
+            <h5 class="mt-2 answer-link ml-2">
+              Someone liked your question
+            </h5>
+            <div class="media-body mt-3 pl-5">
+              <div>
+                <a class="question-link answer-link" href="question3.html">
+              What male tennis player has won the most Grand Slam titles?
+              </a>
+              </div>
+              <div class="text-right pr-1">
+                <a class="underTab nameInQuestion" href="profile.html">You</a>
+                <span class="mr-auto">submitted 10 days ago</span>
+                <span>in</span>
+                <a class="underTab nameInQuestion" href="topic.html">Random</a>
+              </div>
+              <div class="mt-2">
+                <a class="pr-1" data-toggle="upvote" href="#upvote"><i class="far fa-thumbs-up"></i></a>
+                <span class="label label-primary pr-1">1590</span>
+                <a class="pr-4" data-toggle="upvote" href="#downvote"><i class="far fa-thumbs-down"></i></a>
+                <a href="question3.html" class="underTab colorLink">See answers</a>
+                <a href="#" class="underTab colorLink">Edit</a>
+                <a href="#" class="underTab colorLink">Delete</a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="media list-group-item box-question">
+          <div class="media-body">
+            <h5 class="mt-2 answer-link ml-2">
+              <a href="profile.html" class="nameInQuestion">Jon Doe</a> answered your question
+            </h5>
+            <div class="media-body mt-3 pl-5">
+              <a class="question-link answer-link" href="question3.html">
+              What male tennis player has won the most Grand Slam titles?
+              </a>
+              <div class="text-right pr-1">
+                <a class="underTab nameInQuestion" href="profile.html">You</a>
+                <span class="mr-auto">submitted 10 days ago</span>
+                <span>in</span>
+                <a class="underTab nameInQuestion" href="topic.html">Random</a>
+              </div>
+              <div class="mt-2">
+                <a class="pr-1" data-toggle="upvote" href="#upvote"><i class="far fa-thumbs-up"></i></a>
+                <span class="label label-primary pr-1">1590</span>
+                <a class="pr-4" data-toggle="upvote" href="#downvote"><i class="far fa-thumbs-down"></i></a>
+                <a href="question3.html" class="underTab colorLink">See answers</a>
+                <a href="#" class="underTab colorLink">Edit</a>
+                <a href="#" class="underTab colorLink">Delete</a>
+              </div>
+              <div class="media-body mt-3 pl-5">
+                <div class="answer-link">
+                  Roger Federer is a Swiss Tennis Player. Many people have called him the greatest male tennis player of all time.
+                </div>
+                <div class="mt-2">
+                  <a class="pr-1" data-toggle="upvote" href="#upvote"><i class="far fa-thumbs-up"></i></a>
+                  <span class="label label-primary pr-1">1590</span>
+                  <a class="pr-4" data-toggle="upvote" href="#downvote"><i class="far fa-thumbs-down"></i></a>
+                  <a href="question3.html" class="underTab colorLink">Best Answer</a>
+                  <a href="#" class="underTab colorLink">Report</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
   </div>
   </div>
   </div>
@@ -103,4 +199,5 @@
 <footer class="footer text-center static-bottom">
   <p>Cooperative Q&A <a href="#" data-toggle="tooltip" title="Cooperative q&a">www.cooperativeq&a.com</a></p>
 </footer>
+
 </html>
