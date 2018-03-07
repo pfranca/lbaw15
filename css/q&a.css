@@ -576,6 +576,10 @@ textarea {
   cursor: pointer;
 }
 
+.mouse-pointer{
+  cursor: pointer;
+}
+
 .dp-divider {
   margin: 0%;
 }
