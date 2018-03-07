@@ -37,7 +37,7 @@ $(document).ready(function() {
   $('.collapse').on('shown.bs.collapse', function() {
     var heightToAdjust = $(".navbar").height();
     $("#breadcrumbs").css("margin-top", heightToAdjust + 9);
-    $("#index").css("padding-top", heightToAdjust);
+    $("#index").css("padding-top", heightToAdjust + 16);
     heightToAdjust += $("#breadcrumbs").height();
     $("#myPage").css("padding-top", heightToAdjust);
   });
@@ -45,7 +45,7 @@ $(document).ready(function() {
   $('.collapse').on('hidden.bs.collapse', function() {
     var heightToAdjust = $(".navbar").height();
     $("#breadcrumbs").css("margin-top", heightToAdjust + 9);
-    $("#index").css("padding-top", heightToAdjust);
+    $("#index").css("padding-top", heightToAdjust + 16);
     heightToAdjust += $("#breadcrumbs").height();
     $("#myPage").css("padding-top", heightToAdjust);
   });
