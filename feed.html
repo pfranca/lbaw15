@@ -17,19 +17,48 @@
 
 </head>
 
-<!--img/3.jpeg-->
-
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
 
-   <div class="modal fade" id="questionModal" tabindex="-1" role="dialog">
+
+
+  <div class="modal fade" id="questionModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Submit Answer</h5>
+          <h5 class="modal-title">Submit Question</h5>
 
         </div>
         <div class="modal-body">
           <form role="form">
+            <div class="form-group">
+              <label>Topic to post</label>
+              <select>
+                <option value="Sports">
+                  Sports
+                </option>
+                <option value="Music">
+                  Music
+                </option>
+                <option value="Fashion">
+                  Fashion
+                </option>
+                <option value="IT & Coding">
+                  IT & Coding
+                </option>
+                <option value="Math & Science" selected>
+                  Math & Science
+                </option>
+                <option value="Food & Nutricion">
+                  Food & Nutricion
+                </option>
+                <option value="History">
+                  History
+                </option>
+                <option value="Random">
+                  Random
+                </option>
+              </select>
+            </div>
             <div class="form-group">
               <textarea class="form-control" rows="8"></textarea>
             </div>
@@ -45,20 +74,17 @@
 
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="indexLogged.html">Cooperative Q & A</a>
-
-
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
                 <span class="navbar-toggler-icon"></span>
           </button>
-
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <form class="form-inline offset-lg-2 col-12 col-lg-5 col-xl-6">
-        <input class="form-control search-control col-10" type="text" placeholder="Search">
+        <input class="form-control search-control col-10 search" type="text" placeholder="Search">
         <button class="btnsearch  col-2" type="submit"><i class="fas fa-search"></i></button>
       </form>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="feed.html">FEED</a>
+          <a class="nav-link" href="#">FEED</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="indexLogged.html#topics">TOPICS</a>
@@ -78,34 +104,52 @@
     </div>
   </nav>
 
-   <nav id="breadcrumbs" class="fixed-top" aria-label="breadcrumb">
+
+
+
+
+  <nav id="breadcrumbs" class="fixed-top" aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="indexLogged.html">Home</a></li>
-      <li class="breadcrumb-item"><a href="topic.html">Sports</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Question</li>
+      <li class="breadcrumb-item active" aria-current="page">Feed</li>
       <li class="ml-auto">
-        <a href="#" data-toggle="modal" data-target="#questionModal" data-dismiss="modal">Submit Answer</a>
+        <a href="#" data-toggle="modal" data-target="#questionModal" data-dismiss="modal">Submit Question</a>
       </li>
 
     </ol>
   </nav>
 
-
   <div id="questions" class="bg-white">
-
-    <div class="row questionPage py-5">
-      <div class="col-10 col-md-9 col-lg-10 mx-auto">
-          What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
-          and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-          l in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-      </div>
-    </div>
     <div class="container-fluid bg-white col-md-9">
-      <ul class="list-group col-md-11 mx-auto">
-         <li class="list-group-item font-theme align-items-start box-question">
-          <div class="pt-2 col-md-12 ml-auto mr-auto">
+      <ul class="list-group col-md-12">
+        <li class="list-group-item font-theme align-items-start box-question">
+          <div class="pb-2">
+            <div class="md-12 pl-4">
+              <a class="question-link" href="question3.html">
+              Which is the only U.S. state's capital city with not a single McDonald's fast food joint?
+              </a>
+            </div>
+            <div class="text-right pr-1">
+              <a class="underTab nameInQuestion" href="profile.html">Jon Doe</a>
+              <span class="mr-auto">submitted 10 days ago</span>
+              <span>in</span>
+              <a class="underTab nameInQuestion" href="topic.html">Random</a>
+            </div>
+            <div class="col-md-12">
+              <a class="pr-2" data-toggle="upvote" href="#upvote"><i class="far fa-thumbs-up"></i></a>
+              <span class="label label-primary pr-2">1590</span>
+              <a class="pr-3" data-toggle="upvote" href="#downvote"><i class="far fa-thumbs-down"></i></a>
+              <a class="underTab colorLink" data-toggle="collapse" href="#question1" aria-expanded="false" aria-controls="collapseExample">Best Answer</a>
+              <a href="question3.html#answer" class="underTab colorLink">Answer</a>
+              <a href="#" class="underTab colorLink ml-auto">Edit</a>
+              <a href="#" class="underTab colorLink">Report</a>
+              <a href="#" class="underTab colorLink">Delete</a>
+
+            </div>
+          </div>
+          <div id="question1" class="collapse bg-light pt-2 col-md-11 ml-auto mr-auto">
             <div class="md-12 pl-4 pt-2 answer-link">
-              Roger Federer is a Swiss Tennis Player. Many people have called him the greatest male tennis player of all time.
+              Montpelier, Vermont
             </div>
             <div class="text-right pr-1">
               <a class="underTab nameInQuestion" href="profile.html">Jon Doe</a>
@@ -119,12 +163,35 @@
               <a href="#" class="underTab colorLink">Delete</a>
             </div>
           </div>
-
 
         </li>
 
         <li class="list-group-item font-theme align-items-start box-question">
-          <div class="pt-2 col-md-12 ml-auto mr-auto">
+          <div class="pb-2">
+            <div class="md-12 pl-4">
+              <a class="question-link" href="question3.html">
+              What male tennis player has won the most Grand Slam titles?
+              </a>
+            </div>
+            <div class="text-right pr-1">
+              <a class="underTab nameInQuestion" href="profile.html">Jon Doe</a>
+              <span class="mr-auto">submitted 10 days ago</span>
+              <span>in</span>
+              <a class="underTab nameInQuestion" href="topic.html">Sports</a>
+            </div>
+            <div class="col-md-12">
+              <a class="pr-2" data-toggle="upvote" href="#upvote"><i class="far fa-thumbs-up"></i></a>
+              <span class="label label-primary pr-2">1590</span>
+              <a class="pr-3" data-toggle="upvote" href="#downvote"><i class="far fa-thumbs-down"></i></a>
+              <a class="underTab colorLink" data-toggle="collapse" href="#question2" aria-expanded="false" aria-controls="collapseExample">Best Answer</a>
+              <a href="question3.html#answer" class="underTab colorLink">Answer</a>
+              <a href="#" class="underTab colorLink ml-auto">Edit</a>
+              <a href="#" class="underTab colorLink">Report</a>
+              <a href="#" class="underTab colorLink">Delete</a>
+
+            </div>
+          </div>
+          <div id="question2" class="collapse bg-light pt-2 col-md-11 ml-auto mr-auto">
             <div class="md-12 pl-4 pt-2 answer-link">
               Roger Federer is a Swiss Tennis Player. Many people have called him the greatest male tennis player of all time.
             </div>
@@ -140,7 +207,6 @@
               <a href="#" class="underTab colorLink">Delete</a>
             </div>
           </div>
-
 
         </li>
       </ul>
@@ -148,6 +214,8 @@
   </div>
   </div>
   </div>
+  </div>
+
 
 </body>
 <footer class="footer text-center static-bottom">
