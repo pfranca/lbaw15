@@ -32,30 +32,39 @@ $(".card-body").click(function(event) {
   }
 });
 
-$(".navbar-toggler").click(pushBreadcrombsdown);
+$(document).ready(function() {
 
-function pushBreadcrombsdown() {
-  if ($("#navbarSupportedContent").hasClass("show")) {
-    $("#breadcrumbs").css("margin-top", "55px");
-    $("#myPage").css("padding-top", "110px");
-    $("#index").css("padding-top", "55px");
+  $('.collapse').on('shown.bs.collapse', function() {
+    var heightToAdjust = $(".navbar").height();
+    $("#breadcrumbs").css("margin-top", heightToAdjust + 9);
+    $("#index").css("padding-top", heightToAdjust + 16);
+    heightToAdjust += $("#breadcrumbs").height();
+    $("#myPage").css("padding-top", heightToAdjust);
+  });
 
-  } else {
-    $("#breadcrumbs").css("margin-top", "206px");
-    $("#myPage").css("padding-top", "316px");
-    $("#index").css("padding-top", "206px");
-    $(".dropdown-toggle").click(pushBreadcrombsdown2);
-  }
-}
+  $('.collapse').on('hidden.bs.collapse', function() {
+    var heightToAdjust = $(".navbar").height();
+    $("#breadcrumbs").css("margin-top", heightToAdjust + 9);
+    $("#index").css("padding-top", heightToAdjust + 16);
+    heightToAdjust += $("#breadcrumbs").height();
+    $("#myPage").css("padding-top", heightToAdjust);
+  });
 
-function pushBreadcrombsdown2() {
-  if ($(".dropdown").hasClass("show")) {
-    $("#breadcrumbs").css("margin-top", "206px");
-    $("#index").css("padding-top", "206px");
-    $("#myPage").css("padding-top", "316px");
-  } else {
-    $("#breadcrumbs").css("margin-top", "351px");
-    $("#index").css("padding-top", "351px");
-    $("#myPage").css("padding-top", "402px");
-  }
-}
+
+  $('.dropdown').on('shown.bs.dropdown', function() {
+    var heightToAdjust = $(".navbar").height();
+    $("#breadcrumbs").css("margin-top", heightToAdjust + 9);
+    $("#index").css("padding-top", heightToAdjust);
+    heightToAdjust += $("#breadcrumbs").height();
+    $("#myPage").css("padding-top", heightToAdjust);
+  });
+
+  $('.dropdown').on('hidden.bs.dropdown', function() {
+    var heightToAdjust = $(".navbar").height();
+    $("#breadcrumbs").css("margin-top", heightToAdjust + 9);
+    $("#index").css("padding-top", heightToAdjust);
+    heightToAdjust += $("#breadcrumbs").height();
+    $("#myPage").css("padding-top", heightToAdjust);
+  });
+
+});
