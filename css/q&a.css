@@ -10,6 +10,11 @@ body {
   padding-top: 62px;
 }
 
+select,select:focus{
+  border-radius: 15px;
+  outline: none;
+}
+
 h3, h4 {
   margin: 10px 0 30px 0;
   letter-spacing: 10px;

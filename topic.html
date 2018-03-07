@@ -47,7 +47,7 @@
           <div class="dropdown-menu dropdown-menu-right">
             <a class="dropdown-item" href="favQuestions.html">Following</a>
             <a class="dropdown-item" href="profile.html">Your Profile</a>
-<a class="dropdown-item" href="notification.html">Notifications</a>
+            <a class="dropdown-item" href="notification.html">Notifications</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="index.html">Logout</a>
           </div>
@@ -72,6 +72,25 @@
   </nav>
 
   <div id="questions" class="bg-white">
+    <div class="text-right pr-5 mt-3">
+      <label>Sort by:</label>
+      <select>
+        <option value="Our special sauce" selected>
+          Our special sauce
+        </option>
+        <option value="Oldest to newest">
+          Oldest to newest
+        </option>
+        <option value="Newest to oldest">
+          Newest to oldest
+        </option>
+        <option value="Karma">
+          Karma
+        </option>
+      </select>
+    </div>
+
+
     <div class="container-fluid bg-white col-md-9">
       <ul class="list-group col-md-12">
         <li class="list-group-item font-theme align-items-start box-question">
@@ -169,4 +188,5 @@
 <footer class="footer text-center static-bottom">
   <p>Cooperative Q&A <a href="#" data-toggle="tooltip" title="Cooperative q&a">www.cooperativeq&a.com</a></p>
 </footer>
+
 </html>
