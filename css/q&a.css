@@ -408,6 +408,9 @@ footer a:hover {
   color: white;
   border: 1px solid #343A40;
 }
+.search-control{
+  border: 1px solid #4E545A!important;
+}
 
 textarea {
   resize: none;
