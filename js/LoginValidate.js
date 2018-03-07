@@ -37,7 +37,7 @@ $(document).ready(function() {
       }
     },
     submitHandler: function(form) { // for demo
-      window.location.href = 'indexLogged.html';
+      window.location.href = 'feed.html';
       return false;
     }
 
@@ -80,7 +80,7 @@ $(document).ready(function() {
       }
     },
     submitHandler: function(form) { // for demo
-      window.location.href = 'indexLogged.html';
+      window.location.href = 'feed.html';
       return false;
     }
 
