@@ -8,6 +8,25 @@ var dataSet2 = [
   [" Winters", "Bigode", "8422", "2011/07/25", "$170,750","$170,750", "<img id=\"removeBtn\" class=\" mouse-pointer img-fluid nav-img-profile \" src=\"../img/no.png\" alt=\"profilePic\" />"],
 ];
 
+
+
+var dataSet4 = [
+  ["23565", "Diogo Cunha", "<img id=\"removeBtn\" class=\" mouse-pointer img-fluid nav-img-profile \" src=\"../img/no.png\" alt=\"profilePic\" />"],
+  ["12467", "Sergio Almeida", "<img id=\"removeBtn\" class=\" mouse-pointer img-fluid nav-img-profile \" src=\"../img/no.png\" alt=\"profilePic\" />"],
+];
+
+var dataSet5 = [
+  ["23565", "Diogo" , "diogoCunha12" , "213","<img id=\"removeBtn\" class=\" mouse-pointer img-fluid nav-img-profile \" src=\"../img/no.png\" alt=\"profilePic\" />"],
+   ["12467", "Sergio " , "sergio_12Almeida" , "22","<img id=\"removeBtn\" class=\" mouse-pointer img-fluid nav-img-profile \" src=\"../img/no.png\" alt=\"profilePic\" />"],
+  
+   ["34325", "Diogo" , "diogo123" , "15","<img id=\"removeBtn\" class=\" mouse-pointer img-fluid nav-img-profile \" src=\"../img/no.png\" alt=\"profilePic\" />"],
+  
+   ["77689", "Tiago" , "tiagoAlmeida111" , "213","<img id=\"removeBtn\" class=\" mouse-pointer img-fluid nav-img-profile \" src=\"../img/no.png\" alt=\"profilePic\" />"],
+  
+   ["34264", "Paula" , "Paulinha123_maria" , "4413","<img id=\"removeBtn\" class=\" mouse-pointer img-fluid nav-img-profile \" src=\"../img/no.png\" alt=\"profilePic\" />"],
+  
+];
+
 $(document).ready(function() {
 
   $('#theme').DataTable({
@@ -74,23 +93,35 @@ $(document).ready(function() {
   });
 
   $('#moderators').DataTable({
-    data: dataSet,
+    data: dataSet4,
     columns: [{
         title: "id"
       },
       {
         title: "userName"
+      },
+      {
+        title:""
       }
     ]
   });
 
   $('#users').DataTable({
-    data: dataSet,
+    data: dataSet5,
     columns: [{
         title: "id"
       },
       {
-        title: "userName"
+        title: "name"
+      },
+      {
+        title: "username"
+      },
+      {
+        title: "karma"
+      },
+      {
+        title: ""
       }
     ]
   });
