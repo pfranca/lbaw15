@@ -43,6 +43,15 @@ CREATE TABLE report(
   CONSTRAINT only_one CHECK (id_answer IS NULL AND id_question IS NOT NULL) OR (id_answer IS NOT NULL AND id_question IS NULL)
 );
 
+CREATE TABLE vote(
+  id SERIAL PRIMARY KEY,
+  id_user FOREIGN KEY REFERENCES user(id),
+  vote INTEGER CHECK (vote>=-1 AND vote<=1),
+  id_answer REFERENCES answer(id),
+  id_question REFERENCES question(id),
+  CONSTRAINT only_one CHECK (id_answer IS NULL AND id_question IS NOT NULL) OR (id_answer IS NOT NULL AND id_question IS NULL)
+);
+
 CREATE TABLE followTopic(
   id_user FOREIGN KEY REFERENCES user(id),
   id_topic FOREIGN KEY REFERENCES topic(id),
