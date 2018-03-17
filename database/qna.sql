@@ -38,17 +38,18 @@ CREATE TABLE report(
   id SERIAL PRIMARY KEY,
   reason TEXT NOT NULL,
   id_user FOREIGN KEY REFERENCES user(id),
-  id_answer REFERENCES answer(id),
-  id_question REFERENCES question(id),
+  id_answer FOREIGN KEY REFERENCES answer(id),
+  id_question FOREIGN KEY REFERENCES question(id),
+  id_notification FOREIGN KEY REFERENCES notification(id),
   CONSTRAINT only_one CHECK (id_answer IS NULL AND id_question IS NOT NULL) OR (id_answer IS NOT NULL AND id_question IS NULL)
 );
 
 CREATE TABLE vote(
   id SERIAL PRIMARY KEY,
   id_user FOREIGN KEY REFERENCES user(id),
-  vote INTEGER CHECK (vote>=-1 AND vote<=1),
-  id_answer REFERENCES answer(id),
-  id_question REFERENCES question(id),
+  vote INTEGER CHECK (vote>=-1 AND vote<=1) NOT NULL,
+  id_answer FOREIGN KEY REFERENCES answer(id),
+  id_question FOREIGN KEY REFERENCES question(id),
   CONSTRAINT only_one CHECK (id_answer IS NULL AND id_question IS NOT NULL) OR (id_answer IS NOT NULL AND id_question IS NULL)
 );
 
@@ -62,4 +63,12 @@ CREATE TABLE followQuestion(
   id_user FOREIGN KEY REFERENCES user(id),
   id_question FOREIGN KEY REFERENCES question(id),
   PRIMARY KEY(id_user, id_question)
+);
+
+CREATE TABLE notification(
+  id SERIAL PRIMARY KEY,
+  id_user FOREIGN KEY REFERENCES user(id) NOT NULL,
+  id_report FOREIGN KEY REFERENCES report(id),
+  id_question FOREIGN KEY REFERENCES question(id),
+  CONSTRAINT only_one CHECK (id_report IS NULL AND id_question IS NOT NULL) OR (id_report IS NOT NULL AND id_question IS NULL)
 );
