@@ -6,7 +6,7 @@ CREATE TABLE user(
   img TEXT NOT NULL,
   bio TEXT,
   disable NOT NULL,
-  type TEXT NOT NULL CHECK ((type=ANY(ARRAY['NORMAL'::text, 'MOD'::text, 'ADMIN'::text])))
+  type TEXT NOT NULL CHECK ((type=ANY(ARRAY['Normal'::text, 'Moderator'::text, 'Administrator'::text])))
 );
 
 CREATE TABLE topic(
