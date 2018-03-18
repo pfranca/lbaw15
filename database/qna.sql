@@ -14,7 +14,6 @@ CREATE TABLE followquestion (
 );
 
 
-
 CREATE TABLE followtopic (
     id_user integer NOT NULL,
     id_topic integer NOT NULL
@@ -41,14 +40,14 @@ CREATE TABLE question (
 );
 
 
-
 CREATE TABLE report (
     id integer NOT NULL,
     reason text NOT NULL,
     id_user integer,
     id_answer integer,
     id_question integer,
-    id_notification integer
+    id_notification integer,
+    CONSTRAINT only_one CHECK ((((id_answer IS NULL) AND (id_question IS NOT NULL)) OR ((id_answer IS NOT NULL) AND (id_question IS NULL))))
 );
 
 
@@ -69,9 +68,9 @@ CREATE TABLE "user" (
     img text NOT NULL,
     bio text,
     disable boolean NOT NULL,
-    type text NOT NULL
+    type text NOT NULL,
+    CONSTRAINT type CHECK ((type = ANY (ARRAY['Normal'::text, 'Moderator'::text, 'Administrator'::text])))
 );
-
 
 
 CREATE TABLE vote (
@@ -80,9 +79,15 @@ CREATE TABLE vote (
     vote integer NOT NULL,
     id_answer integer,
     id_question integer,
+    CONSTRAINT "only one" CHECK ((((id_answer IS NULL) AND (id_question IS NOT NULL)) OR ((id_answer IS NOT NULL) AND (id_question IS NULL)))),
     CONSTRAINT vote_vote_check CHECK (((vote >= (-1)) AND (vote <= 1)))
 );
 
+
+ALTER TABLE vote OWNER TO lbaw1715;
+
+
+ALTER TABLE vote_id_seq OWNER TO lbaw1715;
 
 
 ALTER TABLE ONLY answer ALTER COLUMN id SET DEFAULT nextval('answer_id_seq'::regclass);
@@ -106,12 +111,15 @@ ALTER TABLE ONLY "user" ALTER COLUMN id SET DEFAULT nextval('user_id_seq'::regcl
 ALTER TABLE ONLY vote ALTER COLUMN id SET DEFAULT nextval('vote_id_seq'::regclass);
 
 
+
 ALTER TABLE ONLY answer
     ADD CONSTRAINT answer_pkey PRIMARY KEY (id);
 
 
+
 ALTER TABLE ONLY followquestion
     ADD CONSTRAINT followquestion_pkey PRIMARY KEY (id_user, id_question);
+
 
 
 ALTER TABLE ONLY followtopic
@@ -120,7 +128,6 @@ ALTER TABLE ONLY followtopic
 
 ALTER TABLE ONLY notification
     ADD CONSTRAINT notification_pkey PRIMARY KEY (id);
-
 
 ALTER TABLE ONLY question
     ADD CONSTRAINT question_pkey PRIMARY KEY (id);
@@ -142,9 +149,9 @@ ALTER TABLE ONLY "user"
     ADD CONSTRAINT user_email_key UNIQUE (email);
 
 
+
 ALTER TABLE ONLY "user"
     ADD CONSTRAINT user_pkey PRIMARY KEY (id);
-
 
 ALTER TABLE ONLY "user"
     ADD CONSTRAINT user_username_key UNIQUE (username);
@@ -157,7 +164,6 @@ ALTER TABLE ONLY vote
 ALTER TABLE ONLY answer
     ADD CONSTRAINT answer_id_question_fkey FOREIGN KEY (id_question) REFERENCES question(id);
 
-
 ALTER TABLE ONLY answer
     ADD CONSTRAINT answer_id_user_fkey FOREIGN KEY (id_user) REFERENCES "user"(id);
 
@@ -166,9 +172,9 @@ ALTER TABLE ONLY followquestion
     ADD CONSTRAINT followquestion_id_question_fkey FOREIGN KEY (id_question) REFERENCES question(id);
 
 
+
 ALTER TABLE ONLY followquestion
     ADD CONSTRAINT followquestion_id_user_fkey FOREIGN KEY (id_user) REFERENCES "user"(id);
-
 
 
 ALTER TABLE ONLY followtopic
@@ -191,6 +197,7 @@ ALTER TABLE ONLY question
     ADD CONSTRAINT question_id_topic_fkey FOREIGN KEY (id_topic) REFERENCES topic(id);
 
 
+
 ALTER TABLE ONLY question
     ADD CONSTRAINT question_id_user_fkey FOREIGN KEY (id_user) REFERENCES "user"(id);
 
@@ -206,9 +213,9 @@ ALTER TABLE ONLY report
 ALTER TABLE ONLY report
     ADD CONSTRAINT report_id_question_fkey FOREIGN KEY (id_question) REFERENCES question(id);
 
-
 ALTER TABLE ONLY report
     ADD CONSTRAINT report_id_user_fkey FOREIGN KEY (id_user) REFERENCES "user"(id);
+
 
 
 ALTER TABLE ONLY vote
@@ -218,5 +225,7 @@ ALTER TABLE ONLY vote
 ALTER TABLE ONLY vote
     ADD CONSTRAINT vote_id_question_fkey FOREIGN KEY (id_question) REFERENCES question(id);
 
+
 ALTER TABLE ONLY vote
     ADD CONSTRAINT vote_id_user_fkey FOREIGN KEY (id_user) REFERENCES "user"(id);
+
