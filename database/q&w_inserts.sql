@@ -124,3 +124,122 @@ update question set karma=1 where id = 1
 --update disable on question if owner 
 update question set disable=true where id = 1 and author_id=6
 
+
+-------------------------------FRANZA---------------------------------------
+
+------------SELECTS---------------
+
+--SELECT
+--My notifications
+
+SELECT id_question, message
+FROM notification
+WHERE seen = FALSE AND id_user = $userID
+ORDER BY date;
+
+--SELECT 
+--Best Answer
+--QUE LUXO DE QUE QUERY
+--TESTAR xD
+SELECT date, karma, message, user
+FROM answer
+WHERE id_question = $questionID AND disable = FALSE 
+	AND karma = (SELECT max(karma) FROM answer WHERE id_question = $questionID);
+
+
+
+
+------------INSERTS-------------------
+
+--INSERT
+--New Question
+INSERT INTO question (short_message, long_message, author_id , id_topic)
+VALUES ($question, $description, $authorID, $topicID);
+
+--INSERT
+--New Answer
+INSERT INTO answer (message,author_id,id_question)
+VALUES ($answer, $authorID, $questionID);
+
+--INSERT
+--New Topic
+--ATENCAO!!!! FAZER TRIGGER PARA INSERT EM topic!!! TEM DE SER ADMIN
+INSERT INTO topic (name, img) VALUES ($name, $img_path);
+
+--INSERT
+--New Vote
+--ATENÇAO!!!! TRIGER PARA VER SE JA EXISTE UM VOTE DAQUELE USER PARA AQUELE ELEMENTO (pergunta/resposta)
+--COMO FAZER OS DOIS?
+INSERT INTO vote (id_user, vote, id_answer) VALUES ($userID, $vote, $answerID);
+--OU
+INSERT INTO vote (id_user, vote, id_question) VALUES ($userID, $vote, $questionID);
+
+
+
+
+
+-----------UPDATES-------------------
+
+--UPDATE
+--Give Permissions
+--ATENCAO!!!! FAZER TRIGER PARA UPDATE EM FIELD type DE user!!! TEM DE SER ADMIN!
+UPDATE user
+SET type = $type
+WHERE id = $userID;
+
+--UPDATE
+--Disable Topic
+--ATENCAO!! FAZER TRIGER PARA UPDATE EM topic!!! TEM DE SER ADMIN!!!
+UPDATE topic
+SET disable = TRUE
+WHERE id = $topicID;
+
+--UPDATE
+--Disable Question
+--ATENCAO!! FAZER TRIGER PARA UPDATE EM question!!! TEM DE SER OWNER, MOD OU ADMIN!!!
+UPDATE question
+SET disable = TRUE
+WHERE id = $questionID;
+
+--UPDATE
+--Disable Answer
+--ATENCAO!! FAZER TRIGER PARA UPDATE EM FIELD disable DE answer!!! TEM DE SER OWNER, MOD OU ADMIN!!!
+UPDATE answer
+SET disable = TRUE
+WHERE id = $answerID;
+
+--UPDATE
+--Disable User
+--ATENCAO!! FAZER TRIGER PARA UPDATE EM FIELD disable DE user!!! TEM DE SER O PROPRIO OU ADMIN!!!
+--TRIGGER PARA CRIAR NOTIFICACAO SE O USER FOR DISABLED(?????)
+UPDATE user
+SET disable = TRUE
+WHERE id = $userID;
+
+--UPDATE 
+--Edit answer
+--ATENÇAO!! FAZER TRIGER PARA UPDATE EM FIELD message DE answer!! TEM DE SER OWNER!!
+--TESTAR O TIMESTAMP
+UPDATE answer
+SET message = $newMessage, date = now()
+WHERE id = $answerID;
+
+--UPDATE 
+--Edit question
+--ATENÇAO!! FAZER TRIGER PARA UPDATE EM FIELD message DE question!! TEM DE SER OWNER!!
+--TESTAR O TIMESTAMP
+UPDATE question
+SET long_message = $newMessage, date = now()
+WHERE id = $questionID;
+
+--UPDATE 
+--Edit Vote
+--ATENÇAO!! FAZER TRIGER PARA UPDATE EM vote!! 
+UPDATE vote
+SET vote.vote = $vote
+WHERE id = $voteID;
+
+
+
+
+

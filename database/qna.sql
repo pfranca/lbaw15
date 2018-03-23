@@ -4,7 +4,8 @@ CREATE TABLE answer (
     karma integer DEFAULT 0 NOT NULL,
     message text NOT NULL,
     id_user integer,
-    id_question integer
+    id_question integer,
+    disable BOOLEAN NOT NULL DEFAULT FALSE
 );
 
 
@@ -25,6 +26,10 @@ CREATE TABLE notification (
     id integer NOT NULL,
     id_user integer NOT NULL,
     id_question integer
+    message TEXT NOT NULL,
+    seen BOOLEAN NOT NULL DEFAULT FALSE, 
+    date TIMESTAMP DEAFULT now() NOT NULL
+
 );
 
 
@@ -36,7 +41,8 @@ CREATE TABLE question (
     short_message text NOT NULL,
     long_message text,
     id_user integer,
-    id_topic integer
+    id_topic integer,
+    disable BOOLEAN NOT NULL DEFAULT FALSE
 );
 
 
@@ -55,7 +61,8 @@ CREATE TABLE report (
 CREATE TABLE topic (
     id integer NOT NULL,
     name character varying(30) NOT NULL,
-    img text NOT NULL
+    img text NOT NULL,
+    disable BOOLEAN NOT NULL DEFAULT FALSE
 );
 
 
@@ -67,7 +74,7 @@ CREATE TABLE "user" (
     name text NOT NULL,
     img text NOT NULL,
     bio text,
-    disable boolean NOT NULL,
+    disable BOOLEAN NOT NULL DEFAULT FALSE,
     type text NOT NULL,
     CONSTRAINT type CHECK ((type = ANY (ARRAY['Normal'::text, 'Moderator'::text, 'Administrator'::text])))
 );
