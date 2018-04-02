@@ -1,6 +1,6 @@
 
 
-# ---- Insert User -----
+---- Insert User -----
 
 INSERT INTO "user" (username,email,name,img,bio,disable,type) VALUES 
 	('tiagoAlmeida', 'tiago@gmail.com','tiago','img1.png','Im a programer',false,'Normal')
@@ -11,7 +11,7 @@ INSERT INTO "user" (username,email,name,img,bio,disable,type) VALUES
 INSERT INTO "user" (username,email,name,img,bio,disable,type) VALUES 
 	('afonsoCruz', 'afonso@gmail.com','afonso','img3.png','Im always ok!!',false,'Normal')
 
-# ---- Insert Topic ------
+---- Insert Topic ------
 
 INSERT INTO topic (name,img,disable) VALUES
 	('sports','sports.png',false)
@@ -29,22 +29,22 @@ INSERT INTO topic (name,img,disable) VALUES
 	('random','random.png',false)
 
 
-# ---- Insert Question -----
+---- Insert Question -----
 
-INSERT INTO "question" (karma,short_message,long_message,author_id,id_topic,disable) VALUES 
+INSERT INTO "question" (karma,short_message,long_message,id_user,id_topic,disable) VALUES 
 
 	(0,'Who is the greatest tennis player of all time?', 'dont know, help me guys!!',5,1,false)
 
 
-INSERT INTO "question" (karma,short_message,long_message,author_id,id_topic,disable) VALUES 
+	INSERT INTO "question" (karma,short_message,long_message,id_user,id_topic,disable) VALUES 
 
-	(0,'Do you know how to dance? Any club?', 'Ive been trying to learn how to dance, really wanna know guys!!!',6,2,false)
-
-
-INSERT INTO "question" (karma,short_message,long_message,author_id,id_topic,disable) VALUES (0,'Who is the greatest handball player of all time?', 'I play for almost 5 years and I wanna see some videos on youtube!!',5,1,false)
+		(0,'Do you know how to dance? Any club?', 'Ive been trying to learn how to dance, really wanna know guys!!!',6,2,false)
 
 
-# ----- Insert Answer -----
+INSERT INTO "question" (karma,short_message,long_message,id_user,id_topic,disable) VALUES (0,'Who is the greatest handball player of all time?', 'I play for almost 5 years and I wanna see some videos on youtube!!',5,1,false)
+
+
+----- Insert Answer -----
 
 INSERT INTO "answer" (karma,message,author_id,id_question,disable) VALUES
 
@@ -56,7 +56,7 @@ INSERT INTO "answer" (karma,message,author_id,id_question,disable) VALUES
 
 	INSERT INTO "answer" (karma,message,author_id,id_question,disable) VALUES (2,'Yes i know, i am at the dance club in Porto!',6,2,false)
 
-# ----- Insert Vote ------
+----- Insert Vote ------
 
 INSERT INTO "vote" (author_id,id_answer,vote) VALUES
 	
@@ -66,63 +66,81 @@ INSERT INTO "vote" (author_id,id_answer,vote) VALUES
 
 ------------------SELECT------------------ Marta
 ---select all answers of a specific question
-select * from answer, question where question.id='1'and answer.id_question=question.id
+select * from answer, question where question.id=$question_id and answer.id_question=question.id
 
 ---select all information of a specific question
-select * from question where question.id='2'
+select * from question where question.id= $question_id
 
 
 ---select all questions from a topic that are followed by a user
 select distinct * from question, topic, followtopic 
 where topic.id=question.id_topic 
 and topic.id=followtopic.id_topic
-and followtopic.id_user=4
+and followtopic.id_user=$user_id
 
 --select all questions that are followed by the user
 select * from question, followquestion
 where question.id = followquestion.id_question 
-and followquestion.id_user = 4
+and followquestion.id_user = $user_id
 
 
 --select all question that the user created
-select * from question where author_id = 5
+select * from question where author_id = $user_id
 
 --FALTA BACKGROUND IMAGE ON DATABASE
 
 --select all user
-select * from user
+select * from "user"
 
 --update user
 --update username
-update "user" set username = 'tiaguinhoAlmeida' where id =4
+update "user" set username = $user_username where id = $user_id
 
 --update email
-update "user" set email = 'tiagoAlmeida@gmail.com' where id =4
+update "user" set email = $user.email where id = $user_id
 
 --update name
-update "user" set name = 'Tiago Almeida' where id =4
+update "user" set name = $user_name where id = $user_id
 
 --update img
-update "user" set img= 'img51.png' where id =4
+update "user" set img= $user_img where id = $user_id
 
 --update bio
-update "user" set bio= 'i am cool' where id =4
+update "user" set bio= $user_bio where id = $user_id
 
 
 --update username,name bio, image, background?????
-update "user" set username = 'tiagoAlmeida', name = 'Tiago Bernardes Almeida', img = 'img3.png', bio='ohhhh', email='tiagobernardes@gmail.com' where id =4
+update "user" set username = $user_username, name = $user_name, img = $user_id, bio=$user_bio, email=$user_email where id = $user_id
 
 
------SELECT DIOGO
+--- INSERT
+INSERT INTO followquestion (id_user,id_question) VALUES (1,1)
+
+INSERT INTO followtopic (id_user,id_topic) VALUES (1,1)
+
+-----SELECT 
 
 --select all topics
 select * from topic
 
 --update karma
-update question set karma=1 where id = 1
+update question set karma = $karma where id = $questionId
+
 
 --update disable on question if owner 
-update question set disable=true where id = 1 and author_id=6
+update question set disable=true where id = $question_id and author_id=$user_id
+
+--update karma on answer
+update answer set karma = $karma where id = $answerId
+
+--update followtopic of an user
+update followtopic set id_topic=2 where id_user=1
+
+--update followquestion of an user
+update followquestion set id_question=4 where id_user=1
+
+
+
 
 
 -------------------------------FRANZA---------------------------------------
@@ -183,7 +201,7 @@ INSERT INTO vote (id_user, vote, id_question) VALUES ($userID, $vote, $questionI
 --UPDATE
 --Give Permissions
 --ATENCAO!!!! FAZER TRIGER PARA UPDATE EM FIELD type DE user!!! TEM DE SER ADMIN!
-UPDATE user
+UPDATE "user"
 SET type = $type
 WHERE id = $userID;
 
@@ -191,29 +209,29 @@ WHERE id = $userID;
 --Disable Topic
 --ATENCAO!! FAZER TRIGER PARA UPDATE EM topic!!! TEM DE SER ADMIN!!!
 UPDATE topic
-SET disable = TRUE
+SET disable = $disableTopic
 WHERE id = $topicID;
 
 --UPDATE
 --Disable Question
 --ATENCAO!! FAZER TRIGER PARA UPDATE EM question!!! TEM DE SER OWNER, MOD OU ADMIN!!!
 UPDATE question
-SET disable = TRUE
+SET disable = $disableQuestion
 WHERE id = $questionID;
 
 --UPDATE
 --Disable Answer
 --ATENCAO!! FAZER TRIGER PARA UPDATE EM FIELD disable DE answer!!! TEM DE SER OWNER, MOD OU ADMIN!!!
 UPDATE answer
-SET disable = TRUE
+SET disable = $disableAnswer
 WHERE id = $answerID;
 
 --UPDATE
 --Disable User
 --ATENCAO!! FAZER TRIGER PARA UPDATE EM FIELD disable DE user!!! TEM DE SER O PROPRIO OU ADMIN!!!
 --TRIGGER PARA CRIAR NOTIFICACAO SE O USER FOR DISABLED(?????)
-UPDATE user
-SET disable = TRUE
+UPDATE "user"
+SET disable = $disableUser
 WHERE id = $userID;
 
 --UPDATE 
@@ -221,7 +239,7 @@ WHERE id = $userID;
 --ATENÇAO!! FAZER TRIGER PARA UPDATE EM FIELD message DE answer!! TEM DE SER OWNER!!
 --TESTAR O TIMESTAMP
 UPDATE answer
-SET message = $newMessage, date = now()
+SET message = $newMessage, "date" = now()
 WHERE id = $answerID;
 
 --UPDATE 
@@ -229,7 +247,7 @@ WHERE id = $answerID;
 --ATENÇAO!! FAZER TRIGER PARA UPDATE EM FIELD message DE question!! TEM DE SER OWNER!!
 --TESTAR O TIMESTAMP
 UPDATE question
-SET long_message = $newMessage, date = now()
+SET long_message = $newMessage, "date" = now()
 WHERE id = $questionID;
 
 --UPDATE 
