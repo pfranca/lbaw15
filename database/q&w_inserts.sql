@@ -50,11 +50,11 @@ INSERT INTO "answer" (karma,message,id_user,id_question,disable) VALUES
 
     (2,'The greatest tennins player is Roger Federer!!! Check it on google mate.',6,1,false);
 
-INSERT INTO "answer" (karma,message,id_user,id_question,disable) VALUES
+INSERT INTO "answer" (karma,message,author_id,id_question,disable) VALUES
 
     (2,'Roger Federer aahah',1,1,false)
 
-    INSERT INTO "answer" (karma,message,id_user,id_question,disable) VALUES (2,'Yes i know, i am at the dance club in Porto!',6,2,false)
+    INSERT INTO "answer" (karma,message,author_id,id_question,disable) VALUES (2,'Yes i know, i am at the dance club in Porto!',6,2,false)
 
 # ----- Insert Vote ------ OK
 
@@ -189,14 +189,14 @@ select * from question where question.id= $question_id
 
 ---select all questions from a topic that are followed by a user
 select distinct * from question, topic, followtopic 
-where topic.id=question.id_topic 
-and topic.id=followtopic.id_topic
-and followtopic.id_user=$user_id
+	where topic.id = question.id_topic 
+	and topic.id = followtopic.id_topic
+	and followtopic.id_user = $user_id
 
 --select all questions that are followed by the user
 select * from question, followquestion
-where question.id = followquestion.id_question 
-and followquestion.id_user = $user_id
+	where question.id = followquestion.id_question 
+	and followquestion.id_user = $user_id
 
 
 --select all question that the user created
@@ -215,9 +215,9 @@ select * from topictag, topic where topictag.id_topic = topic.id and topictag.id
 select * from questiontag,question where question.id=questiontag.id_question and id_tag=$tagId
 
 ----Select all information of a question that belongs to a topic with a specific tag
-select question.id, karma,short_message, long_message, id_user, question.disable, question.date
-from topictag, topic, question 
-where topictag.id_topic = topic.id and topictag.id_tag = $tagId and question.id_topic = topictag.id_topic
+select question.id, karma,short_message, long_message, id_user, question.disable, question.date from topictag, topic, question 
+	
+	where topictag.id_topic = topic.id and topictag.id_tag = $tagId and question.id_topic = topictag.id_topic
 
 --select all information from an answer that belong to a specific report
 select * from reportanswer, answer where id_answer=answer.id and reportanswer.id=$reportId
@@ -248,8 +248,6 @@ WHERE id_question = $questionID AND disable = FALSE
 
 
 
-
-
 --------------------------------------------------------------------------------
 ------------------------------- UPDATES GENERICOS -------------------------------
 ---------------------------------------------------------------------------------
@@ -270,11 +268,17 @@ SET disable = $disableTopic
 WHERE id = $topicID;
 
 --UPDATE
---Disable Question
---ATENCAO!! FAZER TRIGER PARA UPDATE EM question!!! TEM DE SER OWNER, MOD OU ADMIN!!!
-UPDATE question
-SET disable = $disableQuestion
-WHERE id = $questionID;
+--Update image topic from Admin Page
+UPDATE topic
+SET img = $image
+WHERE id = $topicID;
+
+--UPDATE
+--Update name topic from Admin Page
+UPDATE topic
+SET name = $name
+WHERE id = $topicID;
+
 
 --UPDATE
 --Disable Answer
@@ -282,14 +286,6 @@ WHERE id = $questionID;
 UPDATE answer
 SET disable = $disableAnswer
 WHERE id = $answerID;
-
---UPDATE
---Disable User
---ATENCAO!! FAZER TRIGER PARA UPDATE EM FIELD disable DE user!!! TEM DE SER O PROPRIO OU ADMIN!!!
---TRIGGER PARA CRIAR NOTIFICACAO SE O USER FOR DISABLED(?????)
-UPDATE "user"
-SET disable = $disableUser
-WHERE id = $userID;
 
 --UPDATE 
 --Edit answer
@@ -305,6 +301,20 @@ WHERE id = $answerID;
 --TESTAR O TIMESTAMP
 UPDATE question
 SET long_message = $newMessage, "date" = now()
+WHERE id = $questionID;
+
+--UPDATE
+-- short message changed
+UPDATE question
+SET short_message = $newMessage, "date" = now()
+WHERE id = $questionID;
+
+
+--UPDATE
+--Disable Question
+--ATENCAO!! FAZER TRIGER PARA UPDATE EM question!!! TEM DE SER OWNER, MOD OU ADMIN!!!
+UPDATE question
+SET disable = $disableQuestion
 WHERE id = $questionID;
 
 --UPDATE 
@@ -331,12 +341,14 @@ update "user" set img= $user_img where id = $user_id
 --update bio
 update "user" set bio= $user_bio where id = $user_id
 
+--update disable
+update "user" set disable= $disable where id = $user_id
 
 --update username,name bio, image, background?????
 update "user" set username = $user_username, name = $user_name, img = $user_id, bio=$user_bio, email=$user_email where id = $user_id
 
 
-update reportanswer set disable= $disableReport where id = $reportId
+update reportanswer set disable= TRUE where id = $reportId
 
 --update disable reportanswer
 update reportquestion set disable= TRUE where id = $reportId
@@ -374,3 +386,14 @@ delete from followquestion where id_user=$userId and id_question=$questionId
 --delete followtopic that an user stop following
 delete from followtopic where id_user=$userId and id_topic=$topicId
 
+
+
+--------------------------------------------------------------------------------
+------------------------------- INDEX GENERICOS -------------------------------
+---------------------------------------------------------------------------------
+
+-- Tags
+
+CREATE INDEX tags_search ON "questiontag" USING hash (email);
+
+-- Email
