@@ -86,7 +86,7 @@ INSERT INTO notificationanswer(id_user,id_question,message,seen,date)
 # ------ Insert notificationFollow
 
 INSERT INTO notificationfollow(id_user,id_question,message,seen,date)
-    VALUES (1,2,"asweome",false,now())
+    VALUES (1,4,'asweome',false,now())
 
 # ------ Insert reportAnswer
 
@@ -239,7 +239,16 @@ select question.id, karma,short_message, long_message, id_user, question.disable
 from topictag, topic, question 
 where topictag.id_topic = topic.id and topictag.id_tag = $tagId and question.id_topic = topictag.id_topic
 
+update reportanswer set disable= $disableReport where id = $reportId
 
+--update disable reportanswer
+update reportquestion set disable= TRUE where id = $reportId
+
+--select all information from an answer that belong to a specific report
+select * from reportanswer, answer where id_answer=answer.id and reportanswer.id=$reportId
+
+--select all information from a question that belong to a specific report
+select * from reportquestion, question where id_question=question.id and reportquestion.id= $reportId
 
 
 -----SELECT 
