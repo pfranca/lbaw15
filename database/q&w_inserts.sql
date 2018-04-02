@@ -118,6 +118,23 @@ INSERT INTO followquestion (id_user,id_question) VALUES (1,1)
 
 INSERT INTO followtopic (id_user,id_topic) VALUES (1,1)
 
+insert into tag (tagname) values ($tagname)
+
+insert into topictag (id_topic, id_tag) values ($topicId,$tagId)
+
+insert into questiontag (id_question, id_tag) values ($questionId,$tagId)
+
+--select all topics that are associated with a tag
+select * from topictag, topic where topictag.id_topic = topic.id and topictag.id_tag = $tagId
+
+--selec all questions that are associated with a tag
+select * from questiontag,question where question.id=questiontag.id_question and id_tag=$tagId
+
+----Select all information of a question that belongs to a topic with a specific tag
+select question.id, karma,short_message, long_message, id_user, question.disable, question.date
+from topictag, topic, question 
+where topictag.id_topic = topic.id and topictag.id_tag = $tagId and question.id_topic = topictag.id_topic
+
 -----SELECT 
 
 --select all topics
@@ -134,13 +151,16 @@ update question set disable=true where id = $question_id and author_id=$user_id
 update answer set karma = $karma where id = $answerId
 
 --update followtopic of an user
-update followtopic set id_topic=2 where id_user=1
+update followtopic set id_topic=$topic where id_user=$userId
 
 --update followquestion of an user
-update followquestion set id_question=4 where id_user=1
+update followquestion set id_question=$question where id_user=$userId
 
+--delete followquestion that an user stop following
+delete from followquestion where id_user=$userId and id_question=$questionId
 
-
+--delete followtopic that an user stop following
+delete from followtopic where id_user=$userId and id_topic=$topicId
 
 
 -------------------------------FRANZA---------------------------------------
