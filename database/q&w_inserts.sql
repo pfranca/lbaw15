@@ -207,26 +207,6 @@ select * from question where author_id = $user_id
 --select all user
 select * from "user"
 
---update user
---update username
-update "user" set username = $user_username where id = $user_id
-
---update email
-update "user" set email = $user.email where id = $user_id
-
---update name
-update "user" set name = $user_name where id = $user_id
-
---update img
-update "user" set img= $user_img where id = $user_id
-
---update bio
-update "user" set bio= $user_bio where id = $user_id
-
-
---update username,name bio, image, background?????
-update "user" set username = $user_username, name = $user_name, img = $user_id, bio=$user_bio, email=$user_email where id = $user_id
-
 
 --select all topics that are associated with a tag
 select * from topictag, topic where topictag.id_topic = topic.id and topictag.id_tag = $tagId
@@ -239,11 +219,6 @@ select question.id, karma,short_message, long_message, id_user, question.disable
 from topictag, topic, question 
 where topictag.id_topic = topic.id and topictag.id_tag = $tagId and question.id_topic = topictag.id_topic
 
-update reportanswer set disable= $disableReport where id = $reportId
-
---update disable reportanswer
-update reportquestion set disable= TRUE where id = $reportId
-
 --select all information from an answer that belong to a specific report
 select * from reportanswer, answer where id_answer=answer.id and reportanswer.id=$reportId
 
@@ -251,39 +226,8 @@ select * from reportanswer, answer where id_answer=answer.id and reportanswer.id
 select * from reportquestion, question where id_question=question.id and reportquestion.id= $reportId
 
 
------SELECT 
-
 --select all topics
 select * from topic
-
---update karma
-update question set karma = $karma where id = $questionId
-
-
---update disable on question if owner 
-update question set disable=true where id = $question_id and author_id=$user_id
-
---update karma on answer
-update answer set karma = $karma where id = $answerId
-
---update followtopic of an user
-update followtopic set id_topic=$topic where id_user=$userId
-
---update followquestion of an user
-update followquestion set id_question=$question where id_user=$userId
-
---delete followquestion that an user stop following
-delete from followquestion where id_user=$userId and id_question=$questionId
-
---delete followtopic that an user stop following
-delete from followtopic where id_user=$userId and id_topic=$topicId
-
---update disable reportanswer
-update reportanswer set disable= $disableReport where id = $reportAnswerId
-
--------------------------------FRANZA---------------------------------------
-
-------------SELECTS---------------
 
 --SELECT
 --My notifications
@@ -306,7 +250,10 @@ WHERE id_question = $questionID AND disable = FALSE
 
 
 
------------UPDATES-------------------
+--------------------------------------------------------------------------------
+------------------------------- UPDATES GENERICOS -------------------------------
+---------------------------------------------------------------------------------
+
 
 --UPDATE
 --Give Permissions
@@ -368,6 +315,62 @@ SET vote.vote = $vote
 WHERE id = $voteID;
 
 
+--update user
+--update username
+update "user" set username = $user_username where id = $user_id
+
+--update email
+update "user" set email = $user.email where id = $user_id
+
+--update name
+update "user" set name = $user_name where id = $user_id
+
+--update img
+update "user" set img= $user_img where id = $user_id
+
+--update bio
+update "user" set bio= $user_bio where id = $user_id
 
 
+--update username,name bio, image, background?????
+update "user" set username = $user_username, name = $user_name, img = $user_id, bio=$user_bio, email=$user_email where id = $user_id
+
+
+update reportanswer set disable= $disableReport where id = $reportId
+
+--update disable reportanswer
+update reportquestion set disable= TRUE where id = $reportId
+
+
+--update disable reportanswer
+update reportanswer set disable= $disableReport where id = $reportAnswerId
+
+
+--update karma
+update question set karma = $karma where id = $questionId
+
+--update disable on question if owner 
+update question set disable=true where id = $question_id and author_id=$user_id
+
+--update karma on answer
+update answer set karma = $karma where id = $answerId
+
+--update followtopic of an user
+update followtopic set id_topic=$topic where id_user=$userId
+
+--update followquestion of an user
+update followquestion set id_question=$question where id_user=$userId
+
+
+
+--------------------------------------------------------------------------------
+------------------------------- DELETES GENERICOS -------------------------------
+---------------------------------------------------------------------------------
+
+
+--delete followquestion that an user stop following
+delete from followquestion where id_user=$userId and id_question=$questionId
+
+--delete followtopic that an user stop following
+delete from followtopic where id_user=$userId and id_topic=$topicId
 
