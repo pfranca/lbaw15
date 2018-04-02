@@ -404,3 +404,9 @@ delete from followtopic where id_user=$userId and id_topic=$topicId
 CREATE INDEX tags_search ON "questiontag" USING hash (email);
 
 -- Email
+
+
+
+--------------------------------------------------------------------------------
+------------------------------- TRIGGERS GENERICOS -------------------------------
+---------------------------------------------------------------------------------
