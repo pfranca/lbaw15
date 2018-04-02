@@ -130,7 +130,7 @@ INSERT INTO vote (id_user, vote, id_question) VALUES ($userID, $vote, $questionI
 
 --INSERTS
 --New User
-INSERT INTO user (username,email,name,img,bio,disable,type) VALUES ($username,$email,$nickname,$img,$bio,$disable,$type);
+INSERT INTO "user" (username,email,name,img,bio,disable,type) VALUES ($username,$email,$nickname,$img,$bio,$disable,$type);
 
 --INSERT
 --new followQuestion
@@ -241,12 +241,20 @@ ORDER BY date;
 --Best Answer
 --QUE LUXO DE QUE QUERY
 --TESTAR xD
-SELECT date, karma, message, user
+SELECT date, karma, message, id_user
 FROM answer
 WHERE id_question = $questionID AND disable = FALSE 
 	AND karma = (SELECT max(karma) FROM answer WHERE id_question = $questionID);
 
 
+--select all answers from a question
+select * from answer, "user" where id_user = 1
+
+--select all notificationanswer of an user
+select * from notificationanswer where id_user = $userId
+
+--select all notificationanswer of an user
+select * from notificationfollow where id_user = $userId
 
 --------------------------------------------------------------------------------
 ------------------------------- UPDATES GENERICOS -------------------------------
@@ -367,12 +375,11 @@ update question set disable=true where id = $question_id and author_id=$user_id
 --update karma on answer
 update answer set karma = $karma where id = $answerId
 
---update followtopic of an user
-update followtopic set id_topic=$topic where id_user=$userId
+--update seen on notificationanswer
+update notificationanswer set seen = $seenUp where id = $id
 
---update followquestion of an user
-update followquestion set id_question=$question where id_user=$userId
-
+--update seen on notificationfollow
+update notificationfollow set seen = $seenUp where id = $id
 
 
 --------------------------------------------------------------------------------
