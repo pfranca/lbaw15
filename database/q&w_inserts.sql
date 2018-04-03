@@ -48,6 +48,12 @@ INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic
 
 
 
+
+
+
+
+
+
 # ----- Insert Answer ----- OK
 
 INSERT INTO answer(id,date,karma,message,id_author,id_question,disable) VALUES (1,now(),7,'The greatest tennins player is Roger Federer!!! Check it on google mate.',6,1,false);
@@ -91,7 +97,15 @@ INSERT INTO followTopic(id_user,id_topic) VALUES (5,5);
 
 
 
+
 # ------ Insert tag
+
+
+
+
+
+# ------ Insert tag
+
 
 INSERT INTO tag(id,tagName) VALUES (1,'Trending');
 INSERT INTO tag(id,tagName) VALUES (2,'Serious');
@@ -285,8 +299,11 @@ WHERE id_question = $questionID AND disable = FALSE
 --select all answers from a question
 --quem escreveu isto estava bebado?
 --select * from answer, "user" where id_user = 1
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> c2e0da8d286f68bae9f0a611d2230e983597de14
 
 --select all notificationanswer of an user
 select * from notificationanswer where id_user = $userId
