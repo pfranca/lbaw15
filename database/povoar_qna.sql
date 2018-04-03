@@ -47,8 +47,7 @@ INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic
 
 
 
-
------ Insert Answer 
+-----Insert Answer
 
 INSERT INTO answer(id,date,karma,message,id_author,id_question,disable) VALUES (1,now(),7,'The greatest tennins player is Roger Federer!!! Check it on google mate.',6,1,false);
 INSERT INTO answer(id,date,karma,message,id_author,id_question,disable) VALUES (2,now(),0,'your mom',3,1,false);
@@ -190,12 +189,38 @@ INSERT INTO questiontag (id_question, id_tag) values ($questionId,$tagId)
 ------------------------------- SELECTS GENERICOS -------------------------------
 ---------------------------------------------------------------------------------
 /*
+
+
+
+--select all topics
+select * from topic
+
+select name,img from topic 
+	where topic.id = $topicId
+
+--select all user
+select * from "user"
+
+-- select user's profile
+select  username,email,name, img, bio from "user" 
+  where "user".id = $userId; 
+
+
+
 ---select all answers of a specific question
 select * from answer, question where question.id=$question_id and answer.id_question=question.id
 SELECT * FROM answer WHERE question.id=$questionID
 
+---select all questions from a topic 
+select distinct * from question, topic 
+	where topic.id = question.id_topic 
+
+
+
 ---select all information of a specific question
 select * from question where question.id= $question_id
+
+
 
 
 ---select all questions from a topic that are followed by a user
@@ -210,35 +235,37 @@ select * from question, followquestion
 	and followquestion.id_user = $user_id
 
 
+
 --select all question that the user created
 select * from question where author_id = $user_id
 
---FALTA BACKGROUND IMAGE ON DATABASE
-
---select all user
-select * from "user"
 
 
 --select all topics that are associated with a tag
 select * from topictag, topic where topictag.id_topic = topic.id and topictag.id_tag = $tagId
 
+
+
 --selec all questions that are associated with a tag
 select * from questiontag,question where question.id=questiontag.id_question and id_tag=$tagId
+
+
 
 ----Select all information of a question that belongs to a topic with a specific tag
 select question.id, karma,short_message, long_message, id_user, question.disable, question.date from topictag, topic, question 
 	
 	where topictag.id_topic = topic.id and topictag.id_tag = $tagId and question.id_topic = topictag.id_topic
 
+
+
 --select all information from an answer that belong to a specific report
 select * from reportanswer, answer where id_answer=answer.id and reportanswer.id=$reportId
+
+
 
 --select all information from a question that belong to a specific report
 select * from reportquestion, question where id_question=question.id and reportquestion.id= $reportId
 
-
---select all topics
-select * from topic
 
 --SELECT
 --My notifications
@@ -247,6 +274,7 @@ SELECT id_question, message
 FROM notification
 WHERE seen = FALSE AND id_user = $userID
 ORDER BY date;
+
 
 --SELECT 
 --Best Answer
@@ -258,6 +286,7 @@ WHERE id_question = $questionID AND disable = FALSE
 	AND karma = (SELECT max(karma) FROM answer WHERE id_question = $questionID);
 
 
+
 --select all answers from a question
 --quem escreveu isto estava bebado?
 --select * from answer, "user" where id_user = 1
@@ -265,9 +294,14 @@ WHERE id_question = $questionID AND disable = FALSE
 --select all notificationanswer of an user
 select * from notificationanswer where id_user = $userId
 
+
 --select all notificationanswer of an user
 select * from notificationfollow where id_user = $userId
 */
+
+
+
+
 --------------------------------------------------------------------------------
 ------------------------------- UPDATES GENERICOS -------------------------------
 ---------------------------------------------------------------------------------
