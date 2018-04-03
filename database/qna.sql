@@ -125,7 +125,7 @@ CREATE TABLE topicTag(
 );
 
 ------------------------------------------------------------------------
----------------------------TRIGGERS-------------------------------------
+-----------------------TRIGGERS and UDFs--------------------------------
 ------------------------------------------------------------------------
 
 --TRIGGER01
@@ -135,7 +135,7 @@ $BODY$
 BEGIN
     IF EXISTS (SELECT * FROM "user" WHERE NEW.email = email) THEN
     RAISE EXCEPTION 'An account with that email is already taken!';
-    END IF;
+    END IF; 
     RETURN NEW;
 END;
 $BODY$
@@ -261,7 +261,3 @@ CREATE TRIGGER only_one_follow_question
     BEFORE INSERT ON followQuestion
     FOR EACH ROW
         EXECUTE PROCEDURE only_one_follow_question();
-
-
-
-
