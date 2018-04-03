@@ -1,35 +1,35 @@
-# ---- Insert User -----
+---- Insert User 
 
-INSERT INTO user (id,username,email,name,img,bio,disable,type) VALUES (1,'DiogoaCunha', 'diogoalmeida@gmail.com','diogo','diogo.png','Im fine',false,'ADMIN');
-INSERT INTO user (id,username,email,name,img,bio,disable,type) VALUES (2,'martaTorgal', 'marta@gmail.com','Marta Torgal','marta.png','Im always ok!!',false,'ADMIN');
-INSERT INTO user (id,username,email,name,img,bio,disable,type) VALUES (3,'tibas', 'tibas94@gmail.com','Jose Marques','tibas.png','I like to eat icecream with my forehead',false,'ADMIN');
-INSERT INTO user (id,username,email,name,img,bio,disable,type) VALUES (4,'franza', 'pedro.franca.1994@gmail.com','Pedro Franca','franza.png','if I answered your question it\'s prolly wrong',false,'ADMIN');
-INSERT INTO user (id,username,email,name,img,bio,disable,type) VALUES (5,'jeff', 'jeff98@gmail.com','Jeff Erson','default.png','MY NAME\'S JEFFF',false,'NORMAL');
-INSERT INTO user (id,username,email,name,img,bio,disable,type) VALUES (6,'potus', 'therealdonaldtrump@gmail.com','Donald Trump','potus.png','Imma build a wall',false,'NORMAL');
-INSERT INTO user (id,username,email,name,img,bio,disable,type) VALUES (7,'johnSnow85', 'yoyo@gmail.com','MANEL','default.png','winter\'s comming,false',false,'NORMAL');
-INSERT INTO user (id,username,email,name,img,bio,disable,type) VALUES (8,'throwaway1223312', 'esum@burro.com','o anonimo','default.png','',false,'NORMAL');
-INSERT INTO user (id,username,email,name,img,bio,disable,type) VALUES (9,'quinhas', 'maria@gmail.com','Quinhas POmba','default.png','Universidade da vida',false,'NORMAL');
-INSERT INTO user (id,username,email,name,img,bio,disable,type) VALUES (10,'Max', 'maxc@gmail.com','Max Caulfield','lis.png','Life is... weird',false,'NORMAL');
+INSERT INTO "user"(id,username,email,name,img,bio,disable,type) VALUES (1,'DiogoaCunha', 'diogoalmeida@gmail.com','diogo','diogo.png','Im fine',false,'ADMIN');
+INSERT INTO "user"(id,username,email,name,img,bio,disable,type) VALUES (2,'martaTorgal', 'marta@gmail.com','Marta Torgal','marta.png','Im always ok!!',false,'ADMIN');
+INSERT INTO "user"(id,username,email,name,img,bio,disable,type) VALUES (3,'tibas', 'tibas94@gmail.com','Jose Marques','tibas.png','I like to eat icecream with my forehead',false,'ADMIN');
+INSERT INTO "user"(id,username,email,name,img,bio,disable,type) VALUES (4,'franza', 'pedro.franca.1994@gmail.com','Pedro Franca','franza.png','if I answered your question it is prolly wrong',false,'ADMIN');
+INSERT INTO "user"(id,username,email,name,img,bio,disable,type) VALUES (5,'jeff', 'jeff98@gmail.com','Jeff Erson','default.png','MY NAME IS JEFFF',false,'NORMAL');
+INSERT INTO "user"(id,username,email,name,img,bio,disable,type) VALUES (6,'potus', 'therealdonaldtrump@gmail.com','Donald Trump','potus.png','Imma build a wall',false,'NORMAL');
+INSERT INTO "user"(id,username,email,name,img,bio,disable,type) VALUES (7,'johnSnow85', 'yoyo@gmail.com','MANEL','default.png','winter is comming,false',false,'NORMAL');
+INSERT INTO "user"(id,username,email,name,img,bio,disable,type) VALUES (8,'throwaway1223312', 'esum@burro.com','o anonimo','default.png','',false,'NORMAL');
+INSERT INTO "user"(id,username,email,name,img,bio,disable,type) VALUES (9,'quinhas', 'maria@gmail.com','Quinhas POmba','default.png','Universidade da vida',false,'NORMAL');
+INSERT INTO "user"(id,username,email,name,img,bio,disable,type) VALUES (10,'Max', 'maxc@gmail.com','Max Caulfield','lis.png','Life is... weird',false,'NORMAL');
 
-# ---- Insert Topic ------ OK
+---- Insert Topic 
 
-INSERT INTO topic (id,name,img,disable) VALUES (1,'Sports','1.jpg',false);
-INSERT INTO topic (id,name,img,disable) VALUES (2,'Music','2.jpeg',false);
-INSERT INTO topic (id,name,img,disable) VALUES (3,'Fashion','3.jpeg',false);
-INSERT INTO topic (id,name,img,disable) VALUES (4,'IT','4.jpg',false);
-INSERT INTO topic (id,name,img,disable) VALUES (5,'Math&Science','5.jpg',false);
-INSERT INTO topic (id,name,img,disable) VALUES (6,'Food&Nutricion','6.jpg',false);
-INSERT INTO topic (id,name,img,disable) VALUES (7,'History','7.jpg',false);
-INSERT INTO topic (id,name,img,disable) VALUES (8,'Random','8.png',false);
+INSERT INTO topic(id,name,img,disable) VALUES (1,'Sports','1.jpg',false);
+INSERT INTO topic(id,name,img,disable) VALUES (2,'Music','2.jpeg',false);
+INSERT INTO topic(id,name,img,disable) VALUES (3,'Fashion','3.jpeg',false);
+INSERT INTO topic(id,name,img,disable) VALUES (4,'IT','4.jpg',false);
+INSERT INTO topic(id,name,img,disable) VALUES (5,'Math&Science','5.jpg',false);
+INSERT INTO topic(id,name,img,disable) VALUES (6,'Food&Nutricion','6.jpg',false);
+INSERT INTO topic(id,name,img,disable) VALUES (7,'History','7.jpg',false);
+INSERT INTO topic(id,name,img,disable) VALUES (8,'Random','8.png',false);
 
 
-# ---- Insert Question ----- OK
+---- Insert Question 
 
 INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic,disable) VALUES (1,now(),8,'Who is the greatest tennis player of all time?', 'The one who has the most titles',1,1,false);
 INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic,disable) VALUES (2,now(),1,'Can I own an airsoft replica?', 'What are the airsoft laws in Portugal?',4,1,false);
-INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic,disable) VALUES (3,now(),4,'Why do people like soccer so much?', 'it\'s a stupid sport, a bunch of guys running arround a ball, what is the magic to it?',5,1,false);
+INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic,disable) VALUES (3,now(),4,'Why do people like soccer so much?', 'it is a stupid sport, a bunch of guys running arround a ball, what is the magic to it?',5,1,false);
 INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic,disable) VALUES (4,now(),8,'Who is the greatest tennis player of all time?', 'The one who has the most titles',5,1,false);
-INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic,disable) VALUES (5,now(),15,'Who sing \'hit me baby one more time\'?', '',3,2,false);
+INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic,disable) VALUES (5,now(),15,'Who sing hit me baby one more time?', '',3,2,false);
 INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic,disable) VALUES (6,now(),0,'Eletro song that goes like...', 'what is the nome of that song that goes piri priri bam bum badadadadadad bish bash bosh',3,2,false);
 INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic,disable) VALUES (7,now(),3,'who, in your opinion is the most fashion savy US president?', '',6,3,false);
 INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic,disable) VALUES (8,now(),9000,'How do you create database indexes?', 'PLEASE HELP ME',4,4,false);
@@ -39,7 +39,7 @@ INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic
 INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic,disable) VALUES (12,now(),0,'How yo integrate?', 'I have my math exam tomorrow and need to know to to integrate,thanks.',4,5,false);
 INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic,disable) VALUES (13,now(),4,'If I look to a folar will I be out of ketosys?', '',4,6,false);
 INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic,disable) VALUES (14,now(),5,'In your opinio what is the best food ever?', '',10,6,false);
-INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic,disable) VALUES (15,now(),4,'ShouLD i DRINK BLEACH?', 'I\'m playing this blue whale game and...' ,8,8,false);
+INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic,disable) VALUES (15,now(),4,'ShouLD i DRINK BLEACH?', 'I am playing this blue whale game and...' ,8,8,false);
 INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic,disable) VALUES (16,now(),10,'Best video game you ever played?', '' ,5,8,false);
 INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic,disable) VALUES (17,now(),7,'What is your favorite household item?', '' ,2,8,false);
 INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic,disable) VALUES (18,now(),500,'If a girafe could talk what would it say?', '' ,3,8,false);
@@ -48,13 +48,13 @@ INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic
 
 
 
-# ----- Insert Answer ----- OK
+----- Insert Answer 
 
 INSERT INTO answer(id,date,karma,message,id_author,id_question,disable) VALUES (1,now(),7,'The greatest tennins player is Roger Federer!!! Check it on google mate.',6,1,false);
 INSERT INTO answer(id,date,karma,message,id_author,id_question,disable) VALUES (2,now(),0,'your mom',3,1,false);
 INSERT INTO answer(id,date,karma,message,id_author,id_question,disable) VALUES (3,now(),2,'You need to be federated and you need to have your replica paint yellow or red.',5,2,false);
-INSERT INTO answer(id,date,karma,message,id_author,id_question,disable) VALUES (4,now(),2,'I think it\'s salavdor sobral',6,5,false);
-INSERT INTO answer(id,date,karma,message,id_author,id_question,disable) VALUES (5,now(),7,'daaaaah, it\'s from ACDC',2,6,false);
+INSERT INTO answer(id,date,karma,message,id_author,id_question,disable) VALUES (4,now(),2,'I think it is salavdor sobral',6,5,false);
+INSERT INTO answer(id,date,karma,message,id_author,id_question,disable) VALUES (5,now(),7,'daaaaah, it is from ACDC',2,6,false);
 INSERT INTO answer(id,date,karma,message,id_author,id_question,disable) VALUES (6,now(),2,'MARCELO REBELO DE SOUSA CRL',6,7,false);
 INSERT INTO answer(id,date,karma,message,id_author,id_question,disable) VALUES (7,now(),15,'SAAAAAAAAAAAAME, HELP PLS',6,8,false);
 INSERT INTO answer(id,date,karma,message,id_author,id_question,disable) VALUES (8,now(),8,'So ez, n00b',2,8,false);
@@ -70,17 +70,17 @@ INSERT INTO answer(id,date,karma,message,id_author,id_question,disable) VALUES (
 INSERT INTO answer(id,date,karma,message,id_author,id_question,disable) VALUES (18,now(),10,'I like eggs ',5,14,false);
 
 
-# ----- Insert FollowQuestion
+----- Insert FollowQuestion
 
-INSERT INTO followQuestion (id_user,id_question) VALUES (1,11);
-INSERT INTO followQuestion (id_user,id_question) VALUES (8,15);
-INSERT INTO followQuestion (id_user,id_question) VALUES (5,7);
-INSERT INTO followQuestion (id_user,id_question) VALUES (6,3);
-
-
+INSERT INTO followQuestion(id_user,id_question) VALUES (1,11);
+INSERT INTO followQuestion(id_user,id_question) VALUES (8,15);
+INSERT INTO followQuestion(id_user,id_question) VALUES (5,7);
+INSERT INTO followQuestion(id_user,id_question) VALUES (6,3);
 
 
-# ------ Insert FollowTopic
+
+
+------ Insert FollowTopic
 
 INSERT INTO followTopic(id_user,id_topic) VALUES (1,1);
 INSERT INTO followTopic(id_user,id_topic) VALUES (1,4);
@@ -91,7 +91,7 @@ INSERT INTO followTopic(id_user,id_topic) VALUES (5,5);
 
 
 
-# ------ Insert tag
+------ Insert tag
 
 INSERT INTO tag(id,tagName) VALUES (1,'Trending');
 INSERT INTO tag(id,tagName) VALUES (2,'Serious');
@@ -99,19 +99,21 @@ INSERT INTO tag(id,tagName) VALUES (3,'NSFW');
 INSERT INTO tag(id,tagName) VALUES (4,'Controversial');
 
 
-# ------ Insert questionTag
+------ Insert questionTag
 
 INSERT INTO questionTag(id_question,id_tag) VALUES (14,4);
 INSERT INTO questionTag(id_question,id_tag) VALUES (19,3);
-INSERT INTO questionTag(id_question,id_tag) VALUES (16,3;
+INSERT INTO questionTag(id_question,id_tag) VALUES (16,3);
 INSERT INTO questionTag(id_question,id_tag) VALUES (8,1);
 INSERT INTO questionTag(id_question,id_tag) VALUES (6,2);
 INSERT INTO questionTag(id_question,id_tag) VALUES (7,2);
+
 
 ---------------------------------------------------------------------------------
 ------------------------------- INSERTS GENERICOS -------------------------------
 ---------------------------------------------------------------------------------
 
+/*
 
 --INSERT
 --New Question
@@ -142,54 +144,55 @@ INSERT INTO "user" (username,email,name,img,bio,disable,type) VALUES ($username,
 
 --INSERT
 --new followQuestion
-INSERT INTO followQuestion (id_user,id_question) VALUES ($user_id, $question_id)
+INSERT INTO followQuestion (id_user,id_question) VALUES ($user_id, $question_id);
 
 --INSERT
 -- new followTopic
-INSERT INTO followTopic (id_user,id_topic) VALUES ($user_id,$topic_id)
+INSERT INTO followTopic (id_user,id_topic) VALUES ($user_id,$topic_id);
 
 
 --INSERT
 -- notificationAnswer
-INSERT INTO notificationanswer(id_user,id_question,message,seen,date)
-    VALUES ($user_id,$question_id,$message,$seen,$date)
+INSERT INTO notificationanswer(id_user,id_question,message)
+    VALUES ($user_id,$question_id,$message);
 
 --INSERT
 -- notificationFollow
-INSERT INTO notificationfollow(id_user,id_question,message,seen,date)
-    VALUES ($user_id,$question_id,$message,$seen,$date)
+INSERT INTO notificationfollow(id_user,id_question,message)
+    VALUES ($user_id,$question_id,$message);
 
 
 --INSERT
 -- reportanswer
-INSERT INTO reportanswer(reason,id_user,id_answer)
-    VALUES ($reason,$user_id,$answer_id)
+INSERT INTO reportAnswer(reason,id_user,id_answer)
+    VALUES ($reason,$user_id,$answer_id);
 
 --INSERT
 -- reportQuestion
-INSERT INTO reportquestion(reason,id_user,id_question)
-    VALUES ($reason,$user_id,$question_id)
+INSERT INTO reportQuestion(reason,id_user,id_question)
+    VALUES ($reason,$user_id,$question_id);
 
 --INSERT
 -- tag
-INSERT  INTO tag (tagname) values ($tagname)
+INSERT INTO tag(tagname) values ($tagname);
 
 --INSERT
 -- topicTag
-INSERT INTO topictag (id_topic, id_tag) values ($topicId,$tagId)
+INSERT INTO topicTag(id_topic, id_tag) values ($topicId,$tagId);
 
 --INSERT
 -- questionTag
 INSERT INTO questiontag (id_question, id_tag) values ($questionId,$tagId)
 
 
-
+*/
 --------------------------------------------------------------------------------
 ------------------------------- SELECTS GENERICOS -------------------------------
 ---------------------------------------------------------------------------------
-
+/*
 ---select all answers of a specific question
 select * from answer, question where question.id=$question_id and answer.id_question=question.id
+SELECT * FROM answer WHERE question.id=$questionID
 
 ---select all information of a specific question
 select * from question where question.id= $question_id
@@ -264,12 +267,12 @@ select * from notificationanswer where id_user = $userId
 
 --select all notificationanswer of an user
 select * from notificationfollow where id_user = $userId
-
+*/
 --------------------------------------------------------------------------------
 ------------------------------- UPDATES GENERICOS -------------------------------
 ---------------------------------------------------------------------------------
 
-
+/*
 --UPDATE
 --Give Permissions
 --ATENCAO!!!! FAZER TRIGER PARA UPDATE EM FIELD type DE user!!! TEM DE SER ADMIN!
@@ -389,32 +392,32 @@ update notificationanswer set seen = $seenUp where id = $id
 
 --update seen on notificationfollow
 update notificationfollow set seen = $seenUp where id = $id
-
+*/
 
 --------------------------------------------------------------------------------
 ------------------------------- DELETES GENERICOS -------------------------------
 ---------------------------------------------------------------------------------
-
+/*
 
 --delete followquestion that an user stop following
 delete from followquestion where id_user=$userId and id_question=$questionId
 
 --delete followtopic that an user stop following
-delete from followtopic where id_user=$userId and id_topic=$topicId
-
+delete from followTopic where id_user=$userId and id_topic=$topicId
+*/
 
 
 --------------------------------------------------------------------------------
 ------------------------------- INDEX GENERICOS -------------------------------
 ---------------------------------------------------------------------------------
-
+/*
 -- Tags
 
 CREATE INDEX tags_search ON "questiontag" USING hash (email);
 
 -- Email
 
-
+*/
 
 --------------------------------------------------------------------------------
 ------------------------------- TRIGGERS GENERICOS -------------------------------
