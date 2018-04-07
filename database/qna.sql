@@ -1,20 +1,25 @@
+DROP TYPE IF EXISTS notification_message CASCADE;
+DROP TYPE IF EXISTS user_type CASCADE;
 DROP TABLE IF EXISTS topicTag CASCADE;
 DROP TABLE IF EXISTS questionTag CASCADE;
 DROP TABLE IF EXISTS tag CASCADE;
-DROP TABLE IF EXISTS notificationFollow CASCADE;
-DROP TABLE IF EXISTS notificationAnswer CASCADE;
+DROP TABLE IF EXISTS notification CASCADE;
+DROP TABLE IF EXISTS notificationFollow CASCADE; --depois apagar isto
+DROP TABLE IF EXISTS notificationAnswer CASCADE; --depois apagar isto
 DROP TABLE IF EXISTS vote CASCADE;
 DROP TABLE IF EXISTS followQuestion CASCADE;
 DROP TABLE IF EXISTS followTopic CASCADE;
-DROP TABLE IF EXISTS reportAnswer CASCADE;
-DROP TABLE IF EXISTS reportQuestion CASCADE;
+DROP TABLE IF EXISTS report CASCADE;
+DROP TABLE IF EXISTS reportAnswer CASCADE; --depois apagar isto
+DROP TABLE IF EXISTS reportQuestion CASCADE; --depois apagar isto
 DROP TABLE IF EXISTS answer CASCADE;
 DROP TABLE IF EXISTS question CASCADE;
 DROP TABLE IF EXISTS topic CASCADE;
 DROP TABLE IF EXISTS "user" CASCADE;
 
---yo
+
 CREATE TYPE user_type AS ENUM ('NORMAL', 'MOD', 'ADMIN');
+CREATE TYPE notification_message AS ENUM ('A question you are following has new activity', 'Your question has a new answer');
 
 CREATE TABLE "user"(
   id SERIAL UNIQUE,
@@ -23,15 +28,17 @@ CREATE TABLE "user"(
   name TEXT NOT NULL,
   img TEXT NOT NULL,
   bio TEXT,
-  disable BOOLEAN DEFAULT FALSE NOT NULL,
-  type user_type NOT NULL
+  disabled BOOLEAN DEFAULT FALSE NOT NULL,
+  type user_type NOT NULL,
+  PRIMARY KEY(id)
 );
 
 CREATE TABLE topic(
   id SERIAL UNIQUE,
   name VARCHAR(30) NOT NULL UNIQUE,
   img TEXT NOT NULL,
-  disable BOOLEAN DEFAULT FALSE NOT NULL
+  disabled BOOLEAN DEFAULT FALSE NOT NULL,
+  PRIMARY KEY(id)
 );
 
 CREATE TABLE question(
@@ -42,7 +49,8 @@ CREATE TABLE question(
   long_message TEXT ,
   id_author INTEGER NOT NULL REFERENCES "user"(id) ON UPDATE CASCADE,
   id_topic INTEGER NOT NULL REFERENCES topic(id) ON UPDATE CASCADE,
-  disable BOOLEAN DEFAULT FALSE NOT NULL
+  disabled BOOLEAN DEFAULT FALSE NOT NULL,
+  PRIMARY KEY(id)
 );
 
 CREATE TABLE answer(
@@ -52,9 +60,20 @@ CREATE TABLE answer(
   message TEXT NOT NULL,
   id_author INTEGER NOT NULL REFERENCES "user"(id) ON UPDATE CASCADE,
   id_question INTEGER NOT NULL REFERENCES question(id) ON UPDATE CASCADE,
-  disable BOOLEAN DEFAULT FALSE NOT NULL
+  disabled BOOLEAN DEFAULT FALSE NOT NULL,
+  PRIMARY KEY(id)
 );
 
+CREATE TABLE report(
+  id SERIAL UNIQUE,
+  reason TEXT NOT NULL,
+  id_reporting_user INTEGER NOT NULL REFERENCES "user"(id) ON UPDATE CASCADE,
+  id_reported_question INTEGER REFERENCES question(id) ON UPDATE CASCADE,
+  id_reported_answer INTEGER  REFERENCES answer(id) ON UPDATE CASCADE,
+  PRIMARY KEY(id),
+  CONSTRAINT "only one" CHECK ((((id_reported_answer IS NULL) AND (id_reported_question IS NOT NULL)) OR ((id_reported_answer IS NOT NULL) AND (id_reported_question IS NULL))))
+);
+/*
 CREATE TABLE reportQuestion(
   id SERIAL UNIQUE,
   reason TEXT NOT NULL,
@@ -68,6 +87,7 @@ CREATE TABLE reportAnswer(
   id_user INTEGER NOT NULL REFERENCES "user"(id) ON UPDATE CASCADE,
   id_answer INTEGER NOT NULL REFERENCES answer(id) ON UPDATE CASCADE
 );
+*/
 
 CREATE TABLE followTopic(
   id_user INTEGER NOT NULL REFERENCES "user"(id) ON UPDATE CASCADE,
@@ -87,15 +107,24 @@ CREATE TABLE vote(
     vote BOOLEAN NOT NULL,
     id_answer INTEGER  REFERENCES answer(id) ON UPDATE CASCADE,
     id_question INTEGER  REFERENCES question(id) ON UPDATE CASCADE,
+    PRIMARY KEY(id),
     CONSTRAINT "only one" CHECK ((((id_answer IS NULL) AND (id_question IS NOT NULL)) OR ((id_answer IS NOT NULL) AND (id_question IS NULL))))
 );
-
+CREATE TABLE notification(
+  id SERIAL UNIQUE,
+  notificated_user INTEGER NOT NULL REFERENCES "user"(id) ON UPDATE CASCADE,
+  id_question INTEGER NOT NULL REFERENCES question(id) ON UPDATE CASCADE,
+  message TEXT  NOT NULL,
+  seen BOOLEAN DEFAULT FALSE NOT NULL,
+  "date" TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL
+);
+/*
 CREATE TABLE notificationAnswer(
     id SERIAL UNIQUE,
     notificated_user INTEGER NOT NULL REFERENCES "user"(id) ON UPDATE CASCADE,
     id_question INTEGER NOT NULL REFERENCES question(id) ON UPDATE CASCADE,
     message TEXT  NOT NULL,
-    seen BOOLEAN DEFAULT FALSE NOT NULL, 
+    seen BOOLEAN DEFAULT FALSE NOT NULL,
     "date" TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL
 );
 
@@ -104,13 +133,14 @@ CREATE TABLE notificationFollow(
   	notificated_user INTEGER NOT NULL REFERENCES "user"(id) ON UPDATE CASCADE,
     id_question INTEGER NOT NULL REFERENCES question(id) ON UPDATE CASCADE,
     message TEXT NOT NULL,
-    seen BOOLEAN DEFAULT FALSE NOT NULL, 
+    seen BOOLEAN DEFAULT FALSE NOT NULL,
     "date" TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL
 );
-
+*/
 CREATE TABLE tag(
     id SERIAL UNIQUE,
-    tagName VARCHAR(20) NOT NULL
+    tagName VARCHAR(20) NOT NULL,
+    PRIMARY KEY(id)
 );
 
 CREATE TABLE questionTag(
@@ -128,7 +158,7 @@ CREATE TABLE topicTag(
 ------------------------------------------------------------------------
 -----------------------TRIGGERS and UDFs--------------------------------
 ------------------------------------------------------------------------
-
+/*--UNIQUE JA FAZ ISTO
 --TRIGGER01
 --trigger para vver se ja existe um user com esse mail
 CREATE OR REPLACE FUNCTION unique_email() RETURNS TRIGGER AS
@@ -136,7 +166,7 @@ $BODY$
 BEGIN
     IF EXISTS (SELECT * FROM "user" WHERE NEW.email = email) THEN
     RAISE EXCEPTION 'An account with that email is already taken!';
-    END IF; 
+    END IF;
     RETURN NEW;
 END;
 $BODY$
@@ -146,7 +176,7 @@ CREATE TRIGGER unique_user_email
     FOR EACH ROW
         EXECUTE PROCEDURE unique_email();
 
-
+--UNIQUE JA AZ ISTO
 --TRIGGER02
 --trigger para ver se existe um user com o mesmo user name
 CREATE OR REPLACE FUNCTION unique_username() RETURNS TRIGGER AS
@@ -163,7 +193,7 @@ CREATE TRIGGER unique_user_name
     BEFORE INSERT OR UPDATE ON "user"
     FOR EACH ROW
         EXECUTE PROCEDURE unique_username();
-
+*/
 
 --TRIGGER03
 --TRIGER PARA CERTEFICAR QUE UM USER SÓ PODE FAZER UM UP/DOWNVOTE POR PERGUNTA/RESPOSTA
@@ -187,15 +217,15 @@ CREATE TRIGGER only_one_vote
 CREATE OR REPLACE FUNCTION update_karma_question() RETURNS TRIGGER AS
 $BODY$
 BEGIN
-    IF NEW.vote = TRUE THEN 
+    IF NEW.vote = TRUE THEN
         UPDATE question SET karma = karma + 1
-        WHERE id = NEW.id_question;    
+        WHERE id = NEW.id_question;
         RETURN NEW;
-    ELSE 
+    ELSE
         UPDATE question SET karma = karma - 1
-        WHERE id = NEW.id_question;    
+        WHERE id = NEW.id_question;
         RETURN NEW;
-    END IF; 
+    END IF;
 END;
 $BODY$
 LANGUAGE plpgsql;
@@ -210,15 +240,15 @@ CREATE TRIGGER update_karma_question
 CREATE OR REPLACE FUNCTION update_karma_answer() RETURNS TRIGGER AS
 $BODY$
 BEGIN
-    IF NEW.vote = TRUE THEN 
+    IF NEW.vote = TRUE THEN
         UPDATE answer SET karma = karma + 1
-        WHERE id = NEW.id_answer;    
+        WHERE id = NEW.id_answer;
         RETURN NEW;
-    ELSE 
+    ELSE
         UPDATE answer SET karma = karma - 1
-        WHERE id = NEW.id_answer;    
+        WHERE id = NEW.id_answer;
         RETURN NEW;
-    END IF; 
+    END IF;
 END;
 $BODY$
 LANGUAGE plpgsql;
@@ -262,3 +292,6 @@ CREATE TRIGGER only_one_follow_question
     BEFORE INSERT ON followQuestion
     FOR EACH ROW
         EXECUTE PROCEDURE only_one_follow_question();
+
+--FAZER TRIGER PARA GERAR NOTIFICAOES
+--FAZER TRIGGER PARA UPDATE EM SEEN DAS NOTIFICACOES
