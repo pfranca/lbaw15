@@ -10,9 +10,17 @@ function loadingModals() {
   if ($("#modals").hasClass('login')) {
     $.get('html/loginModals.html', function(result) {
       $('#modals').append(result);
+      $.getScript("js/LoginValidate.js");
+      if (window.location.href.indexOf('login') != -1) {
+        $('#loginModal').modal("show");
+      }
+      else if (window.location.href.indexOf('register')!= -1)
+      {
+        $("#registerModal").modal("show");
+      }
     });
+    console.log("login");
 
-    $.getScript("js/LoginValidate.js");
   };
   if ($("#modals").hasClass('submitQuestion')) {
     $.get('html/submitQuestionModal.html', function(result) {
