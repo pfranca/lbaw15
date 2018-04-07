@@ -1,81 +1,79 @@
 ---- Insert User 
 
-INSERT INTO "user"(id,username,email,name,img,bio,disable,type) VALUES (1,'DiogoaCunha', 'diogoalmeida@gmail.com','diogo','diogo.png','Im fine',false,'ADMIN');
-INSERT INTO "user"(id,username,email,name,img,bio,disable,type) VALUES (2,'martaTorgal', 'marta@gmail.com','Marta Torgal','marta.png','Im always ok!!',false,'ADMIN');
-INSERT INTO "user"(id,username,email,name,img,bio,disable,type) VALUES (3,'tibas', 'tibas94@gmail.com','Jose Marques','tibas.png','I like to eat icecream with my forehead',false,'ADMIN');
-INSERT INTO "user"(id,username,email,name,img,bio,disable,type) VALUES (4,'franza', 'pedro.franca.1994@gmail.com','Pedro Franca','franza.png','if I answered your question it is prolly wrong',false,'ADMIN');
-INSERT INTO "user"(id,username,email,name,img,bio,disable,type) VALUES (5,'jeff', 'jeff98@gmail.com','Jeff Erson','default.png','MY NAME IS JEFFF',false,'NORMAL');
-INSERT INTO "user"(id,username,email,name,img,bio,disable,type) VALUES (6,'potus', 'therealdonaldtrump@gmail.com','Donald Trump','potus.png','Imma build a wall',false,'NORMAL');
-INSERT INTO "user"(id,username,email,name,img,bio,disable,type) VALUES (7,'johnSnow85', 'yoyo@gmail.com','MANEL','default.png','winter is comming,false',false,'NORMAL');
-INSERT INTO "user"(id,username,email,name,img,bio,disable,type) VALUES (8,'throwaway1223312', 'esum@burro.com','o anonimo','default.png','',false,'NORMAL');
-INSERT INTO "user"(id,username,email,name,img,bio,disable,type) VALUES (9,'quinhas', 'maria@gmail.com','Quinhas POmba','default.png','Universidade da vida',false,'NORMAL');
-INSERT INTO "user"(id,username,email,name,img,bio,disable,type) VALUES (10,'Max', 'maxc@gmail.com','Max Caulfield','lis.png','Life is... weird',false,'NORMAL');
+INSERT INTO "user"(id,username,email,name,img,bio,type) VALUES (1,'DiogoaCunha', 'diogoalmeida@gmail.com','diogo','diogo.png','Im fine','ADMIN');
+INSERT INTO "user"(id,username,email,name,img,bio,type) VALUES (2,'martaTorgal', 'marta@gmail.com','Marta Torgal','marta.png','Im always ok!!','ADMIN');
+INSERT INTO "user"(id,username,email,name,img,bio,type) VALUES (3,'tibas', 'tibas94@gmail.com','Jose Marques','tibas.png','I like to eat icecream with my forehead','ADMIN');
+INSERT INTO "user"(id,username,email,name,img,bio,type) VALUES (4,'franza', 'pedro.franca.1994@gmail.com','Pedro Franca','franza.png','if I answered your question it is prolly wrong','ADMIN');
+INSERT INTO "user"(id,username,email,name,img,bio,type) VALUES (5,'jeff', 'jeff98@gmail.com','Jeff Erson','default.png','MY NAME IS JEFFF','NORMAL');
+INSERT INTO "user"(id,username,email,name,img,bio,type) VALUES (6,'potus', 'therealdonaldtrump@gmail.com','Donald Trump','potus.png','Imma build a wall','NORMAL');
+INSERT INTO "user"(id,username,email,name,img,bio,type) VALUES (7,'johnSnow85', 'yoyo@gmail.com','MANEL','default.png','winter is comming,false','NORMAL');
+INSERT INTO "user"(id,username,email,name,img,bio,type) VALUES (8,'throwaway1223312', 'esum@burro.com','o anonimo','default.png','','NORMAL');
+INSERT INTO "user"(id,username,email,name,img,bio,type) VALUES (9,'quinhas', 'maria@gmail.com','Quinhas POmba','default.png','Universidade da vida','NORMAL');
+INSERT INTO "user"(id,username,email,name,img,bio,type) VALUES (10,'Max', 'maxc@gmail.com','Max Caulfield','lis.png','Life is... weird','NORMAL');
 
 ---- Insert Topic 
 
-INSERT INTO topic(id,name,img,disable) VALUES (1,'Sports','1.jpg',false);
-INSERT INTO topic(id,name,img,disable) VALUES (2,'Music','2.jpeg',false);
-INSERT INTO topic(id,name,img,disable) VALUES (3,'Fashion','3.jpeg',false);
-INSERT INTO topic(id,name,img,disable) VALUES (4,'IT','4.jpg',false);
-INSERT INTO topic(id,name,img,disable) VALUES (5,'Math&Science','5.jpg',false);
-INSERT INTO topic(id,name,img,disable) VALUES (6,'Food&Nutricion','6.jpg',false);
-INSERT INTO topic(id,name,img,disable) VALUES (7,'History','7.jpg',false);
-INSERT INTO topic(id,name,img,disable) VALUES (8,'Random','8.png',false);
+INSERT INTO topic(id,name,img) VALUES (1,'Sports','1.jpg');
+INSERT INTO topic(id,name,img) VALUES (2,'Music','2.jpeg');
+INSERT INTO topic(id,name,img) VALUES (3,'Fashion','3.jpeg');
+INSERT INTO topic(id,name,img) VALUES (4,'IT','4.jpg');
+INSERT INTO topic(id,name,img) VALUES (5,'Math&Science','5.jpg');
+INSERT INTO topic(id,name,img) VALUES (6,'Food&Nutricion','6.jpg');
+INSERT INTO topic(id,name,img) VALUES (7,'History','7.jpg');
+INSERT INTO topic(id,name,img) VALUES (8,'Random','8.png');
 
 
 ---- Insert Question 
 
-INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic,disable) VALUES (1,now(),8,'Who is the greatest tennis player of all time?', 'The one who has the most titles',1,1,false);
-INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic,disable) VALUES (2,now(),1,'Can I own an airsoft replica?', 'What are the airsoft laws in Portugal?',4,1,false);
-INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic,disable) VALUES (3,now(),4,'Why do people like soccer so much?', 'it is a stupid sport, a bunch of guys running arround a ball, what is the magic to it?',5,1,false);
-INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic,disable) VALUES (4,now(),8,'Who is the greatest tennis player of all time?', 'The one who has the most titles',5,1,false);
-INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic,disable) VALUES (5,now(),15,'Who sing hit me baby one more time?', '',3,2,false);
-INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic,disable) VALUES (6,now(),0,'Eletro song that goes like...', 'what is the nome of that song that goes piri priri bam bum badadadadadad bish bash bosh',3,2,false);
-INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic,disable) VALUES (7,now(),3,'who, in your opinion is the most fashion savy US president?', '',6,3,false);
-INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic,disable) VALUES (8,now(),9000,'How do you create database indexes?', 'PLEASE HELP ME',4,4,false);
-INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic,disable) VALUES (9,now(),7,'What programing lenguage is the best to start?', '',9,4,false);
-INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic,disable) VALUES (10,now(),2,'I deleted SYSTEM32 HELP!!', 'Some guy in the inetrnet told me that my computer would run faste if i deleted system 32, now my computer wont turn on, what should i do? ',8,4,false);
-INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic,disable) VALUES (11,now(),10,'2+2?', '',6,5,false);
-INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic,disable) VALUES (12,now(),0,'How yo integrate?', 'I have my math exam tomorrow and need to know to to integrate,thanks.',4,5,false);
-INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic,disable) VALUES (13,now(),4,'If I look to a folar will I be out of ketosys?', '',4,6,false);
-INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic,disable) VALUES (14,now(),5,'In your opinio what is the best food ever?', '',10,6,false);
-INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic,disable) VALUES (15,now(),4,'ShouLD i DRINK BLEACH?', 'I am playing this blue whale game and...' ,8,8,false);
-INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic,disable) VALUES (16,now(),10,'Best video game you ever played?', '' ,5,8,false);
-INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic,disable) VALUES (17,now(),7,'What is your favorite household item?', '' ,2,8,false);
-INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic,disable) VALUES (18,now(),500,'If a girafe could talk what would it say?', '' ,3,8,false);
-INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic,disable) VALUES (19,now(),28,'What is the best pick up line you know?', '' ,9,8,false);
-
-
-
------Insert Answer
-
-INSERT INTO answer(id,date,karma,message,id_author,id_question,disable) VALUES (1,now(),7,'The greatest tennins player is Roger Federer!!! Check it on google mate.',6,1,false);
-INSERT INTO answer(id,date,karma,message,id_author,id_question,disable) VALUES (2,now(),0,'your mom',3,1,false);
-INSERT INTO answer(id,date,karma,message,id_author,id_question,disable) VALUES (3,now(),2,'You need to be federated and you need to have your replica paint yellow or red.',5,2,false);
-INSERT INTO answer(id,date,karma,message,id_author,id_question,disable) VALUES (4,now(),2,'I think it is salavdor sobral',6,5,false);
-INSERT INTO answer(id,date,karma,message,id_author,id_question,disable) VALUES (5,now(),7,'daaaaah, it is from ACDC',2,6,false);
-INSERT INTO answer(id,date,karma,message,id_author,id_question,disable) VALUES (6,now(),2,'MARCELO REBELO DE SOUSA CRL',6,7,false);
-INSERT INTO answer(id,date,karma,message,id_author,id_question,disable) VALUES (7,now(),15,'SAAAAAAAAAAAAME, HELP PLS',6,8,false);
-INSERT INTO answer(id,date,karma,message,id_author,id_question,disable) VALUES (8,now(),8,'So ez, n00b',2,8,false);
-INSERT INTO answer(id,date,karma,message,id_author,id_question,disable) VALUES (9,now(),0,'You need to read the class slides bro',4,8,false);
-INSERT INTO answer(id,date,karma,message,id_author,id_question,disable) VALUES (10,now(),500,':(',9,8,false);
-INSERT INTO answer(id,date,karma,message,id_author,id_question,disable) VALUES (11,now(),1,'4',6,11,false);
-INSERT INTO answer(id,date,karma,message,id_author,id_question,disable) VALUES (12,now(),68,'5',9,11,false);
-INSERT INTO answer(id,date,karma,message,id_author,id_question,disable) VALUES (13,now(),0,'Vegan food 4life',6,14,false);
-INSERT INTO answer(id,date,karma,message,id_author,id_question,disable) VALUES (14,now(),10,'T-bone',1,14,false);
-INSERT INTO answer(id,date,karma,message,id_author,id_question,disable) VALUES (15,now(),5000,'FRANCESINHA RAÇA MESTRE',2,14,false);
-INSERT INTO answer(id,date,karma,message,id_author,id_question,disable) VALUES (16,now(),15,'Pasta',3,14,false);
-INSERT INTO answer(id,date,karma,message,id_author,id_question,disable) VALUES (17,now(),8,'Ceaser salad',4,14,false);
-INSERT INTO answer(id,date,karma,message,id_author,id_question,disable) VALUES (18,now(),10,'I like eggs ',5,14,false);
+INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic) VALUES (1,now(),8,'Who is the greatest tennis player of all time?', 'The one who has the most titles',1,1);
+INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic) VALUES (2,now(),1,'Can I own an airsoft replica?', 'What are the airsoft laws in Portugal?',4,1);
+INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic) VALUES (3,now(),4,'Why do people like soccer so much?', 'it is a stupid sport, a bunch of guys running arround a ball, what is the magic to it?',5,1);
+INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic) VALUES (4,now(),8,'Who is the greatest tennis player of all time?', 'The one who has the most titles',5,1);
+INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic) VALUES (5,now(),15,'Who sing hit me baby one more time?', '',3,2);
+INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic) VALUES (6,now(),0,'Eletro song that goes like...', 'what is the nome of that song that goes piri priri bam bum badadadadadad bish bash bosh',3,2);
+INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic) VALUES (7,now(),3,'who, in your opinion is the most fashion savy US president?', '',6,3);
+INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic) VALUES (8,now(),9000,'How do you create database indexes?', 'PLEASE HELP ME',4,4);
+INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic) VALUES (9,now(),7,'What programing lenguage is the best to start?', '',9,4);
+INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic) VALUES (10,now(),2,'I deleted SYSTEM32 HELP!!', 'Some guy in the inetrnet told me that my computer would run faste if i deleted system 32, now my computer wont turn on, what should i do? ',8,4);
+INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic) VALUES (11,now(),10,'2+2?', '',6,5);
+INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic) VALUES (12,now(),0,'How yo integrate?', 'I have my math exam tomorrow and need to know to to integrate,thanks.',4,5);
+INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic) VALUES (13,now(),4,'If I look to a folar will I be out of ketosys?', '',4,6);
+INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic) VALUES (14,now(),5,'In your opinio what is the best food ever?', '',10,6);
+INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic) VALUES (15,now(),4,'ShouLD i DRINK BLEACH?', 'I am playing this blue whale game and...' ,8,8);
+INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic) VALUES (16,now(),10,'Best video game you ever played?', '' ,5,8);
+INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic) VALUES (17,now(),7,'What is your favorite household item?', '' ,2,8);
+INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic) VALUES (18,now(),500,'If a girafe could talk what would it say?', '' ,3,8);
+INSERT INTO question(id,date,karma,short_message,long_message,id_author,id_topic) VALUES (19,now(),28,'What is the best pick up line you know?', '' ,9,8);
 
 
 ----- Insert FollowQuestion
 
-INSERT INTO followQuestion(id_user,id_question) VALUES (1,11);
+INSERT INTO followQuestion(id_user,id_question) VALUES (1,14);
 INSERT INTO followQuestion(id_user,id_question) VALUES (8,15);
 INSERT INTO followQuestion(id_user,id_question) VALUES (5,7);
 INSERT INTO followQuestion(id_user,id_question) VALUES (6,3);
 
+
+-----Insert Answer
+
+INSERT INTO answer(id,date,karma,message,id_author,id_question) VALUES (1,now(),7,'The greatest tennins player is Roger Federer!!! Check it on google mate.',6,1);
+INSERT INTO answer(id,date,karma,message,id_author,id_question) VALUES (2,now(),0,'your mom',3,1);
+INSERT INTO answer(id,date,karma,message,id_author,id_question) VALUES (3,now(),2,'You need to be federated and you need to have your replica paint yellow or red.',5,2);
+INSERT INTO answer(id,date,karma,message,id_author,id_question) VALUES (4,now(),2,'I think it is salavdor sobral',6,5);
+INSERT INTO answer(id,date,karma,message,id_author,id_question) VALUES (5,now(),7,'daaaaah, it is from ACDC',2,6);
+INSERT INTO answer(id,date,karma,message,id_author,id_question) VALUES (6,now(),2,'MARCELO REBELO DE SOUSA CRL',6,7);
+INSERT INTO answer(id,date,karma,message,id_author,id_question) VALUES (7,now(),15,'SAAAAAAAAAAAAME, HELP PLS',6,8);
+INSERT INTO answer(id,date,karma,message,id_author,id_question) VALUES (8,now(),8,'So ez, n00b',2,8);
+INSERT INTO answer(id,date,karma,message,id_author,id_question) VALUES (9,now(),0,'You need to read the class slides bro',4,8);
+INSERT INTO answer(id,date,karma,message,id_author,id_question) VALUES (10,now(),500,':(',9,8);
+INSERT INTO answer(id,date,karma,message,id_author,id_question) VALUES (11,now(),1,'4',6,11);
+INSERT INTO answer(id,date,karma,message,id_author,id_question) VALUES (12,now(),68,'5',9,11);
+INSERT INTO answer(id,date,karma,message,id_author,id_question) VALUES (13,now(),0,'Vegan food 4life',6,14);
+INSERT INTO answer(id,date,karma,message,id_author,id_question) VALUES (14,now(),10,'T-bone',1,14);
+INSERT INTO answer(id,date,karma,message,id_author,id_question) VALUES (15,now(),5000,'FRANCESINHA RAÇA MESTRE',2,14);
+INSERT INTO answer(id,date,karma,message,id_author,id_question) VALUES (16,now(),15,'Pasta',3,14);
+INSERT INTO answer(id,date,karma,message,id_author,id_question) VALUES (17,now(),8,'Ceaser salad',4,14);
+INSERT INTO answer(id,date,karma,message,id_author,id_question) VALUES (18,now(),10,'I like eggs ',5,14);
 
 
 

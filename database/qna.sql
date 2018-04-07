@@ -73,21 +73,6 @@ CREATE TABLE report(
   PRIMARY KEY(id),
   CONSTRAINT "only one" CHECK ((((id_reported_answer IS NULL) AND (id_reported_question IS NOT NULL)) OR ((id_reported_answer IS NOT NULL) AND (id_reported_question IS NULL))))
 );
-/*
-CREATE TABLE reportQuestion(
-  id SERIAL UNIQUE,
-  reason TEXT NOT NULL,
-  id_user INTEGER NOT NULL REFERENCES "user"(id) ON UPDATE CASCADE,
-  id_question INTEGER NOT NULL REFERENCES question(id) ON UPDATE CASCADE
-);
-
-CREATE TABLE reportAnswer(
-  id SERIAL UNIQUE,
-  reason TEXT NOT NULL,
-  id_user INTEGER NOT NULL REFERENCES "user"(id) ON UPDATE CASCADE,
-  id_answer INTEGER NOT NULL REFERENCES answer(id) ON UPDATE CASCADE
-);
-*/
 
 CREATE TABLE followTopic(
   id_user INTEGER NOT NULL REFERENCES "user"(id) ON UPDATE CASCADE,
@@ -118,25 +103,8 @@ CREATE TABLE notification(
   seen BOOLEAN DEFAULT FALSE NOT NULL,
   "date" TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL
 );
-/*
-CREATE TABLE notificationAnswer(
-    id SERIAL UNIQUE,
-    notificated_user INTEGER NOT NULL REFERENCES "user"(id) ON UPDATE CASCADE,
-    id_question INTEGER NOT NULL REFERENCES question(id) ON UPDATE CASCADE,
-    message TEXT  NOT NULL,
-    seen BOOLEAN DEFAULT FALSE NOT NULL,
-    "date" TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL
-);
 
-CREATE TABLE notificationFollow(
-    id SERIAL UNIQUE,
-  	notificated_user INTEGER NOT NULL REFERENCES "user"(id) ON UPDATE CASCADE,
-    id_question INTEGER NOT NULL REFERENCES question(id) ON UPDATE CASCADE,
-    message TEXT NOT NULL,
-    seen BOOLEAN DEFAULT FALSE NOT NULL,
-    "date" TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL
-);
-*/
+
 CREATE TABLE tag(
     id SERIAL UNIQUE,
     tagName VARCHAR(20) NOT NULL,
@@ -195,7 +163,7 @@ CREATE TRIGGER unique_user_name
         EXECUTE PROCEDURE unique_username();
 */
 
---TRIGGER03
+--TRIGGER01
 --TRIGER PARA CERTEFICAR QUE UM USER SÓ PODE FAZER UM UP/DOWNVOTE POR PERGUNTA/RESPOSTA
 CREATE OR REPLACE FUNCTION only_one_vote() RETURNS TRIGGER AS
 $BODY$
@@ -212,7 +180,7 @@ CREATE TRIGGER only_one_vote
     FOR EACH ROW
         EXECUTE PROCEDURE only_one_vote();
 
---TRIGGER04
+--TRIGGER02
 --triger after insert on vote update karma question
 CREATE OR REPLACE FUNCTION update_karma_question() RETURNS TRIGGER AS
 $BODY$
@@ -235,7 +203,7 @@ CREATE TRIGGER update_karma_question
         EXECUTE PROCEDURE update_karma_question();
 
 
---TRIGGER05
+--TRIGGER03
 --triger after insert on vote update karma answer
 CREATE OR REPLACE FUNCTION update_karma_answer() RETURNS TRIGGER AS
 $BODY$
@@ -258,7 +226,7 @@ CREATE TRIGGER update_karma_answer
         EXECUTE PROCEDURE update_karma_answer();
 
 
---TRIGGER06
+--TRIGGER04
 --trigger apra ver se ja tas a adar follow a um topic
 CREATE OR REPLACE FUNCTION only_one_follow_topic() RETURNS TRIGGER AS
 $BODY$
@@ -276,12 +244,12 @@ CREATE TRIGGER only_one_follow_topic
         EXECUTE PROCEDURE only_one_follow_topic();
 
 
---TRIGGER07
+--TRIGGER05
 --trigger para ver se ja das follow a uma questao
 CREATE OR REPLACE FUNCTION only_one_follow_question() RETURNS TRIGGER AS
 $BODY$
 BEGIN
-    IF EXISTS (SELECT * FROM followQuestion WHERE NEW.id_user = id_user AND NEW.id_question = id_question ) THEN
+    IF EXISTS (SELECT * FROM followQuestion WHERE NEW.id_question = id_user AND NEW.id_question = id_question ) THEN
     RAISE EXCEPTION 'You are already following that Question.';
     END IF;
     RETURN NEW;
@@ -293,5 +261,34 @@ CREATE TRIGGER only_one_follow_question
     FOR EACH ROW
         EXECUTE PROCEDURE only_one_follow_question();
 
---FAZER TRIGER PARA GERAR NOTIFICAOES
---FAZER TRIGGER PARA UPDATE EM SEEN DAS NOTIFICACOES
+--TRIGGER06
+--trigger para gerar notificacao quando pergunta que user segue tem uma nova resposta
+CREATE OR REPLACE FUNCTION generate_notification_follow() RETURNS TRIGGER AS
+$BODY$
+BEGIN
+    INSERT INTO notification(notificated_user,id_question,message) 
+      (SELECT id_user, NEW.id_question, 'A question you are following has new activity' FROM followQuestion WHERE NEW.id_question = followQuestion.id_question );
+    RETURN NEW;
+END;
+$BODY$
+LANGUAGE plpgsql;
+CREATE TRIGGER generate_notification_follow
+    AFTER INSERT OR UPDATE ON answer
+    FOR EACH ROW
+        EXECUTE PROCEDURE generate_notification_follow();
+
+--TRIGGER07
+--trigger para gerar notificacao quando propria pergunta tem uma nova resposta
+CREATE OR REPLACE FUNCTION generate_notification_owner() RETURNS TRIGGER AS
+$BODY$
+BEGIN
+    INSERT INTO notification(notificated_user,id_question,message) 
+      (SELECT id_author, NEW.id_question, 'Your question has a new answer' FROM question WHERE id= NEW.id_question );
+    RETURN NEW;
+END;
+$BODY$
+LANGUAGE plpgsql;
+CREATE TRIGGER generate_notification_owner
+    AFTER INSERT OR UPDATE ON answer
+    FOR EACH ROW
+        EXECUTE PROCEDURE generate_notification_owner();
