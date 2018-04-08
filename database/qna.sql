@@ -1,5 +1,7 @@
 DROP TYPE IF EXISTS notification_message CASCADE;
 DROP TYPE IF EXISTS user_type CASCADE;
+DROP TABLE IF EXISTS badge CASCADE;
+DROP TABLE IF EXISTS userBadge CASCADE;
 DROP TABLE IF EXISTS topicTag CASCADE;
 DROP TABLE IF EXISTS questionTag CASCADE;
 DROP TABLE IF EXISTS tag CASCADE;
@@ -121,6 +123,20 @@ CREATE TABLE topicTag(
   id_topic INTEGER NOT NULL REFERENCES topic(id) ON UPDATE CASCADE,
  id_tag INTEGER NOT NULL REFERENCES tag(id) ON UPDATE CASCADE,
   PRIMARY KEY(id_topic, id_tag)
+);
+
+CREATE TABLE badge(
+  id SERIAL UNQIUE,
+  name TEXT NOT NULL,
+  img TEXT NOT NULL,
+  disable BOOLEAN DEFAULT FALSE NOT NULL,
+  PRIMARY KEY(id)
+);
+
+CREATE TABLE userBadge(
+  id_user INTEGER NOT NULL REFERENCES "user"(id) ON UPDATE CASCADE,
+  id_badge INTEGER NOT NULL REFERENCES badge(id) ON UPDATE CASCADE,
+  PRIMARY KEY(id_user, id_badge)
 );
 
 ------------------------------------------------------------------------
