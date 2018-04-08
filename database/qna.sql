@@ -6,14 +6,10 @@ DROP TABLE IF EXISTS topicTag CASCADE;
 DROP TABLE IF EXISTS questionTag CASCADE;
 DROP TABLE IF EXISTS tag CASCADE;
 DROP TABLE IF EXISTS notification CASCADE;
-DROP TABLE IF EXISTS notificationFollow CASCADE; --depois apagar isto
-DROP TABLE IF EXISTS notificationAnswer CASCADE; --depois apagar isto
 DROP TABLE IF EXISTS vote CASCADE;
 DROP TABLE IF EXISTS followQuestion CASCADE;
 DROP TABLE IF EXISTS followTopic CASCADE;
 DROP TABLE IF EXISTS report CASCADE;
-DROP TABLE IF EXISTS reportAnswer CASCADE; --depois apagar isto
-DROP TABLE IF EXISTS reportQuestion CASCADE; --depois apagar isto
 DROP TABLE IF EXISTS answer CASCADE;
 DROP TABLE IF EXISTS question CASCADE;
 DROP TABLE IF EXISTS topic CASCADE;
@@ -31,7 +27,7 @@ CREATE TABLE "user"(
   img TEXT NOT NULL,
   bio TEXT,
   disabled BOOLEAN DEFAULT FALSE NOT NULL,
-  type user_type NOT NULL,
+  type user_type DEFAULT 'NORMAL' NOT NULL,
   PRIMARY KEY(id)
 );
 
@@ -126,7 +122,7 @@ CREATE TABLE topicTag(
 );
 
 CREATE TABLE badge(
-  id SERIAL UNQIUE,
+  id SERIAL UNIQUE,
   name TEXT NOT NULL,
   img TEXT NOT NULL,
   disable BOOLEAN DEFAULT FALSE NOT NULL,
@@ -142,43 +138,6 @@ CREATE TABLE userBadge(
 ------------------------------------------------------------------------
 -----------------------TRIGGERS and UDFs--------------------------------
 ------------------------------------------------------------------------
-/*--UNIQUE JA FAZ ISTO
---TRIGGER01
---trigger para vver se ja existe um user com esse mail
-CREATE OR REPLACE FUNCTION unique_email() RETURNS TRIGGER AS
-$BODY$
-BEGIN
-    IF EXISTS (SELECT * FROM "user" WHERE NEW.email = email) THEN
-    RAISE EXCEPTION 'An account with that email is already taken!';
-    END IF;
-    RETURN NEW;
-END;
-$BODY$
-LANGUAGE plpgsql;
-CREATE TRIGGER unique_user_email
-    BEFORE INSERT OR UPDATE ON "user"
-    FOR EACH ROW
-        EXECUTE PROCEDURE unique_email();
-
---UNIQUE JA AZ ISTO
---TRIGGER02
---trigger para ver se existe um user com o mesmo user name
-CREATE OR REPLACE FUNCTION unique_username() RETURNS TRIGGER AS
-$BODY$
-BEGIN
-    IF EXISTS (SELECT * FROM "user" WHERE NEW.username = username) THEN
-    RAISE EXCEPTION 'An account with that username is already taken!';
-    END IF;
-    RETURN NEW;
-END;
-$BODY$
-LANGUAGE plpgsql;
-CREATE TRIGGER unique_user_name
-    BEFORE INSERT OR UPDATE ON "user"
-    FOR EACH ROW
-        EXECUTE PROCEDURE unique_username();
-*/
-
 --TRIGGER01
 --TRIGER PARA CERTEFICAR QUE UM USER SÓ PODE FAZER UM UP/DOWNVOTE POR PERGUNTA/RESPOSTA
 CREATE OR REPLACE FUNCTION only_one_vote() RETURNS TRIGGER AS
