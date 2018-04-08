@@ -1,3 +1,8 @@
+DROP INDEX IF EXISTS textsearch_idx CASCADE;
+DROP INDEX IF EXISTS idx_idtopicquestion CASCADE;
+DROP INDEX IF EXISTS idx_iddisabledquestion CASCADE;
+DROP INDEX IF EXISTS idx_authoridquestion CASCADE;
+DROP INDEX IF EXISTS usersearch_idx CASCADE;
 DROP TYPE IF EXISTS notification_message CASCADE;
 DROP TYPE IF EXISTS user_type CASCADE;
 DROP TABLE IF EXISTS badge CASCADE;
@@ -267,3 +272,26 @@ CREATE TRIGGER generate_notification_owner
     AFTER INSERT OR UPDATE ON answer
     FOR EACH ROW
         EXECUTE PROCEDURE generate_notification_owner();
+
+------------------------------------------------------------------------
+-----------------------INDEXES--------------------------------
+------------------------------------------------------------------------
+/*
+ALTER TABLE "question" ADD COLUMN textsearchable_index_col tsvector;
+UPDATE "question" SET textsearchable_index_col =
+     to_tsvector('english', coalesce(short_message,'') || ' ' || coalesce(long_message,''));
+
+CREATE INDEX textsearch_idx ON "question" USING GIN (textsearchable_index_col);
+
+CREATE INDEX idx_idtopicquestion ON "question" USING hash(id_topic);
+
+CREATE INDEX idx_iddisabledquestion ON "question" USING  hash(id_topic);
+
+CREATE UNIQUE INDEX idx_authoridquestion ON "question" (id_author);
+
+ALTER TABLE "user" ADD COLUMN usersearchable_index_col tsvector;
+UPDATE "user" SET usersearchable_index_col =
+     to_tsvector('english', coalesce(name,'') || ' ' || coalesce(username,''));
+
+CREATE INDEX usersearch_idx ON "user" USING GIN (usersearchable_index_col);
+*/
