@@ -1,0 +1,24 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class PagesController extends Controller
+{
+    public function home(){
+		return view('pages.home');
+	}
+
+	public function profile(){
+		return view('pages.profile');
+	}
+
+	public function topic(){
+		return view('pages.topic');
+	}
+
+	public function question(){
+		return view('pages.question');
+	}
+}
