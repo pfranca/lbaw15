@@ -15,6 +15,8 @@ Route::get('/', 'PagesController@home');
 Route::get('/profile', 'PagesController@profile');
 Route::get('/topic', 'PagesController@topic');
 Route::get('/question', 'PagesController@question');
+
+Route::resource('/', 'TopicsController');
 /*
 // Cards
 Route::get('cards', 'CardController@list');
