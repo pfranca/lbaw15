@@ -15,6 +15,7 @@ class TopicsController extends Controller
     public function index()
     {
         $topics = Topic::all();
+        // $topics = Topic::orderBy('name','desc')->paginate(4);
         return view('pages.home')->with('topics',$topics);
     }
 

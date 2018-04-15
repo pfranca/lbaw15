@@ -5,7 +5,7 @@
 
 <nav id="breadcrumbs" class="fixed-top" aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="indexLogged.html">Home</a></li>
+      <li class="breadcrumb-item"><a href="{{asset('/')}}">Home</a></li>
       <li class="breadcrumb-item active" aria-current="page">Profile</li>
       <li class="ml-auto">
         <a href="#" data-toggle="modal" data-target="#questionModal" data-dismiss="modal">Submit Question</a>

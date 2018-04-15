@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Laravel\Socialite\Facades\Socialite;
+use Auth;
+use App\User;
 
 class LoginController extends Controller
 {
@@ -25,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/cards';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -36,4 +39,43 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    /**
+     * Redirect the user to the Google authentication page.
+     *
+     * @return Response
+     */
+    public function redirectToProvider()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    /**
+     * Obtain the user information from Google.
+     *
+     * @return Response
+     */
+    public function handleProviderCallback()
+    {
+        $user = Socialite::driver('google')->stateless()->user();
+        //$authUser = $this->findOrCreateUser($user, 'google');
+        //Auth::login($authUser, true);
+        return redirect($this->redirectTo);
+    }
+
+    public function findOrCreate($user, $provider){
+        $authUser = User::where('id_google', $user->id_google)->first();
+        if($authUser){
+            return $authUser;
+        }
+        return User::create([
+            'username'=>$user->name,
+            'email'=>$user->email,
+            'name'=>$user->name,
+            'img'->$user->name,
+            'id_google'=>$user->id_google
+        ]);
+    }
+
+
 }

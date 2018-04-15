@@ -39,7 +39,7 @@ $('#form1').validate({
   },
   submitHandler: function(form) {
     console.log("ola"); // for demo
-    window.location.href = '../feed.html';
+    window.location.href = '#';
     return false;
   }
 
@@ -83,7 +83,7 @@ $('#form2').validate({
   },
   submitHandler: function(form) {
     console.log("ola"); // for demo
-    window.location.href = 'feed.html';
+    window.location.href = '#';
     return false;
   }
 

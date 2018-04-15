@@ -14,8 +14,8 @@ class PagesController extends Controller
 		return view('pages.profile');
 	}
 
-	public function topic(){
-		return view('pages.topic');
+	public function topic($topic_name){
+		return view('pages.topic')->with('topic_name', $topic_name);
 	}
 
 	public function question(){

@@ -4,14 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Topic extends Model
+class Answer extends Model
 {
     // Table name
-    protected $table = 'topic';
+    protected $table = 'answer';
 
     // Primary key
     public $primaryKey = 'id';
-
-    //Timestamps 
-   //public $timestamps = true;
 }

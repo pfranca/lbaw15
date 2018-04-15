@@ -12,11 +12,17 @@
 */
 
 Route::get('/', 'PagesController@home');
-Route::get('/profile', 'PagesController@profile');
-Route::get('/topic', 'PagesController@topic');
-Route::get('/question', 'PagesController@question');
+Route::get('/user', 'PagesController@profile');
+//Route::get('/topic/{topic_name}', 'PagesController@topic');
+//Route::get('/topic/{topic_name}/question/{id}', 'PagesController@question');
 
 Route::resource('/', 'TopicsController');
+Route::get('/topic/{topic_name}', 'QuestionsController@index');
+Route::get('/topic/{topic_name}/question/{id}', 'AnswersController@index');
+//Route::resource('/topic/{topic_name}', 'TopicsController');
+
+Route::get('auth/google', 'Auth\LoginController@redirectToProvider');
+Route::get('auth/google/callback', 'Auth\LoginController@handleProviderCallback');
 /*
 // Cards
 Route::get('cards', 'CardController@list');
@@ -37,3 +43,6 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
 */
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

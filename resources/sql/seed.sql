@@ -33,6 +33,7 @@ CREATE TABLE "user"(
   bio TEXT,
   disabled BOOLEAN DEFAULT FALSE NOT NULL,
   type user_type DEFAULT 'NORMAL' NOT NULL,
+  id_google TEXT UNIQUE,
   PRIMARY KEY(id)
 );
 
@@ -317,7 +318,11 @@ INSERT INTO question(date,karma,short_message,long_message,id_author,id_topic) V
 INSERT INTO question(date,karma,short_message,long_message,id_author,id_topic) VALUES (now(),7,'What is your favorite household item?', '' ,2,8);
 INSERT INTO question(date,karma,short_message,long_message,id_author,id_topic) VALUES (now(),500,'If a girafe could talk what would it say?', '' ,3,8);
 INSERT INTO question(date,karma,short_message,long_message,id_author,id_topic) VALUES (now(),28,'What is the best pick up line you know?', '' ,9,8);
-
+INSERT INTO question(date,karma,short_message,long_message,id_author,id_topic) VALUES (now(),50,'mais uma de desporto?', 'bue cenas',7,1);
+INSERT INTO question(date,karma,short_message,long_message,id_author,id_topic) VALUES (now(),5,'mais uma de desporto?', 'bue cenas',1,1);
+INSERT INTO question(date,karma,short_message,long_message,id_author,id_topic) VALUES (now(),530,'mais uma de desporto?', 'bue cenas',7,1);
+INSERT INTO question(date,karma,short_message,long_message,id_author,id_topic) VALUES (now(),23,'mais uma de desporto?', 'bue cenas',2,1);
+INSERT INTO question(date,karma,short_message,long_message,id_author,id_topic) VALUES (now(),4323,'mais uma de desporto?', 'bue cenas',7,1);
 ----- Insert FollowQuestion
 
 INSERT INTO followQuestion(id_user,id_question) VALUES (1,14);

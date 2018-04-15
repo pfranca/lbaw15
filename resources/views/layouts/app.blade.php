@@ -20,6 +20,8 @@
   
 </head>
 
+@include('partials.loginModal')
+
 <body id="index" data-spy="scroll" data-target=".navbar" data-offset="50">
 
   <div id="modals" class='login'>
@@ -27,7 +29,7 @@
   </div>
 
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Cooperative Q & A</a>
+    <a class="navbar-brand" href="{{asset('/')}}">Cooperative Q & A</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
     <span class="navbar-toggler-icon"></span>
       </button>
@@ -45,7 +47,29 @@
           <a id="TopicsNavBar" class="nav-link">TOPICS</a>
         </li>
         <li class="nav-item">
-          <a id="loginButton" class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">LOGIN</a>
+            @guest
+                 <a id="loginButton" class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">LOGIN</a>
+            @else
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                    {{ Auth::user()->name }} <span class="caret"></span>
+                </a>
+
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>
+                </ul>
+            </li>
+        @endguest
         </li>
       </ul>
     </div>
@@ -59,3 +83,5 @@
 </footer>
 
 </html>
+                        
+                   

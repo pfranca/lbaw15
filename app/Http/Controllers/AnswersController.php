@@ -6,29 +6,25 @@ use Illuminate\Http\Request;
 use App\Question;
 use App\Topic;
 use App\Answer;
-use DB;
 
-class QuestionsController extends Controller
+class AnswersController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($topic_name)
+    public function index($topic_name, $id)
     {
-        $topic = Topic::where('name', $topic_name)->get();
-        $questions = Question::where('id_topic', $topic[0]->id)->paginate(5);
-        $answers = Answer::All();
-       // dd($answers);
-        // $topics = Topic::orderBy('name','desc')->paginate(4);
-        //$questions = Question::orderBy('karma','desc'); 
+        
+        $question = Question::find($id);
+        $answers = Answer::where('id_question', $id)->get();
         $data=array(
             'topic_name' => $topic_name,
-            'questions' => $questions,
+            'question' => $question,
             'answers' => $answers
         );
-       return view('pages.topic')->with($data);
+        return view('pages.question')->with($data);
     }
 
     /**
@@ -60,7 +56,7 @@ class QuestionsController extends Controller
      */
     public function show($id)
     {
-      // return Question::find($id);
+        //
     }
 
     /**

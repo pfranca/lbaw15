@@ -295,6 +295,10 @@ h3, h4 {
   margin: 5px 0 5px 0;
 }
 
+#btnGoogle{
+  background-image: url('../images/btn_google_signin_light_normal_web.png');
+}
+
 .btn {
   margin-bottom: 6%;
 }

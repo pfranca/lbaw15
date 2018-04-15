@@ -3,7 +3,7 @@
 
       <div class="col-sm-12 col-md-4 col-lg-3">
         <div class="card mb-4">
-          <div class="card-image text-center" onclick="window.location.href='topic.html'">
+          <div class="card-image text-center" onclick="window.location.href='{{asset("topic/". $topic->name)}}'">
             <img class="card-img-top" src="{{asset("images/". $topic->img)}}" alt="{{$topic->img}}">
             <h5 class="card-title name-top text-dark font-weight-bold">{{$topic->name}}</h5>
           </div>
@@ -15,8 +15,9 @@
           </div>
         </div>
       </div>
-
+      
     @endforeach
+   
   @else
     <p>No Topics found!</b>
   @endif
