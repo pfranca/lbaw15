@@ -33,7 +33,6 @@ CREATE TABLE "user"(
   bio TEXT,
   disabled BOOLEAN DEFAULT FALSE NOT NULL,
   type user_type DEFAULT 'NORMAL' NOT NULL,
-  id_google TEXT UNIQUE,
   PRIMARY KEY(id)
 );
 
