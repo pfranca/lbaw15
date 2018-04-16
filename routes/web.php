@@ -46,3 +46,31 @@ Route::post('register', 'Auth\RegisterController@register');
 //Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/admin/topics', function(){
+	return view('pages.adminTopic');
+});
+
+Route::get('/admin/questions', function(){
+	return view('pages.adminQuestion');
+});
+
+Route::get('/admin/answers', function(){
+	return view('pages.adminAnswer');
+});
+
+Route::get('/admin/moderators', function(){
+	return view('pages.adminModerator');
+});
+
+Route::get('/admin/users', function(){
+	return view('pages.adminUser');
+});
+
+Route::get('/admin/reports', function(){
+	return view('pages.adminReport');
+});
+
+
+
+

@@ -12,8 +12,7 @@
   
               <div class="row">
                 <div class="form-group ml-auto">
-                  <a href="{{ route('login') }}"><button id="btnGoogle"class="btnModals col-md-12 col-lg-3" type="button"></i></button></a>
-                 <!-- <button class="btnModals col-md-12 col-lg-3" type="button"><i class="fab fa-facebook-f"></i>acebook</button> -->
+              
                 </div>
               </div>
   

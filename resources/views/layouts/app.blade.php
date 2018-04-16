@@ -15,6 +15,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <script defer src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script defer src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+  <script defer src="{{asset('js/admin.js')}}"></script>
+    <!-- Table -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
 
   <script src="{{asset('js/q&a.js')}}" defer></script>
   
