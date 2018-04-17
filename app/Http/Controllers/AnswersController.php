@@ -17,7 +17,7 @@ class AnswersController extends Controller
     public function index($topic_name, $id)
     {
         
-        $question = Question::\($id);
+        $question = Question::find($id);
         $answers = Answer::where('id_question', $id)->get();
         $data=array(
             'topic_name' => $topic_name,

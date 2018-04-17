@@ -47,7 +47,9 @@ Route::post('register', 'Auth\RegisterController@register');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/admin/topics', 'Admin\AdminController@getTopics');
+Route::get('/admin/topics',  function(){
+	return view('pages.adminTopic');
+});
 
 Route::get('/admin/questions', function(){
 	return view('pages.adminQuestion');
@@ -69,4 +71,4 @@ Route::get('/admin/reports', function(){
 	return view('pages.adminReport');
 });
 
-
+Route::get('/admin/getAlltopics', 'Admin\AdminController@getTopics');

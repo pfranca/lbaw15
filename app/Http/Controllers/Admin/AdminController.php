@@ -13,8 +13,8 @@ class AdminController extends Controller
 {
 
     public function getTopics(){
-        $topics = \DB::table('topic')->select('');
-        return view('pages.adminTopic',compact('topics'));
+        $topics = \DB::table('topic')->get();
+        return response()->json(['response' => $topics]);
     }
 
 }

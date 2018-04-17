@@ -5,7 +5,7 @@ var dataSet = [
     ["212","Fashion", "Yes" , "<img id=\"removeBtn\" class=\" mouse-pointer img-fluid nav-img-profile \" src=\"../img/no.png\" alt=\"profilePic\" />"],
     ["412","Sports", "Yes" , "<img id=\"removeBtn\" class=\" mouse-pointer img-fluid nav-img-profile \" src=\"../img/no.png\" alt=\"profilePic\" />"],
     ["412","Ok", "Yes" , "<img id=\"removeBtn\" class=\" mouse-pointer img-fluid nav-img-profile \" src=\"../img/no.png\" alt=\"profilePic\" />"]
- ];
+ ]; 
 
 var dataSet2 = [
   ["Garrett Winters", "Accountant", "8422", "2011/07/25", "$170,750","$170,750", "<img id=\"removeBtn\" class=\" mouse-pointer img-fluid nav-img-profile \" src=\"../img/no.png\" alt=\"profilePic\" />"],
@@ -31,13 +31,17 @@ var dataSet5 = [
 
 
 $(document).ready(function() {
-
 //var topic_data = document.getElementsByName('topics-input').value;
+  
+$.get('/admin/getAlltopics', function(data){
+  var dataArray = [];
 
-
+  for(var i=0; i < data.response.length; i++) {
+    dataArray[i] = $.map(data.response[i], function(el) {return el});
+  }
   $('#theme').DataTable({
     //data: $('#topics-input').value,
-    data: dataSet,
+    data: dataArray,
     columns: [{
         title: "id"
       },
@@ -45,14 +49,17 @@ $(document).ready(function() {
         title: "name"
       },
       {
-        title: "image"
+        title: "img"
       },
       {
-        title: ""
+        title: "disabled"
       }
     ]
   });
 
+ });
+
+  
   $('#question').DataTable({
     data: dataSet2,
     columns: [{
