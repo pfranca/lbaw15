@@ -56,38 +56,54 @@ $.get('/admin/getAlltopics', function(data){
       }
     ]
   });
-
  });
 
-  
+ $.get('/admin/getAllquestions', function(data){
+  var dataArray = [];
+console.log(data.response);
+  for(var i=0; i < data.response.length; i++) {
+    dataArray[i] = $.map(data.response[i], function(el) {return el});
+  }
   $('#question').DataTable({
-    data: dataSet2,
+    data: dataArray,
     columns: [{
-        title: "message"
-      },
-      {
-        title: "karma"
+        title: "id"
       },
       {
         title: "date"
       },
       {
-        title: "reports"
+        title: "karma"
       },
       {
-        title: "follow"
+        title: "short_message"
       },
       {
-        title: "userID"
+        title: "long_message"
       },
       {
-        title: ""
+        title: "id_author"
+      },
+      {
+        title: "id_topic"
+      },
+      {
+        title: "disabled"
       }
     ]
   });
+ });
 
+  
+  
+ $.get('/admin/getAllanswer', function(data){
+  var dataArray = [];
+
+  for(var i=0; i < data.response.length; i++) {
+    dataArray[i] = $.map(data.response[i], function(el) {return el});
+  }
   $('#answer').DataTable({
-    data: dataSet,
+    data: dataArray,
     columns: [{
         title: "id"
       },
@@ -105,9 +121,16 @@ $.get('/admin/getAlltopics', function(data){
       }
     ]
   });
+});
 
+$.get('/admin/getAllmoderators', function(data){
+  var dataArray = [];
+
+  for(var i=0; i < data.response.length; i++) {
+    dataArray[i] = $.map(data.response[i], function(el) {return el});
+  }
   $('#moderators').DataTable({
-    data: dataSet4,
+    data: dataArray,
     columns: [{
         title: "id"
       },
@@ -119,9 +142,17 @@ $.get('/admin/getAlltopics', function(data){
       }
     ]
   });
+});
 
+
+$.get('/admin/getAllusers', function(data){
+  var dataArray = [];
+
+  for(var i=0; i < data.response.length; i++) {
+    dataArray[i] = $.map(data.response[i], function(el) {return el});
+  }
   $('#users').DataTable({
-    data: dataSet5,
+    data: dataArray,
     columns: [{
         title: "id"
       },
@@ -139,9 +170,17 @@ $.get('/admin/getAlltopics', function(data){
       }
     ]
   });
+});
 
+
+$.get('/admin/getAllreports', function(data){
+  var dataArray = [];
+
+  for(var i=0; i < data.response.length; i++) {
+    dataArray[i] = $.map(data.response[i], function(el) {return el});
+  }
   $('#reports').DataTable({
-    data: dataSet,
+    data: dataArray,
     columns: [{
         title: "id"
       },
@@ -153,6 +192,7 @@ $.get('/admin/getAlltopics', function(data){
       }
     ]
   });
+});
   
   if ($(window).width() > 540) {
     //if the window is greater than 440px wide then turn on jScrollPane..

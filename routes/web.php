@@ -72,3 +72,17 @@ Route::get('/admin/reports', function(){
 });
 
 Route::get('/admin/getAlltopics', 'Admin\AdminController@getTopics');
+
+Route::get('/admin/getAllquestions', 'Admin\AdminController@getQuestions');
+
+Route::get('/admin/getAllanswer', 'Admin\AdminController@getAnswers');
+
+Route::get('/admin/getAllmoderators', 'Admin\AdminController@getModerators');
+
+Route::get('/admin/getAllusers', 'Admin\AdminController@getUsers');
+
+Route::get('/admin/getAllreports', 'Admin\AdminController@getReports');
+
+
+
+
