@@ -28,4 +28,8 @@ class TopicsController extends Controller
     }
 
 
+    public function getInfo(){
+        return "ok";
+    }
+
 }

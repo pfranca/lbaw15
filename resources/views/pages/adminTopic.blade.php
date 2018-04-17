@@ -14,6 +14,7 @@
     </ol>
   </nav>
 
+
   <div class="modal fade" id="profileModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -50,7 +51,7 @@
             <div class="d-flex add-topic-btn">
               <button  type="button" class="submitQuestionButton btnsubmit btn btn-xs" data-toggle="modal" data-target="#profileModal" data-dismiss="modal">Add Topic</button>
             </div>
-
+            <input type="hidden" id="topics-input" value="{{$topics}}"/>
             <table id="theme" class="display" width="100%"></table>
 
           </div>
