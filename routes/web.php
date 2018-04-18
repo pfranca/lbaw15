@@ -59,9 +59,7 @@ Route::get('/admin/answers', function(){
 	return view('pages.adminAnswer');
 });
 
-Route::get('/admin/moderators', function(){
-	return view('pages.adminModerator');
-});
+Route::get('/admin/moderators', 'Admin\AdminController@getModeratorPage');
 
 Route::get('/admin/users', function(){
 	return view('pages.adminUser');
@@ -72,7 +70,7 @@ Route::get('/admin/reports', function(){
 });
 
 Route::get('/admin/getAlltopics', 'Admin\AdminController@getTopics');
-Route::post('/admin/getAlltopics', 'Admin\AdminController@addTopic');
+Route::post('/admin/addTopic', 'Admin\AdminController@addTopic');
 
 
 Route::get('/admin/getAllquestions', 'Admin\AdminController@getQuestions');
@@ -85,6 +83,11 @@ Route::get('/admin/getAllusers', 'Admin\AdminController@getUsers');
 
 Route::get('/admin/getAllreports', 'Admin\AdminController@getReports');
 
+Route::put('/admin/addModerator','Admin\AdminController@addModerator');
+/*
+Route::patch(); //update de algumas coisas
+Route::put(); //update do modelo todo
+*/
 
 
 

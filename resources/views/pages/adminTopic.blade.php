@@ -25,7 +25,7 @@
           <form role="form" class="form-inline">
             <div class="form-group">
               <label class="nameInFormControl" for="usr">Name:</label>
-              <input type="text" class="widthFormControl form-control" id="usr">
+              <input type="text" class="widthFormControl form-control" id="nameTopic">
             </div>
             <form action="/action_page.php">
               <input type="file" id="imgTopic" class="add-topic-btn" name="pic" accept="image/*">
@@ -34,7 +34,7 @@
         </div>
         <div class="modal-footer">
           <button type="submit" id="click_on_AddTopic" class="buttonDown btn btn-primary btn-sm">Submit</button>
-          <button type="button" class="buttonDown btn btn-secondary btn-sm" data-toggle="modal" data-target="#" data-dismiss="modal">Exit</button>
+          <button type="button" id="closeBtn" class="buttonDown btn btn-secondary btn-sm" data-toggle="modal" data-target="#" data-dismiss="modal">Exit</button>
         </div>
       </div>
     </div>

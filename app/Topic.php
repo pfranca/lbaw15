@@ -13,5 +13,14 @@ class Topic extends Model
     public $primaryKey = 'id';
 
     //Timestamps 
-   //public $timestamps = true;
+   public $timestamps = false;
+
+   /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name', 'img',
+    ];
 }
