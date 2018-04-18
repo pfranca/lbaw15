@@ -210,9 +210,7 @@ $.get('/admin/getAllreports', function(data){
   $("#click_on_AddTopic").click(function(){
     var img = "1.jpg";
     var nameTopic = $("#usr").val();
-    $.post( "/admin/getAlltopics", { func: "getNameAndTime" }, function( data ) {
-      console.log( data.name ); // John
-      console.log( data.time ); // 2pm
+    $.post( "/admin/getAlltopics",  function( data ) {
     }, "json");
   });
 
