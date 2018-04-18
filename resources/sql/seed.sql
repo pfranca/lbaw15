@@ -384,3 +384,7 @@ INSERT INTO "badge" (name,img) VALUES ('Friendly', 'badge3.png');
 INSERT INTO "badge" (name,img) VALUES ('Not so smart', 'badge4.png');
 INSERT INTO "badge" (name,img) VALUES ('ADMIN', 'ADMINbadge.png');
 INSERT INTO "badge" (name,img) VALUES ('MOD', 'MODbadge.png');
+
+INSERT INTO "report" (reason,id_reporting_user,id_reported_answer) VALUES ('eleifend vitae, erat. Vivamus nisi. Mauris nulla.',32,16);
+INSERT INTO "report" (reason,id_reporting_user,id_reported_answer) VALUES ('In scelerisque scelerisque dui.',14,59);
+INSERT INTO "report" (reason,id_reporting_user,id_reported_answer) VALUES ('varius. Nam porttitor scelerisque neque. Nullam nisl. Maecenas malesuada',16,13);

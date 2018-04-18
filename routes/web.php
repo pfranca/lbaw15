@@ -72,6 +72,8 @@ Route::get('/admin/reports', function(){
 });
 
 Route::get('/admin/getAlltopics', 'Admin\AdminController@getTopics');
+Route::post('/admin/getAlltopics', 'Admin\AdminController@addTopic');
+
 
 Route::get('/admin/getAllquestions', 'Admin\AdminController@getQuestions');
 

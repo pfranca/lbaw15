@@ -28,13 +28,12 @@
               <input type="text" class="widthFormControl form-control" id="usr">
             </div>
             <form action="/action_page.php">
-              <input type="file" class="add-topic-btn"  name="pic" accept="image/*">
-              
+              <input type="file" id="imgTopic" class="add-topic-btn" name="pic" accept="image/*">
             </form>
             
         </div>
         <div class="modal-footer">
-          <button type="submit" class="buttonDown btn btn-primary btn-sm">Submit</button>
+          <button type="submit" id="click_on_AddTopic" class="buttonDown btn btn-primary btn-sm">Submit</button>
           <button type="button" class="buttonDown btn btn-secondary btn-sm" data-toggle="modal" data-target="#" data-dismiss="modal">Exit</button>
         </div>
       </div>

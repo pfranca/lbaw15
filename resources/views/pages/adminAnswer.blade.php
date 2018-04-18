@@ -23,7 +23,7 @@
       <div class=" col-md-12" id="bdAdmin">
           <div class="col-md-10 container-fluid" id="bdAdminMargin">
 
-            <table id="theme" class="display" width="100%"></table>
+            <table id="answer" class="display" width="100%"></table>
 
           </div>
       </div>

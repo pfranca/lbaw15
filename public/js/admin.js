@@ -60,7 +60,6 @@ $.get('/admin/getAlltopics', function(data){
 
  $.get('/admin/getAllquestions', function(data){
   var dataArray = [];
-console.log(data.response);
   for(var i=0; i < data.response.length; i++) {
     dataArray[i] = $.map(data.response[i], function(el) {return el});
   }
@@ -108,16 +107,22 @@ console.log(data.response);
         title: "id"
       },
       {
-        title: "userId"
-      },
-      {
-        title: "userName"
-      },
-      {
-        title: "content"
-      },
-      {
         title: "date"
+      },
+      {
+        title: "karma"
+      },
+      {
+        title: "message"
+      },
+      {
+        title: "id_author"
+      },
+      {
+        title: "id_question"
+      },
+      {
+        title: "disabled"
       }
     ]
   });
@@ -147,26 +152,35 @@ $.get('/admin/getAllmoderators', function(data){
 
 $.get('/admin/getAllusers', function(data){
   var dataArray = [];
-
   for(var i=0; i < data.response.length; i++) {
     dataArray[i] = $.map(data.response[i], function(el) {return el});
   }
+  console.log(data.response);
   $('#users').DataTable({
     data: dataArray,
     columns: [{
         title: "id"
       },
       {
-        title: "name"
-      },
-      {
         title: "username"
       },
       {
-        title: "karma"
+        title: "email"
       },
       {
-        title: ""
+        title: "name"
+      },
+      {
+        title: "img"
+      },
+      {
+        title: "bio"
+      },
+      {
+        title: "disabled"
+      },
+      {
+        title: "type"
       }
     ]
   });
@@ -192,6 +206,16 @@ $.get('/admin/getAllreports', function(data){
       }
     ]
   });
+
+  $("#click_on_AddTopic").click(function(){
+    var img = "1.jpg";
+    var nameTopic = $("#usr").val();
+    $.post( "/admin/getAlltopics", { func: "getNameAndTime" }, function( data ) {
+      console.log( data.name ); // John
+      console.log( data.time ); // 2pm
+    }, "json");
+  });
+
 });
   
   if ($(window).width() > 540) {
@@ -226,4 +250,6 @@ function adminExpander()
     $("#bdAdmin").toggleClass("col-md-12 col-md-10");
     
   }
+  
 }
+

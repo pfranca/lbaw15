@@ -28,7 +28,7 @@ class AdminController extends Controller
     }
 
     public function getModerators(){
-        $moderator = \DB::table('moderator')->get();
+        $moderator = \DB::table('user')->where('type','MOD')->get();
         return response()->json(['response' => $moderator]);
     }
 
@@ -40,6 +40,10 @@ class AdminController extends Controller
     public function getReports(){
         $reports = \DB::table('report')->get();
         return response()->json(['response' => $reports]);
+    }
+
+    public function addTopic(){
+
     }
 }
 ?>
