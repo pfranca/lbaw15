@@ -24,7 +24,10 @@ class AdminController extends Controller
 
     public function getTopics(){
         $topics = \DB::table('topic')->get();
-        return response()->json(['response' => $topics]);
+        return response()->json([
+            "status" => "success",
+            "data" => $topics,
+            "message" => "created topic"]);
     }
 
     public function getQuestions(){
@@ -74,8 +77,22 @@ class AdminController extends Controller
         $user->save();
         return response()->json([
             "status" => "success",
-            "data" => $request,
+            "data" => $user,
             "message" => "created topic"]);
     }
+
+    public function disableTopic(Request $request){
+        $topic = Topic::find($request->input('id'));
+        if($topic->disabled)
+            $topic->disabled = 'false';
+        else
+            $topic->disabled = 'true';
+        $topic->save();
+        return response()->json([
+            "status" => "success",
+            "data" => $topic,
+            "message" => "created topic"]);
+    }
+
 }
 ?>

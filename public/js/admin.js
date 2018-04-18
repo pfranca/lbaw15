@@ -35,10 +35,13 @@ $(document).ready(function() {
   
 $.get('/admin/getAlltopics', function(data){
   var dataArray = [];
-
+/*
   for(var i=0; i < data.response.length; i++) {
     dataArray[i] = $.map(data.response[i], function(el) {return el});
-  }
+  }*/
+  console.log("topics " + dataArray);
+  console.log("topics " + data.data);
+  
 
   $('#theme').DataTable({
     //data: $('#topics-input').value,
