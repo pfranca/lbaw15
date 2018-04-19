@@ -26,7 +26,7 @@ class AdminController extends Controller
         $topics = \DB::table('topic')->get();
         return response()->json([
             "status" => "success",
-            "data" => $topics,
+            "response" => $topics,
             "message" => "created topic"]);
     }
 
