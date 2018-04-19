@@ -12,7 +12,7 @@
   
               <div class="row">
                 <div class="form-group ml-auto">
-              
+                  <a href="login"><button id="btnGoogle"class="btnModals col-md-12 col-lg-3" type="button"></i></button></a>
                 </div>
               </div>
   
