@@ -35,16 +35,16 @@ $(document).ready(function() {
   
 $.get('/admin/getAlltopics', function(data){
   var dataArray = [];
-/*
+
   for(var i=0; i < data.response.length; i++) {
     dataArray[i] = $.map(data.response[i], function(el) {return el});
-  }*/
+  }
   console.log("topics " + dataArray);
   console.log("topics " + data.data);
   
 
   $('#theme').DataTable({
-    //data: $('#topics-input').value,
+    data: $('#topics-input').value,
     data: dataArray,
     columns: [{
         title: "id"
@@ -137,7 +137,9 @@ $.get('/admin/getAllmoderators', function(data){
 
   for(var i=0; i < data.response.length; i++) {
     dataArray[i] = $.map(data.response[i], function(el) {return el});
+    dataArray[i][6]="<img id=\"removeBtn\" onclick=\"removeModeratorUser('" + dataArray[i][0] + "')\" class=\" mouse-pointer img-fluid nav-img-profile \" src=\"../images/no.png\" alt=\"\" />"
   }
+
   console.log(data.response);
   
   $('#moderators').DataTable({
@@ -253,12 +255,12 @@ $("#click_on_AddTopic").click(function(){
         }
 
     }).done(function (data) {
-      window.alert($("#userSelected").val());
+      //window.alert($("#userSelected").val());
         // do whatever u want if the request is ok
         $("#userSelected").val('');        
         $('#moderatorModal').modal('hide');
     }).fail(function (data) {
-      window.alert(data);
+      //window.alert(data);
 
         // do what ever you want if the request is not ok
 
@@ -287,6 +289,21 @@ $("#removeBtn" ).click(function() {
 });
 
 $("#showAdmin").click(adminExpander);
+
+
+function removeModeratorUser(idUser){
+
+  $.ajax({
+        url: '/admin/removeModerator',
+        type: 'PUT',
+        dataType: 'json',
+        data: {
+          "_token": $('#token').val(),
+            "id": idUser
+        }
+      });
+  location.reload();
+}
 
 function adminExpander()
 {

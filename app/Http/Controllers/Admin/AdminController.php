@@ -81,6 +81,20 @@ class AdminController extends Controller
             "message" => "created topic"]);
     }
 
+     public function removeModerator(Request $request){
+        $user = User::find($request->input('id'));
+
+        $user->type = 'NORMAL';
+
+        $user->save();
+
+        return response()->json([
+            "status" => "success",
+            "data" => $user,
+            "message" => "Moderator Deleted"]);
+
+    }
+
     public function disableTopic(Request $request){
         $topic = Topic::find($request->input('id'));
         if($topic->disabled)
