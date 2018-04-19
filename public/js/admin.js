@@ -37,11 +37,16 @@ $.get('/admin/getAlltopics', function(data){
   var dataArray = [];
   for(var i=0; i < data.response.length; i++) {
     dataArray[i] = $.map(data.response[i], function(el) {return el});
-    if(dataArray[i][3] == false)
+
+    if(dataArray[i][3] == false){
       dataArray[i][3]="<img id=\"removeBtn\" onclick=\"removeTopic('" + dataArray[i][0] + "')\" class=\" mouse-pointer img-fluid nav-img-profile \" src=\"../images/ok.png\"/>"
-    else
-      dataArray[i][3]="<img id=\"removeBtn\" onclick=\"removeTopic('" + dataArray[i][0] + "')\" class=\" mouse-pointer img-fluid nav-img-profile \" src=\"../images/ok.png\"/>"
+    }
+    else{
+      dataArray[i][3]="<img id=\"removeBtn\" onclick=\"removeTopic('" + dataArray[i][0] + "')\" class=\" mouse-pointer img-fluid nav-img-profile \" src=\"../images/no.png\"/>"
+    }
   }
+
+
   
 
   $('#theme').DataTable({
@@ -57,7 +62,7 @@ $.get('/admin/getAlltopics', function(data){
         title: "img"
       },
       {
-        title: "disabled"
+        title: "shown"
       }
     ]
   });
@@ -164,7 +169,7 @@ $.get('/admin/getAllmoderators', function(data){
       title: "bio"
     },
     {
-      title: "disabled"
+      title: "activate"
     }
   ]
   });
@@ -246,13 +251,15 @@ $("#click_on_AddTopic").click(function(){
     });
 
     $("#addModeratorBtn").click(function(){
+      var m = $("#userSelected").val();
+      var res = m.split("-");
       $.ajax({
         url: '/admin/addModerator',
         type: 'PUT',
         dataType: 'json',
         data: {
           "_token": $('#token').val(),
-            "id": $("#userSelected").val()
+            "id":  res[1]
         }
 
     }).done(function (data) {
@@ -290,6 +297,21 @@ $("#removeBtn" ).click(function() {
 });
 
 $("#showAdmin").click(adminExpander);
+
+function removeTopic(idTopic) {
+
+  $.ajax({
+        url: '/admin/disableTopic',
+        type: 'PUT',
+        dataType: 'json',
+        data: {
+          "_token": $('#token').val(),
+            "id": idTopic
+        }
+      });
+
+  location.reload();
+}
 
 function removeModeratorUser(idUser){
 
