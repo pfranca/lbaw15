@@ -60,11 +60,11 @@
 
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown">
-                {{ Auth::user()->name }}  <img class="img-fluid nav-img-profile" src="{{asset('images/user.png')}}" alt="profilePic" />
+                {{ Auth::user()->name }}  <img class="img-fluid nav-img-profile" src="{{asset('images/'.Auth::user()->img)}}" alt="profilePic" />
                 </a>
               <div class="dropdown-menu dropdown-menu-right">
                 <a class="dropdown-item" href="favQuestions.html">Following</a>
-                <a class="dropdown-item" href="profile.html">Your Profile</a>
+                <a class="dropdown-item" href="user">Your Profile</a>
                 <a class="dropdown-item" href="notification.html">Notifications</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>

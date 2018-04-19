@@ -275,9 +275,9 @@ CREATE TRIGGER generate_notification_owner
     FOR EACH ROW
         EXECUTE PROCEDURE generate_notification_owner();
 
-        INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('DiogoaCunha', 'diogoalmeida@gmail.com','diogo','diogo.png','Im fine','ADMIN');
-INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('martaTorgal', 'marta@gmail.com','Marta Torgal','marta.png','Im always ok!!','ADMIN');
-INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('tibas', 'tibas94@gmail.com','Jose Marques','tibas.png','I like to eat icecream with my forehead','ADMIN');
+        INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('DiogoaCunha', 'mailfalso@gmail.com','diogo','diogo.png','Im fine','ADMIN');
+INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('martaTorgal', 'mailmarta@gmail.com','Marta Torgal','marta.png','Im always ok!!','ADMIN');
+INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('tibas', 'mailtibas94@gmail.com','Jose Marques','tibas.png','I like to eat icecream with my forehead','ADMIN');
 INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('franza', 'pop@gmail.com','Pedro Franca','franza.png','if I answered your question it is prolly wrong','ADMIN');
 INSERT INTO "user"(username,email,name,img,bio) VALUES ('jeff', 'jeff98@gmail.com','Jeff Erson','default.png','MY NAME IS JEFFF');
 INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('potus', 'therealdonaldtrump@gmail.com','Donald Trump','potus.png','Imma build a wall','NORMAL');

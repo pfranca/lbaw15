@@ -74,7 +74,7 @@ class LoginController extends Controller
             'username'=>$user->name,
             'email'=>$user->email,
             'name'=>$user->name,
-            'img'=>'default.png',
+            'img'=>'user.png',
         ]);
     }
 
