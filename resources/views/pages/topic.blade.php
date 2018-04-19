@@ -17,6 +17,9 @@
     </ol>
   </nav>
 
+
+  <input type="hidden" name="topicName" value="{{$topic_name}}">
+
   <div id="questions" class="bg-white">
     <div class="text-right pr-5 mt-3">
       <label>Sort by:</label>

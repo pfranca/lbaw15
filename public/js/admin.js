@@ -228,8 +228,6 @@ $.get('/admin/getAllreports', function(data){
 });
 
 $("#click_on_AddTopic").click(function(){
-  var img = "1.jpg";
-  console.log("helllo");  
   $.post("/admin/addTopic",
     {
       "_token": $('#token').val(),
@@ -238,7 +236,7 @@ $("#click_on_AddTopic").click(function(){
     },
     function(data, status){
         alert("Data: " + data + "\nStatus: " + status);
-        console.log(data);
+        //verificar se funcionou ou nao
         $("#nameTopic").val('');        
         $('#profileModal').modal('hide');
       }); 
@@ -285,7 +283,7 @@ $("#click_on_AddTopic").click(function(){
 });
 
 $("#removeBtn" ).click(function() {
-  alert( "Handler for .click() called." );
+  window.alert( "Handler for .click() called." );
 });
 
 $("#showAdmin").click(adminExpander);

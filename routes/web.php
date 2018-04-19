@@ -89,5 +89,7 @@ Route::patch(); //update de algumas coisas
 Route::put(); //update do modelo todo
 */
 
+Route::post('/question/addQuestion','QuestionsController@create');
+
 
 

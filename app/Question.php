@@ -13,4 +13,16 @@ class Question extends Model
     public $primaryKey = 'id';
 
     protected $dateFormat = 'U';
+
+     //Timestamps 
+    public $timestamps = false;
+
+     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'id_author', 'id_topic', 'short_message', 'long_message'
+    ];
 }
