@@ -26,7 +26,7 @@ class AdminController extends Controller
         $topics = \DB::table('topic')->get();
         return response()->json([
             "status" => "success",
-            "data" => $topics,
+            "response" => $topics,
             "message" => "created topic"]);
     }
 
@@ -97,10 +97,10 @@ class AdminController extends Controller
 
     public function disableTopic(Request $request){
         $topic = Topic::find($request->input('id'));
-        if($topic->disabled)
-            $topic->disabled = 'false';
-        else
-            $topic->disabled = 'true';
+        if($topic->disabled == true)
+            $topic->disabled = false;
+        else if($topic->disabled == false)
+            $topic->disabled = true;
         $topic->save();
         return response()->json([
             "status" => "success",

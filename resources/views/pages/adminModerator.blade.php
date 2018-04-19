@@ -27,7 +27,7 @@
               <label class="nameInFormControl" for="usr">ID:</label>
               <select id="userSelected" class="selectpicker">
                   @foreach($users as $user)
-                    <option >{{$user->id}}</option>
+                    <option id="{{$user->id}}" >{{$user->username}} - {{$user->id}} </option>
                   @endforeach
               </select>
             </div>            
