@@ -57,25 +57,23 @@
             @guest
                  <a id="loginButton" class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">LOGIN</a>
             @else
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                    {{ Auth::user()->name }} <span class="caret"></span>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown">
+                {{ Auth::user()->name }}  <img class="img-fluid nav-img-profile" src="{{asset('images/user.png')}}" alt="profilePic" />
                 </a>
-
-                <ul class="dropdown-menu">
-                    <li>
-                        <a href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                                     document.getElementById('logout-form').submit();">
-                            Logout
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
-                    </li>
-                </ul>
+              <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" href="favQuestions.html">Following</a>
+                <a class="dropdown-item" href="profile.html">Your Profile</a>
+                <a class="dropdown-item" href="notification.html">Notifications</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  {{ csrf_field() }}
+              </form>
+              </div>
             </li>
+            
         @endguest
         </li>
       </ul>

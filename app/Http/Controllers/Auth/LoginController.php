@@ -66,7 +66,7 @@ class LoginController extends Controller
     }
 
     public function findOrCreateUser($user, $provider){
-        $authUser = User::where('id_google', $user->token)->first();
+        $authUser = User::where('email', $user->email)->first();
         if($authUser){
             return $authUser;
         }
@@ -74,7 +74,7 @@ class LoginController extends Controller
             'username'=>$user->name,
             'email'=>$user->email,
             'name'=>$user->name,
-            'img'=>$user->name,
+            'img'=>'default.png',
         ]);
     }
 
