@@ -18,6 +18,7 @@ class QuestionsController extends Controller
     public function index($topic_name)
     {
         $topic = Topic::where('name', $topic_name)->get();
+        $topics = Topic::All();
         $questions = Question::where('id_topic', $topic[0]->id)->paginate(5);
         $answers = Answer::All();
        // dd($answers);
@@ -26,7 +27,8 @@ class QuestionsController extends Controller
         $data=array(
             'topic_name' => $topic_name,
             'questions' => $questions,
-            'answers' => $answers
+            'answers' => $answers,
+            'topics' => $topics
         );
        return view('pages.topic')->with($data);
     }
@@ -36,9 +38,29 @@ class QuestionsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $long_message = $request->input('long_message');
+        $data = $request->all();
+      //  if (empty($long_message)){
+           /* Question::create([
+                'id_author' => $data['id_author'],
+                'id_topic' => $data['id_topic'],
+                'short_message' => $data['short_message'],
+                ]);
+         }else{
+            Question::create([
+                'id_author' => $data['id_author'],
+                'id_topic' => $data['id_topic'],
+                'short_message' => $data['short_message'],
+                'long_message' => $data['long_message']
+                ]);
+      //  }*/
+       
+        return response()->json([
+            "status" => "success",
+            "data" => $data,
+            "message" => "created question"]);
     }
 
     /**

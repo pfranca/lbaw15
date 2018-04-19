@@ -97,4 +97,36 @@ $(document).ready(function() {
     $("#myPage").css("padding-top", heightToAdjust);
   });
 
+  $("#questionSubmitBtn").click(function(){
+      window.alert("short " + $("#short_message").val() +"\n"+ "long " + $("#long_message").val());
+      
+      $.ajax({
+        url: '/question/addQuestion',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+          "_token": $('#token').val(),
+          "id_author": '2',
+          "topic_name": $("#topicName").val(),
+          "short_message": $("#short_message").val(),
+          "long_message": $("#long_message").val()
+        }
+
+    }).done(function (data) {
+      window.alert($("#topicSelected").val());
+        // do whatever u want if the request is ok
+        $("#short_message").val('');
+        $("#long_message").val('');        
+        $('#questionModal').modal('hide');
+        window.alert(data);
+        console.log(data);
+    }).fail(function (data) {
+      window.alert(data);
+
+        // do what ever you want if the request is not ok
+
+    });
+  
+  });
+
 });

@@ -35,10 +35,14 @@ $(document).ready(function() {
   
 $.get('/admin/getAlltopics', function(data){
   var dataArray = [];
-
+/*
   for(var i=0; i < data.response.length; i++) {
     dataArray[i] = $.map(data.response[i], function(el) {return el});
-  }
+  }*/
+  console.log("topics " + dataArray);
+  console.log("topics " + data.data);
+  
+
   $('#theme').DataTable({
     //data: $('#topics-input').value,
     data: dataArray,
@@ -134,20 +138,35 @@ $.get('/admin/getAllmoderators', function(data){
   for(var i=0; i < data.response.length; i++) {
     dataArray[i] = $.map(data.response[i], function(el) {return el});
   }
+  console.log(data.response);
+  
   $('#moderators').DataTable({
     data: dataArray,
     columns: [{
-        title: "id"
-      },
-      {
-        title: "userName"
-      },
-      {
-        title:""
-      }
-    ]
+      title: "id"
+    },
+    {
+      title: "username"
+    },
+    {
+      title: "email"
+    },
+    {
+      title: "name"
+    },
+    {
+      title: "img"
+    },
+    {
+      title: "bio"
+    },
+    {
+      title: "disabled"
+    }
+  ]
   });
 });
+
 
 
 $.get('/admin/getAllusers', function(data){
@@ -155,7 +174,6 @@ $.get('/admin/getAllusers', function(data){
   for(var i=0; i < data.response.length; i++) {
     dataArray[i] = $.map(data.response[i], function(el) {return el});
   }
-  console.log(data.response);
   $('#users').DataTable({
     data: dataArray,
     columns: [{
@@ -207,14 +225,47 @@ $.get('/admin/getAllreports', function(data){
     ]
   });
 
-  $("#click_on_AddTopic").click(function(){
-    var img = "1.jpg";
-    var nameTopic = $("#usr").val();
-    $.post( "/admin/getAlltopics",  function( data ) {
-    }, "json");
-  });
-
 });
+
+$("#click_on_AddTopic").click(function(){
+  $.post("/admin/addTopic",
+    {
+      "_token": $('#token').val(),
+        "img": "1.jpg",
+        "name": $("#nameTopic").val()
+    },
+    function(data, status){
+        alert("Data: " + data + "\nStatus: " + status);
+        //verificar se funcionou ou nao
+        $("#nameTopic").val('');        
+        $('#profileModal').modal('hide');
+      }); 
+    });
+
+    $("#addModeratorBtn").click(function(){
+      $.ajax({
+        url: '/admin/addModerator',
+        type: 'PUT',
+        dataType: 'json',
+        data: {
+          "_token": $('#token').val(),
+            "id": $("#userSelected").val()
+        }
+
+    }).done(function (data) {
+      window.alert($("#userSelected").val());
+        // do whatever u want if the request is ok
+        $("#userSelected").val('');        
+        $('#moderatorModal').modal('hide');
+    }).fail(function (data) {
+      window.alert(data);
+
+        // do what ever you want if the request is not ok
+
+    });
+  });
+    
+    
   
   if ($(window).width() > 540) {
     //if the window is greater than 440px wide then turn on jScrollPane..
@@ -232,7 +283,7 @@ $.get('/admin/getAllreports', function(data){
 });
 
 $("#removeBtn" ).click(function() {
-  alert( "Handler for .click() called." );
+  window.alert( "Handler for .click() called." );
 });
 
 $("#showAdmin").click(adminExpander);

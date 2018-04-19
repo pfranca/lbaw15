@@ -10,40 +10,24 @@
               <form role="form">
                 <div class="form-group">
                   <label>Topic to post</label>
-                  <select>
-                    <option value="Sports">
-                      Sports
-                    </option>
-                    <option value="Music">
-                      Music
-                    </option>
-                    <option value="Fashion">
-                      Fashion
-                    </option>
-                    <option value="IT & Coding">
-                      IT & Coding
-                    </option>
-                    <option value="Math & Science" selected>
-                      Math & Science
-                    </option>
-                    <option value="Food & Nutricion">
-                      Food & Nutricion
-                    </option>
-                    <option value="History">
-                      History
-                    </option>
-                    <option value="Random">
-                      Random
-                    </option>
+                  <select id="topicSelected" class="selectpicker">
+                    @foreach($topics as $topic)
+                      <option value="{{$topic->id}}">{{$topic->name}}</option>
+                    @endforeach
                   </select>
                 </div>
+                <div>Write here the short description of the question:</div>
+                <div  class="form-group">
+                  <textarea id="short_message" class="form-control" rows="3"></textarea>
+                </div>
+                <div>Write here the description of the question (optional):</div>
                 <div class="form-group">
-                  <textarea class="form-control" rows="8"></textarea>
+                  <textarea id="long_message" class="form-control" rows="5"></textarea>
                 </div>
               </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="buttonDown btn btn-primary btn-sm">Submit</button>
+              <button type="button" id="questionSubmitBtn" class="buttonDown btn btn-primary btn-sm">Submit</button>
               <button type="button" class="buttonDown btn btn-secondary btn-sm" data-toggle="modal" data-target="#" data-dismiss="modal">Exit</button>
             </div>
           </div>
