@@ -14,7 +14,7 @@ class TopicsController extends Controller
      */
     public function index()
     {
-        $topics = Topic::all();
+        $topics = \DB::table('topic')->where('disabled','false')->get();
         // $topics = Topic::orderBy('name','desc')->paginate(4);
         return view('pages.home')->with('topics',$topics);
     }
