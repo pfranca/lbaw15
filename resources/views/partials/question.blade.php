@@ -21,11 +21,18 @@
         <span class="label label-primary pr-2">{{$question->karma}}</span>
         <a class="pr-3" data-toggle="upvote" href="#downvote"><i class="far fa-thumbs-down"></i></a>
         <a id="bestAnswer" class="underTab colorLink" data-toggle="collapse" href="#question{{$question->id}}" aria-expanded="false" aria-controls="collapseExample">Best Answer</a>
-        <a href="question3.html#answer" class="underTab colorLink">Answer ISTO DE DE IR PARA O MODAL</a>
-        <a href="#" class="underTab colorLink ml-auto">Edit ISTO TEM DE IR PARA O MODAL</a>
-        <a href="#" class="underTab colorLink">Report POR ACCAO</a>
-        <a href="#" class="underTab colorLink">Delete POR ACCAO</a>
-        <input type="hidden" id="questionId" value="{{$question->id}}">
+        @guest
+        @else
+          @if ($question->id_author === Auth::user()->id)
+          <a href="question3.html#answer" class="underTab colorLink">Answer</a>
+            <a href="#" class="underTab colorLink ml-auto">Edit</a>
+            <a href="#" class="underTab colorLink">Delete</a>
+          @else
+          <a href="question3.html#answer" class="underTab colorLink">Answer</a>
+            <a href="" class="underTab colorLink">Report</a>
+          @endif
+        @endguest
+          <input type="hidden" id="questionId" value="{{$question->id}}">
         
       </div>
     </div>

@@ -12,10 +12,17 @@
         <a class="pr-1" data-toggle="upvote" href="#upvote"><i class="far fa-thumbs-up"></i></a>
         <span class="label label-primary pr-1">{{$answer->karma}}</span>
         <a class="pr-4" data-toggle="upvote" href="#downvote"><i class="far fa-thumbs-down"></i></a>
-        {{--
-        <a href="#" class="underTab colorLink">Report A FUNCIONAR</a>
-        <a href="#" class="underTab colorLink">Delete A FUNCIONAR</a>
-      --}}
+        
+        @guest
+        @else
+          @if ($answer->id_author === Auth::user()->id)
+          {{$answer->id_author}}
+          <a href="#" class="underTab colorLink">Edit A FUNCIONAR</a>
+          <a href="#" class="underTab colorLink">Delete A FUNCIONAR</a>
+        @else
+          <a href="#" class="underTab colorLink">Report A FUNCIONAR</a>
+        @endif
+        @endguest
       </div>
     </div>
 
