@@ -19,7 +19,7 @@
       <div class="row text-center">
         <div class="col-md-12 tittle-section theme-title-section">
 
-          <div class="col-md-12" style="margin-top: 45px">
+          <div class="col-md-12">
             <img class="img-profile" src="{{asset('images/'.Auth::user()->img)}}">
           </div>
 
@@ -105,6 +105,10 @@
 
     <div class="container-fluid bg-white col-md-9">
       <ul>
+      @foreach($questions as $question)
+        <p>{{$question->short_message}}
+      @endforeach
+
 
           @{{ AS PERGUNTAS AQUI }}
       </ul>

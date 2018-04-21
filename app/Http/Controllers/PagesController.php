@@ -11,7 +11,7 @@ class PagesController extends Controller
 	}
 
 	public function profile(){
-		$questions = User::find(11)->questions;
+		$questions = User::find(5)->questions;
 		return view('pages.profile')->with('questions', $questions);
 	}
 
