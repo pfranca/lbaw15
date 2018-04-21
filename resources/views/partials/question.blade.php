@@ -27,7 +27,7 @@
           <input type="hidden" id="questionId" value="{{$question->id}}">
           <a href="question3.html#answer" class="underTab colorLink">Answer</a>
             <a href="#" data-toggle="modal" data-target="#editquestionModal" data-dismiss="modal" class="underTab colorLink ml-auto">Edit</a>
-            <a href="#" data-toggle="modal" data-target="#deletequestionModal" data-dismiss="modal" class="underTab colorLink">Delete</a>
+            <a href="#" data-toggle="modal" data-target="#questionDelModal" data-dismiss="modal" class="underTab colorLink" id="deleteQuestion">Delete</a>
           @else
           <a href="question3.html#answer" class="underTab colorLink">Answer</a>
             <a href="" class="underTab colorLink">Report</a>
@@ -60,3 +60,4 @@
     <p>No Questions found!</b>
   @endif
   @include('partials.submitEditQuestion')
+  @include('partials.deleteQuestion')

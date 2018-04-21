@@ -190,6 +190,7 @@ $(document).ready(function() {
 });
 
 
+
 $("#editquestionSubmitBtn").click(function(){
   $.ajax({
     url: '/question/updateQuestion',
@@ -234,5 +235,41 @@ $("#submitEditAnswerBtn").click(function(){
 });
 });
 
+  $("#submitDeleteQuestion").click(function(){
+
+    $.ajax({
+      url: '/topic/question/disable',
+      type: 'PUT',
+      dataType: 'json',
+      data: {
+        "_token": $('#token').val(),
+        "id_question": $("#getId").val()
+      }
+  }).done(function (data) {
+      console.log(data);
+       location.reload();
+  }).fail(function (data) {
+    console.log(data);
+  });
+});
+
+
+
+  $("#submitDeleteAnswer").click(function(){
+    $.ajax({
+      url: '/topic/question/answer/disable',
+      type: 'PUT',
+      dataType: 'json',
+      data: {
+        "_token": $('#token').val(),
+        "id_answer": $("#answerIdToDelete").val()
+      }
+  }).done(function (data) {
+      console.log(data);
+       location.reload();
+  }).fail(function (data) {
+    console.log(data);
+  });
+});
 
 });

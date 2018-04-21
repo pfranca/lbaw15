@@ -39,6 +39,22 @@ class AnswersController extends Controller
         //
     }
 
+    public function disable(Request $request){
+        $data = $request->all();
+
+        DB::table('answer')
+            ->where('id',$data['id_answer'])
+            ->update([
+                'disabled' => true
+            ]);
+    
+        return response()->json([
+            "status" => "success",
+            "data" => $data,
+            "message" => "Answer Deleted"]);
+
+    }
+
     /**
      * Display the specified resource.
      *
