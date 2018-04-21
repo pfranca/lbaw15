@@ -192,4 +192,29 @@ $(document).ready(function() {
   });
 });
 
+
+$("#editquestionSubmitBtn").click(function(){
+  window.alert("id_topic " + $("#edit_topicSelected").val() +"\n"+ " questionId "+$("#questionId").val()+ "\n" + "short " + $("#edit_short_message").val() +"\n"+ "long " + $("#edit_long_message").val());
+  
+  $.ajax({
+    url: '/question/updateQuestion',
+    type: 'PUT',
+    dataType: 'json',
+    data: {
+      "_token": $('#token').val(),
+      "id_topic": $("#edit_topicSelected").val(),
+      "id_question" : $("#questionId").val(),
+      "short_message": $("#edit_short_message").val(),
+      "long_message": $("#edit_long_message").val()
+    }
+}).done(function (data) {
+    $('#editquestionModal').modal('hide');
+    console.log(data);
+    location.reload();
+}).fail(function (data) {
+  window.alert(data);
+    // do what ever you want if the request is not ok
+});
+});
+
 });
