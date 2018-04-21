@@ -7,6 +7,8 @@ use Laravel\Socialite\Facades\Socialite;
 use Auth;
 use App\User;
 use App\Topic;
+use App\Question;
+use App\Answer;
 use Illuminate\Http\Request;
 
 
@@ -107,6 +109,43 @@ class AdminController extends Controller
             "data" => $topic,
             "message" => "created topic"]);
     }
+
+    public function disableQuestion(Request $request){
+
+        $question = Question::find($request->input('id'));
+
+        if($question->disabled == true)
+            $question->disabled = false;
+
+        else if($question->disabled == false)
+            $question->disabled = true;
+
+        $question->save();
+
+        return response()->json([
+            "status" => "success",
+            "data" => $question,
+            "message" => "created topic"]);
+    }
+
+    public function disableAnswer(Request $request){
+
+        $answer = Answer::find($request->input('id'));
+
+        if($answer->disabled == true)
+            $answer->disabled = false;
+
+        else if($answer->disabled == false)
+            $answer->disabled = true;
+
+        $answer->save();
+
+        return response()->json([
+            "status" => "success",
+            "data" => $answer,
+            "message" => "created topic"]);
+    }
+
 
 }
 ?>

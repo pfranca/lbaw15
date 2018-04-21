@@ -85,7 +85,11 @@ Route::put('/admin/disableTopic', 'Admin\AdminController@disableTopic');
 
 Route::get('/admin/getAllquestions', 'Admin\AdminController@getQuestions');
 
+Route::put('/admin/disableQuestion', 'Admin\AdminController@disableQuestion');
+
 Route::get('/admin/getAllanswer', 'Admin\AdminController@getAnswers');
+
+Route::put('/admin/disableAnswer', 'Admin\AdminController@disableAnswer');
 
 Route::get('/admin/getAllmoderators', 'Admin\AdminController@getModerators');
 

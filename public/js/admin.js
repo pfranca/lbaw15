@@ -72,6 +72,14 @@ $.get('/admin/getAlltopics', function(data){
   var dataArray = [];
   for(var i=0; i < data.response.length; i++) {
     dataArray[i] = $.map(data.response[i], function(el) {return el});
+
+    if(dataArray[i][7] == false){
+      dataArray[i][7]="<img id=\"removeBtn\" onclick=\"removeQuestion('" + dataArray[i][0] + "')\" class=\" mouse-pointer img-fluid nav-img-profile \" src=\"../images/ok.png\"/>"
+    }
+    else{
+      dataArray[i][7]="<img id=\"removeBtn\" onclick=\"removeQuestion('" + dataArray[i][0] + "')\" class=\" mouse-pointer img-fluid nav-img-profile \" src=\"../images/no.png\"/>"
+    }
+
   }
   $('#question').DataTable({
     data: dataArray,
@@ -97,7 +105,7 @@ $.get('/admin/getAlltopics', function(data){
         title: "id_topic"
       },
       {
-        title: "disabled"
+        title: "shown"
       }
     ]
   });
@@ -110,6 +118,14 @@ $.get('/admin/getAlltopics', function(data){
 
   for(var i=0; i < data.response.length; i++) {
     dataArray[i] = $.map(data.response[i], function(el) {return el});
+
+    if(dataArray[i][6] == false){
+      dataArray[i][6]="<img id=\"removeBtn\" onclick=\"removeAnswer('" + dataArray[i][0] + "')\" class=\" mouse-pointer img-fluid nav-img-profile \" src=\"../images/ok.png\"/>"
+    }
+    else{
+      dataArray[i][6]="<img id=\"removeBtn\" onclick=\"removeAnswer('" + dataArray[i][0] + "')\" class=\" mouse-pointer img-fluid nav-img-profile \" src=\"../images/no.png\"/>"
+    }
+
   }
   $('#answer').DataTable({
     data: dataArray,
@@ -297,6 +313,42 @@ $("#removeBtn" ).click(function() {
 });
 
 $("#showAdmin").click(adminExpander);
+
+
+function removeQuestion(idQuestion) {
+
+  $.ajax({
+        url: '/admin/disableQuestion',
+        type: 'PUT',
+        dataType: 'json',
+        data: {
+          "_token": $('#token').val(),
+            "id": idQuestion
+        }
+      }).done(function (data) {
+        console.log(data)
+    });
+      location.reload();
+}
+
+
+function removeAnswer(idAnswer) {
+
+  $.ajax({
+        url: '/admin/disableAnswer',
+        type: 'PUT',
+        dataType: 'json',
+        data: {
+          "_token": $('#token').val(),
+            "id": idAnswer
+        }
+      }).done(function (data) {
+        console.log(data)
+    });
+      location.reload();
+}
+
+
 
 function removeTopic(idTopic) {
 
