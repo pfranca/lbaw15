@@ -122,6 +122,37 @@ $(document).ready(function() {
         console.log(data);
     }).fail(function (data) {
       window.alert(data);
+        // do what ever you want if the request is not ok
+    });
+  });
+
+   $("#submitionEdit").click(function(){
+      var usr_name = $('#usernameEdit').val()
+      var new_name = $('#usr').val()
+      var new_email = $('#email').val()
+      var new_bio = $('#bio').val()
+
+      
+      $.ajax({
+        url: '/user/'+usr_name+'/edit',
+        type: 'PUT',
+        dataType: 'json',
+        data: {
+          "_token": $('#token').val(),
+          "name": new_name,
+          "email" : new_email,
+          "bio" : new_bio
+
+        }
+
+    }).done(function (data) {
+      console.log(data);
+      location.reload();
+        // do whatever u want if the request is ok
+       
+    }).fail(function (data) {
+      console.log(data);
+      window.alert("Fail: " + data);
 
         // do what ever you want if the request is not ok
 

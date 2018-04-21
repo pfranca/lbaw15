@@ -24,6 +24,9 @@ Route::get('/topic/{topic_name}/question/{id}', 'AnswersController@index');
 Route::get('login', 'Auth\LoginController@redirectToProvider');
 Route::get('auth/google/callback', 'Auth\LoginController@handleProviderCallback');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+
+Route::put('/user/{username}/edit','UsersController@update');
+
 /*
 // Cards
 Route::get('cards', 'CardController@list');
