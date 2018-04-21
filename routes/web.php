@@ -27,6 +27,10 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::put('/user/{username}/edit','UsersController@update');
 
+Route::put('/topic/question/disable','QuestionsController@disable');
+
+Route::put('/topic/question/answer/disable','AnswersController@disable');
+
 /*
 // Cards
 Route::get('cards', 'CardController@list');

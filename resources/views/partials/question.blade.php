@@ -1,6 +1,6 @@
 @if(count($questions) > 0)
     @foreach($questions as $question)
-
+      @if (!$question->disabled)
 <li class="list-group-item font-theme align-items-start box-question">
     <div class="pb-2">
       <div class="md-12 pl-4">
@@ -26,7 +26,7 @@
           @if ($question->id_author === Auth::user()->id)
           <a href="question3.html#answer" class="underTab colorLink">Answer</a>
             <a href="#" class="underTab colorLink ml-auto">Edit</a>
-            <a href="#" class="underTab colorLink">Delete</a>
+            <a href="#" data-toggle="modal" data-target="#questionDelModal" data-dismiss="modal" class="underTab colorLink" id="deleteQuestion">Delete</a>
           @else
           <a href="question3.html#answer" class="underTab colorLink">Answer</a>
             <a href="" class="underTab colorLink">Report</a>
@@ -54,8 +54,10 @@
     </div>
 
   </li>
-
+  @endif
   @endforeach
     @else
     <p>No Questions found!</b>
   @endif
+
+  @include('partials.deleteQuestion')

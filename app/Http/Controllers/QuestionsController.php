@@ -65,6 +65,22 @@ class QuestionsController extends Controller
             "message" => "created question"]);
     }
 
+    public function disable(Request $request){
+        $data = $request->all();
+
+        DB::table('question')
+            ->where('id',$data['id_question'])
+            ->update([
+                'disabled' => true
+            ]);
+     
+        return response()->json([
+            "status" => "success",
+            "data" => $data,
+            "message" => "Question Deleted"]);
+
+    }
+
     /**
      * Store a newly created resource in storage.
      *

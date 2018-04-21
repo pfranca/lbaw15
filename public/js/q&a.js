@@ -186,7 +186,45 @@ $(document).ready(function() {
   }).done(function (data) {
         $("#message").val('');        
         $('#answerModal').modal('hide');
+        location.reload();
       console.log(data);
+  }).fail(function (data) {
+    console.log(data);
+  });
+});
+
+  $("#submitDeleteQuestion").click(function(){
+
+    $.ajax({
+      url: '/topic/question/disable',
+      type: 'PUT',
+      dataType: 'json',
+      data: {
+        "_token": $('#token').val(),
+        "id_question": $("#getId").val()
+      }
+  }).done(function (data) {
+      console.log(data);
+       location.reload();
+  }).fail(function (data) {
+    console.log(data);
+  });
+});
+
+
+
+  $("#submitDeleteAnswer").click(function(){
+    $.ajax({
+      url: '/topic/question/answer/disable',
+      type: 'PUT',
+      dataType: 'json',
+      data: {
+        "_token": $('#token').val(),
+        "id_answer": $("#answerIdToDelete").val()
+      }
+  }).done(function (data) {
+      console.log(data);
+       location.reload();
   }).fail(function (data) {
     console.log(data);
   });

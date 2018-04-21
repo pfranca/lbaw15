@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Question;
 use App\Topic;
 use App\Answer;
+use DB;
 
 class AnswersController extends Controller
 {
@@ -36,6 +37,22 @@ class AnswersController extends Controller
     public function store(Request $request)
     {
         //
+    }
+
+    public function disable(Request $request){
+        $data = $request->all();
+
+        DB::table('answer')
+            ->where('id',$data['id_answer'])
+            ->update([
+                'disabled' => true
+            ]);
+    
+        return response()->json([
+            "status" => "success",
+            "data" => $data,
+            "message" => "Answer Deleted"]);
+
     }
 
     /**

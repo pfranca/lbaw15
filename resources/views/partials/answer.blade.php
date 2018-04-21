@@ -1,4 +1,5 @@
 @foreach($answers as $answer)
+  @if(!$answer->disabled)
 <li class="list-group-item font-theme align-items-start box-question">
     <div class="pt-2 col-md-12 ml-auto mr-auto">
       <div class="md-12 pl-4 pt-2 answer-link">
@@ -16,11 +17,13 @@
         @guest
         @else
           @if ($answer->id_author === Auth::user()->id)
-          {{$answer->id_author}}
-          <a href="#" class="underTab colorLink">Edit A FUNCIONAR</a>
-          <a href="#" class="underTab colorLink">Delete A FUNCIONAR</a>
+          
+              <button value="{{$answer->id}}" id="getAnswerId" style="display: none;" type="button" class="buttonDown btn btn-primary btn-sm"></button>
+          <a href="#" class="underTab colorLink">Edit </a>
+          <input type="hidden" value="{{$answer->id}}" id="answerIdToDelete">
+          <a id="deleteAnswerButton" href="#" data-toggle="modal" data-target="#deleteAnswer" data-dismiss="modal">Delete</a>
         @else
-          <a href="#" class="underTab colorLink">Report A FUNCIONAR</a>
+          <a href="#" class="underTab colorLink">Report</a>
         @endif
         @endguest
       </div>
@@ -29,4 +32,6 @@
 
   </li>
 
+  @include('partials.deleteAnswer')
+  @endif
   @endforeach
