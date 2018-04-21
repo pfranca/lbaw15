@@ -6,6 +6,7 @@
               <h5 class="modal-title">Submit Question</h5>
     
             </div>
+            <div id="id_author" value="{{Auth::user()->getKey()}}">User's id {{Auth::user()->getKey()}}</div>
             <div class="modal-body">
               <form role="form">
                 <div class="form-group">

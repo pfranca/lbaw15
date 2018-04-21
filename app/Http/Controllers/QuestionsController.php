@@ -48,7 +48,7 @@ class QuestionsController extends Controller
                 'id_topic' => $data['id_topic'],
                 'short_message' => $data['short_message'],
                 ]);
-         }else{
+         }else{*/
             Question::create([
                 'id_author' => $data['id_author'],
                 'id_topic' => $data['id_topic'],

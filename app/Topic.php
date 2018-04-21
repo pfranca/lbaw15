@@ -23,4 +23,8 @@ class Topic extends Model
     protected $fillable = [
         'name', 'img',
     ];
+
+    public function questions(){
+        return $this->hasMany('App\Question');
+    }
 }

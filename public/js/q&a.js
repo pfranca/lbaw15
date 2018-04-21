@@ -99,19 +99,19 @@ $(document).ready(function() {
 
   $("#questionSubmitBtn").click(function(){
       window.alert("short " + $("#short_message").val() +"\n"+ "long " + $("#long_message").val());
+      window.alert("user " + $("#id_author").val());
       
-      $.ajax({
+     /* $.ajax({
         url: '/question/addQuestion',
         type: 'POST',
         dataType: 'json',
         data: {
           "_token": $('#token').val(),
-          "id_author": '2',
-          "topic_name": $("#topicName").val(),
+          "id_author": $("#id_author").val(),
+          "id_topic": $("#topicSelected").val(),
           "short_message": $("#short_message").val(),
           "long_message": $("#long_message").val()
         }
-
     }).done(function (data) {
       window.alert($("#topicSelected").val());
         // do whatever u want if the request is ok
@@ -122,11 +122,12 @@ $(document).ready(function() {
         console.log(data);
     }).fail(function (data) {
       window.alert(data);
-
+      console.log(data);
+      window.alert("user " + $("#id_author").val());
         // do what ever you want if the request is not ok
 
     });
-  
+  */
   });
 
 });

@@ -11,6 +11,8 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    protected $primaryKey = 'id';
+
     protected $table = 'user';
 
     // Don't add create and update timestamps in database.
