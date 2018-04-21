@@ -22,7 +22,7 @@
   <div id="questions" class="bg-white">
 
     <div class="row questionPage py-5">
-      <div class="col-10 col-md-9 col-lg-10 mx-auto" style="font-weight: bold; color: #cce6ff">
+      <div class="col-10 col-md-9 col-lg-10 mx-auto" style="font-weight: bold; color: #cce6ff; margin-top: 30px;">
          {{$question->short_message}}
       </div>
       <div class="col-10 col-md-9 offset-lg-2 col-lg-10 mx-auto" style="font-size: 60%; color: #e6ffff">
