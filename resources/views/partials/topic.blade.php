@@ -5,14 +5,21 @@
         <div class="card mb-4">
           <div class="card-image text-center" onclick="window.location.href='{{asset("topic/". $topic->name)}}'">
             <img class="card-img-top" src="{{asset("images/". $topic->img)}}" alt="{{$topic->img}}">
+
             <h5 class="card-title name-top text-dark font-weight-bold">{{$topic->name}}</h5>
+          
           </div>
+          
+          @guest
+          @else
           <div class="card-body">
             <a href="" class="follow "><h5 class="text-center mx-auto">
               Follow <i class="text-right far fa-heart"></i>
             </h5>
           </a>
+          
           </div>
+          @endguest
         </div>
       </div>
       
