@@ -17,6 +17,8 @@ class Question extends Model
      //Timestamps 
     public $timestamps = false;
 
+
+
      /**
      * The attributes that are mass assignable.
      *
@@ -25,4 +27,16 @@ class Question extends Model
     protected $fillable = [
         'id_author', 'id_topic', 'short_message', 'long_message'
     ];
+
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
+
+    public function topic(){
+        return $this->belongsTo('App\Topic');
+    }
+
+    public function answers(){
+        return $this->hasMany('App\Answer');
+    }
 }

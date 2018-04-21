@@ -28,16 +28,6 @@ class AnswersController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -91,5 +81,22 @@ class AnswersController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function addAnswer(Request $request){
+        $data = $request->all();
+        $id_user = \Auth::user()->id;
+        $questionId = $data['id_question'];
+        Answer::create([
+            'id_author' => $id_user,
+            'id_question' => $data['id_question'],
+            'message' => $data['message']
+            ]);
+        return response()->json([
+            "status" => "success",
+            "data" => $data,
+            "user_id" => $id_user,
+            "message" => "get BestAnswer"]);
     }
 }

@@ -8,12 +8,12 @@
             <div class="modal-body">
               <form role="form">
                 <div class="form-group">
-                  <textarea class="form-control" rows="8"></textarea>
+                  <textarea id="message"class="form-control" rows="8"></textarea>
                 </div>
               </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="buttonDown btn btn-primary btn-sm">Submit</button>
+              <button id="submitAnswerBtn" type="button" class="buttonDown btn btn-primary btn-sm">Submit</button>
               <button type="button" class="buttonDown btn btn-secondary btn-sm" data-toggle="modal" data-target="#" data-dismiss="modal">Exit</button>
             </div>
           </div>

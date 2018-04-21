@@ -63,7 +63,6 @@ $(".card-body").click(function(event) {
 });
 
 $(document).ready(function() {
-
   $('.collapse').on('shown.bs.collapse', function() {
     var heightToAdjust = $(".navbar").height();
     $("#breadcrumbs").css("margin-top", heightToAdjust + 9);
@@ -99,6 +98,7 @@ $(document).ready(function() {
 
   $("#questionSubmitBtn").click(function(){
       window.alert("short " + $("#short_message").val() +"\n"+ "long " + $("#long_message").val());
+      window.alert("user " + $("#id_author").val());
       
       $.ajax({
         url: '/question/addQuestion',
@@ -106,12 +106,10 @@ $(document).ready(function() {
         dataType: 'json',
         data: {
           "_token": $('#token').val(),
-          "id_author": '2',
-          "topic_name": $("#topicName").val(),
+          "id_topic": $("#topicSelected").val(),
           "short_message": $("#short_message").val(),
           "long_message": $("#long_message").val()
         }
-
     }).done(function (data) {
       window.alert($("#topicSelected").val());
         // do whatever u want if the request is ok
@@ -153,11 +151,45 @@ $(document).ready(function() {
     }).fail(function (data) {
       console.log(data);
       window.alert("Fail: " + data);
+    });
+  });
 
+  $("#bestAnswer").click(function(){
+      $.ajax({
+        url: '/question/getBestAnswer',
+        type: 'GET',
+        dataType: 'json',
+        data: {
+          "_token": $('#token').val(),
+          "id_question": $("#questionId").val(),
+        }
+    }).done(function (data) {
+        console.log(data);
+    }).fail(function (data) {
+      console.log("bestAnswer " + data.data);
         // do what ever you want if the request is not ok
 
     });
-  
   });
+  
+  $("#submitAnswerBtn").click(function(){
+    
+    $.ajax({
+      url: '/answer/addAnswer',
+      type: 'POST',
+      dataType: 'json',
+      data: {
+        "_token": $('#token').val(),
+        "id_question": $("#questionId").val(),
+        "message": $("#message").val()
+      }
+  }).done(function (data) {
+        $("#message").val('');        
+        $('#answerModal').modal('hide');
+      console.log(data);
+  }).fail(function (data) {
+    console.log(data);
+  });
+});
 
 });

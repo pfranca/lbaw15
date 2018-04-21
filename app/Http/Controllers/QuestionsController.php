@@ -7,6 +7,7 @@ use App\Question;
 use App\Topic;
 use App\Answer;
 use DB;
+use App\User;
 
 class QuestionsController extends Controller
 {
@@ -48,14 +49,15 @@ class QuestionsController extends Controller
                 'id_topic' => $data['id_topic'],
                 'short_message' => $data['short_message'],
                 ]);
-         }else{
+         }else{*/
+            $id_user = \Auth::user()->id;
             Question::create([
-                'id_author' => $data['id_author'],
+                'id_author' =>$id_user,
                 'id_topic' => $data['id_topic'],
                 'short_message' => $data['short_message'],
                 'long_message' => $data['long_message']
                 ]);
-      //  }*/
+      //  }
        
         return response()->json([
             "status" => "success",
@@ -117,5 +119,17 @@ class QuestionsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getBestAnswer(Request $request){
+        $data = $request->all();
+        $question = Question::find();
+        $answers = $question->answers;
+        $question_id =$data['id_question'];
+        $best = DB::raw("SELECT date, karma, message, username FROM answer, \"user\" WHERE id_question = \"$question_id\" AND answer.disabled=FALSE AND id_author = \"user\".id AND karma = (SELECT max(karma) FROM answer WHERE id_question = \"$question_id\");");
+        return response()->json([
+            "status" => "success",
+            "data" => $best,
+            "message" => "get BestAnswer"]);
     }
 }

@@ -99,5 +99,9 @@ Route::put(); //update do modelo todo
 
 Route::post('/question/addQuestion','QuestionsController@create');
 
+Route::get('/question/getBestAnswer','QuestionsController@getBestAnswer');
+
+Route::post('/answer/addAnswer','AnswersController@addAnswer');
+
 
 
