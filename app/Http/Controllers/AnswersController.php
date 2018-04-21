@@ -116,4 +116,18 @@ class AnswersController extends Controller
             "user_id" => $id_user,
             "message" => "get BestAnswer"]);
     }
+
+    public function updateAnswer(Request $request){
+        $data = $request->all();
+        DB::table('answer')
+            ->where('id', $data['id_answer'])
+            ->update([
+                    'message' => $data['message']
+              ]);
+
+        return response()->json([
+            "status" => "success",
+            "data" => $data,
+            "message" => "update ANswer"]);
+    }
 }

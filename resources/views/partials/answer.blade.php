@@ -17,9 +17,9 @@
         @guest
         @else
           @if ($answer->id_author === Auth::user()->id)
-          
-              <button value="{{$answer->id}}" id="getAnswerId" style="display: none;" type="button" class="buttonDown btn btn-primary btn-sm"></button>
-          <a href="#" class="underTab colorLink">Edit </a>
+          <input type="hidden" id="questinId" value="{{$question->id}}">
+          <a href="#" data-toggle="modal" data-target="#editanswerModal" data-dismiss="modal" class="underTab colorLink">Edit</a>
+          <a href="#" class="underTab colorLink">Delete</a>
           <input type="hidden" value="{{$answer->id}}" id="answerIdToDelete">
           <a id="deleteAnswerButton" href="#" data-toggle="modal" data-target="#deleteAnswer" data-dismiss="modal">Delete</a>
         @else
@@ -32,6 +32,7 @@
 
   </li>
 
+  @include('partials.submitEditAnsModal')
   @include('partials.deleteAnswer')
   @endif
   @endforeach

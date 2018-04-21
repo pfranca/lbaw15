@@ -1,6 +1,6 @@
 @if(count($questions) > 0)
     @foreach($questions as $question)
-      @if (!$question->disabled)
+      @if(!$question->disabled)
 <li class="list-group-item font-theme align-items-start box-question">
     <div class="pb-2">
       <div class="md-12 pl-4">
@@ -24,18 +24,18 @@
         @guest
         @else
           @if ($question->id_author === Auth::user()->id)
+          <input type="hidden" id="questionId" value="{{$question->id}}">
           <a href="question3.html#answer" class="underTab colorLink">Answer</a>
-            <a href="#" class="underTab colorLink ml-auto">Edit</a>
+            <a href="#" data-toggle="modal" data-target="#editquestionModal" data-dismiss="modal" class="underTab colorLink ml-auto">Edit</a>
             <a href="#" data-toggle="modal" data-target="#questionDelModal" data-dismiss="modal" class="underTab colorLink" id="deleteQuestion">Delete</a>
           @else
           <a href="question3.html#answer" class="underTab colorLink">Answer</a>
             <a href="" class="underTab colorLink">Report</a>
           @endif
         @endguest
-          <input type="hidden" id="questionId" value="{{$question->id}}">
-        
       </div>
     </div>
+    
     <div id="question{{$question->id}}" class="collapse bg-light pt-2 col-md-11 ml-auto mr-auto">
       <div class="md-12 pl-4 pt-2 answer-link">
       </div>
@@ -59,5 +59,5 @@
     @else
     <p>No Questions found!</b>
   @endif
-
+  @include('partials.submitEditQuestion')
   @include('partials.deleteQuestion')

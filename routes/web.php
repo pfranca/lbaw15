@@ -107,5 +107,9 @@ Route::get('/question/getBestAnswer','QuestionsController@getBestAnswer');
 
 Route::post('/answer/addAnswer','AnswersController@addAnswer');
 
+Route::put('/question/updateQuestion','QuestionsController@updateQuestion');
+Route::put('/answer/updateAnswer','AnswersController@updateAnswer');
+
+
 
 

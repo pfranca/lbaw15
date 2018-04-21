@@ -97,8 +97,6 @@ $(document).ready(function() {
   });
 
   $("#questionSubmitBtn").click(function(){
-      window.alert("short " + $("#short_message").val() +"\n"+ "long " + $("#long_message").val());
-      window.alert("user " + $("#id_author").val());
       
       $.ajax({
         url: '/question/addQuestion',
@@ -111,12 +109,10 @@ $(document).ready(function() {
           "long_message": $("#long_message").val()
         }
     }).done(function (data) {
-      window.alert($("#topicSelected").val());
         // do whatever u want if the request is ok
         $("#short_message").val('');
         $("#long_message").val('');        
         $('#questionModal').modal('hide');
-        window.alert(data);
         console.log(data);
     }).fail(function (data) {
       window.alert(data);
@@ -191,6 +187,52 @@ $(document).ready(function() {
   }).fail(function (data) {
     console.log(data);
   });
+});
+
+
+
+$("#editquestionSubmitBtn").click(function(){
+  $.ajax({
+    url: '/question/updateQuestion',
+    type: 'PUT',
+    dataType: 'json',
+    data: {
+      "_token": $('#token').val(),
+      "id_topic": $("#edit_topicSelected").val(),
+      "id_question" : $("#questionId").val(),
+      "short_message": $("#edit_short_message").val(),
+      "long_message": $("#edit_long_message").val()
+    }
+}).done(function (data) {
+    $('#editquestionModal').modal('hide');
+    console.log(data);
+    location.reload();
+}).fail(function (data) {
+  window.alert(data);
+    // do what ever you want if the request is not ok
+});
+});
+
+
+$("#submitEditAnswerBtn").click(function(){
+  $.ajax({
+    url: '/answer/updateAnswer',
+    type: 'PUT',
+    dataType: 'json',
+    data: {
+      "_token": $('#token').val(),
+      "id_answer": $("#answerId").val(),
+      "message": $("#message").val()
+    }
+}).done(function (data) {
+    $('#editanswerModal').modal('hide');
+    console.log(data);
+    location.reload();
+}).fail(function (data) {
+  window.alert(data);
+  console.log(data);
+    // do what ever you want if the request is not ok
+});
 });
 
   $("#submitDeleteQuestion").click(function(){
