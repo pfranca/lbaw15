@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\User;
 class PagesController extends Controller
 {
     public function home(){
@@ -11,7 +11,8 @@ class PagesController extends Controller
 	}
 
 	public function profile(){
-		return view('pages.profile');
+		$questions = User::find(11)->questions;
+		return view('pages.profile')->with('questions', $questions);
 	}
 
 	public function topic($topic_name){

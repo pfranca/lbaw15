@@ -83,7 +83,4 @@ class UsersController extends Controller
         //
     }
 
-    public function questions(){
-        return $this->hasMany('Question');
-    }
 }
