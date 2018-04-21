@@ -16,11 +16,11 @@
         @guest
         @else
           @if ($answer->id_author === Auth::user()->id)
-          {{$answer->id_author}}
-          <a href="#" class="underTab colorLink">Edit A FUNCIONAR</a>
-          <a href="#" class="underTab colorLink">Delete A FUNCIONAR</a>
+          <input type="hidden" id="questinId" value="{{$question->id}}">
+          <a href="#" data-toggle="modal" data-target="#editanswerModal" data-dismiss="modal" class="underTab colorLink">Edit</a>
+          <a href="#" class="underTab colorLink">Delete</a>
         @else
-          <a href="#" class="underTab colorLink">Report A FUNCIONAR</a>
+          <a href="#" class="underTab colorLink">Report</a>
         @endif
         @endguest
       </div>
@@ -30,3 +30,5 @@
   </li>
 
   @endforeach
+
+  @include('partials.submitEditAnsModal')

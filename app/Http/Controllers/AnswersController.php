@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Question;
 use App\Topic;
 use App\Answer;
+use DB;
 
 class AnswersController extends Controller
 {
@@ -98,5 +99,19 @@ class AnswersController extends Controller
             "data" => $data,
             "user_id" => $id_user,
             "message" => "get BestAnswer"]);
+    }
+
+    public function updateAnswer(Request $request){
+        $data = $request->all();
+        DB::table('answer')
+            ->where('id', $data['id_answer'])
+            ->update([
+                    'message' => $data['message']
+              ]);
+
+        return response()->json([
+            "status" => "success",
+            "data" => $data,
+            "message" => "update ANswer"]);
     }
 }
