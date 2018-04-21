@@ -19,7 +19,7 @@
       <div class="row text-center">
         <div class="col-md-12 tittle-section theme-title-section">
 
-          <div class="col-md-12">
+          <div class="col-md-12" style="margin-top: 45px">
             <img class="img-profile" src="{{asset('images/'.Auth::user()->img)}}">
           </div>
 
