@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'PagesController@home');
-Route::get('/user', 'PagesController@profile');
+Route::get('/user/{username}', 'PagesController@profile');
 //Route::get('/topic/{topic_name}', 'PagesController@topic');
 //Route::get('/topic/{topic_name}/question/{id}', 'PagesController@question');
 
