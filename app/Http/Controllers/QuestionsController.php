@@ -7,6 +7,7 @@ use App\Question;
 use App\Topic;
 use App\Answer;
 use DB;
+use App\User;
 
 class QuestionsController extends Controller
 {
@@ -49,13 +50,14 @@ class QuestionsController extends Controller
                 'short_message' => $data['short_message'],
                 ]);
          }else{*/
+            $id_user = \Auth::user()->id;
             Question::create([
-                'id_author' => $data['id_author'],
+                'id_author' =>$id_user,
                 'id_topic' => $data['id_topic'],
                 'short_message' => $data['short_message'],
                 'long_message' => $data['long_message']
                 ]);
-      //  }*/
+      //  }
        
         return response()->json([
             "status" => "success",

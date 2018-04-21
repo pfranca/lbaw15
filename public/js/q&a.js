@@ -101,13 +101,12 @@ $(document).ready(function() {
       window.alert("short " + $("#short_message").val() +"\n"+ "long " + $("#long_message").val());
       window.alert("user " + $("#id_author").val());
       
-     /* $.ajax({
+      $.ajax({
         url: '/question/addQuestion',
         type: 'POST',
         dataType: 'json',
         data: {
           "_token": $('#token').val(),
-          "id_author": $("#id_author").val(),
           "id_topic": $("#topicSelected").val(),
           "short_message": $("#short_message").val(),
           "long_message": $("#long_message").val()
@@ -127,7 +126,7 @@ $(document).ready(function() {
         // do what ever you want if the request is not ok
 
     });
-  */
+  
   });
 
 });
