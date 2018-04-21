@@ -120,4 +120,16 @@ class QuestionsController extends Controller
     {
         //
     }
+
+    public function getBestAnswer(Request $request){
+        $data = $request->all();
+        $question = Question::find();
+        $answers = $question->answers;
+        $question_id =$data['id_question'];
+        $best = DB::raw("SELECT date, karma, message, username FROM answer, \"user\" WHERE id_question = \"$question_id\" AND answer.disabled=FALSE AND id_author = \"user\".id AND karma = (SELECT max(karma) FROM answer WHERE id_question = \"$question_id\");");
+        return response()->json([
+            "status" => "success",
+            "data" => $best,
+            "message" => "get BestAnswer"]);
+    }
 }

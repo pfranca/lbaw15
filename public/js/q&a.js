@@ -63,7 +63,6 @@ $(".card-body").click(function(event) {
 });
 
 $(document).ready(function() {
-
   $('.collapse').on('shown.bs.collapse', function() {
     var heightToAdjust = $(".navbar").height();
     $("#breadcrumbs").css("margin-top", heightToAdjust + 9);
@@ -126,7 +125,44 @@ $(document).ready(function() {
         // do what ever you want if the request is not ok
 
     });
-  
   });
+
+  $("#bestAnswer").click(function(){
+      $.ajax({
+        url: '/question/getBestAnswer',
+        type: 'GET',
+        dataType: 'json',
+        data: {
+          "_token": $('#token').val(),
+          "id_question": $("#questionId").val(),
+        }
+    }).done(function (data) {
+        console.log(data);
+    }).fail(function (data) {
+      console.log("bestAnswer " + data.data);
+        // do what ever you want if the request is not ok
+
+    });
+  });
+  
+  $("#submitAnswerBtn").click(function(){
+    
+    $.ajax({
+      url: '/answer/addAnswer',
+      type: 'POST',
+      dataType: 'json',
+      data: {
+        "_token": $('#token').val(),
+        "id_question": $("#questionId").val(),
+        "message": $("#message").val()
+      }
+  }).done(function (data) {
+        $("#message").val('');        
+        $('#answerModal').modal('hide');
+      console.log(data);
+  }).fail(function (data) {
+    console.log(data);
+  });
+});
 
 });

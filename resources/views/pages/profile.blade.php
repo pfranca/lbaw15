@@ -105,12 +105,9 @@
 
     <div class="container-fluid bg-white col-md-9">
       <ul>
-      @foreach($questions as $question)
-        <p>{{$question->short_message}}
-      @endforeach
 
 
-          @{{ AS PERGUNTAS AQUI }}
+           @include('partials.question')
       </ul>
     </div>
   </div>
