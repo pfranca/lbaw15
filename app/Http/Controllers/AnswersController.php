@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Question;
 use App\Topic;
 use App\Answer;
+use DB;
 
 class AnswersController extends Controller
 {
@@ -28,16 +29,6 @@ class AnswersController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -46,6 +37,22 @@ class AnswersController extends Controller
     public function store(Request $request)
     {
         //
+    }
+
+    public function disable(Request $request){
+        $data = $request->all();
+
+        DB::table('answer')
+            ->where('id',$data['id_answer'])
+            ->update([
+                'disabled' => true
+            ]);
+    
+        return response()->json([
+            "status" => "success",
+            "data" => $data,
+            "message" => "Answer Deleted"]);
+
     }
 
     /**
@@ -91,5 +98,36 @@ class AnswersController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function addAnswer(Request $request){
+        $data = $request->all();
+        $id_user = \Auth::user()->id;
+        $questionId = $data['id_question'];
+        Answer::create([
+            'id_author' => $id_user,
+            'id_question' => $data['id_question'],
+            'message' => $data['message']
+            ]);
+        return response()->json([
+            "status" => "success",
+            "data" => $data,
+            "user_id" => $id_user,
+            "message" => "get BestAnswer"]);
+    }
+
+    public function updateAnswer(Request $request){
+        $data = $request->all();
+        DB::table('answer')
+            ->where('id', $data['id_answer'])
+            ->update([
+                    'message' => $data['message']
+              ]);
+
+        return response()->json([
+            "status" => "success",
+            "data" => $data,
+            "message" => "update ANswer"]);
     }
 }

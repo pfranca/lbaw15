@@ -4,10 +4,14 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
+
 
 class User extends Authenticatable
 {
     use Notifiable;
+
+    protected $primaryKey = 'id';
 
     protected $table = 'user';
 
@@ -20,7 +24,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'email', 'name','img','id_google',
+        'username', 'email', 'name','img',
     ];
 
     /**
@@ -32,5 +36,13 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+
+    public function questions(){
+        return $this->hasMany('App\Question','id_author');
+    }
+
+    public function answers(){
+        return $this->hasMany('App\Answer','id_author');
+    }
     
 }

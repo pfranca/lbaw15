@@ -1,19 +1,19 @@
-<div class="modal fade" id="answerModal" tabindex="-1" role="dialog">
+<div class="modal fade" id="editanswerModal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title">Submit Answer</h5>
-       
             </div>
             <div class="modal-body">
               <form role="form">
                 <div class="form-group">
-                  <textarea id="message"class="form-control" rows="8"></textarea>
+                  <textarea id="message" class="form-control" rows="8">{{$answer->message}}</textarea>
                 </div>
               </form>
             </div>
+            <input type="hidden" value="{{$answer->id}}" id="answerId">
             <div class="modal-footer">
-              <button id="submitAnswerBtn" type="button" class="buttonDown btn btn-primary btn-sm">Submit</button>
+              <button id="submitEditAnswerBtn" type="button" class="buttonDown btn btn-primary btn-sm">Submit</button>
               <button type="button" class="buttonDown btn btn-secondary btn-sm" data-toggle="modal" data-target="#" data-dismiss="modal">Exit</button>
             </div>
           </div>

@@ -67,9 +67,27 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $name = $data['name'];
+        $email = $data['email'];
+        $bio = $data['bio'];
+
+        $user_id = \Auth::user()->id;
+        $user = User::find($user_id);
+
+        $user->name=$name;
+        $user->email=$email;
+        $user->bio = $bio;
+        $user->save();
+
+        //console.log(data.email)
+        return response()->json([
+            "status" => "success",
+            "data" => $data,
+            "message" => "user updated"]);
     }
 
     /**
@@ -82,4 +100,5 @@ class UsersController extends Controller
     {
         //
     }
+
 }

@@ -4,6 +4,7 @@
 <head>
   <title>{{config('app.name', 'Q&A')}}</title>
   <meta charset="utf-8">
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
@@ -15,6 +16,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  <script defer src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+  <script defer src="{{asset('js/admin.js')}}"></script>
+    <!-- Table -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
 
   <script src="{{asset('js/q&a.js')}}" defer></script>
   
@@ -27,6 +32,8 @@
   <div id="modals" class='login'>
 
   </div>
+
+  <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
 
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="{{asset('/')}}">Cooperative Q & A</a>
@@ -50,25 +57,23 @@
             @guest
                  <a id="loginButton" class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">LOGIN</a>
             @else
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                    {{ Auth::user()->name }} <span class="caret"></span>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown">
+                {{ Auth::user()->name }}  <img class="img-fluid nav-img-profile" src="{{asset('images/'.Auth::user()->img)}}" alt="profilePic" />
                 </a>
-
-                <ul class="dropdown-menu">
-                    <li>
-                        <a href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                                     document.getElementById('logout-form').submit();">
-                            Logout
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
-                    </li>
-                </ul>
+              <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" href="favQuestions.html">Following</a>
+                <a class="dropdown-item" href="{{asset("user/".Auth::user()->username)}}">Your Profile</a>
+                <a class="dropdown-item" href="notification.html">Notifications</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  {{ csrf_field() }}
+              </form>
+              </div>
             </li>
+            
         @endguest
         </li>
       </ul>

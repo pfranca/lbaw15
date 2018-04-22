@@ -7,6 +7,7 @@ use App\Question;
 use App\Topic;
 use App\Answer;
 use DB;
+use App\User;
 
 class QuestionsController extends Controller
 {
@@ -18,6 +19,7 @@ class QuestionsController extends Controller
     public function index($topic_name)
     {
         $topic = Topic::where('name', $topic_name)->get();
+        $topics = Topic::All();
         $questions = Question::where('id_topic', $topic[0]->id)->paginate(5);
         $answers = Answer::All();
        // dd($answers);
@@ -26,7 +28,8 @@ class QuestionsController extends Controller
         $data=array(
             'topic_name' => $topic_name,
             'questions' => $questions,
-            'answers' => $answers
+            'answers' => $answers,
+            'topics' => $topics
         );
        return view('pages.topic')->with($data);
     }
@@ -36,9 +39,46 @@ class QuestionsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $long_message = $request->input('long_message');
+        $data = $request->all();
+      //  if (empty($long_message)){
+           /* Question::create([
+                'id_author' => $data['id_author'],
+                'id_topic' => $data['id_topic'],
+                'short_message' => $data['short_message'],
+                ]);
+         }else{*/
+            $id_user = \Auth::user()->id;
+            Question::create([
+                'id_author' =>$id_user,
+                'id_topic' => $data['id_topic'],
+                'short_message' => $data['short_message'],
+                'long_message' => $data['long_message']
+                ]);
+      //  }
+       
+        return response()->json([
+            "status" => "success",
+            "data" => $data,
+            "message" => "created question"]);
+    }
+
+    public function disable(Request $request){
+        $data = $request->all();
+
+        DB::table('question')
+            ->where('id',$data['id_question'])
+            ->update([
+                'disabled' => true
+            ]);
+     
+        return response()->json([
+            "status" => "success",
+            "data" => $data,
+            "message" => "Question Deleted"]);
+
     }
 
     /**
@@ -95,5 +135,33 @@ class QuestionsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getBestAnswer(Request $request){
+        $data = $request->all();
+        $question = Question::find();
+        $answers = $question->answers;
+        $question_id =$data['id_question'];
+        $best = DB::raw("SELECT date, karma, message, username FROM answer, \"user\" WHERE id_question = \"$question_id\" AND answer.disabled=FALSE AND id_author = \"user\".id AND karma = (SELECT max(karma) FROM answer WHERE id_question = \"$question_id\");");
+        return response()->json([
+            "status" => "success",
+            "data" => $best,
+            "message" => "get BestAnswer"]);
+    }
+
+    public function updateQuestion(Request $request){
+        $data = $request->all();
+        DB::table('question')
+            ->where('id', $data['id_question'])
+            ->update([
+                    'short_message' => $data['short_message'],
+                    'long_message' => $data['long_message'],
+                    'id_topic' => $data['id_topic']
+              ]);
+
+        return response()->json([
+            "status" => "success",
+            "data" => $data,
+            "message" => "update Question"]);
     }
 }

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 
+
 @section('content')
 
    <nav id="breadcrumbs" class="fixed-top" aria-label="breadcrumb">
@@ -10,16 +11,18 @@
       <li class="breadcrumb-item active" aria-current="page">Question </li>
       <li class="ml-auto">
         <a id="submitAnswerButton" href="#" data-toggle="modal" data-target="#answerModal" data-dismiss="modal">Submit Answer</a>
-      </li>
+     </li>
 
     </ol>
   </nav>
+
+  <input type="hidden" id="questionId" value="{{$question->id}}">
 
 
   <div id="questions" class="bg-white">
 
     <div class="row questionPage py-5">
-      <div class="col-10 col-md-9 col-lg-10 mx-auto" style="font-weight: bold; color: #cce6ff">
+      <div class="col-10 col-md-9 col-lg-10 mx-auto" style="font-weight: bold; color: #cce6ff; margin-top: 30px;">
          {{$question->short_message}}
       </div>
       <div class="col-10 col-md-9 offset-lg-2 col-lg-10 mx-auto" style="font-size: 60%; color: #e6ffff">
@@ -39,5 +42,9 @@
   </div>
   </div>
   </div>
+  
+  @include('partials.submitAnsModal')
+
+
 
 @endsection

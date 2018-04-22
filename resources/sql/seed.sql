@@ -33,7 +33,8 @@ CREATE TABLE "user"(
   bio TEXT,
   disabled BOOLEAN DEFAULT FALSE NOT NULL,
   type user_type DEFAULT 'NORMAL' NOT NULL,
-  id_google TEXT UNIQUE,
+  id_google TEXT,
+  remember_token TEXT,
   PRIMARY KEY(id)
 );
 
@@ -274,10 +275,10 @@ CREATE TRIGGER generate_notification_owner
     FOR EACH ROW
         EXECUTE PROCEDURE generate_notification_owner();
 
-        INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('DiogoaCunha', 'diogoalmeida@gmail.com','diogo','diogo.png','Im fine','ADMIN');
-INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('martaTorgal', 'marta@gmail.com','Marta Torgal','marta.png','Im always ok!!','ADMIN');
-INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('tibas', 'tibas94@gmail.com','Jose Marques','tibas.png','I like to eat icecream with my forehead','ADMIN');
-INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('franza', 'pedro.franca.1994@gmail.com','Pedro Franca','franza.png','if I answered your question it is prolly wrong','ADMIN');
+        INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('DiogoaCunha', 'mailfalso@gmail.com','diogo','diogo.png','Im fine','ADMIN');
+INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('martaTorgal', 'mailmarta@gmail.com','Marta Torgal','marta.png','Im always ok!!','ADMIN');
+INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('tibas', 'mailtibas94@gmail.com','Jose Marques','tibas.png','I like to eat icecream with my forehead','ADMIN');
+INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('franza', 'pop@gmail.com','Pedro Franca','franza.png','if I answered your question it is prolly wrong','ADMIN');
 INSERT INTO "user"(username,email,name,img,bio) VALUES ('jeff', 'jeff98@gmail.com','Jeff Erson','default.png','MY NAME IS JEFFF');
 INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('potus', 'therealdonaldtrump@gmail.com','Donald Trump','potus.png','Imma build a wall','NORMAL');
 INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('johnSnow85', 'yoyo@gmail.com','MANEL','default.png','winter is comming,false','NORMAL');
@@ -385,3 +386,7 @@ INSERT INTO "badge" (name,img) VALUES ('Friendly', 'badge3.png');
 INSERT INTO "badge" (name,img) VALUES ('Not so smart', 'badge4.png');
 INSERT INTO "badge" (name,img) VALUES ('ADMIN', 'ADMINbadge.png');
 INSERT INTO "badge" (name,img) VALUES ('MOD', 'MODbadge.png');
+
+INSERT INTO "report" (reason,id_reporting_user,id_reported_answer) VALUES ('eleifend vitae, erat. Vivamus nisi. Mauris nulla.',1,1);
+INSERT INTO "report" (reason,id_reporting_user,id_reported_answer) VALUES ('In scelerisque scelerisque dui.',2,2);
+INSERT INTO "report" (reason,id_reporting_user,id_reported_answer) VALUES ('varius. Nam porttitor scelerisque neque. Nullam nisl. Maecenas malesuada',3,3);
