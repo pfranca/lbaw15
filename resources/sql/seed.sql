@@ -225,7 +225,7 @@ CREATE TRIGGER only_one_follow_topic
     FOR EACH ROW
         EXECUTE PROCEDURE only_one_follow_topic();
 
-
+/*
 --TRIGGER05
 --trigger para ver se ja das follow a uma questao
 CREATE OR REPLACE FUNCTION only_one_follow_question() RETURNS TRIGGER AS
@@ -242,7 +242,7 @@ CREATE TRIGGER only_one_follow_question
     BEFORE INSERT ON followQuestion
     FOR EACH ROW
         EXECUTE PROCEDURE only_one_follow_question();
-
+*/
 --TRIGGER06
 --trigger para gerar notificacao quando pergunta que user segue tem uma nova resposta
 CREATE OR REPLACE FUNCTION generate_notification_follow() RETURNS TRIGGER AS
@@ -326,13 +326,10 @@ INSERT INTO question(date,karma,short_message,long_message,id_author,id_topic) V
 INSERT INTO question(date,karma,short_message,long_message,id_author,id_topic) VALUES (now(),4323,'mais uma de desporto?', 'bue cenas',7,1);
 ----- Insert FollowQuestion
 
-INSERT INTO followQuestion(id_user,id_question) VALUES (1,14);
-INSERT INTO followQuestion(id_user,id_question) VALUES (8,15);
-INSERT INTO followQuestion(id_user,id_question) VALUES (5,7);
-INSERT INTO followQuestion(id_user,id_question) VALUES (6,3);
+
 
 -----Insert Answer
-
+/*
 INSERT INTO answer(date,karma,message,id_author,id_question) VALUES (now(),7,'The greatest tennins player is Roger Federer!!! Check it on google mate.',6,1);
 INSERT INTO answer(date,karma,message,id_author,id_question) VALUES (now(),0,'your mom',3,1);
 INSERT INTO answer(date,karma,message,id_author,id_question) VALUES (now(),2,'You need to be federated and you need to have your replica paint yellow or red.',5,2);
@@ -351,7 +348,7 @@ INSERT INTO answer(date,karma,message,id_author,id_question) VALUES (now(),5000,
 INSERT INTO answer(date,karma,message,id_author,id_question) VALUES (now(),15,'Pasta',3,14);
 INSERT INTO answer(date,karma,message,id_author,id_question) VALUES (now(),8,'Ceaser salad',4,14);
 INSERT INTO answer(date,karma,message,id_author,id_question) VALUES (now(),10,'I like eggs ',5,14);
-
+*/
 ------ Insert FollowTopic
 
 INSERT INTO followTopic(id_user,id_topic) VALUES (1,1);
@@ -390,3 +387,10 @@ INSERT INTO "badge" (name,img) VALUES ('MOD', 'MODbadge.png');
 INSERT INTO "report" (reason,id_reporting_user,id_reported_answer) VALUES ('eleifend vitae, erat. Vivamus nisi. Mauris nulla.',1,1);
 INSERT INTO "report" (reason,id_reporting_user,id_reported_answer) VALUES ('In scelerisque scelerisque dui.',2,2);
 INSERT INTO "report" (reason,id_reporting_user,id_reported_answer) VALUES ('varius. Nam porttitor scelerisque neque. Nullam nisl. Maecenas malesuada',3,3);
+
+INSERT INTO followQuestion(id_user,id_question) VALUES (1,1);
+INSERT INTO followQuestion(id_user,id_question) VALUES (3,1);
+INSERT INTO followQuestion(id_user,id_question) VALUES (4,1);
+INSERT INTO followQuestion(id_user,id_question) VALUES (9,1);
+
+INSERT INTO answer(date,karma,message,id_author,id_question) VALUES (now(),0,'Vegan food 4life',6,1);

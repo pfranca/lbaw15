@@ -12,12 +12,21 @@
           
           @guest
           @else
-          <div class="card-body">
-            <a href="" class="follow "><h5 class="text-center mx-auto">
-              Follow <i class="text-right far fa-heart"></i>
-            </h5>
-          </a>
-          
+          <div class="card-body" id="submitFollowTopic">
+            @foreach(Auth::user()->followTopic as $followedTopic) 
+              @if($topic->id == $followedTopic->id)
+                <a href="" class="unfollow"><h5 class="text-center mx-auto">
+                  Unfollow <i class="text-right fas fa-heart"></i>
+                </h5>
+                </a>
+            @else
+              <a href="" class="follow"><h5 class="text-center mx-auto">
+                Follow <i class="text-right far fa-heart"></i>
+              </h5>
+              </a>
+            @endif
+            @endforeach
+          <param value="{{$topic->id}}" id="idTopic">
           </div>
           @endguest
         </div>

@@ -27,4 +27,8 @@ class Topic extends Model
     public function questions(){
         return $this->hasMany('App\Question');
     }
+
+    public function followTopic(){
+        return $this->belongsToMany('App\User','followtopic','id_user','id_topic')->withPivot('id_user', 'id_topic');;
+    } 
 }
