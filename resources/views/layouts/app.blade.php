@@ -22,7 +22,9 @@
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
 
   <script src="{{asset('js/q&a.js')}}" defer></script>
-  
+
+  <meta name="google-site-verification" content="ZYfMaCLyVwA_xB6ozW2crasnN5LNYEyf5s2R2y0Oi-0" />
+
 </head>
 
 @include('partials.loginModal')
@@ -73,7 +75,7 @@
               </form>
               </div>
             </li>
-            
+
         @endguest
         </li>
       </ul>
@@ -88,5 +90,3 @@
 </footer>
 
 </html>
-                        
-                   
