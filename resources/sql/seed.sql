@@ -275,7 +275,32 @@ CREATE TRIGGER generate_notification_owner
     FOR EACH ROW
         EXECUTE PROCEDURE generate_notification_owner();
 
-        INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('DiogoaCunha', 'mailfalso@gmail.com','diogo','diogo.png','Im fine','ADMIN');
+
+--INDEXES
+CREATE INDEX idx_idtopicquestion ON "question" USING hash(id_topic);
+CREATE INDEX idx_iddisabledquestion ON "question" USING  hash(id_topic);
+
+ALTER TABLE "question" ADD COLUMN textsearchable_index_col tsvector;
+UPDATE "question" SET textsearchable_index_col =
+ to_tsvector('english', coalesce(short_message,'')||' '|| coalesce(long_message,''));
+
+CREATE INDEX textsearch_idx ON "question" USING GIN (textsearchable_index_col);
+
+ALTER TABLE "user" ADD COLUMN usersearchable_index_col tsvector;
+UPDATE "user" SET usersearchable_index_col =
+     to_tsvector('english', coalesce(name,'') || ' ' || coalesce(username,''));
+
+CREATE INDEX usersearch_idx ON "user" USING GIN (usersearchable_index_col);
+
+ALTER TABLE "answer" ADD COLUMN textsearchanswer_index_col tsvector;
+UPDATE "answer" SET textsearchanswer_index_col =
+     to_tsvector('english', coalesce(message,''));
+
+CREATE INDEX textsearch_answer_idx ON "answer" USING GIN (textsearchanswer_index_col);
+
+
+
+INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('DiogoaCunha', 'mailfalso@gmail.com','diogo','diogo.png','Im fine','ADMIN');
 INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('martaTorgal', 'mailmarta@gmail.com','Marta Torgal','marta.png','Im always ok!!','ADMIN');
 INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('tibas', 'mailtibas94@gmail.com','Jose Marques','tibas.png','I like to eat icecream with my forehead','ADMIN');
 INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('franza', 'pop@gmail.com','Pedro Franca','franza.png','if I answered your question it is prolly wrong','ADMIN');
