@@ -272,4 +272,23 @@ $("#submitEditAnswerBtn").click(function(){
   });
 });
 
+
+  $("#submitFollowTopic").click(function(){
+    window.alert("omd");
+    $.ajax({
+      url: '/setfollow',
+      type: 'POST',
+      dataType: 'json',
+      data: {
+        "_token": $('#token').val(),
+        "id_topic": $( "#idTopic" ).val()
+      }
+  }).done(function (data) {
+      console.log(data);
+      //location.reload();
+  }).fail(function (data) {
+    console.log(data);
+  });
+});
+
 });

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Topic;
+use App\FollowTopic;
+use App\User;
 
 class TopicsController extends Controller
 {
@@ -46,9 +48,29 @@ class TopicsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show( $id)
     {
         //
+    }   
+
+    public function follow(Request $request){
+        $data = $request->all(); // This will get all the request data.
+        $topic = $request->input('id_topic');
+
+       $user_id = \Auth::user()->id;
+
+        FollowTopic::create([
+            'id_user' => $user_id,
+            'id_topic' => $topic
+            ]);
+
+
+        return response()->json([
+            "status" => "success",
+            "data" => $data,
+            "user" => $user_id,
+            "message" => "Followed topic"]);
+
     }
 
     /**

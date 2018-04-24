@@ -44,5 +44,9 @@ class User extends Authenticatable
     public function answers(){
         return $this->hasMany('App\Answer','id_author');
     }
+
+   public function followTopic(){
+        return $this->belongsToMany('App\Topic','followtopic','id_user','id_topic')->withPivot('id_user', 'id_topic');
+    }
     
 }
