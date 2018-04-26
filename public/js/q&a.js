@@ -51,6 +51,25 @@ function goToTopic(time) {
   }, time);
 };
 
+function actionFollow(id_topic){
+  $.ajax({
+    url: '/setfollow',
+    type: 'PUT',
+    dataType: 'json',
+    data: {
+      "_token": $('#token').val(),
+      "id_topic": id_topic
+    }
+    }).done(function (data) {
+        console.log(data);
+        //location.reload();
+    }).fail(function (data) {
+      console.log(data);
+    });
+}
+
+
+
 $(".card-body").click(function(event) {
   event.preventDefault();
   $(this).children(":first").toggleClass("unfollow");
@@ -271,24 +290,17 @@ $("#submitEditAnswerBtn").click(function(){
     console.log(data);
   });
 });
-
-
-  $("#submitFollowTopic").click(function(){
-    window.alert("omd");
-    $.ajax({
-      url: '/setfollow',
-      type: 'POST',
-      dataType: 'json',
-      data: {
-        "_token": $('#token').val(),
-        "id_topic": $( "#idTopic" ).val()
-      }
-  }).done(function (data) {
-      console.log(data);
-      //location.reload();
-  }).fail(function (data) {
-    console.log(data);
-  });
-});
+/*
+  $(".card-body").click(function(){
+    if($(this).children(":first").hasClass("unfollow")){
+        window.alert("following");
+        console.log($(this).children(":first").outerHTML);
+    }else{
+       window.alert("unfollowing");
+       console.log($(this).children(":first").outerHTML);
+    }
+      
+   /* 
+});**/
 
 });

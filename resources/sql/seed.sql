@@ -354,7 +354,6 @@ INSERT INTO question(date,karma,short_message,long_message,id_author,id_topic) V
 
 
 -----Insert Answer
-/*
 INSERT INTO answer(date,karma,message,id_author,id_question) VALUES (now(),7,'The greatest tennins player is Roger Federer!!! Check it on google mate.',6,1);
 INSERT INTO answer(date,karma,message,id_author,id_question) VALUES (now(),0,'your mom',3,1);
 INSERT INTO answer(date,karma,message,id_author,id_question) VALUES (now(),2,'You need to be federated and you need to have your replica paint yellow or red.',5,2);
@@ -373,7 +372,7 @@ INSERT INTO answer(date,karma,message,id_author,id_question) VALUES (now(),5000,
 INSERT INTO answer(date,karma,message,id_author,id_question) VALUES (now(),15,'Pasta',3,14);
 INSERT INTO answer(date,karma,message,id_author,id_question) VALUES (now(),8,'Ceaser salad',4,14);
 INSERT INTO answer(date,karma,message,id_author,id_question) VALUES (now(),10,'I like eggs ',5,14);
-*/
+
 ------ Insert FollowTopic
 
 INSERT INTO followTopic(id_user,id_topic) VALUES (1,1);
@@ -417,5 +416,3 @@ INSERT INTO followQuestion(id_user,id_question) VALUES (1,1);
 INSERT INTO followQuestion(id_user,id_question) VALUES (3,1);
 INSERT INTO followQuestion(id_user,id_question) VALUES (4,1);
 INSERT INTO followQuestion(id_user,id_question) VALUES (9,1);
-
-INSERT INTO answer(date,karma,message,id_author,id_question) VALUES (now(),0,'Vegan food 4life',6,1);
