@@ -57,7 +57,7 @@ class TopicsController extends Controller
         $data = $request->all(); // This will get all the request data.
         $topic_id = $request->input('id_topic');
 
-       $user_id = \Auth::user()->id;
+        $user_id = \Auth::user()->id;
         $followedTopics=\Auth::user()->followTopic;
         //if user dont follow create followTopic
         $deleted = FALSE;
