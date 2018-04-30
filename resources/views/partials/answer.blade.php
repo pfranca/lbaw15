@@ -22,6 +22,9 @@
           <a href="#" class="underTab colorLink">Delete</a>
           <input type="hidden" value="{{$answer->id}}" id="answerIdToDelete">
           <a id="deleteAnswerButton" href="#" data-toggle="modal" data-target="#deleteAnswer" data-dismiss="modal">Delete</a>
+        @elseif(Auth::user()->type === 'MOD')
+          <a href="#" class="underTab colorLink">Report</a>
+          <a href="#" class="underTab colorLink">Delete</a>
         @elseif ($answer->id_author !== Auth::user()->id)
           <a href="#" class="underTab colorLink">Report</a>
           @else

@@ -1,4 +1,4 @@
-
+@if(count($questions) > 0)
   <div class="modal fade" id="editquestionModal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -12,7 +12,12 @@
                   <label>Topic to post</label>
                   <select id="edit_topicSelected" class="selectpicker">
                     @foreach($topics as $topic)
-                        <option value="{{$topic->id}}">{{$topic->name}}</option>
+                        @if ($question->id_topic === $topic->id)
+                            <option selected value="{{$topic->id}}">{{$topic->name}}</option>
+                        @else
+                            <option value="{{$topic->id}}">{{$topic->name}}</option>
+                      @endif
+                
                     @endforeach
                   </select>
                 </div>
@@ -26,6 +31,7 @@
                 </div>
               </form>
             </div>
+
             <div class="modal-footer">
               <button type="button" id="editquestionSubmitBtn" class="buttonDown btn btn-primary btn-sm">Submit</button>
               <button type="button" class="buttonDown btn btn-secondary btn-sm" data-toggle="modal" data-target="#" data-dismiss="modal">Exit</button>
@@ -33,4 +39,5 @@
           </div>
         </div>
       </div>
+@endif
     

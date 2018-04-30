@@ -34,6 +34,13 @@ Route::put('/topic/question/disable','QuestionsController@disable');
 
 Route::put('/topic/question/answer/disable','AnswersController@disable');
 
+
+//----------------TESTE
+Route::get('localhost:8000/auth/google/callback', 'Auth\LoginController@handleProviderCallback');
+//----------------------------------------------
+
+
+
 /*
 // Cards
 Route::get('cards', 'CardController@list');
