@@ -12,10 +12,10 @@
           
           @guest
           @else
-          <div class="card-body" id="submitFollowTopic">
+          <div class="card-body" onclick="actionFollow({{$topic->id}})">
             @foreach(Auth::user()->followTopic as $followedTopic) 
               @if($topic->id == $followedTopic->id)
-                <a href="" class="unfollow"><h5 class="text-center mx-auto">
+                <a href="" class="unfollow" ><h5 class="text-center mx-auto">
                   Unfollow <i class="text-right fas fa-heart"></i>
                 </h5>
                 </a>
