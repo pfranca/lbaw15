@@ -57,22 +57,23 @@ class TopicsController extends Controller
         $data = $request->all(); // This will get all the request data.
         $topic_id = $request->input('id_topic');
 
-        $user_id = \Auth::user()->id;
+        $id_user = \Auth::user()->id;
         $followedTopics=\Auth::user()->followTopic;
         //if user dont follow create followTopic
         $deleted = FALSE;
         foreach ($followedTopics as $follow) {
             if($follow['id'] == $topic_id){
-                /*$topic_followed = FollowTopic::where('id_user', $user_id,'id_topic',$topic_id);
-                $topic_followed->delete();
-            */
+                $topic_followed = FollowTopic::where([
+                    ['id_user', $id_user],
+                    ['id_topic',$topic_id]
+                ])->delete();
             $deleted = TRUE;
             break;
             }
         }
-       /* if($deleted == FALSE){
+        if($deleted == FALSE){
         FollowTopic::create([
-            'id_user' => $user_id,
+            'id_user' => $id_user,
             'id_topic' => $topic_id
             ]);
         }
@@ -80,12 +81,12 @@ class TopicsController extends Controller
         $topicDepois = \Auth::user()->followTopic;
 
         
-        */
+        
 
         return response()->json([
             "status" => "success",
             "data" => $data,
-            "user" => $user_id,
+            "user" => $id_user,
             "followAntes" => $followedTopics,
             "followDepois" => $topicDepois,
             "deleted" => $deleted,
@@ -126,4 +127,5 @@ class TopicsController extends Controller
     {
         //
     }
+
 }

@@ -48,5 +48,12 @@ class User extends Authenticatable
    public function followTopic(){
         return $this->belongsToMany('App\Topic','followtopic','id_user','id_topic')->withPivot('id_user', 'id_topic');
     }
-    
+
+    public function followTopicId($id_topic,$id_user){
+        $topic = FollowTopic::where([
+            ['id_user', $id_user],
+            ['id_topic',$id_topic]
+        ])->count();
+        return $topic == 1;
+    }
 }

@@ -12,21 +12,17 @@
                   <label>Topic to post</label>
                   <select id="edit_topicSelected" class="selectpicker">
                     @foreach($topics as $topic)
-                        @if ($question->id_topic === $topic->id)
-                            <option selected value="{{$topic->id}}">{{$topic->name}}</option>
-                        @else
-                            <option value="{{$topic->id}}">{{$topic->name}}</option>
-                      @endif
+                        <option value="{{$topic->id}}">{{$topic->name}}</option>
                     @endforeach
                   </select>
                 </div>
                 <div>Write here the short description of the question:</div>
                 <div  class="form-group">
-                  <textarea id="edit_short_message" class="form-control" rows="3">{{$question->short_message}}</textarea>
+                  <textarea id="edit_short_message" class="form-control" rows="3"></textarea>
                 </div>
                 <div>Write here the description of the question (optional):</div>
                 <div class="form-group">
-                  <textarea id="edit_long_message" class="form-control" rows="5">{{$question->long_message}}</textarea>
+                  <textarea id="edit_long_message" class="form-control" rows="5"></textarea>
                 </div>
               </form>
             </div>
