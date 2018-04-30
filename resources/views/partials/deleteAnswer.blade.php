@@ -1,3 +1,4 @@
+@if(count($questions) > 0)
 <div class="modal fade" id="deleteAnswer" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -16,4 +17,4 @@
           </div>
         </div>
        </div>
-       
+@endif    

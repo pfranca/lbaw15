@@ -28,9 +28,13 @@
           <a href="question3.html#answer" class="underTab colorLink">Answer</a>
             <a href="#" data-toggle="modal" data-target="#editquestionModal" data-dismiss="modal" class="underTab colorLink ml-auto">Edit</a>
             <a href="#" data-toggle="modal" data-target="#questionDelModal" data-dismiss="modal" class="underTab colorLink" id="deleteQuestion">Delete</a>
+          @elseif (Auth::user()->type === 'MOD')
+            <a href="question3.html#answer" class="underTab colorLink">Answer</a>
+            <a href="" class="underTab colorLink">Report</a>
+            <a href="#" data-toggle="modal" data-target="#questionDelModal" data-dismiss="modal" class="underTab colorLink" id="deleteQuestion">Delete
           @else
           <a href="question3.html#answer" class="underTab colorLink">Answer</a>
-            <a href="" class="underTab colorLink">Report</a>
+          <a href="" class="underTab colorLink">Report</a>
           @endif
         @endguest
       </div>
