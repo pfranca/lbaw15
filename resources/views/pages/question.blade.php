@@ -31,6 +31,21 @@
       <div class="col-10 col-md-9 col-lg-6 mx-auto" style="font-size: 70%; color: #f2f2f2">
           {{$question->long_message}}
       </div>
+      <input type="hidden" name="userAuthId" value="$user_id">
+      <div>
+            <a id="question-follow-btn" class="btn btn-circle js-scroll-trigger btn-arrow">
+              <div class="about">
+                <p>Follow Question</p>
+              </div>
+            </a>
+          </div>
+          <div>
+            <a id="question-unfollow-btn" class="btn btn-circle js-scroll-trigger btn-arrow">
+              <div class="about">
+                <p>Unfollow Question</p>
+              </div>
+            </a>
+          </div>
     </div>
     <div class="container-fluid bg-white col-md-9">
       <ul class="list-group col-md-11 mx-auto">

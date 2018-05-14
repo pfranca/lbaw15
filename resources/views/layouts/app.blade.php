@@ -49,9 +49,12 @@
         <button class="btnsearch  col-2" type="submit"><i class="fas fa-search"></i></button>
       </form>
       <ul class="navbar-nav ml-auto">
+       @guest
+       @else
         <li class="nav-item">
-          <a class="nav-link" href="feed.html">FEED</a>
+          <a class="nav-link" href="feed">FEED</a>
         </li>
+        @endguest
         <li class="nav-item">
           <a id="TopicsNavBar" class="nav-link">TOPICS</a>
         </li>

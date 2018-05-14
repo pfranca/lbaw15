@@ -33,3 +33,4 @@ class TopicsController extends Controller
     }
 
 }
+?>

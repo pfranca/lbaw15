@@ -290,17 +290,46 @@ $("#submitEditAnswerBtn").click(function(){
     console.log(data);
   });
 });
-/*
-  $(".card-body").click(function(){
-    if($(this).children(":first").hasClass("unfollow")){
-        window.alert("following");
-        console.log($(this).children(":first").outerHTML);
-    }else{
-       window.alert("unfollowing");
-       console.log($(this).children(":first").outerHTML);
+
+
+$("#question-follow-btn").click(function(){
+  window.alert('follow ' + $("#userAuthId").val());
+  $.ajax({
+    url: '/topic/question/followQuestion',
+    type: 'POST',
+    dataType: 'json',
+    data: {
+      "_token": $('#token').val(),
+      "id_question": $("#questionId").val(),
+      "id_user": $("#userAuthId").val()      
     }
-      
-   /* 
-});**/
+}).done(function (data) {
+    console.log(data);
+    window.alert("followed");
+}).fail(function (data) {
+  console.log(data);
+});
+});
+
+$("#question-unfollow-btn").click(function(){
+  window.alert('unfollow');
+  $.ajax({
+    url: '/topic/question/unfollowQuestion',
+    type: 'DELETE',
+    dataType: 'json',
+    data: {
+      "_token": $('#token').val(),
+      "id_question": $("#questionId").val(),
+      "id_user": $("#userId").val() 
+    }
+}).done(function (data) {
+    console.log(data);
+    window.alert("unfollowed");
+}).fail(function (data) {
+  console.log(data);
+});
+});
+
+
 
 });

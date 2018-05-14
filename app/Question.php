@@ -39,4 +39,8 @@ class Question extends Model
     public function answers(){
         return $this->hasMany('App\Answer');
     }
+    
+    public function followQuestion(){
+        return $this->belongsToMany('App\User','followquestion','id_user','id_question')->withPivot('id_user', 'id_question');
+    }
 }

@@ -56,4 +56,8 @@ class User extends Authenticatable
         ])->count();
         return $topic == 1;
     }
+
+    public function followQuestion(){
+        return $this->belongsToMany('App\Question','followquestion','id_user','id_question')->withPivot('id_user', 'id_question');
+    }
 }

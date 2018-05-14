@@ -126,4 +126,7 @@ Route::put('/answer/updateAnswer','AnswersController@updateAnswer');
 
 
 
+Route::get('/feed', 'FeedController@index');
 
+Route::post('/topic/question/followQuestion','QuestionsController@follow');
+Route::delete('/topic/question/unfollowQuestion','QuestionsController@unfollow');

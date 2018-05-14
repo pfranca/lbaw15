@@ -164,4 +164,36 @@ class QuestionsController extends Controller
             "data" => $data,
             "message" => "update Question"]);
     }
+
+    public function follow(Request $request){
+        $data = $request->all();
+        //$id_user =$data['id_user'];
+        /*if(FollowQuestion::where([
+            ['id_user', $id_user],
+            ['id_question' => $data['id_question']]
+            ]) == null)
+        if($numberQuestions < 1){   
+            FollowQuestion::create([
+                'id_user' => $id_user,
+                'id_question' => $data['id_question']
+                ]);
+        }*/
+        return response()->json([
+            "status" => "success",
+            "data" => $data,
+            "message" => "created question"]);
+    }
+
+    public function unfollow(Request $request){
+        $data = $request->all();
+        $id_user =$data['id_user'];
+        FollowQuestion::where([
+            ['id_user', $id_user],
+            ['id_question', $data['id_question']]
+        ])->delete();
+        return response()->json([
+            "status" => "success",
+            "data" => $data,
+            "message" => "created question"]);
+    }
 }
