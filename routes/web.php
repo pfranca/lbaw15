@@ -30,6 +30,8 @@ Route::put('/user/{username}/edit','UsersController@update');
 
 Route::put('/setfollow','TopicsController@follow');
 
+Route::put('/setfollowQuestion','QuestionsController@follow');
+
 Route::put('/topic/question/disable','QuestionsController@disable');
 
 Route::put('/topic/question/answer/disable','AnswersController@disable');

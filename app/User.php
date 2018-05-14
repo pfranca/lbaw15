@@ -60,4 +60,12 @@ class User extends Authenticatable
     public function followQuestion(){
         return $this->belongsToMany('App\Question','followquestion','id_user','id_question')->withPivot('id_user', 'id_question');
     }
+
+    public function followQuestionId($id_question,$id_user){
+        $question = FollowQuestion::where([
+            ['id_user', $id_user],
+            ['id_question',$id_question]
+        ])->count();
+        return $question == 1;
+    }
 }

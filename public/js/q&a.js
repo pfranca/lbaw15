@@ -62,12 +62,28 @@ function actionFollow(id_topic){
     }
     }).done(function (data) {
         console.log(data);
-        //location.reload();
     }).fail(function (data) {
       console.log(data);
     });
 }
 
+function actionFollowAnswer(id_answer){
+  window.alert(id_answer)
+  $.ajax({
+    url: '/setfollowQuestion',
+    type: 'PUT',
+    dataType: 'json',
+    data: {
+      "_token": $('#token').val(),
+      "id_topic": id_answer
+    }
+    }).done(function (data) {
+        console.log(data);
+        //location.reload();
+    }).fail(function (data) {
+      console.log(data);
+    });
+}
 
 
 $(".card-body").click(function(event) {
