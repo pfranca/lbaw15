@@ -31,7 +31,8 @@
           @elseif (Auth::user()->type === 'MOD')
             <a href="question3.html#answer" class="underTab colorLink">Answer</a>
             <a href="" class="underTab colorLink">Report</a>
-            <a href="#" data-toggle="modal" data-target="#questionDelModal" data-dismiss="modal" class="underTab colorLink" id="deleteQuestion">Delete
+            <a href="#" data-toggle="modal" data-target="#questionDelModal" data-dismiss="modal" class="underTab colorLink" id="deleteQuestion">Delete </a>
+            <button id="submitAnswerBtn" onclick="actionFollowAnswer('')" type="button" class="buttonDown" style="margin-left: 2%" >Follow</button>
           @else
           <a href="question3.html#answer" class="underTab colorLink">Answer</a>
           <a href="" class="underTab colorLink">Report</a>
