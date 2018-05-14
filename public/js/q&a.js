@@ -331,5 +331,57 @@ $("#question-unfollow-btn").click(function(){
 });
 
 
+$("#submitReportBtn").click(function(){
+      //reason
+      //reported user
+      //reported question or answer
+  $.ajax({
+    url: '/report/question',
+    type: 'POST',
+    dataType: 'json',
+    data: {
+      "_token": $('#token').val(),
+      "id_question": $("#questionIdReported").val(),
+      "reason": $("#reason").val()
+    }
+}).done(function (data) {
+    // do whatever u want if the request is ok
+  
+    $('#reportModal').modal('hide');
+    console.log(data);
+}).fail(function (data) {
+  window.alert(data);
+    // do what ever you want if the request is not ok
+    console.log(data);
+});
+});
+
+
+$("#submitReportBtnAnswer").click(function(){
+  //reason
+  //reported user
+  //reported question or answer
+$.ajax({
+url: '/report/answer',
+type: 'POST',
+dataType: 'json',
+data: {
+  "_token": $('#token').val(),
+  "id_answer": $("#answerReportedID").val(),
+  "reason": $("#reason").val()
+}
+}).done(function (data) {
+// do whatever u want if the request is ok
+
+$('#reportModalAnswer').modal('hide');
+console.log(data);
+}).fail(function (data) {
+window.alert(data);
+// do what ever you want if the request is not ok
+console.log(data);
+});
+});
+
+
 
 });

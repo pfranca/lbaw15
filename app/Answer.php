@@ -25,11 +25,15 @@ class Answer extends Model
     ];
 
     public function question(){
-        return $this->belongsTo('App\Question');
+        return $this->belongsTo('App\Question','id_question');
     }
 
     public function user(){
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User','id_author');
+    }
+
+    public function reports(){
+        return $this->hasMany('App\Report','id_reported_answer');
     }
     
 }

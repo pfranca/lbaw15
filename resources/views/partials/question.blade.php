@@ -23,19 +23,19 @@
         <a id="bestAnswer" class="underTab colorLink" data-toggle="collapse" href="#question{{$question->id}}" aria-expanded="false" aria-controls="collapseExample">Best Answer</a>
         @guest
         @else
+        <input type="hidden" id="questionIdReported" value="{{$question->id}}">
           @if ($question->id_author === Auth::user()->id)
-          <input type="hidden" id="questionId" value="{{$question->id}}">
           <a href="question3.html#answer" class="underTab colorLink">Answer</a>
             <a href="#" data-toggle="modal" data-target="#editquestionModal" data-dismiss="modal" class="underTab colorLink ml-auto">Edit</a>
             <a href="#" data-toggle="modal" data-target="#questionDelModal" data-dismiss="modal" class="underTab colorLink" id="deleteQuestion">Delete</a>
           @elseif (Auth::user()->type === 'MOD')
             <a href="question3.html#answer" class="underTab colorLink">Answer</a>
-            <a href="" class="underTab colorLink">Report</a>
+            <a href="#" data-toggle="modal" data-target="#reportModal" data-dismiss="modal" class="underTab colorLink">Report</a>
             <a href="#" data-toggle="modal" data-target="#questionDelModal" data-dismiss="modal" class="underTab colorLink" id="deleteQuestion">Delete </a>
             <button id="submitAnswerBtn" onclick="actionFollowAnswer('')" type="button" class="buttonDown" style="margin-left: 2%" >Follow</button>
           @else
           <a href="question3.html#answer" class="underTab colorLink">Answer</a>
-          <a href="" class="underTab colorLink">Report</a>
+          <a href="#" data-toggle="modal" data-target="#reportModal" data-dismiss="modal" class="underTab colorLink">Report</a>
           @endif
         @endguest
       </div>
@@ -66,3 +66,4 @@
   @endif
   @include('partials.submitEditQuestion')
   @include('partials.deleteQuestion')
+  @include('partials.reportModal')

@@ -130,3 +130,7 @@ Route::get('/feed', 'FeedController@index');
 
 Route::post('/topic/question/followQuestion','QuestionsController@follow');
 Route::delete('/topic/question/unfollowQuestion','QuestionsController@unfollow');
+
+Route::post('report/question','ReportController@reportQuestion');
+
+Route::post('report/answer','ReportController@reportAnswer');

@@ -60,4 +60,12 @@ class User extends Authenticatable
     public function followQuestion(){
         return $this->belongsToMany('App\Question','followquestion','id_user','id_question')->withPivot('id_user', 'id_question');
     }
+
+    public function reports(){
+        return $this->hasMany('App\Report','id_reporting_user');
+    }
+
+    public function notifications(){
+        return $this->hasMany('App\Notification','notificated_user');
+    }
 }
