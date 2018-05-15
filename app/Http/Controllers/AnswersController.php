@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Question;
 use App\Topic;
+use App\FollowQuestion;
 use App\Answer;
+use App\User;
 use DB;
 
 class AnswersController extends Controller

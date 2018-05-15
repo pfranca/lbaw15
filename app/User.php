@@ -68,4 +68,11 @@ class User extends Authenticatable
     public function notifications(){
         return $this->hasMany('App\Notification','notificated_user');
     }
+    public function followQuestionId($id_question,$id_user){
+        $question = FollowQuestion::where([
+            ['id_user', $id_user],
+            ['id_question',$id_question]
+        ])->count();
+        return $question == 1;
+    }
 }

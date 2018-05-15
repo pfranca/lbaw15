@@ -32,7 +32,11 @@
             <a href="question3.html#answer" class="underTab colorLink">Answer</a>
             <a href="#" data-toggle="modal" data-target="#reportModal" data-dismiss="modal" class="underTab colorLink">Report</a>
             <a href="#" data-toggle="modal" data-target="#questionDelModal" data-dismiss="modal" class="underTab colorLink" id="deleteQuestion">Delete </a>
-            <button id="submitAnswerBtn" onclick="actionFollowAnswer('')" type="button" class="buttonDown" style="margin-left: 2%" >Follow</button>
+            @if(Auth::user()->followQuestionId($question->id,Auth::user()->id))
+              <button id="followAnser" onclick="actionFollowAnswer('{{$question->id}}')" type="button" class="buttonDown" style="margin-left: 2%"> Unfollow </button>
+            @else
+              <button id="followAnser" onclick="actionFollowAnswer('{{$question->id}}')" type="button" class="buttonDown" style="margin-left: 2%"> Follow </button>
+            @endif  
           @else
           <a href="question3.html#answer" class="underTab colorLink">Answer</a>
           <a href="#" data-toggle="modal" data-target="#reportModal" data-dismiss="modal" class="underTab colorLink">Report</a>

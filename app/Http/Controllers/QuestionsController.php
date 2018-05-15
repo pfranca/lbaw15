@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Question;
 use App\Topic;
 use App\Answer;
+use App\FollowQuestion;
 use DB;
 use App\User;
 
@@ -29,9 +30,47 @@ class QuestionsController extends Controller
             'topic_name' => $topic_name,
             'questions' => $questions,
             'answers' => $answers,
-            'topics' => $topics
+            'topics' => $topics,
+            'questions_followed' => \Auth::user()->followQuestions
         );
        return view('pages.topic')->with($data);
+    }
+
+    public function follow(Request $request){
+        $data = $request->all();
+        $answer_id = $request->input('id_topic');
+
+        $id_user = \Auth::user()->id;
+        $followedQuestions=\Auth::user()->followQuestion;
+        //if user dont follow create followTopic
+        $deleted = FALSE;
+        foreach ($followedQuestions as $follow){
+            if($follow['id'] == $answer_id){
+                $answer_followed = FollowQuestion::where([
+                    ['id_user', $id_user],
+                    ['id_question',$answer_id]
+                ])->delete();
+            $deleted = TRUE;
+            break;
+            }
+        }
+        if($deleted == FALSE){
+        FollowQuestion::create([
+            'id_user' => $id_user,
+            'id_question' => $answer_id
+            ]);
+        }
+       
+        $topicDepois = \Auth::user()->followQuestion;
+
+        return response()->json([
+            "status" => "success",
+            "data" => $data,
+            "user" => $id_user,
+            "followAntes" => $followedQuestions,
+            "followDepois" => $topicDepois,
+            "deleted" => $deleted,
+            "message" => "Followed topic"]);
     }
 
     /**
@@ -165,25 +204,7 @@ class QuestionsController extends Controller
             "message" => "update Question"]);
     }
 
-    public function follow(Request $request){
-        $data = $request->all();
-        //$id_user =$data['id_user'];
-        /*if(FollowQuestion::where([
-            ['id_user', $id_user],
-            ['id_question' => $data['id_question']]
-            ]) == null)
-        if($numberQuestions < 1){   
-            FollowQuestion::create([
-                'id_user' => $id_user,
-                'id_question' => $data['id_question']
-                ]);
-        }*/
-        return response()->json([
-            "status" => "success",
-            "data" => $data,
-            "message" => "created question"]);
-    }
-
+  
     public function unfollow(Request $request){
         $data = $request->all();
         $id_user =$data['id_user'];
