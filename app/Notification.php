@@ -2,6 +2,7 @@
 
 namespace App;
 use Illuminate\Database\Eloquent\Model;
+use App\Question;
 
 
 class Notification extends Model{
@@ -29,6 +30,18 @@ protected $fillable = [
 
 public function question(){
     return $this->belongsTo('App\Question');
+}
+
+
+public function getQuestion($question_id){
+    $question = Question::find($question_id);
+    return $question;
+}
+
+public function getTopic($question_id){
+    $question = Question::find($question_id);
+    $topic = Topic::find($question->id_topic);
+    return $topic;
 }
 
 }
