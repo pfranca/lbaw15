@@ -29,11 +29,11 @@ class Question extends Model
     ];
 
     public function user(){
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User','id_author');
     }
 
     public function topic(){
-        return $this->belongsTo('App\Topic');
+        return $this->belongsTo('App\Topic','id_topic');
     }
 
     public function answers(){
@@ -42,5 +42,13 @@ class Question extends Model
     
     public function followQuestion(){
         return $this->belongsToMany('App\User','followquestion','id_user','id_question')->withPivot('id_user', 'id_question');
+    }
+
+    public function reports(){
+        return $this->hasMany('App\Report','id_reported_question');
+    }
+
+    public function notifications(){
+        return $this->hasMany('App\Notification','id_question');
     }
 }
