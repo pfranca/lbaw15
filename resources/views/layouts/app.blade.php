@@ -70,7 +70,7 @@
               <div class="dropdown-menu dropdown-menu-right">
                 <a class="dropdown-item" href="favQuestions.html">Following</a>
                 <a class="dropdown-item" href="{{asset("user/".Auth::user()->username)}}">Your Profile</a>
-                <a class="dropdown-item" href="notification.html">Notifications</a>
+                <a class="dropdown-item" href="notification">Notifications</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
