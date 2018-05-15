@@ -36,5 +36,6 @@
 
   @include('partials.submitEditAnsModal')
   @include('partials.deleteAnswer')
+  @include('partials.reportModalAnswer')
   @endif
   @endforeach

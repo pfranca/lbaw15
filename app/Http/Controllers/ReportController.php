@@ -33,7 +33,7 @@ class ReportController extends Controller
             "reason" => $reason,
             "question" => $question,
             "reporterUser" => $reporterUser,
-            "message" => "Answer Deleted"]);
+            "message" => "Question Reported"]);
     }
 
 
@@ -52,11 +52,11 @@ class ReportController extends Controller
         return response()->json([
             "status" => "success",
             "data" => $data,
-            "questionID" => $answerID, 
+            "answerID" => $answerID, 
             "reason" => $reason,
-            "question" => $answer,
+            "answer" => $answer,
             "reporterUser" => $reporterUser,
-            "message" => "Answer Deleted"]);
+            "message" => "Answer Reported"]);
     }
     
 
