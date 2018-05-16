@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Question extends Model
 {
@@ -37,7 +38,7 @@ class Question extends Model
     }
 
     public function answers(){
-        return $this->hasMany('App\Answer');
+        return $this->hasMany('App\Answer','id_question');
     }
     
     public function followQuestion(){
@@ -50,5 +51,25 @@ class Question extends Model
 
     public function notifications(){
         return $this->hasMany('App\Notification','id_question');
+    }
+
+    public function getBestAnswer($question_id){
+        $question = Question::find($question_id);
+        $answers = $question->answers;
+        $karma = 0;
+        $bestAnswer=null;
+        foreach($answers as $answer){
+            if($answer->karma > $karma){
+                $karma = $answer->karma;
+                $bestAnswer = $answer;
+            }
+        }
+        return $bestAnswer;
+     //   return  \DB::raw("SELECT date, karma, message, username FROM answer, \"user\" WHERE id_question = \"$question_id\" AND answer.disabled=FALSE AND id_author = \"user\".id AND karma = (SELECT max(karma) FROM answer WHERE id_question = \"$question_id\");");
+    }
+
+    public function getUser($question_id){
+        $question = Question::find($question_id);
+        return $question->user;
     }
 }

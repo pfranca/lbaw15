@@ -5,6 +5,7 @@
               <h5 class="modal-title">Submit Report</h5>
        
             </div>
+
             <div class="modal-body">
             Reason
               <form role="form">

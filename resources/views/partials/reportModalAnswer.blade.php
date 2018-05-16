@@ -6,10 +6,10 @@
        
             </div>
             <div class="modal-body">
-            Reason
+                Reason
               <form role="form">
                 <div class="form-group">
-                  <textarea id="reason"class="form-control" rows="8"></textarea>
+                  <textarea id="reasonAnswer"class="form-control" rows="8"></textarea>
                 </div>
               </form>
             </div>

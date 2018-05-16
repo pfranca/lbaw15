@@ -1,27 +1,24 @@
 @foreach($notifications as $notification)
-{{$notification}}
-
-@include('partials.deleteQuestion',['questions'=>$questions,'question'=>$notification->getQuestion($notification->id_question)])
-@include('partials.submitEditQuestion',['topics'=>$topics,'questions'=>$questions,'topic'=>$notification->getTopic($notification->id_question),'question'=>$notification->getQuestion($notification->id_question)])
-
-
-
+@if(!$notification->seen)
        <li class="media list-group-item box-question">
           <div class="media-body">
             <div class="row pr-4">
-              <h5 class="mt-2 answer-link ml-2 col-10">
+              <h6 class="mt-2 answer-link ml-2 col-10">
                 {{$notification->message}}
-                
-              </h5>
+                <div class="text-right pr-1">
+                <span class="small">submitted {{$notification->date}}</span>
+              </div>
+              </h6>
+              
               <a href="" class="col-1 answer-link ml-auto text-center" title="Dismiss"><i class="far fa-window-close"></i></a>
             </div>
             <div class="media-body mt-3 pl-5">
-              <div class="md-12 answer-link">
-                  {{$notification->getQuestion($notification->id_question)->short_message}}
-              </div>
+              <a class="question-link" href="../topic/{{$notification->getTopic($notification->id_question)->name}}/question/{{$notification->getQuestion($notification->id_question)->id}}">
+              {{$notification->getQuestion($notification->id_question)->short_message}}
+              </a>
               <div class="text-right pr-1">
                 <a class="underTab nameInQuestion" href="../user/{{\Auth::user()->username}}">You</a>
-                <span class="mr-auto">submitted {{$notification->date}}</span>
+                <span class="mr-auto">submitted {{$notification->getQuestion($notification->id_question)->date}}</span>
                 <span>in</span>
                 <a class="underTab nameInQuestion" href="../topic/{{$notification->getTopic($notification->id_question)->name}}">{{$notification->getTopic($notification->id_question)->name}}</a>
               </div>
@@ -30,11 +27,9 @@
                 <span class="label label-primary pr-1">{{$notification->getQuestion($notification->id_question)->karma}}</span>
                 <a class="pr-4" data-toggle="upvote" href="#downvote"><i class="far fa-thumbs-down"></i></a>
                 <a href="../topic/{{$notification->getTopic($notification->id_question)->name}}/question/{{$notification->getQuestion($notification->id_question)->id}}" class="underTab colorLink">Go to question</a>
-                <a href="#" data-toggle="modal" data-target="#editquestionModal" data-dismiss="modal" class="underTab colorLink ml-auto">Edit</a>
-                <a href="#" data-toggle="modal" data-target="#questionDelModal" data-dismiss="modal" class="underTab colorLink" id="deleteQuestion">Delete</a>
               </div>
             </div>
           </div>
         </li>
+@endif
 @endforeach
-
