@@ -419,5 +419,28 @@ console.log(data);
 });
 
 
+$("#feedbtn").click(function(){
+  //reason
+  //reported user
+  //reported question or answer
+$.ajax({
+url: '/feed/questions',
+type: 'GET',
+dataType: 'json',
+data: {
+  "_token": $('#token').val()
+}
+}).done(function (data) {
+// do whatever u want if the request is ok
+
+console.log(data);
+}).fail(function (data) {
+window.alert(data);
+// do what ever you want if the request is not ok
+console.log(data);
+});
+});
+
+
 
 });

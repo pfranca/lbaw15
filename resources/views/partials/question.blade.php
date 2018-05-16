@@ -13,7 +13,7 @@
       @endforeach
       </div>
       <div class="text-right pr-1">
-        <a class="underTab nameInQuestion" href="../../user/{{$question->getUser($question->id)->username}}">{{$question->getUser($question->id)->username}}</a>
+        <a class="underTab nameInQuestion" href="../../user/{{$question->user->username}}">{{$question->user->username}}</a>
         <span class="mr-auto">{{$question->date}}</span>
       </div>
       <div class="col-md-12">

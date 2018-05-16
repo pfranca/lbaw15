@@ -139,3 +139,5 @@ Route::post('report/answer','ReportController@reportAnswer');
 
 
 Route::get('/notification', 'NotificationController@index');
+
+Route::get('/feed/questions','FeedController@getQuestions');

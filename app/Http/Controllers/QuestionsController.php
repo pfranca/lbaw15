@@ -207,7 +207,7 @@ class QuestionsController extends Controller
   
     public function unfollow(Request $request){
         $data = $request->all();
-        $id_user =$data['id_user'];
+        $id_user =   \Auth::user()->id;
         FollowQuestion::where([
             ['id_user', $id_user],
             ['id_question', $data['id_question']]
