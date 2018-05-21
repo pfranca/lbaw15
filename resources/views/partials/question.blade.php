@@ -27,6 +27,7 @@
           <a href="question3.html#answer" class="underTab colorLink">Answer</a>
             <a href="#" data-id="{{$question->id}}" data-toggle="modal" data-target="#editquestionModal" data-dismiss="modal" class="underTab colorLink ml-auto">Edit</a>
             <a href="#" data-id="{{$question->id}}" data-toggle="modal" data-target="#questionDelModal" data-dismiss="modal" class="underTab colorLink" id="deleteQuestion">Delete</a>
+
           @elseif (Auth::user()->type === 'MOD')
             <a href="question3.html#answer" class="underTab colorLink">Answer</a>
             <a href="#" data-id="{{$question->id}}" data-toggle="modal" data-target="#reportModal" data-dismiss="modal" class="underTab colorLink">Report</a>
@@ -39,6 +40,11 @@
           @else
           <a href="{{$topic->name}}/question/{{$question->id}}" class="underTab colorLink">Answer</a>
           <a href="" data-id="{{$question->id}}" data-toggle="modal" data-target="#reportModal" data-dismiss="modal" class="underTab colorLink">Report</a>
+          @if(Auth::user()->followQuestionId($question->id,Auth::user()->id))
+              <button id="followAnswer" onclick="actionFolloQuestion('{{$question->id}}')" type="button" class="buttonDown followCardQuestion" style="margin-left: 2%;border-radius: 20px; background-color: #4da6ff; color: white; border-style: none;padding-right: 20px; padding-left: 20px"> Unfollow </button>
+            @else
+              <button id="unfollowAnswer" onclick="actionFolloQuestion('{{$question->id}}')" type="button" class="buttonDown followCardQuestion" style="margin-left: 2%;border-radius: 20px; background-color: #4da6ff; color: white; border-style: none; font-size: 2vmin; padding-right: 20px; padding-left: 20px"> Follow </button>
+            @endif  
           @endif
         @endguest
       </div>
