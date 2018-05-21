@@ -207,7 +207,7 @@ class QuestionsController extends Controller
   
     public function unfollow(Request $request){
         $data = $request->all();
-        $id_user =$data['id_user'];
+        $id_user =   \Auth::user()->id;
         FollowQuestion::where([
             ['id_user', $id_user],
             ['id_question', $data['id_question']]
@@ -216,5 +216,43 @@ class QuestionsController extends Controller
             "status" => "success",
             "data" => $data,
             "message" => "created question"]);
+    }
+
+
+    public function followQuestion(Request $request){
+        $data = $request->all();
+        $id_question = $request->input('id_question');
+
+        $id_user = \Auth::user()->id;
+        $followedQuestions=\Auth::user()->followQuestion;
+        //if user dont follow create followTopic
+        $deleted = FALSE;
+        foreach ($followedQuestions as $follow){
+            if($follow['id'] == $id_question){
+                $question_followed = FollowQuestion::where([
+                    ['id_user', $id_user],
+                    ['id_question',$id_question]
+                ])->delete();
+            $deleted = TRUE;
+            break;
+            }
+        }
+        if($deleted == FALSE){
+        FollowQuestion::create([
+            'id_user' => $id_user,
+            'id_question' => $id_question
+            ]);
+        }
+       
+        $topicDepois = \Auth::user()->followQuestion;
+
+        return response()->json([
+            "status" => "success",
+            "data" => $data,
+            "user" => $id_user,
+            "followAntes" => $followedQuestions,
+            "followDepois" => $topicDepois,
+            "deleted" => $deleted,
+            "message" => "Followed topic"]);
     }
 }

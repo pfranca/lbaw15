@@ -37,7 +37,8 @@ class NotificationController extends Controller
         }*/
        
         $data=array(
-            'notifications' => Notification::all(),
+            'notifications' => \Auth::user()->notifications,
+            //'notifications' => Notification::all(),
             'topics' => Topic::all(),
             'questions' => Question::all()
         );

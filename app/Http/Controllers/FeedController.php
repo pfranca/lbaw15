@@ -17,16 +17,28 @@ class FeedController extends Controller
      */
     public function index()
     {
+        $Mquestions= array();
         $topics = \Auth::user()->followTopic;
-        $data;
-        $questions = array();
         foreach($topics as $topic){
-            $question = \DB::table('question')->where('id_topic',$topic->id)->get();
-            array_push($questions, $question);
+                $question = Question::all()->where('id_topic',$topic->id);
+            array_push($Mquestions, $question);
         }
-         return view('pages.feed', compact(['topics',$topics,'questions',$questions]));
+         return view('pages.feed', compact(['topics','Mquestions']));
         }
 
+        public function getQuestions()
+        {
+            $questions= array();
+            $topics = \Auth::user()->followTopic;
+            foreach($topics as $topic){
+                 $question = Question::all()->where('id_topic',$topic->id);
+                array_push($questions, $question);
+            }
+            return response()->json([
+                "status" => "success",
+                "data" => $questions,
+                "message" => "created question"]);
+        }
    
 }
 ?>

@@ -203,6 +203,9 @@ $(document).ready(function() {
     });
   });
   
+
+  $('#answerModal').on('shown.bs.modal', function(e) {
+    $id = e.relatedTarget.attributes['data-id'].value;
   $("#submitAnswerBtn").click(function(){
     
     $.ajax({
@@ -211,113 +214,122 @@ $(document).ready(function() {
       dataType: 'json',
       data: {
         "_token": $('#token').val(),
-        "id_question": $("#questionId").val(),
+        "id_question": $id,
+        "message": $("#answerMessage").val()
+      }
+    }).done(function (data) {
+          $("#message").val('');        
+          $('#answerModal').modal('hide');
+          location.reload();
+        console.log(data);
+    }).fail(function (data) {
+      console.log(data);
+    });
+  });
+});
+
+
+
+$('#editquestionModal').on('shown.bs.modal', function(e) {
+  $id = e.relatedTarget.attributes['data-id'].value;
+  $("#editquestionSubmitBtn").click(function(){
+    $.ajax({
+      url: '/question/updateQuestion',
+      type: 'PUT',
+      dataType: 'json',
+      data: {
+        "_token": $('#token').val(),
+        "id_topic": $("#edit_topicSelected").val(),
+        "id_question" : $id,
+        "short_message": $("#edit_short_message").val(),
+        "long_message": $("#edit_long_message").val()
+      }
+  }).done(function (data) {
+      $('#editquestionModal').modal('hide');
+      console.log(data);
+      location.reload();
+  }).fail(function (data) {
+    window.alert(data);
+      // do what ever you want if the request is not ok
+  });
+  });
+});
+
+$('#editanswerModal').on('shown.bs.modal', function(e) {
+  $id = e.relatedTarget.attributes['data-id'].value;
+  $("#submitEditAnswerBtn").click(function(){
+    $.ajax({
+      url: '/answer/updateAnswer',
+      type: 'PUT',
+      dataType: 'json',
+      data: {
+        "_token": $('#token').val(),
+        "id_answer": $id,
         "message": $("#message").val()
       }
   }).done(function (data) {
-        $("#message").val('');        
-        $('#answerModal').modal('hide');
-        location.reload();
+      $('#editanswerModal').modal('hide');
       console.log(data);
+      location.reload();
   }).fail(function (data) {
+    window.alert(data);
     console.log(data);
+      // do what ever you want if the request is not ok
+  });
   });
 });
 
-
-
-$("#editquestionSubmitBtn").click(function(){
-  $.ajax({
-    url: '/question/updateQuestion',
-    type: 'PUT',
-    dataType: 'json',
-    data: {
-      "_token": $('#token').val(),
-      "id_topic": $("#edit_topicSelected").val(),
-      "id_question" : $("#questionId").val(),
-      "short_message": $("#edit_short_message").val(),
-      "long_message": $("#edit_long_message").val()
-    }
-}).done(function (data) {
-    $('#editquestionModal').modal('hide');
-    console.log(data);
-    location.reload();
-}).fail(function (data) {
-  window.alert(data);
-    // do what ever you want if the request is not ok
-});
-});
-
-
-$("#submitEditAnswerBtn").click(function(){
-  $.ajax({
-    url: '/answer/updateAnswer',
-    type: 'PUT',
-    dataType: 'json',
-    data: {
-      "_token": $('#token').val(),
-      "id_answer": $("#answerId").val(),
-      "message": $("#message").val()
-    }
-}).done(function (data) {
-    $('#editanswerModal').modal('hide');
-    console.log(data);
-    location.reload();
-}).fail(function (data) {
-  window.alert(data);
-  console.log(data);
-    // do what ever you want if the request is not ok
-});
-});
-
+$('#questionDelModal').on('shown.bs.modal', function(e) {
+  $id = e.relatedTarget.attributes['data-id'].value;
   $("#submitDeleteQuestion").click(function(){
 
-    $.ajax({
-      url: '/topic/question/disable',
-      type: 'PUT',
-      dataType: 'json',
-      data: {
-        "_token": $('#token').val(),
-        "id_question": $("#getId").val()
-      }
-  }).done(function (data) {
+      $.ajax({
+        url: '/topic/question/disable',
+        type: 'PUT',
+        dataType: 'json',
+        data: {
+          "_token": $('#token').val(),
+          "id_question": $id
+        }
+    }).done(function (data) {
+        console.log(data);
+        location.reload();
+    }).fail(function (data) {
       console.log(data);
-       location.reload();
-  }).fail(function (data) {
-    console.log(data);
+    });
   });
 });
 
 
-
+$('#deleteAnswerModal').on('shown.bs.modal', function(e) {
+  $id = e.relatedTarget.attributes['data-id'].value;
   $("#submitDeleteAnswer").click(function(){
-    $.ajax({
-      url: '/topic/question/answer/disable',
-      type: 'PUT',
-      dataType: 'json',
-      data: {
-        "_token": $('#token').val(),
-        "id_answer": $("#answerIdToDelete").val()
-      }
-  }).done(function (data) {
+      $.ajax({
+        url: '/topic/question/answer/disable',
+        type: 'PUT',
+        dataType: 'json',
+        data: {
+          "_token": $('#token').val(),
+          "id_answer": $id
+        }
+    }).done(function (data) {
+        console.log(data);
+        location.reload();
+    }).fail(function (data) {
       console.log(data);
-       location.reload();
-  }).fail(function (data) {
-    console.log(data);
+    });
   });
 });
-
 
 $("#question-follow-btn").click(function(){
-  window.alert('follow ' + $("#userAuthId").val());
+  window.alert('follow ' + $("#questionId").val());
   $.ajax({
     url: '/topic/question/followQuestion',
     type: 'POST',
     dataType: 'json',
     data: {
       "_token": $('#token').val(),
-      "id_question": $("#questionId").val(),
-      "id_user": $("#userAuthId").val()      
+      "id_question": $("#questionId").val()
     }
 }).done(function (data) {
     console.log(data);
@@ -347,31 +359,38 @@ $("#question-unfollow-btn").click(function(){
 });
 
 
-$("#submitReportBtn").click(function(){
-      //reason
-      //reported user
-      //reported question or answer
-  $.ajax({
-    url: '/report/question',
-    type: 'POST',
-    dataType: 'json',
-    data: {
-      "_token": $('#token').val(),
-      "id_question": $("#questionIdReported").val(),
-      "reason": $("#reason").val()
-    }
-}).done(function (data) {
-    // do whatever u want if the request is ok
-  
-    $('#reportModal').modal('hide');
-    console.log(data);
-}).fail(function (data) {
-  window.alert(data);
-    // do what ever you want if the request is not ok
-    console.log(data);
-});
+
+$('#reportModal').on('shown.bs.modal', function(e) {
+  $id = e.relatedTarget.attributes['data-id'].value;
+    $("#submitReportBtn").click(function(){
+    //reason
+    //reported user
+    //reported question or answer
+      window.alert("id " + $id);
+      $.ajax({
+        url: '/report/question',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+          "_token": $('#token').val(),
+          "id_question": $id,
+          "reason": $("#reason").val()
+        }
+      }).done(function (data) {
+        // do whatever u want if the request is ok
+
+        $('#reportModal').modal('hide');
+        console.log(data);
+      }).fail(function (data) {
+      window.alert(data);
+        // do what ever you want if the request is not ok
+        console.log(data);
+      });
+    });
 });
 
+$('#reportModalAnswer').on('shown.bs.modal', function(e) {
+  $id = e.relatedTarget.attributes['data-id'].value;
 
 $("#submitReportBtnAnswer").click(function(){
   //reason
@@ -383,13 +402,37 @@ type: 'POST',
 dataType: 'json',
 data: {
   "_token": $('#token').val(),
-  "id_answer": $("#answerReportedID").val(),
-  "reason": $("#reason").val()
+  "id_answer": $id,
+  "reason": $("#reasonAnswer").val()
 }
 }).done(function (data) {
 // do whatever u want if the request is ok
 
 $('#reportModalAnswer').modal('hide');
+console.log(data);
+}).fail(function (data) {
+window.alert(data);
+// do what ever you want if the request is not ok
+console.log(data);
+});
+});
+});
+
+
+$("#feedbtn").click(function(){
+  //reason
+  //reported user
+  //reported question or answer
+$.ajax({
+url: '/feed/questions',
+type: 'GET',
+dataType: 'json',
+data: {
+  "_token": $('#token').val()
+}
+}).done(function (data) {
+// do whatever u want if the request is ok
+
 console.log(data);
 }).fail(function (data) {
 window.alert(data);

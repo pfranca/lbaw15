@@ -25,7 +25,7 @@ class Topic extends Model
     ];
 
     public function questions(){
-        return $this->hasMany('App\Question');
+        return $this->hasMany('App\Question','id');
     }
 
     public function followTopic(){

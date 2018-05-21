@@ -39,12 +39,9 @@
         </option>
       </select>
     </div>
-    
     <div class="container-fluid bg-white col-md-9">
       <ul class="list-group col-md-12">
-      @foreach($questions as $question)
-        @include('partials.question', ['questions'=>$question])
-      @endforeach
+        @include('partials.questionFeed')
       </ul>
     </div>
   </div>

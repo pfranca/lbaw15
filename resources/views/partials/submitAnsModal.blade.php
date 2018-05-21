@@ -8,7 +8,7 @@
             <div class="modal-body">
               <form role="form">
                 <div class="form-group">
-                  <textarea id="message"class="form-control" rows="8"></textarea>
+                  <textarea id="answerMessage"class="form-control" rows="8"></textarea>
                 </div>
               </form>
             </div>
