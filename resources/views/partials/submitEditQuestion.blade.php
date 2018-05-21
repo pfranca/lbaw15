@@ -1,4 +1,3 @@
-@if($question != null)
 <div class="modal fade" id="editquestionModal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -11,14 +10,6 @@
                 <div class="form-group">
                   <label>Topic to post</label>
                   <select id="edit_topicSelected" class="selectpicker">
-                    @foreach($topics as $topic)
-                        @if ($question->id_topic === $topic->id)
-                            <option selected value="{{$topic->id}}">{{$topic->name}}</option>
-                        @else
-                            <option value="{{$topic->id}}">{{$topic->name}}</option>
-                      @endif
-                
-                    @endforeach
                   </select>
                 </div>
                 <div>Write here the short description of the question:</div>
@@ -39,4 +30,3 @@
           </div>
         </div>
       </div>
-      @endif
