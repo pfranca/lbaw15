@@ -1,4 +1,5 @@
-  <div class="modal fade" id="editquestionModal" tabindex="-1" role="dialog">
+@if($question != null)
+<div class="modal fade" id="editquestionModal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -38,3 +39,4 @@
           </div>
         </div>
       </div>
+      @endif

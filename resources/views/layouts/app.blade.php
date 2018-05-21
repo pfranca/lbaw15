@@ -68,7 +68,7 @@
                 {{ Auth::user()->name }}  <img class="img-fluid nav-img-profile" src="{{asset('images/'.Auth::user()->img)}}" alt="profilePic" />
                 </a>
               <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" href="favQuestions.html">Following</a>
+                <a class="dropdown-item"  href="{{asset('followQuestion')}}">Following</a>
                 <a class="dropdown-item" href="{{asset("user/".Auth::user()->username)}}">Your Profile</a>
                 <a class="dropdown-item" href="{{asset('notification')}}">Notifications</a>
                 <div class="dropdown-divider"></div>
