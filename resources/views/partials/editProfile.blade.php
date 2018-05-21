@@ -14,7 +14,7 @@
             </div>
             <div class="form-group">
               <label class="nameInFormControl" for="usr">Email:</label>
-              <input type="text" class="widthFormControl form-control" id="email" value="{{Auth::user()->email}}">
+              <input type="text" class="widthFormControl form-control" id="emailToChange" value="{{Auth::user()->email}}">
             </div>
             <div class="form-group">
             

@@ -158,7 +158,7 @@ $(document).ready(function() {
    $("#submitionEdit").click(function(){
       var usr_name = $('#usernameEdit').val()
       var new_name = $('#usr').val()
-      var new_email = $('#email').val()
+      var new_email = $('#emailToChange').val()
       var new_bio = $('#bio').val()
 
       
