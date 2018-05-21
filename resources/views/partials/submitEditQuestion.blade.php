@@ -1,4 +1,4 @@
-  <div class="modal fade" id="editquestionModal" tabindex="-1" role="dialog">
+<div class="modal fade" id="editquestionModal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -10,7 +10,7 @@
                 <div class="form-group">
                   <label>Topic to post</label>
                   <select id="edit_topicSelected" class="selectpicker">
-                   
+                  </select>
                 </div>
                 <div>Write here the short description of the question:</div>
                 <div  class="form-group">
