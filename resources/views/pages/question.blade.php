@@ -10,7 +10,7 @@
       <li class="breadcrumb-item"><a href="/topic/{{$topic_name}}"> {{$topic_name}}</a></li>
       <li class="breadcrumb-item active" aria-current="page">Question </li>
       <li class="ml-auto">
-        <a id="submitAnswerButton" href="#" data-toggle="modal" data-target="#answerModal" data-dismiss="modal">Submit Answer</a>
+        <a id="submitAnswerButton" href="#" data-id="{{$question->id}}" data-toggle="modal" data-target="#answerModal" data-dismiss="modal">Submit Answer</a>
      </li>
 
     </ol>

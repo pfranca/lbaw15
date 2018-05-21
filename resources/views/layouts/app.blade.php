@@ -56,7 +56,7 @@
         </li>
         @endguest
         <li class="nav-item">
-          <a id="TopicsNavBar" class="nav-link">TOPICS</a>
+          <a id="TopicsNavBar" class="nav-link " onclick="goToTopic">TOPICS</a>
         </li>
         <li class="nav-item">
             @guest
@@ -70,7 +70,7 @@
               <div class="dropdown-menu dropdown-menu-right">
                 <a class="dropdown-item" href="favQuestions.html">Following</a>
                 <a class="dropdown-item" href="{{asset("user/".Auth::user()->username)}}">Your Profile</a>
-                <a class="dropdown-item" href="notification.html">Notifications</a>
+                <a class="dropdown-item" href="{{asset('notification')}}">Notifications</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

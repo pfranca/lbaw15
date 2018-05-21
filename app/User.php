@@ -61,6 +61,13 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Question','followquestion','id_user','id_question')->withPivot('id_user', 'id_question');
     }
 
+    public function reports(){
+        return $this->hasMany('App\Report','id_reporting_user');
+    }
+
+    public function notifications(){
+        return $this->hasMany('App\Notification','notificated_user');
+    }
     public function followQuestionId($id_question,$id_user){
         $question = FollowQuestion::where([
             ['id_user', $id_user],
