@@ -80,9 +80,6 @@ class TopicsController extends Controller
        
         $topicDepois = \Auth::user()->followTopic;
 
-        
-        
-
         return response()->json([
             "status" => "success",
             "data" => $data,

@@ -33,9 +33,9 @@
             <a href="" class="underTab colorLink">Report</a>
             <a href="#" data-toggle="modal" data-target="#questionDelModal" data-dismiss="modal" class="underTab colorLink" id="deleteQuestion">Delete </a>
             @if(Auth::user()->followQuestionId($question->id,Auth::user()->id))
-              <button id="followAnser" onclick="actionFollowAnswer('{{$question->id}}')" type="button" class="buttonDown" style="margin-left: 2%"> Unfollow </button>
+              <button id="followAnswer" onclick="actionFolloQuestion('{{$question->id}}')" type="button" class="buttonDown followCardQuestion" style="margin-left: 2%"> Unfollow </button>
             @else
-              <button id="followAnser" onclick="actionFollowAnswer('{{$question->id}}')" type="button" class="buttonDown" style="margin-left: 2%"> Follow </button>
+              <button id="unfollowAnswer" onclick="actionFolloQuestion('{{$question->id}}')" type="button" class="buttonDown followCardQuestion" style="margin-left: 2%"> Follow </button>
             @endif  
           @else
           <a href="question3.html#answer" class="underTab colorLink">Answer</a>
