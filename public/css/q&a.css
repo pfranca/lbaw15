@@ -10,12 +10,19 @@ body {
   padding-top: 62px;
 }
 
-.adjust-login{
+.adjust{
   margin-bottom: -35px;
 }
 
 #index{
   background-color: white;
+}
+
+.modal-register{
+  margin-top: 10px;
+  margin-bottom: 5px;
+  padding: 44px;
+  border-radius: 20px;
 }
 
 .modal-login{

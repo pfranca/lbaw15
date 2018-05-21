@@ -4,7 +4,7 @@
 
 
 <div class="fluid">
-    <div id="band" class="container-fluid bg-1 adjust-login">
+    <div id="band" class="container-fluid bg-1 adjust">
       <div class="container adjust-login">
             <div class="row justify-content-center">
                 <div class="col-md-8 col-md-offset-2 modal-login">
