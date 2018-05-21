@@ -21,9 +21,13 @@ Route::get('/topic/{topic_name}', 'QuestionsController@index');
 Route::get('/topic/{topic_name}/question/{id}', 'AnswersController@index');
 //Route::resource('/topic/{topic_name}', 'TopicsController');
 
-Route::get('login', 'Auth\LoginController@redirectToProvider');
-Route::get('auth/google/callback', 'Auth\LoginController@handleProviderCallback');
+//Route::get('login', 'Auth\LoginController@redirectToProvider');
+//Route::get('auth/google/callback', 'Auth\LoginController@handleProviderCallback');
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post('register', 'Auth\RegisterController@register');
 
 Route::put('/user/{username}/edit','UsersController@update');
 
