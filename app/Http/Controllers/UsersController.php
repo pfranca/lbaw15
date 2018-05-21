@@ -87,6 +87,7 @@ class UsersController extends Controller
         return response()->json([
             "status" => "success",
             "data" => $data,
+            "user" => $user,
             "message" => "user updated"]);
     }
 
