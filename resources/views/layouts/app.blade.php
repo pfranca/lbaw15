@@ -60,7 +60,7 @@
         </li>
         <li class="nav-item">
             @guest
-                 <a id="loginButton" class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">LOGIN</a>
+                 <a id="loginButton" class="nav-link" href="{{ route('login') }}" ">LOGIN</a>
             @else
 
             <li class="nav-item dropdown">
