@@ -45,18 +45,18 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <form class="form-inline offset-lg-2 col-12 col-lg-5 col-xl-6">
-        <input class="form-control search-control col-10" type="text" placeholder="Search">
-        <button class="btnsearch  col-2" type="submit"><i class="fas fa-search"></i></button>
+        <input id="searchText" class="form-control search-control col-10" type="text" placeholder="Search">
+        <button id="btnSearch" class="btnsearch  col-2" type="submit"><i class="fas fa-search"></i></button>
       </form>
       <ul class="navbar-nav ml-auto">
        @guest
        @else
         <li class="nav-item">
-          <a class="nav-link" href="feed">FEED</a>
+          <a class="nav-link" href="{{asset('feed')}}">FEED</a>
         </li>
         @endguest
         <li class="nav-item">
-          <a id="TopicsNavBar" class="nav-link " onclick="goToTopic">TOPICS</a>
+          <a id="TopicsNavBar" class="nav-link" href="{{asset('/')}}#themes" click="goToTopic">TOPICS</a>
         </li>
         <li class="nav-item">
             @guest

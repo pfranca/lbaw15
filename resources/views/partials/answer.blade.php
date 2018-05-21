@@ -6,7 +6,7 @@
         {{$answer->message}}
       </div>
       <div class="text-right pr-1">
-        <a class="underTab nameInQuestion" href="IRA PRA O PERFIL">{{$answer->user->username}}</a>
+        <a class="underTab nameInQuestion" href="{{asset("user/".$answer->user->username)}}">{{$answer->user->username}}</a>
         <span class="mr-auto">{{$answer->date}}</span>
       </div>
       <div class="col-md-12">

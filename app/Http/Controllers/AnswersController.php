@@ -22,12 +22,10 @@ class AnswersController extends Controller
         
         $question = Question::find($id);
         $answers = Answer::where('id_question', $id)->get();
-        $user_id = \Auth::user()->id;
         $data=array(
             'topic_name' => $topic_name,
             'question' => $question,
-            'answers' => $answers,
-            'user_id' => $user_id
+            'answers' => $answers
         );
         return view('pages.question')->with($data);
     }
