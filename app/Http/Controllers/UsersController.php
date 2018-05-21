@@ -74,8 +74,8 @@ class UsersController extends Controller
         $name = $data['name'];
         $email = $data['email'];
         $bio = $data['bio'];
+        $user_id= $data['user_id'];
 
-        $user_id = \Auth::user()->id;
         $user = User::find($user_id);
 
         $user->name=$name;

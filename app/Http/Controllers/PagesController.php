@@ -12,11 +12,12 @@ class PagesController extends Controller
 		return view('pages.home');
 	}
 
-	public function profile(){
-		$id_user = \Auth::user()->id;
-		$questions = User::find($id_user)->questions;
+	public function profile($username){
+		$temp = \DB::table('user')->where('username',$username)->get();
+		$user = User::find($temp[0]->id);
+		$questions = $user->questions;
 		$topics = Topic::all();
-		return view('pages.profile', array('questions'=> $questions,'topics'=> $topics));
+		return view('pages.profile', array('questions'=> $questions,'topics'=> $topics,'user' => $user));
 	}
 
 	public function topic($topic_name){

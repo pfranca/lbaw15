@@ -18,19 +18,19 @@
         <div class="col-md-12 tittle-section theme-title-section text-center">
 
           <div class="col-md-12" style="margin-top: 45px;">
-            <img class="img-profile" src="{{asset('images/'.Auth::user()->img)}}">
+      {{--      <img class="img-profile" src="{{asset('images/'$user->img)}}">--}}
           </div>
 
           <div class="col-md-12">
-            <div class="tittle-profile">{{Auth::user()->name}}</div>
+            <div class="tittle-profile">{{$user->name}}</div>
           </div>
 
           <div class="col-md-6" style="margin-left: 25%;">
-            <div class="about">{{Auth::user()->bio}} </div>
+            <div class="about">{{$user->bio}} </div>
           </div>
 
           <div class="mt-3 about" style="color: lightblue">
-            {{Auth::user()->email}}
+            {{$user->email}}
             <br />
             Overall Karma :  9000
             <br />
@@ -39,11 +39,11 @@
 
 
         </div>
-
+        
       </div>
     </div>
     <div class="d-flex justify-content-end">
-      <button  type="button" class="submitQuestionButton btnsubmit btn btn-xs" data-toggle="modal" data-target="#profileModal" data-dismiss="modal">Edit Profile</button>
+      <button  type="button" data-id="{{$user->id}}" class="submitQuestionButton btnsubmit btn btn-xs" data-toggle="modal" data-target="#profileModal" data-dismiss="modal">Edit Profile</button>
     </div>
   </div>
 
@@ -72,7 +72,6 @@
 
     <div class="container-fluid bg-white col-md-9">
       <ul>
-
 
            @include('partials.question')
       </ul>
