@@ -67,8 +67,7 @@ function actionFollow(id_topic){
     });
 }
 
-function actionFollowAnswer(id_answer){
-  window.alert(id_answer)
+function actionFolloQuestion(id_answer){
   $.ajax({
     url: '/setfollowQuestion',
     type: 'PUT',
@@ -79,6 +78,7 @@ function actionFollowAnswer(id_answer){
     }
     }).done(function (data) {
         console.log(data);
+        location.reload();
         //location.reload();
     }).fail(function (data) {
       console.log(data);
@@ -95,6 +95,14 @@ $(".card-body").click(function(event) {
   } else if ($(this).children(":first").hasClass("follow")) {
     $(this).children(":first").children("h5").text("Follow ").append('<i class="text-right far fa-heart"></i>');
   }
+});
+
+$("#followAnswer").click(function(event) { 
+  document.getElementById("followAnswer").value="Unfollow"; 
+});
+
+$("#unfollowAnswer").click(function(event) { 
+  document.getElementById("unfollowAnswer").value="Follow"; 
 });
 
 $(document).ready(function() {
