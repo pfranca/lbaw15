@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS "users" CASCADE;
 CREATE TYPE user_type AS ENUM ('NORMAL', 'MOD', 'ADMIN');
 CREATE TYPE notification_message AS ENUM ('A question you are following has new activity', 'Your question has a new answer');
 
-CREATE TABLE "users"(
+CREATE TABLE "user"(
   id SERIAL UNIQUE,
   username VARCHAR(30) NOT NULL UNIQUE,
   email TEXT NOT NULL UNIQUE,
@@ -54,7 +54,7 @@ CREATE TABLE question(
   karma INTEGER DEFAULT 0 NOT NULL,
   short_message TEXT NOT NULL,
   long_message TEXT ,
-  id_author INTEGER NOT NULL REFERENCES "users"(id) ON UPDATE CASCADE,
+  id_author INTEGER NOT NULL REFERENCES "user"(id) ON UPDATE CASCADE,
   id_topic INTEGER NOT NULL REFERENCES topic(id) ON UPDATE CASCADE,
   disabled BOOLEAN DEFAULT FALSE NOT NULL,
   PRIMARY KEY(id)
@@ -65,7 +65,7 @@ CREATE TABLE answer(
   "date" TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL,
   karma INTEGER DEFAULT 0 NOT NULL,
   message TEXT NOT NULL,
-  id_author INTEGER NOT NULL REFERENCES "users"(id) ON UPDATE CASCADE,
+  id_author INTEGER NOT NULL REFERENCES "user"(id) ON UPDATE CASCADE,
   id_question INTEGER NOT NULL REFERENCES question(id) ON UPDATE CASCADE,
   disabled BOOLEAN DEFAULT FALSE NOT NULL,
   PRIMARY KEY(id)
@@ -74,7 +74,7 @@ CREATE TABLE answer(
 CREATE TABLE report(
   id SERIAL UNIQUE,
   reason TEXT NOT NULL,
-  id_reporting_user INTEGER NOT NULL REFERENCES "users"(id) ON UPDATE CASCADE,
+  id_reporting_user INTEGER NOT NULL REFERENCES "user"(id) ON UPDATE CASCADE,
   id_reported_question INTEGER REFERENCES question(id) ON UPDATE CASCADE,
   id_reported_answer INTEGER  REFERENCES answer(id) ON UPDATE CASCADE,
   PRIMARY KEY(id),
@@ -82,20 +82,20 @@ CREATE TABLE report(
 );
 
 CREATE TABLE followTopic(
-  id_user INTEGER NOT NULL REFERENCES "users"(id) ON UPDATE CASCADE,
+  id_user INTEGER NOT NULL REFERENCES "user"(id) ON UPDATE CASCADE,
   id_topic INTEGER NOT NULL REFERENCES topic(id) ON UPDATE CASCADE,
   PRIMARY KEY(id_user, id_topic)
 );
 
 CREATE TABLE followQuestion(
- id_user INTEGER NOT NULL REFERENCES "users"(id) ON UPDATE CASCADE,
+ id_user INTEGER NOT NULL REFERENCES "user"(id) ON UPDATE CASCADE,
  id_question INTEGER NOT NULL REFERENCES question(id) ON UPDATE CASCADE,
   PRIMARY KEY(id_user, id_question)
 );
 
 CREATE TABLE vote(
     id SERIAL UNIQUE,
-    id_user INTEGER NOT NULL REFERENCES "users"(id) ON UPDATE CASCADE,
+    id_user INTEGER NOT NULL REFERENCES "user"(id) ON UPDATE CASCADE,
     vote BOOLEAN NOT NULL,
     id_answer INTEGER  REFERENCES answer(id) ON UPDATE CASCADE,
     id_question INTEGER  REFERENCES question(id) ON UPDATE CASCADE,
@@ -104,7 +104,7 @@ CREATE TABLE vote(
 );
 CREATE TABLE notification(
   id SERIAL UNIQUE,
-  notificated_user INTEGER NOT NULL REFERENCES "users"(id) ON UPDATE CASCADE,
+  notificated_user INTEGER NOT NULL REFERENCES "user"(id) ON UPDATE CASCADE,
   id_question INTEGER NOT NULL REFERENCES question(id) ON UPDATE CASCADE,
   message TEXT  NOT NULL,
   seen BOOLEAN DEFAULT FALSE NOT NULL,
@@ -139,7 +139,7 @@ CREATE TABLE badge(
 );
 
 CREATE TABLE userBadge(
-  id_user INTEGER NOT NULL REFERENCES "users"(id) ON UPDATE CASCADE,
+  id_user INTEGER NOT NULL REFERENCES "user"(id) ON UPDATE CASCADE,
   id_badge INTEGER NOT NULL REFERENCES badge(id) ON UPDATE CASCADE,
   PRIMARY KEY(id_user, id_badge)
 );
@@ -288,11 +288,11 @@ UPDATE "question" SET textsearchable_index_col =
 
 CREATE INDEX textsearch_idx ON "question" USING GIN (textsearchable_index_col);
 
-ALTER TABLE "users" ADD COLUMN usersearchable_index_col tsvector;
-UPDATE "users" SET usersearchable_index_col =
+ALTER TABLE "user" ADD COLUMN usersearchable_index_col tsvector;
+UPDATE "user" SET usersearchable_index_col =
      to_tsvector('english', coalesce(name,'') || ' ' || coalesce(username,''));
 
-CREATE INDEX usersearch_idx ON "users" USING GIN (usersearchable_index_col);
+CREATE INDEX usersearch_idx ON "user" USING GIN (usersearchable_index_col);
 
 ALTER TABLE "answer" ADD COLUMN textsearchanswer_index_col tsvector;
 UPDATE "answer" SET textsearchanswer_index_col =
@@ -302,16 +302,16 @@ CREATE INDEX textsearch_answer_idx ON "answer" USING GIN (textsearchanswer_index
 
 
 
-INSERT INTO "users"(username,email,name,img,bio,type) VALUES ('DiogoaCunha', 'mailfalso@gmail.com','diogo','diogo.png','Im fine','ADMIN');
-INSERT INTO "users"(username,email,name,img,bio,type) VALUES ('martaTorgal', 'mailmarta@gmail.com','Marta Torgal','marta.png','Im always ok!!','ADMIN');
-INSERT INTO "users"(username,email,name,img,bio,type) VALUES ('tibas', 'mailtibas94@gmail.com','Jose Marques','tibas.png','I like to eat icecream with my forehead','ADMIN');
-INSERT INTO "users"(username,email,password, name,img,bio,type) VALUES ('franza', 'pop@gmail.com','$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W','Pedro Franca','user.png','if I answered your question it is prolly wrong','ADMIN');
-INSERT INTO "users"(username,email,name,img,bio) VALUES ('jeff', 'jeff98@gmail.com','Jeff Erson','default.png','MY NAME IS JEFFF');
-INSERT INTO "users"(username,email,name,img,bio,type) VALUES ('potus', 'therealdonaldtrump@gmail.com','Donald Trump','potus.png','Imma build a wall','NORMAL');
-INSERT INTO "users"(username,email,name,img,bio,type) VALUES ('johnSnow85', 'yoyo@gmail.com','MANEL','default.png','winter is comming,false','NORMAL');
-INSERT INTO "users"(username,email,name,img,bio,type) VALUES ('throwaway1223312', 'esum@burro.com','o anonimo','default.png','','NORMAL');
-INSERT INTO "users"(username,email,name,img,bio,type) VALUES ('quinhas', 'maria@gmail.com','Quinhas POmba','default.png','Universidade da vida','NORMAL');
-INSERT INTO "users"(username,email,name,img,bio,type) VALUES ('Max', 'maxc@gmail.com','Max Caulfield','lis.png','Life is... weird','NORMAL');
+INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('DiogoaCunha', 'mailfalso@gmail.com','diogo','diogo.png','Im fine','ADMIN');
+INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('martaTorgal', 'mailmarta@gmail.com','Marta Torgal','marta.png','Im always ok!!','ADMIN');
+INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('tibas', 'mailtibas94@gmail.com','Jose Marques','tibas.png','I like to eat icecream with my forehead','ADMIN');
+INSERT INTO "user"(username,email,password, name,img,bio,type) VALUES ('franza', 'pop@gmail.com','$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W','Pedro Franca','user.png','if I answered your question it is prolly wrong','ADMIN');
+INSERT INTO "user"(username,email,name,img,bio) VALUES ('jeff', 'jeff98@gmail.com','Jeff Erson','default.png','MY NAME IS JEFFF');
+INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('potus', 'therealdonaldtrump@gmail.com','Donald Trump','potus.png','Imma build a wall','NORMAL');
+INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('johnSnow85', 'yoyo@gmail.com','MANEL','default.png','winter is comming,false','NORMAL');
+INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('throwaway1223312', 'esum@burro.com','o anonimo','default.png','','NORMAL');
+INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('quinhas', 'maria@gmail.com','Quinhas POmba','default.png','Universidade da vida','NORMAL');
+INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('Max', 'maxc@gmail.com','Max Caulfield','lis.png','Life is... weird','NORMAL');
 
 ---- Insert Topic 
 

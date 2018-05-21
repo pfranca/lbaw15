@@ -181,6 +181,7 @@ $(document).ready(function() {
           "bio" : new_bio
 
         }
+  
 
     }).done(function (data) {
       console.log(data);
@@ -189,7 +190,7 @@ $(document).ready(function() {
        
     }).fail(function (data) {
       console.log(data);
-      window.alert("Fail: " + data);
+      window.alert("Fail: " + data.new_name);
     });
   });
 

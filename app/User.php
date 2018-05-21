@@ -13,7 +13,7 @@ class User extends Authenticatable
 
     protected $primaryKey = 'id';
 
-    //protected $table = 'user';
+    protected $table = 'user';
 
     // Don't add create and update timestamps in database.
     public $timestamps  = false;
