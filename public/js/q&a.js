@@ -164,9 +164,7 @@ $(document).ready(function() {
   });
 
   $('#profileModal').on('shown.bs.modal', function(e) {
-    window.alert("oi");
     $id = e.relatedTarget.attributes['data-id'].value;
-    window.alert("oi");
    $("#submitionEdit").click(function(){
       var usr_name = $('#usernameEdit').val()
       var new_name = $('#usr').val()
