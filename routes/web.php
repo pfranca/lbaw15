@@ -147,3 +147,7 @@ Route::get('/notification', 'NotificationController@index');
 Route::get('/feed/questions','FeedController@getQuestions');
 
 Route::get('/followQuestion', 'FollowQuestionController@index');
+
+Route::get('/question/search','PagesController@search');
+
+Route::get('/search/{search}','PagesController@searchIndex');

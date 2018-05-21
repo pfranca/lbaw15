@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Topic;
+use DB;
 
 class PagesController extends Controller
 {
@@ -26,5 +27,27 @@ class PagesController extends Controller
 
 	public function question(){
 		return view('pages.question');
+	}
+
+/*	public function search(Request $request){
+		$search = $request['search'];
+		$best = DB::raw("SELECT question.id, date, karma, short_message FROM question WHERE id IN  (SELECT id_question FROM answer where message like %$search% UNION SELECT id FROM question WHERE textsearchable_index_col @@ to_tsquery('$search'));");
+		return response()->json([
+            "status" => "success",
+            "data" => $best,
+            "message" => "get BestAnswer"]);
+	}*/
+	
+	public function searchIndex($search){
+		$best = DB::raw("SELECT question.id, date, karma, short_message 
+		FROM question WHERE id IN  
+		(SELECT id_question FROM answer
+		 where message like %$search% UNION
+		  SELECT id
+		  FROM question WHERE textsearchable_index_col @@ to_tsquery('$search'));");		
+		return response()->json([
+            "status" => "success",
+            "data" => $best,
+            "message" => "get BestAnswer"]);
 	}
 }

@@ -162,7 +162,6 @@ $.get('/admin/getAllmoderators', function(data){
     dataArray[i][6]="<img id=\"removeBtn\" onclick=\"removeModeratorUser('" + dataArray[i][0] + "')\" class=\" mouse-pointer img-fluid nav-img-profile \" src=\"../images/ok.png\" alt=\"\" />"
   }
 
-  console.log(data.response);
   
   $('#moderators').DataTable({
     data: dataArray,
