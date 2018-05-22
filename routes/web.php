@@ -36,6 +36,9 @@ Route::put('/setfollow','TopicsController@follow');
 
 Route::put('/setfollowQuestion','QuestionsController@follow');
 
+Route::put('/setUpvoteQuestion','QuestionsController@upvote');
+Route::put('/setDownvoteQuestion','QuestionsController@downvote');
+
 Route::put('/topic/question/disable','QuestionsController@disable');
 
 Route::put('/topic/question/answer/disable','AnswersController@disable');

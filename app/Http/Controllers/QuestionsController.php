@@ -9,6 +9,7 @@ use App\Answer;
 use App\FollowQuestion;
 use DB;
 use App\User;
+use App\Vote;
 
 class QuestionsController extends Controller
 {
@@ -71,6 +72,79 @@ class QuestionsController extends Controller
             "followDepois" => $topicDepois,
             "deleted" => $deleted,
             "message" => "Followed topic"]);
+    }
+
+    public function upvote(Request $request){
+        $data = $request->all();
+        $id_question = $request->input('id_question');
+
+        $id_user = \Auth::user()->id;
+
+        $oldVote = DB::table('vote')
+        ->where([['id_user', $id_user], ['id_question', $data['id_question']]])
+        ->first();
+
+        $oldVote_vote = DB::table('vote')
+        ->where([['id_user', $id_user], ['id_question', $data['id_question']], ['vote', 'true']])
+        ->first();
+
+        if($oldVote != NULL){
+            if($oldVote_vote == NULL)
+                DB::table('vote')
+                ->where([['id_user', $id_user], ['id_question', $data['id_question']]])
+                ->update([
+                        'vote' => 'TRUE'
+                ]);
+        }else{
+            Vote::create([
+                'id_user' => $id_user,
+                'id_question' => $id_question,
+                'vote' => 'TRUE'
+                ]);
+        }
+
+        return response()->json([
+            "status" => "success",
+            "data" => $data,
+            "user" => $id_user,
+            "message" => "upvote"]);
+    }
+
+    public function downvote(Request $request){
+        $data = $request->all();
+        $id_question = $request->input('id_question');
+
+        $id_user = \Auth::user()->id;
+
+        
+        $oldVote = DB::table('vote')
+        ->where([['id_user', $id_user], ['id_question', $data['id_question']]])
+        ->first();
+
+        $oldVote_vote = DB::table('vote')
+        ->where([['id_user', $id_user], ['id_question', $data['id_question']], ['vote', 'false']])
+        ->first();
+
+        if($oldVote != NULL){
+            if($oldVote_vote == NULL)
+                DB::table('vote')
+                ->where([['id_user', $id_user], ['id_question', $data['id_question']]])
+                ->update([
+                        'vote' => 'FALSE'
+                ]);     
+        }else{
+            Vote::create([
+                'id_user' => $id_user,
+                'id_question' => $id_question,
+                'vote' => 'FALSE'
+                ]);
+        }
+
+        return response()->json([
+            "status" => "success",
+            "data" => $data,
+            "user" => $id_user,
+            "message" => "upvote"]);
     }
 
     /**

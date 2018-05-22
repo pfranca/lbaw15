@@ -97,6 +97,38 @@ $(".card-body").click(function(event) {
   }
 });
 
+function actionUpvoteQuestion(id_question){
+  $.ajax({
+    url: '/setUpvoteQuestion',
+    type: 'PUT',
+    dataType: 'json',
+    data: {
+      "_token": $('#token').val(),
+      "id_question": id_question
+    }
+    }).done(function (data) {
+        console.log(data);
+    }).fail(function (data) {
+      console.log(data);
+    });
+}
+
+function actionDownvoteQuestion(id_question){
+  $.ajax({
+    url: '/setDownvoteQuestion',
+    type: 'PUT',
+    dataType: 'json',
+    data: {
+      "_token": $('#token').val(),
+      "id_question": id_question
+    }
+    }).done(function (data) {
+        console.log(data);
+    }).fail(function (data) {
+      console.log(data);
+    });
+}
+
 $("#followAnswer").click(function(event) { 
   document.getElementById("followAnswer").value="Unfollow"; 
 });
