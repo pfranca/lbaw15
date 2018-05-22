@@ -27,13 +27,23 @@ class QuestionsController extends Controller
        // dd($answers);
         // $topics = Topic::orderBy('name','desc')->paginate(4);
         //$questions = Question::orderBy('karma','desc'); 
-        $data=array(
+        if( \Auth::user() != null){
+            $data=array(
+                'topic_name' => $topic_name,
+                'questions' => $questions,
+                'answers' => $answers,
+                'topics' => $topics,
+                'questions_followed' => \Auth::user()->followQuestions
+            );
+        }else{ 
+            $data=array(
             'topic_name' => $topic_name,
             'questions' => $questions,
             'answers' => $answers,
-            'topics' => $topics,
-            'questions_followed' => \Auth::user()->followQuestions
+            'topics' => $topics
         );
+
+        }
        return view('pages.topic')->with($data);
     }
 

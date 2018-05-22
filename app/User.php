@@ -75,4 +75,8 @@ class User extends Authenticatable
         ])->count();
         return $question == 1;
     }
+
+    public function getId(){
+        return $id;
+    }
 }

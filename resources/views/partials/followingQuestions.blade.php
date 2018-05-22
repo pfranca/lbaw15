@@ -17,9 +17,9 @@
         <span class="mr-auto">{{$question->date}}</span>
       </div>
       <div class="col-md-12">
-        <a class="pr-2" data-toggle="upvote" href="#upvote" onclick="actionUpvoteQuestion({{$question->id}})"><i class="far fa-thumbs-up" ></i></a>
+        <a class="pr-2" data-toggle="upvote" href="#upvote"><i class="far fa-thumbs-up"></i></a>
         <span class="label label-primary pr-2">{{$question->karma}}</span>
-        <a class="pr-3" data-toggle="upvote" href="#downvote" onclick="actionDownvoteQuestion({{$question->id}})"><i class="far fa-thumbs-down"></i></a>
+        <a class="pr-3" data-toggle="upvote" href="#downvote"><i class="far fa-thumbs-down"></i></a>
         <a id="bestAnswer" class="underTab colorLink" data-toggle="collapse" href="#question{{$question->id}}" aria-expanded="false" aria-controls="collapseExample">Best Answer</a>
         @guest
         @else
@@ -27,24 +27,18 @@
           <a href="question3.html#answer" class="underTab colorLink">Answer</a>
             <a href="#" data-id="{{$question->id}}" data-toggle="modal" data-target="#editquestionModal" data-dismiss="modal" class="underTab colorLink ml-auto">Edit</a>
             <a href="#" data-id="{{$question->id}}" data-toggle="modal" data-target="#questionDelModal" data-dismiss="modal" class="underTab colorLink" id="deleteQuestion">Delete</a>
-
           @elseif (Auth::user()->type === 'MOD')
             <a href="question3.html#answer" class="underTab colorLink">Answer</a>
             <a href="#" data-id="{{$question->id}}" data-toggle="modal" data-target="#reportModal" data-dismiss="modal" class="underTab colorLink">Report</a>
             <a href="#" data-id="{{$question->id}}" data-toggle="modal" data-target="#questionDelModal" data-dismiss="modal" class="underTab colorLink" id="deleteQuestion">Delete </a>
             @if(Auth::user()->followQuestionId($question->id,Auth::user()->id))
-              <button id="followAnswer" onclick="actionFolloQuestion('{{$question->id}}')" type="button" class="buttonDown followCardQuestion" style="margin-left: 2%"> Unfollow </button>
+              <button id="followAnser" onclick="actionFollowAnswer('{{$question->id}}')" type="button" class="buttonDown" style="margin-left: 2%"> Unfollow </button>
             @else
-              <button id="unfollowAnswer" onclick="actionFolloQuestion('{{$question->id}}')" type="button" class="buttonDown followCardQuestion" style="margin-left: 2%"> Follow </button>
+              <button id="followAnser" onclick="actionFollowAnswer('{{$question->id}}')" type="button" class="buttonDown" style="margin-left: 2%"> Follow </button>
             @endif  
           @else
           <a href="{{$topic->name}}/question/{{$question->id}}" class="underTab colorLink">Answer</a>
           <a href="" data-id="{{$question->id}}" data-toggle="modal" data-target="#reportModal" data-dismiss="modal" class="underTab colorLink">Report</a>
-          @if(Auth::user()->followQuestionId($question->id,Auth::user()->id))
-              <button id="followAnswer" onclick="actionFolloQuestion('{{$question->id}}')" type="button" class="buttonDown followCardQuestion" style="margin-left: 2%;border-radius: 20px; background-color: #4da6ff; color: white; border-style: none;padding-right: 20px; padding-left: 20px"> Unfollow </button>
-            @else
-              <button id="unfollowAnswer" onclick="actionFolloQuestion('{{$question->id}}')" type="button" class="buttonDown followCardQuestion" style="margin-left: 2%;border-radius: 20px; background-color: #4da6ff; color: white; border-style: none; font-size: 2vmin; padding-right: 20px; padding-left: 20px"> Follow </button>
-            @endif  
           @endif
         @endguest
       </div>
@@ -63,13 +57,11 @@
         <a class="pr-1" data-toggle="upvote" href="#upvote"><i class="far fa-thumbs-up"></i></a>
         <span class="label label-primary pr-1">{{$question->getBestAnswer($question->id)->karma}}</span>
         <a class="pr-4" data-toggle="upvote" href="#downvote"><i class="far fa-thumbs-down"></i></a>
-        @guest
-        @else
         <a href="" data-id="{{$question->getBestAnswer($question->id)->id}}" data-toggle="modal" data-target="#reportModalAnswer" data-dismiss="modal" class="underTab colorLink">Report</a>
-          @if ($question->getBestAnswer($question->id)->id_author === Auth::user()->id)
-          <a href="" data-id="{{$question->getBestAnswer($question->id)->id}}"  data-toggle="modal" data-target="#deleteAnswerModal" data-dismiss="modal" class="underTab colorLink">Delete</a>
-          @endif
-        @endguest
+        <a href="" data-id="{{$question->getBestAnswer($question->id)->id}}" data-toggle="modal" data-target="#deleteAnswerModal" data-dismiss="modal" class="underTab colorLink">Delete</a>
+        @if ($question->getBestAnswer($question->id)->id_author === Auth::user()->id)
+        <a href=""data-id="{{$question->getBestAnswer($question->id)->id}}"  data-toggle="modal" data-target="#deleteAnswerModal" data-dismiss="modal" class="underTab colorLink">Delete</a>
+        @endif
       </div>
         @else
         <div>This question has no answers</div>
@@ -83,8 +75,3 @@
     @else
     <p>No Questions found!</b>
   @endif
-  @include('partials.submitEditQuestion')
-  @include('partials.deleteQuestion')
-  @include('partials.deleteAnswer')
-  @include('partials.reportModal')
-  @include('partials.reportModalAnswer')

@@ -1,54 +1,43 @@
 @extends('layouts.app')
 
+@include('partials.submitQuestModal') 
 
 @section('content')
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+
+  <div id="modals" class='submitQuestion'>
+
+  </div>
+
 <nav id="breadcrumbs" class="fixed-top" aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="{{asset('/')}}">Home</a></li>
+      <li class="breadcrumb-item"><a href="indexLogged.html">Home</a></li>
       <li class="breadcrumb-item active" aria-current="page">Profile</li>
+      <li class="breadcrumb-item active" aria-current="page">Following</li>
       <li class="ml-auto">
         <a href="#" data-toggle="modal" data-target="#questionModal" data-dismiss="modal">Submit Question</a>
       </li>
+
     </ol>
   </nav>
 
-  <div class="fluid bg-profile-title">
+  <div class="fluid bg-fav-question">
     <div class="container-fluid">
       <div class="row text-center">
-        <div class="col-md-12 tittle-section theme-title-section text-center">
-
-          <div class="col-md-12" style="margin-top: 45px;">
-      {{--      <img class="img-profile" src="{{asset('images/'$user->img)}}">--}}
+        <div class="col-md-12 tittle-section">
+          <div class="col-md-12">
+            <div class="tittle">Following</div>
           </div>
 
           <div class="col-md-12">
-            <div class="tittle-profile">{{$user->name}}</div>
+            <div class="about">Your Recent Favorite Followed Questions!</div>
           </div>
-
-          <div class="col-md-6" style="margin-left: 25%;">
-            <div class="about">{{$user->bio}} </div>
-          </div>
-
-          <div class="mt-3 about" style="color: lightblue">
-            {{$user->email}}
-            <br />
-            Overall Karma :  9000
-            <br />
-            Best Answers : 28
-          </div>
-
-
         </div>
-        
       </div>
-    </div>
-    <div class="d-flex justify-content-end">
-      <button  type="button" data-id="{{$user->id}}" class="submitQuestionButton btnsubmit btn btn-xs" data-toggle="modal" data-target="#profileModal" data-dismiss="modal">Edit Profile</button>
     </div>
   </div>
 
-  @include('partials.editProfile')
-
+  <!-- Container (THEMES Section) -->
   <div id="questions" class="bg-white">
 
     <div class="text-right pr-5 mt-3">
@@ -69,15 +58,13 @@
       </select>
     </div>
 
-
     <div class="container-fluid bg-white col-md-9">
-      <ul>
-
-           @include('partials.question')
+      <ul class="list-group col-md-12">
+      @include('partials.followingQuestions')
       </ul>
     </div>
   </div>
   </div>
   </div>
-
+</body>
 @endsection

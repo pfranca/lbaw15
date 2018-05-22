@@ -1,42 +1,9 @@
 $(document).ready(function() {
-  loadingModals();
   if (window.location.href.indexOf('topics') != -1) {
     time = 1;
     goToTopic();
   }
 });
-
-function loadingModals() {
-  if ($("#modals").hasClass('login')) {
-    $.get('html/loginModals.html', function(result) {
-      $('#modals').append(result);
-      $.getScript("js/LoginValidate.js");
-      if (window.location.href.indexOf('login') != -1) {
-        $('#loginModal').modal("show");
-      }
-      else if (window.location.href.indexOf('register')!= -1)
-      {
-        $("#registerModal").modal("show");
-      }
-    });
-    console.log("login");
-
-  };
-  if ($("#modals").hasClass('submitQuestion')) {
-    $.get('html/submitQuestionModal.html', function(result) {
-      $('#modals').append(result);
-    });
-  };
-  if ($("#modals").hasClass('answerQuestion')) {
-    $.get('html/submitAnswerModal.html', function(result) {
-      $('#modals').append(result);
-      if (window.location.href.indexOf('answer') != -1) {
-        $('#answerModal').modal("show");
-      }
-    });
-  };
-
-}
 
 $("#topics-btn").click({
   time: 1000
@@ -195,6 +162,8 @@ $(document).ready(function() {
     });
   });
 
+  $('#profileModal').on('shown.bs.modal', function(e) {
+    $id = e.relatedTarget.attributes['data-id'].value;
    $("#submitionEdit").click(function(){
       var usr_name = $('#usernameEdit').val()
       var new_name = $('#usr').val()
@@ -210,7 +179,8 @@ $(document).ready(function() {
           "_token": $('#token').val(),
           "name": new_name,
           "email" : new_email,
-          "bio" : new_bio
+          "bio" : new_bio,
+          "user_id" : $id
 
         }
   
@@ -225,6 +195,7 @@ $(document).ready(function() {
       window.alert("Fail: " + data.new_name);
     });
   });
+});
 
   $("#bestAnswer").click(function(){
       $.ajax({
@@ -238,7 +209,7 @@ $(document).ready(function() {
     }).done(function (data) {
         console.log(data);
     }).fail(function (data) {
-      console.log("bestAnswer " + data.data);
+      console.log("Failed geting bestAnswer " + data.data);
         // do what ever you want if the request is not ok
 
     });
@@ -482,6 +453,28 @@ console.log(data);
 });
 });
 
+/*
+
+$("#btnSearch").click(function(){
+  console.log("btn search clicked " + $('#searchText').val());
+  
+  $.ajax({
+    url: '/question/search',
+    type: 'GET',
+    dataType: 'json',
+    data: {
+      "_token": $('#token').val(),
+      "search": $("#searchText").val(),
+    }
+  }).done(function (data) {
+    console.log(data);
+      window.alert(data);
+  }).fail(function (data) {
+    console.log("failed search questions " + data);
+      // do what ever you want if the request is not ok
+
+  });
+});*/
 
 
 });

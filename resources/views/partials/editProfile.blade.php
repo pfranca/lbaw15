@@ -6,15 +6,15 @@
           <h5 class="modal-title">Edit Profile</h5>
         </div>
         <div class="modal-body" style="    padding: 25px;">
-          <form role="form" class="form-inline" action="{{URL::to('/user/Auth::user()->username/edit')}}">
+          <form role="form" class="form-inline" action="{{URL::to('/user/$user->username/edit')}}">
             <div class="form-group">
               <label class="nameInFormControl" for="usr">Name:</label>
-               <input type="text"  style="display: none"  class="widthFormControl form-control" id="usernameEdit" value="{{Auth::user()->username}}">
-              <input type="text" class="widthFormControl form-control" id="usr" value="{{Auth::user()->name}}">
+               <input type="text"  style="display: none"  class="widthFormControl form-control" id="usernameEdit" value="{{$user->username}}">
+              <input type="text" class="widthFormControl form-control" id="usr" value="{{$user->name}}">
             </div>
             <div class="form-group">
               <label class="nameInFormControl" for="usr">Email:</label>
-              <input type="text" class="widthFormControl form-control" id="emailToChange" value="{{Auth::user()->email}}">
+              <input type="text" class="widthFormControl form-control" id="emailToChange" value="{{$user->email}}">
             </div>
             <div class="form-group">
             
@@ -32,7 +32,7 @@
             <div class="form-group">
                 <label class="nameInFormControl" for="usr">Bio:</label>
               <div class="container text-area-fix">
-                <textarea class="widthFormControl form-control" id="bio" rows="8" >{{Auth::user()->bio}}</textarea>
+                <textarea class="widthFormControl form-control" id="bio" rows="8" >{{$user->bio}}</textarea>
               </div>
             </div>
           </form>
