@@ -10,9 +10,9 @@
         <span class="mr-auto">{{$answer->date}}</span>
       </div>
       <div class="col-md-12">
-        <a class="pr-1" data-toggle="upvote" href="#upvote"><i class="far fa-thumbs-up"></i></a>
+        <a class="pr-1" data-toggle="upvote" href="#upvote" onclick="actionUpvoteAnswer({{$answer->id}})"><i class="far fa-thumbs-up"></i></a>
         <span class="label label-primary pr-1">{{$answer->karma}}</span>
-        <a class="pr-4" data-toggle="upvote" href="#downvote"><i class="far fa-thumbs-down"></i></a>
+        <a class="pr-4" data-toggle="upvote" href="#downvote" onclick="actionDownvoteAnswer({{$answer->id}})"><i class="far fa-thumbs-down"></i></a>
         
         @guest
         @else

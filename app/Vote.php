@@ -13,7 +13,7 @@ class Vote extends Pivot{
     public $primaryKey = 'id_user';
     
     protected $fillable = [
-        'id_user', 'id_question', 'vote',
+        'id_user', 'id_question', 'vote', 'id_answer',
     ];
     //Timestamps 
     public $timestamps = false;

@@ -43,6 +43,9 @@ Route::put('/topic/question/disable','QuestionsController@disable');
 
 Route::put('/topic/question/answer/disable','AnswersController@disable');
 
+Route::put('/setUpvoteAnswer','AnswersController@upvote');
+Route::put('/setDownvoteAnswer','AnswersController@downvote');
+
 
 //----------------TESTE
 Route::get('localhost:8000/auth/google/callback', 'Auth\LoginController@handleProviderCallback');

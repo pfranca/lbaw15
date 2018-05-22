@@ -96,6 +96,38 @@ function actionDownvoteQuestion(id_question){
     });
 }
 
+function actionUpvoteAnswer(id_answer){
+  $.ajax({
+    url: '/setUpvoteAnswer',
+    type: 'PUT',
+    dataType: 'json',
+    data: {
+      "_token": $('#token').val(),
+      "id_answer": id_answer
+    }
+    }).done(function (data) {
+        console.log(data);
+    }).fail(function (data) {
+      console.log(data);
+    });
+}
+
+function actionDownvoteAnswer(id_answer){
+  $.ajax({
+    url: '/setDownvoteAnswer',
+    type: 'PUT',
+    dataType: 'json',
+    data: {
+      "_token": $('#token').val(),
+      "id_answer": id_answer
+    }
+    }).done(function (data) {
+        console.log(data);
+    }).fail(function (data) {
+      console.log(data);
+    });
+}
+
 $("#followAnswer").click(function(event) { 
   document.getElementById("followAnswer").value="Unfollow"; 
 });
