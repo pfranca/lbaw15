@@ -32,6 +32,9 @@
           {{$question->long_message}}
       </div>
       <input type="hidden" name="userAuthId" value="$user_id">
+      @guest
+      @else
+      @if(!Auth::user()->isFollowedQuestion($question->id, Auth::user()->id))
       <div>
             <a id="question-follow-btn" class="btn btn-circle js-scroll-trigger btn-arrow">
               <div class="about">
@@ -40,12 +43,15 @@
             </a>
           </div>
           <div>
+          @else
             <a id="question-unfollow-btn" class="btn btn-circle js-scroll-trigger btn-arrow">
               <div class="about">
                 <p>Unfollow Question</p>
               </div>
             </a>
           </div>
+          @endif
+          @endguest
     </div>
     <div class="container-fluid bg-white col-md-9">
       <ul class="list-group col-md-11 mx-auto">

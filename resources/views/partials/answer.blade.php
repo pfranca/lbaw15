@@ -11,13 +11,13 @@
       </div>
       <div class="col-md-12">
         <a class="pr-1" data-toggle="upvote" href="#upvote" onclick="actionUpvoteAnswer({{$answer->id}})"><i class="far fa-thumbs-up"></i></a>
-        <span class="label label-primary pr-1">{{$answer->karma}}</span>
+        <span id="answer_karma{{$answer->id}}" class="label label-primary pr-1">{{$answer->karma}}</span>
         <a class="pr-4" data-toggle="upvote" href="#downvote" onclick="actionDownvoteAnswer({{$answer->id}})"><i class="far fa-thumbs-down"></i></a>
         
         @guest
         @else
           @if ($answer->id_author === Auth::user()->id)
-          <a href="#" data-id="{{$answer->id}}" data-toggle="modal" data-target="#editanswerModal" data-dismiss="modal" class="underTab colorLink">Edit</a>
+          <a href="#" data-id="{{$answer->id}}" data-message="{{$answer->message}}" data-toggle="modal" data-target="#editanswerModal" data-dismiss="modal" class="underTab colorLink">Edit</a>
           <a  href="#" data-id="{{$answer->id}}" data-toggle="modal" data-target="#deleteAnswerModal" data-dismiss="modal">Delete</a>
         @elseif(Auth::user()->type === 'MOD')
           <a href="#" data-id="{{$answer->id}}" data-toggle="modal" data-target="#reportModalAnswer" data-dismiss="modal" class="underTab colorLink">Report</a>

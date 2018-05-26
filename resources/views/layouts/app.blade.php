@@ -18,12 +18,16 @@
   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
   <script defer src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
   <script defer src="{{asset('js/admin.js')}}"></script>
+  
     <!-- Table -->
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
 
   <script src="{{asset('js/q&a.js')}}" defer></script>
 
   <meta name="google-site-verification" content="ZYfMaCLyVwA_xB6ozW2crasnN5LNYEyf5s2R2y0Oi-0" />
+
+
+
 
 </head>
 
@@ -44,10 +48,11 @@
       </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <form class="form-inline offset-lg-2 col-12 col-lg-5 col-xl-6">
+      <div class="form-inline offset-lg-2 col-12 col-lg-5 col-xl-6">
         <input id="searchText" class="form-control search-control col-10" type="text" placeholder="Search">
-        <button id="btnSearch" class="btnsearch  col-2" type="submit"><i class="fas fa-search"></i></button>
-      </form>
+        <button id="buttonSearch" class="btnsearch  col-2"><i class="fas fa-search"></i></button>
+    </div>
+     
       <ul class="navbar-nav ml-auto">
        @guest
        @else

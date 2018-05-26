@@ -64,21 +64,30 @@ $(".card-body").click(function(event) {
   }
 });
 
-function actionUpvoteQuestion(id_question){
-  $.ajax({
-    url: '/setUpvoteQuestion',
-    type: 'PUT',
-    dataType: 'json',
-    data: {
-      "_token": $('#token').val(),
-      "id_question": id_question
-    }
-    }).done(function (data) {
+
+  function actionUpvoteQuestion(id_question,karma){
+    
+    $.ajax({
+      url: '/setUpvoteQuestion',
+      type: 'PUT',
+      dataType: 'json',
+      data: {
+        "_token": $('#token').val(),
+        "id_question": id_question
+      }
+      }).done(function (data) {
+          console.log(data);
+          if(data.status == "failed"){
+            window.alert("you have already voted");
+          }else{
+            $karma = document.getElementById("question_karma"+id_question).innerHTML;
+            $karma++;
+            $("#question_karma"+id_question).html($karma);
+          }
+      }).fail(function (data) {
         console.log(data);
-    }).fail(function (data) {
-      console.log(data);
-    });
-}
+      });
+  }
 
 function actionDownvoteQuestion(id_question){
   $.ajax({
@@ -91,6 +100,13 @@ function actionDownvoteQuestion(id_question){
     }
     }).done(function (data) {
         console.log(data);
+        if(data.status == "failed"){
+          window.alert("you have already voted");
+        }else{
+          $karma = document.getElementById("question_karma"+id_question).innerHTML;
+          $karma--;
+        $("#question_karma"+id_question).html($karma);
+        }
     }).fail(function (data) {
       console.log(data);
     });
@@ -107,6 +123,13 @@ function actionUpvoteAnswer(id_answer){
     }
     }).done(function (data) {
         console.log(data);
+        if(data.status == "failed"){
+          window.alert("you have already voted");
+        }else{
+          $karma = document.getElementById("answer_karma"+id_answer).innerHTML;
+          $karma++;
+        $("#answer_karma"+id_answer).html($karma);
+        }
     }).fail(function (data) {
       console.log(data);
     });
@@ -123,9 +146,50 @@ function actionDownvoteAnswer(id_answer){
     }
     }).done(function (data) {
         console.log(data);
+        if(data.status == "failed"){
+          window.alert("you have already voted");
+        }else{
+          $karma = document.getElementById("answer_karma"+id_answer).innerHTML;
+          $karma--;
+        $("#answer_karma"+id_answer).html($karma);
+        }
     }).fail(function (data) {
       console.log(data);
     });
+}
+
+function followQuestion(){
+
+  $.ajax({
+    url: '/topic/question/followQuestion',
+    type: 'POST',
+    dataType: 'json',
+    data: {
+      "_token": $('#token').val(),
+      "id_question": $("#questionId").val()
+    }
+}).done(function (data) {
+    console.log(data);
+}).fail(function (data) {
+  console.log(data);
+});
+}
+
+function unfollowQuestion(){
+  $.ajax({
+    url: '/topic/question/unfollowQuestion',
+    type: 'DELETE',
+    dataType: 'json',
+    data: {
+      "_token": $('#token').val(),
+      "id_question": $("#questionId").val(),
+      "id_user": $("#userId").val() 
+    }
+}).done(function (data) {
+    console.log(data);
+}).fail(function (data) {
+  console.log(data);
+});
 }
 
 $("#followAnswer").click(function(event) { 
@@ -275,6 +339,10 @@ $(document).ready(function() {
 
 
 $('#editquestionModal').on('shown.bs.modal', function(e) {
+  $long = e.relatedTarget.attributes['data-long'].value;
+  document.getElementById('edit_short_message').value = $long;
+  $short = e.relatedTarget.attributes['data-short'].value;
+  document.getElementById('edit_long_message').value = $short;
   $id = e.relatedTarget.attributes['data-id'].value;
   $("#editquestionSubmitBtn").click(function(){
     $.ajax({
@@ -300,6 +368,8 @@ $('#editquestionModal').on('shown.bs.modal', function(e) {
 });
 
 $('#editanswerModal').on('shown.bs.modal', function(e) {
+  $message = e.relatedTarget.attributes['data-message'].value;
+  document.getElementById('messageModal').value = $message;
   $id = e.relatedTarget.attributes['data-id'].value;
   $("#submitEditAnswerBtn").click(function(){
     $.ajax({
@@ -309,7 +379,7 @@ $('#editanswerModal').on('shown.bs.modal', function(e) {
       data: {
         "_token": $('#token').val(),
         "id_answer": $id,
-        "message": $("#message").val()
+        "message": $("#messageModal").val()
       }
   }).done(function (data) {
       $('#editanswerModal').modal('hide');
@@ -365,42 +435,56 @@ $('#deleteAnswerModal').on('shown.bs.modal', function(e) {
   });
 });
 
-$("#question-follow-btn").click(function(){
-  window.alert('follow ' + $("#questionId").val());
-  $.ajax({
-    url: '/topic/question/followQuestion',
-    type: 'POST',
-    dataType: 'json',
-    data: {
-      "_token": $('#token').val(),
-      "id_question": $("#questionId").val()
-    }
-}).done(function (data) {
-    console.log(data);
-    window.alert("followed");
-}).fail(function (data) {
-  console.log(data);
-});
+
+$("#question-follow-btn").click(function () {
+  $html = "<div class=" + "about" + "><p> " + "Unfollow Question" + "</p></div>";
+  document.getElementById("question-follow-btn").innerHTML = $html;
+  $("#question-follow-btn").attr("id", "question-unfollow-btn");
+  followQuestion();
+
+  $("#question-unfollow-btn").unbind("click").click(function () {
+    $html = "<div class=" + "about" + "><p> " + "Follow Question" + "</p></div>";
+    document.getElementById("question-unfollow-btn").innerHTML = $html;
+    $("#question-unfollow-btn").attr("id", "question-follow-btn"); 
+    unfollowQuestion();
+
+    $("#question-follow-btn").unbind("click").click(function () {
+      $html = "<div class=" + "about" + "><p> " + "Unfollow Question" + "</p></div>";
+      document.getElementById("question-follow-btn").innerHTML = $html;
+      $("#question-follow-btn").attr("id", "question-unfollow-btn");
+      followQuestion();
+    
+    });
+  });
+
 });
 
-$("#question-unfollow-btn").click(function(){
-  window.alert('unfollow');
-  $.ajax({
-    url: '/topic/question/unfollowQuestion',
-    type: 'DELETE',
-    dataType: 'json',
-    data: {
-      "_token": $('#token').val(),
-      "id_question": $("#questionId").val(),
-      "id_user": $("#userId").val() 
-    }
-}).done(function (data) {
-    console.log(data);
-    window.alert("unfollowed");
-}).fail(function (data) {
-  console.log(data);
+
+$("#question-unfollow-btn").click(function () {
+  $html = "<div class=" + "about" + "><p> " + "Follow Question" + "</p></div>";
+  document.getElementById("question-unfollow-btn").innerHTML = $html;
+  $("#question-unfollow-btn").attr("id", "question-follow-btn");
+  unfollowQuestion();
+
+  $("#question-follow-btn").unbind("click").click(function () {
+    $html = "<div class=" + "about" + "><p> " + "Unfollow Question" + "</p></div>";
+    document.getElementById("question-follow-btn").innerHTML = $html;
+    $("#question-follow-btn").attr("id", "question-unfollow-btn");
+    followQuestion();
+
+    $("#question-unfollow-btn").unbind("click").click(function () {
+      $html = "<div class=" + "about" + "><p> " + "Follow Question" + "</p></div>";
+      document.getElementById("question-unfollow-btn").innerHTML = $html;
+      $("#question-unfollow-btn").attr("id", "question-follow-btn"); 
+      unfollowQuestion();
+    });  
+  
+  });
 });
-});
+
+
+
+
 
 
 
@@ -485,28 +569,12 @@ console.log(data);
 });
 });
 
-/*
 
-$("#btnSearch").click(function(){
+
+$("#buttonSearch").click(function(){
   console.log("btn search clicked " + $('#searchText').val());
-  
-  $.ajax({
-    url: '/question/search',
-    type: 'GET',
-    dataType: 'json',
-    data: {
-      "_token": $('#token').val(),
-      "search": $("#searchText").val(),
-    }
-  }).done(function (data) {
-    console.log(data);
-      window.alert(data);
-  }).fail(function (data) {
-    console.log("failed search questions " + data);
-      // do what ever you want if the request is not ok
-
-  });
-});*/
+  window.location.href="/search/" + $('#searchText').val();
+});
 
 
 });

@@ -79,4 +79,16 @@ class User extends Authenticatable
     public function getId(){
         return $id;
     }
+
+    public function isFollowedQuestion($id_question, $id_user){
+        $question = FollowQuestion::where([
+            ['id_user', $id_user],
+            ['id_question',$id_question]
+        ])->count();
+        if($question == 1){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

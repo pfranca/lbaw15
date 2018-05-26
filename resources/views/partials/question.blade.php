@@ -17,15 +17,15 @@
         <span class="mr-auto">{{$question->date}}</span>
       </div>
       <div class="col-md-12">
-        <a class="pr-2" data-toggle="upvote" href="#upvote" onclick="actionUpvoteQuestion({{$question->id}})"><i class="far fa-thumbs-up" ></i></a>
-        <span class="label label-primary pr-2">{{$question->karma}}</span>
-        <a class="pr-3" data-toggle="upvote" href="#downvote" onclick="actionDownvoteQuestion({{$question->id}})"><i class="far fa-thumbs-down"></i></a>
+        <a class="pr-2" id="vote_button{{$question->id}}" data-toggle="vote" onclick="actionUpvoteQuestion({{$question->id}})"><i class="far fa-thumbs-up" ></i></a>
+        <span id="question_karma{{$question->id}}" class="label label-primary pr-2">{{$question->karma}}</span>
+        <a class="pr-3" data-toggle="upvote" onclick="actionDownvoteQuestion({{$question->id}})"><i class="far fa-thumbs-down"></i></a>
         <a id="bestAnswer" class="underTab colorLink" data-toggle="collapse" href="#question{{$question->id}}" aria-expanded="false" aria-controls="collapseExample">Best Answer</a>
         @guest
         @else
           @if ($question->id_author === Auth::user()->id)
           <a href="question3.html#answer" class="underTab colorLink">Answer</a>
-            <a href="#" data-id="{{$question->id}}" data-toggle="modal" data-target="#editquestionModal" data-dismiss="modal" class="underTab colorLink ml-auto">Edit</a>
+            <a href="#" data-id="{{$question->id}}" data-long="{{$question->long_message}}" data-short="{{$question->short_message}}" data-toggle="modal" data-target="#editquestionModal" data-dismiss="modal" class="underTab colorLink ml-auto">Edit</a>
             <a href="#" data-id="{{$question->id}}" data-toggle="modal" data-target="#questionDelModal" data-dismiss="modal" class="underTab colorLink" id="deleteQuestion">Delete</a>
 
           @elseif (Auth::user()->type === 'MOD')

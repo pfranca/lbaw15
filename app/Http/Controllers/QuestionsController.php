@@ -99,12 +99,19 @@ class QuestionsController extends Controller
         ->first();
 
         if($oldVote != NULL){
-            if($oldVote_vote == NULL)
+            if($oldVote_vote == NULL){
                 DB::table('vote')
                 ->where([['id_user', $id_user], ['id_question', $data['id_question']]])
                 ->update([
                         'vote' => 'TRUE'
                 ]);
+            }else{
+                return response()->json([
+                    "status" => "failed",
+                    "data" => $data,
+                    "user" => $id_user,
+                    "message" => "upvote"]);
+            }
         }else{
             Vote::create([
                 'id_user' => $id_user,
@@ -136,12 +143,19 @@ class QuestionsController extends Controller
         ->first();
 
         if($oldVote != NULL){
-            if($oldVote_vote == NULL)
+            if($oldVote_vote == NULL){
                 DB::table('vote')
                 ->where([['id_user', $id_user], ['id_question', $data['id_question']]])
                 ->update([
                         'vote' => 'FALSE'
                 ]);     
+            }else{
+                return response()->json([
+                    "status" => "failed",
+                    "data" => $data,
+                    "user" => $id_user,
+                    "message" => "downvote"]);
+            }
         }else{
             Vote::create([
                 'id_user' => $id_user,
@@ -154,7 +168,7 @@ class QuestionsController extends Controller
             "status" => "success",
             "data" => $data,
             "user" => $id_user,
-            "message" => "upvote"]);
+            "message" => "downvote"]);
     }
 
     /**

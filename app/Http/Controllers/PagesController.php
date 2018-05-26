@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Topic;
 use DB;
+use App\Answer;
 
 class PagesController extends Controller
 {
@@ -28,26 +29,28 @@ class PagesController extends Controller
 	public function question(){
 		return view('pages.question');
 	}
+	
 
-/*	public function search(Request $request){
+	public function search(Request $request){
 		$search = $request['search'];
-		$best = DB::raw("SELECT question.id, date, karma, short_message FROM question WHERE id IN  (SELECT id_question FROM answer where message like %$search% UNION SELECT id FROM question WHERE textsearchable_index_col @@ to_tsquery('$search'));");
+		$answers = Answer::all();
+		$bla = $answers->raw("where textsearchanswer_index_col @@ \"$search\"");
+		$best = DB::raw("SELECT * FROM answer where textsearchanswer_index_col @@ \"$search\"");
+		$answer = Answer::all()->where('message',$search);
 		return response()->json([
             "status" => "success",
-            "data" => $best,
+			"data" => $best,
+			"search" =>$search,
+			"answer" => $answer,
+			"bla" => $bla,
             "message" => "get BestAnswer"]);
-	}*/
+	}
 	
 	public function searchIndex($search){
-		$best = DB::raw("SELECT question.id, date, karma, short_message 
-		FROM question WHERE id IN  
-		(SELECT id_question FROM answer
-		 where message like %$search% UNION
-		  SELECT id
-		  FROM question WHERE textsearchable_index_col @@ to_tsquery('$search'));");		
+		$best = DB::raw("SELECT * FROM question WHERE id IN  (SELECT id_question FROM answer where textsearchanswer_index_col @@ \"$search\" UNION SELECT id FROM question WHERE textsearchable_index_col @@ to_tsquery(\"$search\"));");		
 		return response()->json([
             "status" => "success",
             "data" => $best,
-            "message" => "get BestAnswer"]);
+            "message" => "get seacrh"]);
 	}
 }
