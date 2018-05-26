@@ -339,6 +339,10 @@ $(document).ready(function() {
 
 
 $('#editquestionModal').on('shown.bs.modal', function(e) {
+  $long = e.relatedTarget.attributes['data-long'].value;
+  document.getElementById('edit_short_message').value = $long;
+  $short = e.relatedTarget.attributes['data-short'].value;
+  document.getElementById('edit_long_message').value = $short;
   $id = e.relatedTarget.attributes['data-id'].value;
   $("#editquestionSubmitBtn").click(function(){
     $.ajax({
@@ -364,6 +368,8 @@ $('#editquestionModal').on('shown.bs.modal', function(e) {
 });
 
 $('#editanswerModal').on('shown.bs.modal', function(e) {
+  $message = e.relatedTarget.attributes['data-message'].value;
+  document.getElementById('messageModal').value = $message;
   $id = e.relatedTarget.attributes['data-id'].value;
   $("#submitEditAnswerBtn").click(function(){
     $.ajax({
@@ -373,7 +379,7 @@ $('#editanswerModal').on('shown.bs.modal', function(e) {
       data: {
         "_token": $('#token').val(),
         "id_answer": $id,
-        "message": $("#message").val()
+        "message": $("#messageModal").val()
       }
   }).done(function (data) {
       $('#editanswerModal').modal('hide');
@@ -563,28 +569,12 @@ console.log(data);
 });
 });
 
-/*
 
-$("#btnSearch").click(function(){
+
+$("#buttonSearch").click(function(){
   console.log("btn search clicked " + $('#searchText').val());
-  
-  $.ajax({
-    url: '/question/search',
-    type: 'GET',
-    dataType: 'json',
-    data: {
-      "_token": $('#token').val(),
-      "search": $("#searchText").val(),
-    }
-  }).done(function (data) {
-    console.log(data);
-      window.alert(data);
-  }).fail(function (data) {
-    console.log("failed search questions " + data);
-      // do what ever you want if the request is not ok
-
-  });
-});*/
+  window.location.href="/search/" + $('#searchText').val();
+});
 
 
 });
