@@ -421,28 +421,12 @@ console.log(data);
 });
 });
 
-/*
 
-$("#btnSearch").click(function(){
+
+$("#buttonSearch").click(function(){
   console.log("btn search clicked " + $('#searchText').val());
-  
-  $.ajax({
-    url: '/question/search',
-    type: 'GET',
-    dataType: 'json',
-    data: {
-      "_token": $('#token').val(),
-      "search": $("#searchText").val(),
-    }
-  }).done(function (data) {
-    console.log(data);
-      window.alert(data);
-  }).fail(function (data) {
-    console.log("failed search questions " + data);
-      // do what ever you want if the request is not ok
-
-  });
-});*/
+  window.location.href="/search/" + $('#searchText').val();
+});
 
 
 });

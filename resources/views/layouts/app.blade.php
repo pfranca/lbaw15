@@ -44,10 +44,11 @@
       </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <form class="form-inline offset-lg-2 col-12 col-lg-5 col-xl-6">
+      <div class="form-inline offset-lg-2 col-12 col-lg-5 col-xl-6">
         <input id="searchText" class="form-control search-control col-10" type="text" placeholder="Search">
-        <button id="btnSearch" class="btnsearch  col-2" type="submit"><i class="fas fa-search"></i></button>
-      </form>
+        <button id="buttonSearch" class="btnsearch  col-2"><i class="fas fa-search"></i></button>
+    </div>
+     
       <ul class="navbar-nav ml-auto">
        @guest
        @else
