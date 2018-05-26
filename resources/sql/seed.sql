@@ -278,27 +278,7 @@ CREATE TRIGGER generate_notification_owner
         EXECUTE PROCEDURE generate_notification_owner();
 
 
---INDEXES
-CREATE INDEX idx_idtopicquestion ON "question" USING hash(id_topic);
-CREATE INDEX idx_iddisabledquestion ON "question" USING  hash(id_topic);
 
-ALTER TABLE "question" ADD COLUMN textsearchable_index_col tsvector;
-UPDATE "question" SET textsearchable_index_col =
- to_tsvector('english', coalesce(short_message,'')||' '|| coalesce(long_message,''));
-
-CREATE INDEX textsearch_idx ON "question" USING GIN (textsearchable_index_col);
-
-ALTER TABLE "user" ADD COLUMN usersearchable_index_col tsvector;
-UPDATE "user" SET usersearchable_index_col =
-     to_tsvector('english', coalesce(name,'') || ' ' || coalesce(username,''));
-
-CREATE INDEX usersearch_idx ON "user" USING GIN (usersearchable_index_col);
-
-ALTER TABLE "answer" ADD COLUMN textsearchanswer_index_col tsvector;
-UPDATE "answer" SET textsearchanswer_index_col =
-     to_tsvector('english', coalesce(message,''));
-
-CREATE INDEX textsearch_answer_idx ON "answer" USING GIN(textsearchanswer_index_col);
 
 
 
@@ -417,3 +397,26 @@ INSERT INTO followQuestion(id_user,id_question) VALUES (1,1);
 INSERT INTO followQuestion(id_user,id_question) VALUES (3,1);
 INSERT INTO followQuestion(id_user,id_question) VALUES (4,1);
 INSERT INTO followQuestion(id_user,id_question) VALUES (9,1);
+
+
+--INDEXES
+CREATE INDEX idx_idtopicquestion ON "question" USING hash(id_topic);
+CREATE INDEX idx_iddisabledquestion ON "question" USING  hash(id_topic);
+
+ALTER TABLE "question" ADD COLUMN textsearchable_index_col tsvector;
+UPDATE "question" SET textsearchable_index_col =
+ to_tsvector('english', coalesce(short_message,'')||' '|| coalesce(long_message,''));
+
+CREATE INDEX textsearch_idx ON "question" USING GIN (textsearchable_index_col);
+
+ALTER TABLE "user" ADD COLUMN usersearchable_index_col tsvector;
+UPDATE "user" SET usersearchable_index_col =
+     to_tsvector('english', coalesce(name,'') || ' ' || coalesce(username,''));
+
+CREATE INDEX usersearch_idx ON "user" USING GIN (usersearchable_index_col);
+
+ALTER TABLE "answer" ADD COLUMN textsearchanswer_index_col tsvector;
+UPDATE "answer" SET textsearchanswer_index_col =
+     to_tsvector('english', coalesce(message,''));
+
+CREATE INDEX textsearch_answer_idx ON "answer" USING GIN(textsearchanswer_index_col);
