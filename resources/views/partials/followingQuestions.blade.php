@@ -25,7 +25,7 @@
         @else
           @if ($question->id_author === Auth::user()->id)
           <a href="question3.html#answer" class="underTab colorLink">Answer</a>
-            <a href="#" data-id="{{$question->id}}" data-toggle="modal" data-target="#editquestionModal" data-dismiss="modal" class="underTab colorLink ml-auto">Edit</a>
+            <a href="#" data-id="{{$question->id}}" data-long="{{$question->long_message}}" data-short="{{$question->short_message}}" data-toggle="modal" data-target="#editquestionModal" data-dismiss="modal" class="underTab colorLink ml-auto">Edit</a>
             <a href="#" data-id="{{$question->id}}" data-toggle="modal" data-target="#questionDelModal" data-dismiss="modal" class="underTab colorLink" id="deleteQuestion">Delete</a>
           @elseif (Auth::user()->type === 'MOD')
             <a href="question3.html#answer" class="underTab colorLink">Answer</a>

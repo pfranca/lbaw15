@@ -9,7 +9,10 @@
               <form role="form">
                 <div class="form-group">
                   <label>Topic to post</label>
-                  <select id="edit_topicSelected" class="selectpicker">
+                  <select id="edit_topicSelected" class="selectpicker" data-live-search="true">
+                  @foreach($topics as $topic)
+                  <option data-tokens="{{$topic->name}}">{{$topic->name}}</option>
+                  @endforeach
                   </select>
                 </div>
                 <div>Write here the short description of the question:</div>

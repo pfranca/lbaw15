@@ -18,12 +18,16 @@
   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
   <script defer src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
   <script defer src="{{asset('js/admin.js')}}"></script>
+  
     <!-- Table -->
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
 
   <script src="{{asset('js/q&a.js')}}" defer></script>
 
   <meta name="google-site-verification" content="ZYfMaCLyVwA_xB6ozW2crasnN5LNYEyf5s2R2y0Oi-0" />
+
+
+
 
 </head>
 

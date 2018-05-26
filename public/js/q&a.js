@@ -211,6 +211,10 @@ $(document).ready(function() {
 
 
 $('#editquestionModal').on('shown.bs.modal', function(e) {
+  $long = e.relatedTarget.attributes['data-long'].value;
+  document.getElementById('edit_short_message').value = $long;
+  $short = e.relatedTarget.attributes['data-short'].value;
+  document.getElementById('edit_long_message').value = $short;
   $id = e.relatedTarget.attributes['data-id'].value;
   $("#editquestionSubmitBtn").click(function(){
     $.ajax({
