@@ -11,7 +11,7 @@
       </div>
       <div class="col-md-12">
         <a class="pr-1" data-toggle="upvote" href="#upvote" onclick="actionUpvoteAnswer({{$answer->id}})"><i class="far fa-thumbs-up"></i></a>
-        <span class="label label-primary pr-1">{{$answer->karma}}</span>
+        <span id="answer_karma{{$answer->id}}" class="label label-primary pr-1">{{$answer->karma}}</span>
         <a class="pr-4" data-toggle="upvote" href="#downvote" onclick="actionDownvoteAnswer({{$answer->id}})"><i class="far fa-thumbs-down"></i></a>
         
         @guest
