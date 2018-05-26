@@ -298,7 +298,7 @@ ALTER TABLE "answer" ADD COLUMN textsearchanswer_index_col tsvector;
 UPDATE "answer" SET textsearchanswer_index_col =
      to_tsvector('english', coalesce(message,''));
 
---CREATE INDEX textsearch_answer_idx ON "answer" USING GIN();
+CREATE INDEX textsearch_answer_idx ON "answer" USING GIN(textsearchanswer_index_col);
 
 
 

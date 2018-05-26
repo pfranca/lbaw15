@@ -236,6 +236,8 @@ $('#editquestionModal').on('shown.bs.modal', function(e) {
 });
 
 $('#editanswerModal').on('shown.bs.modal', function(e) {
+  $message = e.relatedTarget.attributes['data-message'].value;
+  document.getElementById('messageModal').value = $message;
   $id = e.relatedTarget.attributes['data-id'].value;
   $("#submitEditAnswerBtn").click(function(){
     $.ajax({
@@ -245,7 +247,7 @@ $('#editanswerModal').on('shown.bs.modal', function(e) {
       data: {
         "_token": $('#token').val(),
         "id_answer": $id,
-        "message": $("#message").val()
+        "message": $("#messageModal").val()
       }
   }).done(function (data) {
       $('#editanswerModal').modal('hide');

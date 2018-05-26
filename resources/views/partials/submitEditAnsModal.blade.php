@@ -7,11 +7,10 @@
             <div class="modal-body">
               <form role="form">
                 <div class="form-group">
-                  <textarea id="message" class="form-control" rows="8">{{$answer->message}}</textarea>
+                  <textarea id="messageModal" class="form-control" rows="8"></textarea>
                 </div>
               </form>
             </div>
-            <input type="hidden" value="{{$answer->id}}" id="answerId">
             <div class="modal-footer">
               <button id="submitEditAnswerBtn" type="button" class="buttonDown btn btn-primary btn-sm">Submit</button>
               <button type="button" class="buttonDown btn btn-secondary btn-sm" data-toggle="modal" data-target="#" data-dismiss="modal">Exit</button>
