@@ -7,7 +7,7 @@
       </div>
       <div class="text-right pr-1">
         <a class="underTab nameInQuestion" href="{{asset("user/".$answer->user->username)}}">{{$answer->user->username}}</a>
-        <span class="mr-auto">{{$answer->date}}</span>
+        <span class="mr-auto">{{ date("F j, Y, g:i a", strtotime($answer->date)) }}</span>
       </div>
       <div class="col-md-12">
         <a class="pr-1" data-toggle="upvote" href="#upvote" onclick="actionUpvoteAnswer({{$answer->id}})"><i class="far fa-thumbs-up"></i></a>

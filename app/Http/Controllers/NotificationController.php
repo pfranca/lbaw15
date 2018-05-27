@@ -45,6 +45,23 @@ class NotificationController extends Controller
        return view('pages.notification')->with($data);
     }
 
+    public function dismiss(Request $request){
+        $data = $request->all();
+        $id_notification = $data['id_notification'];
+
+        DB::table('notification')
+        ->where([['id', $id_notification]])
+        ->update([
+                'seen' => 'TRUE'
+        ]);
+
+        return response()->json([
+            "status" => "success",
+            "data" => $data,
+            "notifications" => $id_notification,
+            "message" => "dismissed"]);
+    }
+
   
 }
 

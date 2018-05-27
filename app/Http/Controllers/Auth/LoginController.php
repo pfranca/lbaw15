@@ -28,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/#themes';
 
     /**
      * Create a new controller instance.
@@ -40,6 +40,15 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+
+
+
+
+
+
+
+
+    
     /**
      * Redirect the user to the Google authentication page.
      *

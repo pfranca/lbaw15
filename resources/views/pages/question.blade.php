@@ -9,10 +9,12 @@
       <li class="breadcrumb-item"><a href="{{asset('/')}}">Home</a></li>
       <li class="breadcrumb-item"><a href="/topic/{{$topic_name}}"> {{$topic_name}}</a></li>
       <li class="breadcrumb-item active" aria-current="page">Question </li>
+      @guest
+      @else
       <li class="ml-auto">
         <a id="submitAnswerButton" href="#" data-id="{{$question->id}}" data-toggle="modal" data-target="#answerModal" data-dismiss="modal">Submit Answer</a>
      </li>
-
+      @endguest
     </ol>
   </nav>
 
@@ -57,7 +59,7 @@
       <ul class="list-group col-md-11 mx-auto">
 
         @include('partials.answer')
-
+        
       </ul>
     </div>
   </div>
