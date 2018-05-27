@@ -1,6 +1,6 @@
 @foreach($notifications as $notification)
 @if(!$notification->seen)
-       <li class="media list-group-item box-question">
+       <li class="media list-group-item box-question" id="notification{{$notification->id}}" >
           <div class="media-body">
             <div class="row pr-4">
               <h6 class="mt-2 answer-link ml-2 col-10">
@@ -10,7 +10,7 @@
               </div>
               </h6>
               
-              <a href="" class="col-1 answer-link ml-auto text-center" title="Dismiss"><i class="far fa-window-close"></i></a>
+              <a class="col-1 answer-link ml-auto text-center" onclick="actionDismiss({{$notification->id}})" title="Dismiss"><i class="far fa-window-close"></i></a>
             </div>
             <div class="media-body mt-3 pl-5">
               <a class="question-link" href="../topic/{{$notification->getTopic($notification->id_question)->name}}/question/{{$notification->getQuestion($notification->id_question)->id}}">

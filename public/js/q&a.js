@@ -158,6 +158,27 @@ function actionDownvoteAnswer(id_answer){
     });
 }
 
+function actionDismiss(id_notification){
+  $.ajax({
+    url: '/dismiss',
+    type: 'PUT',
+    dataType: 'json',
+    data: {
+      "_token": $('#token').val(),
+      "id_notification": id_notification
+    }
+    }).done(function (data) {
+        console.log(data);
+        if(data.status == "failed"){
+          window.alert("error");
+        }else{
+          $("#notification"+id_notification).attr('hidden', 'hidden');
+        }
+    }).fail(function (data) {
+      console.log(data);
+    });
+}
+
 function followQuestion(){
 
   $.ajax({

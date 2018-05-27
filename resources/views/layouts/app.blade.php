@@ -31,8 +31,6 @@
 
 </head>
 
-@include('partials.loginModal')
-
 <body id="index" data-spy="scroll" data-target=".navbar" data-offset="50">
 
   <div id="modals" class='login'>
@@ -70,12 +68,15 @@
 
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown">
+                @if(count(\DB::table('notification')->where([['notificated_user', \Auth::user()->id], ['seen', 'false']])->get()) > 0)
+                <i class="far fa-bell text-danger"></i>
+                @endif
                 {{ Auth::user()->name }}  <img class="img-fluid nav-img-profile" src="{{asset('images/'.Auth::user()->img)}}" alt="profilePic" />
                 </a>
               <div class="dropdown-menu dropdown-menu-right">
                 <a class="dropdown-item"  href="{{asset('followQuestion')}}">Following</a>
                 <a class="dropdown-item" href="{{asset("user/".Auth::user()->username)}}">Your Profile</a>
-                <a class="dropdown-item" href="{{asset('notification')}}">Notifications</a>
+                <a class="dropdown-item" href="{{asset('notification')}}">Notifications ({{count(\DB::table('notification')->where([['notificated_user', \Auth::user()->id], ['seen', 'false']])->get())}})</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
