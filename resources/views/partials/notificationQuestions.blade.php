@@ -6,7 +6,7 @@
               <h6 class="mt-2 answer-link ml-2 col-10">
                 {{$notification->message}}
                 <div class="text-right pr-1">
-                <span class="small">submitted {{$notification->date}}</span>
+                <span class="small">submitted {{ date("F j, Y, g:i a", strtotime($notification->date)) }}</span>
               </div>
               </h6>
               
@@ -18,7 +18,7 @@
               </a>
               <div class="text-right pr-1">
                 <a class="underTab nameInQuestion" href="../user/{{\Auth::user()->username}}">You</a>
-                <span class="mr-auto">submitted {{$notification->getQuestion($notification->id_question)->date}}</span>
+                <span class="mr-auto">submitted {{ date("F j, Y, g:i a", strtotime($notification->getQuestion($notification->id_question)->date)) }}</span>
                 <span>in</span>
                 <a class="underTab nameInQuestion" href="../topic/{{$notification->getTopic($notification->id_question)->name}}">{{$notification->getTopic($notification->id_question)->name}}</a>
               </div>

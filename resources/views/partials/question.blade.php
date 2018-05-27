@@ -14,7 +14,7 @@
       </div>
       <div class="text-right pr-1">
         <a class="underTab nameInQuestion" href="../../user/{{$question->user->username}}">{{$question->user->username}}</a>
-        <span class="mr-auto">{{  date("F j, Y, g:i a", strtotime($question->date)) }}</span>
+        <span class="mr-auto">{{ date("F j, Y, g:i a", strtotime($question->date)) }}</span>
       </div>
       <div class="col-md-12">
         <a class="pr-2" id="vote_button{{$question->id}}" data-toggle="vote" onclick="actionUpvoteQuestion({{$question->id}})"><i class="far fa-thumbs-up" ></i></a>
@@ -57,7 +57,7 @@
         @if($question->getBestAnswer($question->id) != null)
           <div>{{$question->getBestAnswer($question->id)->message}}</div>
           <a class="underTab nameInQuestion" href="../../user/{{$question->getUser($question->id)->username}}">{{$question->getUser($question->id)->username}}</a>
-        <span class="mr-auto">{{$question->getBestAnswer($question->id)->date}}</span>
+        <span class="mr-auto">{{ date("F j, Y, g:i a", strtotime($question->getBestAnswer($question->id)->date)) }}</span>
       </div>
       <div class="col-md-12">
         <a class="pr-1" data-toggle="upvote" href="#upvote"><i class="far fa-thumbs-up"></i></a>
