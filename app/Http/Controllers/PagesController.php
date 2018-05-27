@@ -24,6 +24,7 @@ class PagesController extends Controller
 		return view('pages.question');
 	}
 	
+/*
 	public function search(Request $request){
 		$search = $request['search'];
 		$answers = Answer::all();
@@ -37,13 +38,19 @@ class PagesController extends Controller
 			"answer" => $answer,
 			"bla" => $bla,
             "message" => "get BestAnswer"]);
-	}
+	}*/
 	
-	public function searchIndex($search){
-		$best = DB::raw("SELECT * FROM question WHERE id IN  (SELECT id_question FROM answer where textsearchanswer_index_col @@ \"$search\" UNION SELECT id FROM question WHERE textsearchable_index_col @@ to_tsquery(\"$search\"));");		
+	public function search($search){
+		$queries = Answer::query();
+		$answer = $queries->whereRaw("message @@ to_tsquery('check)");
+		$query = Db::raw("select * from answer where message @@ to_tsquery('check')");
+		//$best = DB::raw("SELECT * FROM question WHERE id IN  (SELECT id_question FROM answer where textsearchanswer_index_col @@ \"$search\" UNION SELECT id FROM question WHERE textsearchable_index_col @@ to_tsquery(\"$search\"));");		
 		return response()->json([
             "status" => "success",
-            "data" => $best,
+			"data" => $query,
+			"queries" => Db::raw("Select * from answer"),
+			"search" => $answer,
+		//	"answer" => Answer::all(),
             "message" => "get seacrh"]);
 	}
 }
