@@ -59,7 +59,7 @@
       <ul class="list-group col-md-11 mx-auto">
 
         @include('partials.answer')
-
+        
       </ul>
     </div>
   </div>
