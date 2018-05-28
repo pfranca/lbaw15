@@ -37,16 +37,10 @@
         @include('partials.questionNav')
       </ul>
     </div>
-
-
   </div>
+  
   </div>
   </div>
   </div>
 
 @endsection
-
-font-size: 22px;
-    margin: auto;
-    margin-top: 15px;
-    opacity: 0.6;
