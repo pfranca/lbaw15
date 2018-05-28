@@ -3,15 +3,12 @@
     @if(!$question->disabled)
 <li class="list-group-item font-theme align-items-start box-question">
     <div class="pb-2">
-      <div class="md-12 pl-4">
+      <div class="md-12 pl-3 " style="font-size: 9px">
           <a class="question-link" href="../topic/{{$question->topic->name}}/question/{{$question->id}}">
             {{$question->short_message}}      
         </a>
       </div>
-      <div class="text-right pr-1">
-        <a class="underTab nameInQuestion" href="../../user/{{$question->user->username}}">{{$question->user->username}}</a>
-        <span class="mr-auto">{{ date("F j, Y, g:i a", strtotime($question->date)) }}</span>
-      </div>
+      
       <div class="col-md-12">
         <a class="pr-2" data-toggle="upvote" href="#upvote"><i class="far fa-thumbs-up"></i></a>
         <span class="label label-primary pr-2">{{$question->karma}}</span>
@@ -36,15 +33,17 @@
               <button id="followQuestion{{$question->id}}" onclick="actionFollowQuestion('{{$question->id}}')" type="button" class="buttonDown followCardQuestion" style="margin-left: 2%;border-radius: 20px; background-color: #4da6ff; color: white; border-style: none; font-size: 2vmin; padding-right: 20px; padding-left: 20px"> Follow </button>
             @endif  
         @endguest
-       
-       
+      </div>
+      <div class="text-right text-bottom ">
+        <a class="underTab nameInQuestion" href="../../user/{{$question->user->username}}">{{$question->user->username}}</a>
+        <span class="mr-auto">{{ date("F j, Y, g:i a", strtotime($question->date)) }}</span>
       </div>
     </div>
     
     <div id="question{{$question->id}}" class="collapse bg-light pt-2 col-md-11 ml-auto mr-auto">
       <div class="md-12 pl-4 pt-2 answer-link">
       </div>
-      <div class="text-right pr-1">
+      <div class="text-right">
         @if($question->getBestAnswer($question->id) != null)
           <div>{{$question->getBestAnswer($question->id)->message}}</div>
           <a class="underTab nameInQuestion" href="../../user/{{$question->getUser($question->id)->username}}">{{$question->getUser($question->id)->username}}</a>

@@ -1,4 +1,4 @@
-@if(count($questions) > 0)
+
 <li class="list-group-item font-theme align-items-start box-question">
     <div class="pb-1">
       <div class="col-md-12 pl-3 nav1" style="">
@@ -52,9 +52,6 @@
 
 </li>
   
-    @else
-    <p>No Questions found!</b>
-  @endif
   @include('partials.submitEditQuestion')
   @include('partials.deleteQuestion')
   @include('partials.deleteAnswer')

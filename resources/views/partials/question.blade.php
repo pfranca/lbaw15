@@ -41,6 +41,7 @@
        
 
       </div>
+      
       <div class="text-right text-bottom">
           <a class="underTab nameInQuestion" href="../../user/{{$question->user->username}}">{{$question->user->username}}</a>
           <span class="mr-auto">{{ date("F j, Y, g:i a", strtotime($question->date)) }}</span>
@@ -56,6 +57,7 @@
           <a class="underTab nameInQuestion" href="../../user/{{$question->getUser($question->id)->username}}">{{$question->getUser($question->id)->username}}</a>
         <span class="mr-auto">{{ date("F j, Y, g:i a", strtotime($question->getBestAnswer($question->id)->date)) }}</span>
       </div>
+
       <div class="col-md-12">
         <a class="pr-1" data-toggle="upvote" href="#upvote"><i class="far fa-thumbs-up"></i></a>
         <span class="label label-primary pr-1">{{$question->getBestAnswer($question->id)->karma}}</span>

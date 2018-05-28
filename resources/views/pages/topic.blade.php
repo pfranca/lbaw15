@@ -34,8 +34,7 @@
 
     <div class=" bg-white col-md-3" style="margin-top: 70px">
       <ul class="list-group col-md-12">
-        @include('partials.questionNav', ['questions'=>$questions, 'topic_name'=>$topic_name])
-       
+        @include('partials.questionNav')
       </ul>
     </div>
 
