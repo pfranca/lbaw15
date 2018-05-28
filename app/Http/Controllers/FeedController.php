@@ -23,6 +23,7 @@ class FeedController extends Controller
                 $question = Question::all()->where('id_topic',$topic->id);
             array_push($Mquestions, $question);
         }
+       // dd($Mquestions);
          return view('pages.feed', compact(['topics','Mquestions']));
         }
 

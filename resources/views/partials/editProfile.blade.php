@@ -6,7 +6,7 @@
           <h5 class="modal-title">Edit Profile</h5>
         </div>
         <div class="modal-body" style="    padding: 25px;">
-          <form role="form" class="form-inline" action="{{URL::to('/user/$user->username/edit')}}">
+          <form role="form" class="form-inline" action="{{URL::to('/user/$user->username/edit')}}" method="post">
             <div class="form-group">
               <label class="nameInFormControl" for="usr">Name:</label>
                <input type="text"  style="display: none"  class="widthFormControl form-control" id="usernameEdit" value="{{$user->username}}">
@@ -20,7 +20,7 @@
             
             <div class="form-group col-md-12"  style="margin-top: 13px;" >
               <label class="nameInFormControl" for="usr">Profile:</label>
-               <input type="file"placeholder="OK" id="profileImg" class="add-topic-btn " name="pic" accept="image/*">
+               <input type="file" placeholder="OK" id="profileImg" class="add-topic-btn " name="pic" accept="image/*">
             </div>
 
             <div class="form-group">

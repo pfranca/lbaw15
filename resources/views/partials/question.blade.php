@@ -37,13 +37,14 @@
               <button id="followQuestion{{$question->id}}" onclick="actionFollowQuestion('{{$question->id}}')" type="button" class="buttonDown followCardQuestion" style="margin-left: 2%;border-radius: 20px; background-color: #4da6ff; color: white; border-style: none; font-size: 2vmin; padding-right: 20px; padding-left: 20px"> Follow </button>
             @endif   
         @endguest
-      </div>
 
+       
+
+      </div>
       <div class="text-right text-bottom">
           <a class="underTab nameInQuestion" href="../../user/{{$question->user->username}}">{{$question->user->username}}</a>
           <span class="mr-auto">{{ date("F j, Y, g:i a", strtotime($question->date)) }}</span>
       </div>
-    
     </div>
     
     <div id="question{{$question->id}}" class="collapse bg-light pt-2 col-md-11 ml-auto mr-auto">
@@ -69,7 +70,7 @@
       </div>
         @else
         <div>This question has no answers</div>
-        @endif 
+        @endif
     </div>
 
 </li>
