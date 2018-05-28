@@ -3,6 +3,7 @@
     <div class="pb-1">
       <div class="col-md-12 pl-3" style="font-size: 6px; padding: 0px">
         <div class="row">
+          <div style="margin-left:18px; margin-bottom: 18px; font-size: 18px; color: #333333">Most Voted</div>
           @foreach($topics->slice(0, 5) as $topic)   
           <div class="col-md-12" style="margin-bottom: 15px">
             <a style="font-size: 14px; padding: 5px; margin-right: 15px; margin-bottom: 22px; background-color: #eff0f1" > 
@@ -14,7 +15,7 @@
           </div>    
         @endforeach
         </div>
-
+        <div style="margin-left:1px; margin-bottom: 18px; font-size: 18px; color: #333333">Most Visited</div>
         @foreach($topics->slice(3,2 ) as $topic)   
           <div class="card-image text-center" style="margin-bottom: 20px" onclick="window.location.href='{{asset("topic/". $topic->name)}}'">
             <img class="card-img-top"   style="min-height: 40px;max-height: 70px; min-width: 200px; max-width: 220px" src="{{asset("images/". $topic->img)}}" alt="{{$topic->img}}">
