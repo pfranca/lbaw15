@@ -179,8 +179,8 @@ function actionDismiss(id_notification){
     });
 }
 
-function followQuestion(){
-
+function followQuestion(id_question){
+ console.log("id_question " + id_question);
   $.ajax({
     url: '/topic/question/followQuestion',
     type: 'POST',
@@ -191,12 +191,15 @@ function followQuestion(){
     }
 }).done(function (data) {
     console.log(data);
+        document.getElementById(id_question).value = "Unfollow";
+        document.getElementById(id_question).innerHTML = "Unfollow";
 }).fail(function (data) {
   console.log(data);
 });
 }
 
-function unfollowQuestion(){
+function unfollowQuestion(id_question){
+  console.log("id_question " + id_question);
   $.ajax({
     url: '/topic/question/unfollowQuestion',
     type: 'DELETE',
@@ -207,6 +210,8 @@ function unfollowQuestion(){
       "id_user": $("#userId").val() 
     }
 }).done(function (data) {
+    document.getElementById(id_question).value = "Follow";
+    document.getElementById(id_question).innerHTML = "Follow";
     console.log(data);
 }).fail(function (data) {
   console.log(data);
@@ -216,6 +221,15 @@ function unfollowQuestion(){
 $("#followAnswer").click(function(event) { 
   document.getElementById("followAnswer").value="Unfollow"; 
 });
+
+function actionFllQuestion(id_question){
+  $id = "fllQuestion"+id_question;
+  if(document.getElementById($id).value == "Unfollow"){
+    unfollowQuestion($id);
+  }else{
+    followQuestion($id)
+  }
+}
 
 $("#unfollowAnswer").click(function(event) { 
   document.getElementById("unfollowAnswer").value="Follow"; 
@@ -457,56 +471,6 @@ $('#deleteAnswerModal').on('shown.bs.modal', function(e) {
     });
   });
 });
-
-
-$("#question-follow-btn").click(function () {
-  $html = "<div class=" + "about" + "><p> " + "Unfollow Question" + "</p></div>";
-  document.getElementById("question-follow-btn").innerHTML = $html;
-  $("#question-follow-btn").attr("id", "question-unfollow-btn");
-  followQuestion();
-
-  $("#question-unfollow-btn").unbind("click").click(function () {
-    $html = "<div class=" + "about" + "><p> " + "Follow Question" + "</p></div>";
-    document.getElementById("question-unfollow-btn").innerHTML = $html;
-    $("#question-unfollow-btn").attr("id", "question-follow-btn"); 
-    unfollowQuestion();
-
-    $("#question-follow-btn").unbind("click").click(function () {
-      $html = "<div class=" + "about" + "><p> " + "Unfollow Question" + "</p></div>";
-      document.getElementById("question-follow-btn").innerHTML = $html;
-      $("#question-follow-btn").attr("id", "question-unfollow-btn");
-      followQuestion();
-    
-    });
-  });
-
-});
-
-
-$("#question-unfollow-btn").click(function () {
-  $html = "<div class=" + "about" + "><p> " + "Follow Question" + "</p></div>";
-  document.getElementById("question-unfollow-btn").innerHTML = $html;
-  $("#question-unfollow-btn").attr("id", "question-follow-btn");
-  unfollowQuestion();
-
-  $("#question-follow-btn").unbind("click").click(function () {
-    $html = "<div class=" + "about" + "><p> " + "Unfollow Question" + "</p></div>";
-    document.getElementById("question-follow-btn").innerHTML = $html;
-    $("#question-follow-btn").attr("id", "question-unfollow-btn");
-    followQuestion();
-
-    $("#question-unfollow-btn").unbind("click").click(function () {
-      $html = "<div class=" + "about" + "><p> " + "Follow Question" + "</p></div>";
-      document.getElementById("question-unfollow-btn").innerHTML = $html;
-      $("#question-unfollow-btn").attr("id", "question-follow-btn"); 
-      unfollowQuestion();
-    });  
-  
-  });
-});
-
-
-
 
 
 
