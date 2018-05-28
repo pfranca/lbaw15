@@ -29,22 +29,34 @@ class PagesController extends Controller
 	public function search(Request $request){
 		$search = $request['search'];
 
-		$questions = DB::select(DB::raw("select * from question where textsearchable_index_col @@ plainto_tsquery('english','$search')"));
-		$answers = DB::select(DB::raw("select * from answer where textsearchanswer_index_col @@ plainto_tsquery('english','$search')"));
+		//$questions = DB::select(DB::raw("select * from question where textsearchable_index_col @@ plainto_tsquery('english','$search')"));
+		$questions=Question::selectRaw("*")
+						->whereRaw("textsearchable_index_col @@ plainto_tsquery('english',?)", [$search])
+						->get();
+						//dd($questions);
+		//dd($questions);
+		//$answers = DB::select(DB::raw("select * from answer where textsearchanswer_index_col @@ plainto_tsquery('english','$search')"));
+		$answers=Answer::selectRaw('*')
+						->whereRaw("textsearchanswer_index_col @@ plainto_tsquery('english',?)", [$search])
+						->get();
 		$search_result= array();
 		foreach($answers as $answer){
-			$question=Question::find($answer->id_question);
-			array_push($search_result, $question);
+			$questions2=Question::find($answer->id_question);
+			array_push($search_result,$questions2);
 		}
+
 		foreach($questions as $question){
-			array_push($search_result, $question);
+			array_push($search_result,$question);
 		}
 
-		$Mquestions = array();
-		array_push($Mquestions,$search_result);
+		$topics = Topic::all();
+		$users = User::all();
 
-			//dd($Mquestions);
-		return view('pages.search')->with('Mquestions', $Mquestions);
+		//dd($search_result);
+		return view('pages.search', compact(
+			'topics',
+			'search_result','users'
+		));
 	}
 
 }
