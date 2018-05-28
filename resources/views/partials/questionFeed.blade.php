@@ -1,6 +1,6 @@
 @foreach($Mquestions as $questions)
   @foreach($questions as $question)
-      @if(!$question->disabled)
+    @if(!$question->disabled)
 <li class="list-group-item font-theme align-items-start box-question">
     <div class="pb-2">
       <div class="md-12 pl-4">

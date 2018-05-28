@@ -21,7 +21,7 @@
         <div class="col-md-12 tittle-section theme-title-section text-center">
 
           <div class="col-md-12" style="margin-top: 45px;">
-      {{--      <img class="img-profile" src="{{asset('images/'$user->img)}}">--}}
+            <img class="img-profile" src="{{asset('images/'.$user->img)}}">
           </div>
 
           <div class="col-md-12">

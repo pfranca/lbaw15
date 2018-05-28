@@ -280,8 +280,6 @@ CREATE TRIGGER generate_notification_owner
 
 
 
-
-
 INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('DiogoaCunha', 'mailfalso@gmail.com','diogo','diogo.png','Im fine','ADMIN');
 INSERT INTO "user"(username,email,password, name,img,bio,type) VALUES ('martaTorgal', 'mailmarta@gmail.com','$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W','Marta Torgal','marta.png','Im always ok!!','ADMIN');
 INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('tibas', 'mailtibas94@gmail.com','Jose Marques','tibas.png','I like to eat icecream with my forehead','ADMIN');
@@ -420,3 +418,46 @@ UPDATE "answer" SET textsearchanswer_index_col =
      to_tsvector('english', coalesce(message,''));
 
 CREATE INDEX textsearch_answer_idx ON "answer" USING GIN(textsearchanswer_index_col);
+
+CREATE OR REPLACE FUNCTION question_search_update() RETURNS TRIGGER AS
+$BODY$
+BEGIN
+    IF TG_OP = 'INSERT' THEN
+        NEW.textsearchable_index_col = to_tsvector('english', coalesce(NEW.short_message,'')||' '|| coalesce(NEW.long_message,''));
+    END IF;
+    IF TG_OP = 'UPDATE' THEN
+        IF NEW.short_message <> OLD.short_message THEN
+            NEW.textsearchable_index_col = to_tsvector('english', coalesce(NEW.short_message,'')||' '|| coalesce(OLD.long_message,''));
+        END IF;
+        IF NEW.long_message <> OLD.long_message THEN
+            NEW.textsearchable_index_col = to_tsvector('english', coalesce(OLD.short_message,'')||' '|| coalesce(NEW.long_message,''));
+        END IF;
+    END IF;
+    RETURN NEW;
+END
+$BODY$
+LANGUAGE plpgsql;
+CREATE TRIGGER question_search_update
+    AFTER INSERT OR UPDATE ON question
+    FOR EACH ROW 
+        EXECUTE PROCEDURE question_search_update();
+
+CREATE OR REPLACE FUNCTION answer_search_update() RETURNS TRIGGER AS
+$BODY$
+BEGIN
+    IF TG_OP = 'INSERT' THEN
+        NEW.textsearchanswer_index_col = to_tsvector('english', coalesce(NEW.message,''));
+    END IF;
+    IF TG_OP = 'UPDATE' THEN
+        IF NEW.message <> OLD.message THEN
+             NEW.textsearchanswer_index_col = to_tsvector('english', coalesce(NEW.message,''));
+        END IF;
+    END IF;
+    RETURN NEW;
+END
+$BODY$
+LANGUAGE plpgsql;
+CREATE TRIGGER answer_search_update
+    AFTER INSERT OR UPDATE ON answer
+    FOR EACH ROW 
+        EXECUTE PROCEDURE answer_search_update();

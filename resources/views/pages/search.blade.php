@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-{{--@include('partials.questions') --}}
+@include('partials.questionFeed')
 
 @section('content')
-  @endsection
+@endsection

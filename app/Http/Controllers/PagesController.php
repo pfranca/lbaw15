@@ -5,6 +5,7 @@ use App\User;
 use App\Topic;
 use DB;
 use App\Answer;
+use App\Question;
 class PagesController extends Controller
 {
     public function home(){
@@ -26,17 +27,22 @@ class PagesController extends Controller
 	
 	public function search(Request $request){
 		$search = $request['search'];
-		$answers = Answer::all();
-		$bla = $answers->raw("where textsearchanswer_index_col @@ \"$search\"");
-		$best = DB::raw("SELECT * FROM answer where textsearchanswer_index_col @@ \"$search\"");
-		$answer = Answer::all()->where('message',$search);
-		return response()->json([
-            "status" => "success",
-			"data" => $best,
-			"search" =>$search,
-			"answer" => $answer,
-			"bla" => $bla,
-            "message" => "get BestAnswer"]);
+		$questions = DB::select(DB::raw("select * from question where textsearchable_index_col @@ plainto_tsquery('english','$search')"));
+		$answers = DB::select(DB::raw("select * from answer where textsearchanswer_index_col @@ plainto_tsquery('english','$search')"));
+		$search_result= array();
+		foreach($answers as $answer){
+			$question=Question::find($answer->id_question);
+			array_push($search_result, $question);
+		}
+		foreach($questions as $question){
+			array_push($search_result, $question);
+		}
+
+		$Mquestions = array();
+		array_push($Mquestions,$search_result);
+
+			//dd($Mquestions);
+		return view('pages.search')->with('Mquestions', $Mquestions);
 	}
 	
 	public function searchIndex($search){
