@@ -1,10 +1,10 @@
 @if(count($questions) > 0)
 <li class="list-group-item font-theme align-items-start box-question">
     <div class="pb-1">
-      <div class="col-md-12 pl-3" style="font-size: 6px; padding: 0px">
+      <div class="col-md-12 pl-3 nav1" style="">
 
-        <div style="margin-left:1px; margin-bottom: 18px; font-size: 18px; color: #333333">Sorted</div>
-        <div class="text-left pr-1 mt-1" style="padding: 0px; font-size:12px; margin-bottom: 8px">
+        <div class="title-nav">Sorted</div>
+        <div class="text-left pr-1 mt-1 nav-sort">
          
           <select>
             <option value="Our special sauce" selected>
@@ -23,10 +23,10 @@
         </div>
 
         <div class="row">
-          <div style="margin-left:18px; margin-bottom: 18px; font-size: 18px; color: #333333">Most Voted</div>
+          <div class="title-voted">Most Voted</div>
           @foreach($topics->slice(0, 5) as $topic)   
-          <div class="col-md-12" style="margin-bottom: 15px">
-            <a style="font-size: 14px; padding: 5px; margin-right: 15px; margin-bottom: 22px; background-color: #eff0f1" > 
+          <div class="col-md-12 nav-mg">
+            <a class="nav-a-style" > 
               {{$topic->getBestQuestion($topic->id)->karma}}
             </a>
             <a class="question-link text-right" href="../topic/{{$topic->name}}/question/{{$topic->getBestQuestion($topic->id)->id}}">
@@ -35,12 +35,12 @@
           </div>    
         @endforeach
         </div>
-        <div style="margin-left:1px; margin-bottom: 18px; font-size: 18px; color: #333333">Most Visited</div>
+        <div class="title-visited">Most Visited</div>
         @foreach($topics->slice(3,2 ) as $topic)   
-          <div class="card-image text-center" style="margin-bottom: 20px" onclick="window.location.href='{{asset("topic/". $topic->name)}}'">
-            <img class="card-img-top"   style="min-height: 40px;max-height: 70px; min-width: 200px; max-width: 220px" src="{{asset("images/". $topic->img)}}" alt="{{$topic->img}}">
+          <div class="card-image text-center img-bottom" onclick="window.location.href='{{asset("topic/". $topic->name)}}'">
+            <img class="card-img-top img-nav" src="{{asset("images/". $topic->img)}}" alt="{{$topic->img}}">
 
-            <h5 class="card-title name-top text-dark font-weight-bold" style="margin-top: -42px; color: white">{{$topic->name}}</h5>
+            <h5 class="card-title name-top text-dark font-weight-bold" style="margin-top: -42px">{{$topic->name}}</h5>
           
           </div>
         @endforeach 
