@@ -45,9 +45,14 @@
         
       </div>
     </div>
+    @guest
+    @else
+    @if(Auth::user()->id == $user->id)
     <div class="d-flex justify-content-end">
       <button  type="button" data-id="{{$user->id}}" class="submitQuestionButton btnsubmit btn btn-xs" data-toggle="modal" data-target="#profileModal" data-dismiss="modal">Edit Profile</button>
     </div>
+    @endif
+    @endguest
   </div>
 
   @include('partials.editProfile')

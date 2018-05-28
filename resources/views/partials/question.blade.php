@@ -42,7 +42,7 @@
 
       </div>
       <div class="text-right text-bottom">
-          <a class="underTab nameInQuestion" href="../../user/{{$question->user->username}}">{{$question->user->username}}</a>
+          <a class="underTab nameInQuestion" href="asset(user/{{$question->user->username}})">{{$question->user->username}}</a>
           <span class="mr-auto">{{ date("F j, Y, g:i a", strtotime($question->date)) }}</span>
       </div>
     </div>

@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitfa85ff83479f19fba4d95a6777ff76a4
+class ComposerStaticInitc5a2385716f96bfb277026faf9ac7ed7
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -13,14 +13,14 @@ class ComposerStaticInitfa85ff83479f19fba4d95a6777ff76a4
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
-        '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
-        '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
+        '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
+        '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
+        '4a1f389d6ce373bda9e57857d3b61c84' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/helpers.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
-        '4a1f389d6ce373bda9e57857d3b61c84' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -131,8 +131,8 @@ class ComposerStaticInitfa85ff83479f19fba4d95a6777ff76a4
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
         ),
         'XdgBaseDir\\' => 
         array (
@@ -4144,11 +4144,11 @@ class ComposerStaticInitfa85ff83479f19fba4d95a6777ff76a4
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitfa85ff83479f19fba4d95a6777ff76a4::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitfa85ff83479f19fba4d95a6777ff76a4::$prefixDirsPsr4;
-            $loader->fallbackDirsPsr4 = ComposerStaticInitfa85ff83479f19fba4d95a6777ff76a4::$fallbackDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitfa85ff83479f19fba4d95a6777ff76a4::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitfa85ff83479f19fba4d95a6777ff76a4::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitc5a2385716f96bfb277026faf9ac7ed7::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitc5a2385716f96bfb277026faf9ac7ed7::$prefixDirsPsr4;
+            $loader->fallbackDirsPsr4 = ComposerStaticInitc5a2385716f96bfb277026faf9ac7ed7::$fallbackDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitc5a2385716f96bfb277026faf9ac7ed7::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitc5a2385716f96bfb277026faf9ac7ed7::$classMap;
 
         }, null, ClassLoader::class);
     }
