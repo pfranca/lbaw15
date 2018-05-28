@@ -23,19 +23,19 @@
   <input type="hidden" name="topicName" value="{{$topic_name}}">
 
   <div id="questions" class="row bg-white col-md-12">
-    <div class="text-right pr-1 mt-1" style="margin-left:15%"></div>
+    <div class="text-right pr-1 mt-1" style="margin-left:14%"></div>
 
     <div class=" bg-white col-md-6" style="margin-top: 35px">
       <ul class="list-group col-md-12">
         @include('partials.question', ['questions'=>$questions, 'topic_name'=>$topic_name])
-       
+        {{$questions->links()}}
       </ul>
     </div>
 
     <div class=" bg-white col-md-3" style="margin-top: 70px">
       <ul class="list-group col-md-12">
         @include('partials.questionNav', ['questions'=>$questions, 'topic_name'=>$topic_name])
-    
+       
       </ul>
     </div>
 
