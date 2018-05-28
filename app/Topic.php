@@ -31,4 +31,20 @@ class Topic extends Model
     public function followTopic(){
         return $this->belongsToMany('App\User','followtopic','id_user','id_topic')->withPivot('id_user', 'id_topic');;
     } 
+
+    public function getBestQuestion($id_topic){
+        $topic = Topic::find($id_topic);
+        $questions = Question::all()->where('id_topic',$id_topic);
+
+
+        $karma = 0;
+        $bestQuestion=null;
+        foreach($questions as $question){
+            if($question->karma > $karma){
+                $karma = $question->karma;
+                $bestQuestion = $question;
+            }
+        }
+        return $bestQuestion;
+    }
 }
