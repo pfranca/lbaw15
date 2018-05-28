@@ -16,15 +16,14 @@
         <a href="#" data-toggle="modal" data-target="#questionModal" data-dismiss="modal">Submit Question</a>
       </li>
       @endguest
-
     </ol>
   </nav>
 
 
   <input type="hidden" name="topicName" value="{{$topic_name}}">
 
-  <div id="questions" class="bg-white">
-    <div class="text-right pr-5 mt-3">
+  <div id="questions" class="row bg-white col-md-12">
+    <div class="text-right pr-5 mt-1">
       <label>Sort by:</label>
       <select>
         <option value="Our special sauce" selected>
@@ -42,12 +41,21 @@
       </select>
     </div>
 
-    <div class="container-fluid bg-white col-md-6">
+    <div class=" bg-white col-md-6" style="margin-top: 35px">
       <ul class="list-group col-md-12">
         @include('partials.question', ['questions'=>$questions, 'topic_name'=>$topic_name])
         {{$questions->links()}}
       </ul>
     </div>
+
+    <div class=" bg-white col-md-3" style="margin-top: 70px">
+      <ul class="list-group col-md-12">
+        @include('partials.questionNav', ['questions'=>$questions, 'topic_name'=>$topic_name])
+        {{$questions->links()}}
+      </ul>
+    </div>
+
+
   </div>
   </div>
   </div>
