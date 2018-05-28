@@ -78,6 +78,7 @@ class UsersController extends Controller
 
         $user = User::find($user_id);
 
+        
         $user->name=$name;
         $user->email=$email;
         $user->bio = $bio;

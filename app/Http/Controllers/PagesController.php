@@ -5,6 +5,7 @@ use App\User;
 use App\Topic;
 use DB;
 use App\Answer;
+use App\Question;
 class PagesController extends Controller
 {
     public function home(){
@@ -24,33 +25,38 @@ class PagesController extends Controller
 		return view('pages.question');
 	}
 	
-/*
+
 	public function search(Request $request){
 		$search = $request['search'];
-		$answers = Answer::all();
-		$bla = $answers->raw("where textsearchanswer_index_col @@ \"$search\"");
-		$best = DB::raw("SELECT * FROM answer where textsearchanswer_index_col @@ \"$search\"");
-		$answer = Answer::all()->where('message',$search);
-		return response()->json([
-            "status" => "success",
-			"data" => $best,
-			"search" =>$search,
-			"answer" => $answer,
-			"bla" => $bla,
-            "message" => "get BestAnswer"]);
-	}*/
-	
-	public function search($search){
-		$queries = Answer::query();
-		$answer = $queries->whereRaw("message @@ to_tsquery('check)");
-		$query = Db::raw("select * from answer where message @@ to_tsquery('check')");
-		//$best = DB::raw("SELECT * FROM question WHERE id IN  (SELECT id_question FROM answer where textsearchanswer_index_col @@ \"$search\" UNION SELECT id FROM question WHERE textsearchable_index_col @@ to_tsquery(\"$search\"));");		
-		return response()->json([
-            "status" => "success",
-			"data" => $query,
-			"queries" => Db::raw("Select * from answer"),
-			"search" => $answer,
-		//	"answer" => Answer::all(),
-            "message" => "get seacrh"]);
+
+		//$questions = DB::select(DB::raw("select * from question where textsearchable_index_col @@ plainto_tsquery('english','$search')"));
+		$questions=Question::selectRaw("*")
+						->whereRaw("textsearchable_index_col @@ plainto_tsquery('english',?)", [$search])
+						->get();
+						//dd($questions);
+		//dd($questions);
+		//$answers = DB::select(DB::raw("select * from answer where textsearchanswer_index_col @@ plainto_tsquery('english','$search')"));
+		$answers=Answer::selectRaw('*')
+						->whereRaw("textsearchanswer_index_col @@ plainto_tsquery('english',?)", [$search])
+						->get();
+		$search_result= array();
+		foreach($answers as $answer){
+			$questions2=Question::find($answer->id_question);
+			array_push($search_result,$questions2);
+		}
+
+		foreach($questions as $question){
+			array_push($search_result,$question);
+		}
+
+		$topics = Topic::all();
+		$users = User::all();
+
+		//dd($search_result);
+		return view('pages.search', compact(
+			'topics',
+			'search_result','users'
+		));
 	}
+
 }

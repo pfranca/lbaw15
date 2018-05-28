@@ -18,6 +18,8 @@ body {
   background-color: white;
 }
 
+
+
 .modal-register{
   margin-top: 10px;
   margin-bottom: 5px;
@@ -130,9 +132,12 @@ h3, h4 {
 */
 
 .box-question {
-  box-shadow: 0px 0px 15px;
+ 
   padding: 2%;
   margin-bottom: 4%;
+  border-top: none;
+  border-right: none;
+  border-left: none;
 }
 
 .box-best-answer {
@@ -233,6 +238,16 @@ h3, h4 {
 
 .text-area-fix {
   margin-top: 2%;
+}
+
+.text-bottom{
+  margin-bottom: -10px;
+  margin-top: -20px;
+} @media only screen and (max-width: 600px) {
+    .text-bottom{
+      margin-bottom: -10px;
+      margin-top: 0px;
+    }
 }
 
 .bg-fav-question {
@@ -427,21 +442,6 @@ footer a:hover {
   font-size: 1.5em;
 }
 
-.question-link:hover {
-  color: #777;
-  text-decoration: underline;
-  text-decoration-color: #888;
-}
-
-.search-control, .search-control::placeholder, .search-control:placeholder-shown, .search-control:focus {
-  border-radius: 15px !important;
-  background-color: #343A40;
-  color: white;
-  border: 1px solid #343A40;
-}
-.search-control{
-  border: 1px solid #4E545A!important;
-}
 
 textarea {
   resize: none;
@@ -456,6 +456,23 @@ textarea {
   background-color: black;
   /*backup older browsers */
   min-height: calc(100vh - 173px);
+}
+
+
+.question-link:hover {
+  color: #777;
+  text-decoration: underline;
+  text-decoration-color: #888;
+}
+
+.search-control, .search-control::placeholder, .search-control:placeholder-shown, .search-control:focus {
+  border-radius: 15px !important;
+  background-color: #343A40;
+  color: white;
+  border: 1px solid #343A40;
+}
+.search-control{
+  border: 1px solid #4E545A!important;
 }
 
 .btn-icon {
