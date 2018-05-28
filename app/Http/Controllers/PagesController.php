@@ -25,8 +25,10 @@ class PagesController extends Controller
 		return view('pages.question');
 	}
 	
+
 	public function search(Request $request){
 		$search = $request['search'];
+
 		$questions = DB::select(DB::raw("select * from question where textsearchable_index_col @@ plainto_tsquery('english','$search')"));
 		$answers = DB::select(DB::raw("select * from answer where textsearchanswer_index_col @@ plainto_tsquery('english','$search')"));
 		$search_result= array();
@@ -44,12 +46,5 @@ class PagesController extends Controller
 			//dd($Mquestions);
 		return view('pages.search')->with('Mquestions', $Mquestions);
 	}
-	
-	public function searchIndex($search){
-		$best = DB::raw("SELECT * FROM question WHERE id IN  (SELECT id_question FROM answer where textsearchanswer_index_col @@ \"$search\" UNION SELECT id FROM question WHERE textsearchable_index_col @@ to_tsquery(\"$search\"));");		
-		return response()->json([
-            "status" => "success",
-            "data" => $best,
-            "message" => "get seacrh"]);
-	}
+
 }

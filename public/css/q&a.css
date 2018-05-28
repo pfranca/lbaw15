@@ -130,9 +130,12 @@ h3, h4 {
 */
 
 .box-question {
-  box-shadow: 0px 0px 15px;
+ 
   padding: 2%;
   margin-bottom: 4%;
+  border-top: none;
+  border-right: none;
+  border-left: none;
 }
 
 .box-best-answer {
@@ -233,6 +236,16 @@ h3, h4 {
 
 .text-area-fix {
   margin-top: 2%;
+}
+
+.text-bottom{
+  margin-bottom: -10px;
+  margin-top: -20px;
+} @media only screen and (max-width: 600px) {
+    .text-bottom{
+      margin-bottom: -10px;
+      margin-top: 0px;
+    }
 }
 
 .bg-fav-question {

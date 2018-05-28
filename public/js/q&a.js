@@ -34,18 +34,29 @@ function actionFollow(id_topic){
     });
 }
 
-function actionFolloQuestion(id_answer){
+function actionFollowQuestion(id_question){
   $.ajax({
     url: '/setfollowQuestion',
     type: 'PUT',
     dataType: 'json',
     data: {
       "_token": $('#token').val(),
-      "id_topic": id_answer
+      "id_question": id_question
     }
     }).done(function (data) {
         console.log(data);
-        location.reload();
+        $id = "followQuestion" + id_question;
+        if(document.getElementById($id).value == "followingPage"){
+          location.reload();
+        }else{
+            if(document.getElementById($id).value == "Unfollow"){
+            document.getElementById($id).value = "Follow";
+            document.getElementById($id).innerHTML = "Follow";
+          }else{
+            document.getElementById($id).value = "Unfollow";
+            document.getElementById($id).innerHTML = "Unfollow";
+          }
+      }
         //location.reload();
     }).fail(function (data) {
       console.log(data);
@@ -213,13 +224,13 @@ function unfollowQuestion(){
 });
 }
 
-$("#followAnswer").click(function(event) { 
-  document.getElementById("followAnswer").value="Unfollow"; 
-});
+function actionAnswer(newUrl){
+  console.log("newURl " + newUrl);
+  window.location.href = newUrl;
+  location.reload();
+  $('#answerModal').modal('show');
+}
 
-$("#unfollowAnswer").click(function(event) { 
-  document.getElementById("unfollowAnswer").value="Follow"; 
-});
 
 $(document).ready(function() {
   $('.collapse').on('shown.bs.collapse', function() {
@@ -596,6 +607,8 @@ $("#buttonSearch").click(function(){
   console.log("btn search clicked " + $('#searchText').val());
   window.location.href="/search/" + $('#searchText').val();
 });
+
+
 
 
 });
