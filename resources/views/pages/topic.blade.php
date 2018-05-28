@@ -42,7 +42,6 @@
       </select>
     </div>
 
-
     <div class="container-fluid bg-white col-md-6">
       <ul class="list-group col-md-12">
         @include('partials.question', ['questions'=>$questions, 'topic_name'=>$topic_name])

@@ -18,6 +18,8 @@ body {
   background-color: white;
 }
 
+
+
 .modal-register{
   margin-top: 10px;
   margin-bottom: 5px;
@@ -440,21 +442,6 @@ footer a:hover {
   font-size: 1.5em;
 }
 
-.question-link:hover {
-  color: #777;
-  text-decoration: underline;
-  text-decoration-color: #888;
-}
-
-.search-control, .search-control::placeholder, .search-control:placeholder-shown, .search-control:focus {
-  border-radius: 15px !important;
-  background-color: #343A40;
-  color: white;
-  border: 1px solid #343A40;
-}
-.search-control{
-  border: 1px solid #4E545A!important;
-}
 
 textarea {
   resize: none;
@@ -469,6 +456,23 @@ textarea {
   background-color: black;
   /*backup older browsers */
   min-height: calc(100vh - 173px);
+}
+
+
+.question-link:hover {
+  color: #777;
+  text-decoration: underline;
+  text-decoration-color: #888;
+}
+
+.search-control, .search-control::placeholder, .search-control:placeholder-shown, .search-control:focus {
+  border-radius: 15px !important;
+  background-color: #343A40;
+  color: white;
+  border: 1px solid #343A40;
+}
+.search-control{
+  border: 1px solid #4E545A!important;
 }
 
 .btn-icon {
