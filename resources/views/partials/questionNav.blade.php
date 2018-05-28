@@ -27,7 +27,7 @@
           @foreach($topics->slice(0, 5) as $topic)   
           <div class="col-md-12" style="margin-bottom: 15px">
             <a style="font-size: 14px; padding: 5px; margin-right: 15px; margin-bottom: 22px; background-color: #eff0f1" > 
-              {{$topics[0]->getBestQuestion($topics[0]->id)->karma}}
+              {{$topic->getBestQuestion($topic->id)->karma}}
             </a>
             <a class="question-link text-right" href="../topic/{{$topic->name}}/question/{{$topic->getBestQuestion($topic->id)->id}}">
               {{$topic->getBestQuestion($topic->id)->short_message}}      
