@@ -49,17 +49,17 @@ class QuestionsController extends Controller
 
     public function follow(Request $request){
         $data = $request->all();
-        $answer_id = $request->input('id_topic');
+        $question_id = $request->input('id_question');
 
         $id_user = \Auth::user()->id;
         $followedQuestions=\Auth::user()->followQuestion;
         //if user dont follow create followTopic
         $deleted = FALSE;
         foreach ($followedQuestions as $follow){
-            if($follow['id'] == $answer_id){
+            if($follow['id'] == $question_id){
                 $answer_followed = FollowQuestion::where([
                     ['id_user', $id_user],
-                    ['id_question',$answer_id]
+                    ['id_question',$question_id]
                 ])->delete();
             $deleted = TRUE;
             break;
@@ -68,7 +68,7 @@ class QuestionsController extends Controller
         if($deleted == FALSE){
         FollowQuestion::create([
             'id_user' => $id_user,
-            'id_question' => $answer_id
+            'id_question' => $question_id
             ]);
         }
        

@@ -72,4 +72,9 @@ class Question extends Model
         $question = Question::find($question_id);
         return $question->user;
     }
+
+    public function getTopicName($question_id){
+        $topic_id = Question::find($question_id)->id_topic;
+        return Topic::find($topic_id)->name;
+    }
 }
