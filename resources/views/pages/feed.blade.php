@@ -30,13 +30,13 @@
     <div class=" bg-white col-md-6" style="margin-top: 35px">
       <ul class="list-group col-md-12">
         @include('partials.questionFeed')
-        
+
       </ul>
     </div>
 
     <div class=" bg-white col-md-3" style="margin-top: 70px">
       <ul class="list-group col-md-12">
-        @include('partials.questionNav')
+        @include('partials.questionNav',['questions'=>$Mquestions, 'topics'=>$topics])
       </ul>
     </div>
   </div>
