@@ -20,22 +20,21 @@
          
         @guest
         @else
-        <button onclick="actionAnswer('topic/{{$question->getTopicName($question->id)}}/question/{{$question->id}}')" class="underTab colorLink">Answer</button>
+        <a id="submitAnswerButton" href="#" data-id="{{$question->id}}" data-toggle="modal" data-target="#answerModal" data-dismiss="modal">Answer</a>
           @if ($question->id_author === Auth::user()->id)
             <a href="#" data-id="{{$question->id}}" data-long="{{$question->long_message}}" data-short="{{$question->short_message}}" data-toggle="modal" data-target="#editquestionModal" data-dismiss="modal" class="underTab colorLink ml-auto">Edit</a>
             <a href="#" data-id="{{$question->id}}" data-toggle="modal" data-target="#questionDelModal" data-dismiss="modal" class="underTab colorLink" id="deleteQuestion">Delete</a>
           @elseif (Auth::user()->type === 'MOD')
             <a href="#" data-id="{{$question->id}}" data-toggle="modal" data-target="#reportModal" data-dismiss="modal" class="underTab colorLink">Report</a>
             <a href="#" data-id="{{$question->id}}" data-toggle="modal" data-target="#questionDelModal" data-dismiss="modal" class="underTab colorLink" id="deleteQuestion">Delete </a>
-           
           @else
           <a href="" data-id="{{$question->id}}" data-toggle="modal" data-target="#reportModal" data-dismiss="modal" class="underTab colorLink">Report</a>
+          @endif
           @if(Auth::user()->followQuestionId($question->id,Auth::user()->id))
               <button id="followQuestion{{$question->id}}" onclick="actionFollowQuestion('{{$question->id}}')" type="button" class="buttonDown followCardQuestion" style="margin-left: 2%;border-radius: 20px; background-color: #4da6ff; color: white; border-style: none;padding-right: 20px; padding-left: 20px"> Unfollow </button>
             @else
               <button id="followQuestion{{$question->id}}" onclick="actionFollowQuestion('{{$question->id}}')" type="button" class="buttonDown followCardQuestion" style="margin-left: 2%;border-radius: 20px; background-color: #4da6ff; color: white; border-style: none; font-size: 2vmin; padding-right: 20px; padding-left: 20px"> Follow </button>
             @endif  
-          @endif
         @endguest
        
        
@@ -76,3 +75,4 @@
   @include('partials.deleteAnswer')
   @include('partials.reportModal')
   @include('partials.reportModalAnswer')
+  @include('partials.submitAnsModal')
