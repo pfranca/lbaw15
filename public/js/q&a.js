@@ -34,29 +34,18 @@ function actionFollow(id_topic){
     });
 }
 
-function actionFollowQuestion(id_question){
+function actionFolloQuestion(id_answer){
   $.ajax({
     url: '/setfollowQuestion',
     type: 'PUT',
     dataType: 'json',
     data: {
       "_token": $('#token').val(),
-      "id_question": id_question
+      "id_topic": id_answer
     }
     }).done(function (data) {
         console.log(data);
-        $id = "followQuestion" + id_question;
-        if(document.getElementById($id).value == "followingPage"){
-          location.reload();
-        }else{
-            if(document.getElementById($id).value == "Unfollow"){
-            document.getElementById($id).value = "Follow";
-            document.getElementById($id).innerHTML = "Follow";
-          }else{
-            document.getElementById($id).value = "Unfollow";
-            document.getElementById($id).innerHTML = "Unfollow";
-          }
-      }
+        location.reload();
         //location.reload();
     }).fail(function (data) {
       console.log(data);
@@ -224,13 +213,13 @@ function unfollowQuestion(){
 });
 }
 
-function actionAnswer(newUrl){
-  console.log("newURl " + newUrl);
-  window.location.href = newUrl;
-  location.reload();
-  $('#answerModal').modal('show');
-}
+$("#followAnswer").click(function(event) { 
+  document.getElementById("followAnswer").value="Unfollow"; 
+});
 
+$("#unfollowAnswer").click(function(event) { 
+  document.getElementById("unfollowAnswer").value="Follow"; 
+});
 
 $(document).ready(function() {
   $('.collapse').on('shown.bs.collapse', function() {
@@ -289,7 +278,7 @@ $(document).ready(function() {
         // do what ever you want if the request is not ok
     });
   });
-
+/*
   $('#profileModal').on('shown.bs.modal', function(e) {
     $id = e.relatedTarget.attributes['data-id'].value;
    $("#submitionEdit").click(function(){
@@ -297,7 +286,8 @@ $(document).ready(function() {
       var new_name = $('#usr').val()
       var new_email = $('#emailToChange').val()
       var new_bio = $('#bio').val()
-
+      var file = $("#profileImg").get(0).files;
+      console.log($file);
       
       $.ajax({
         url: '/user/'+usr_name+'/edit',
@@ -308,7 +298,8 @@ $(document).ready(function() {
           "name": new_name,
           "email" : new_email,
           "bio" : new_bio,
-          "user_id" : $id
+          "user_id" : $id,
+          "pic" : $file
 
         }
   
@@ -324,7 +315,7 @@ $(document).ready(function() {
     });
   });
 });
-
+*/
   $("#bestAnswer").click(function(){
       $.ajax({
         url: '/question/getBestAnswer',
@@ -607,8 +598,6 @@ $("#buttonSearch").click(function(){
   console.log("btn search clicked " + $('#searchText').val());
   window.location.href="/search/" + $('#searchText').val();
 });
-
-
 
 
 });

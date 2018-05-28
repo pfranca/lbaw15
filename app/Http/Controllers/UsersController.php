@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Topic;
+use Image;
 
 class UsersController extends Controller
 {
@@ -69,27 +71,31 @@ class UsersController extends Controller
      */
     public function update(Request $request)
     {
-        $data = $request->all();
+       // $data = $request->all();
 
-        $name = $data['name'];
-        $email = $data['email'];
-        $bio = $data['bio'];
-        $user_id= $data['user_id'];
+        $name = $request['name'];
+        $email = $request['email'];
+        $bio = $request['bio'];
+        $user_id = $request['id'];
 
         $user = User::find($user_id);
+        $img = $request->file('pic');
+        if($img != null){
+            $filename = time() . '.' . $img->getClientOriginalExtension();
+            Image::make($img)->save(public_path('/images/' . $filename));
+            $user->img = $filename;
+        }
 
-        
+ 
         $user->name=$name;
         $user->email=$email;
         $user->bio = $bio;
         $user->save();
 
-        //console.log(data.email)
-        return response()->json([
-            "status" => "success",
-            "data" => $data,
-            "user" => $user,
-            "message" => "user updated"]);
+		
+		$questions = $user->questions;
+        return redirect()->route('profile',['id' => $user->username]); 
+       
     }
 
     /**
