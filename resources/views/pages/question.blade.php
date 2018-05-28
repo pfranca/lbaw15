@@ -38,7 +38,7 @@
       @else
       @if(!Auth::user()->isFollowedQuestion($question->id, Auth::user()->id))
       <div>
-            <a id="question-follow-btn" class="btn btn-circle js-scroll-trigger btn-arrow">
+            <a id="fllQuestion{{$question->id}}" value="Follow" onclick="actionFllQuestion('{{$question->id}}')" class="btn btn-circle js-scroll-trigger btn-arrow">
               <div class="about">
                 <p>Follow Question</p>
               </div>
@@ -46,7 +46,7 @@
           </div>
           <div>
           @else
-            <a id="question-unfollow-btn" class="btn btn-circle js-scroll-trigger btn-arrow">
+            <a id="fllQuestion{{$question->id}}" value="Unfollow" onclick="actionFllQuestion('{{$question->id}}')" class="btn btn-circle js-scroll-trigger btn-arrow">
               <div class="about">
                 <p>Unfollow Question</p>
               </div>
