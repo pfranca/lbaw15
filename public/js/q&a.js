@@ -34,7 +34,7 @@ function actionFollow(id_topic){
     });
 }
 
-function actionFolloQuestion(id_answer){
+function actionFollowQuestion(id_answer){
   $.ajax({
     url: '/setfollowQuestion',
     type: 'PUT',
@@ -45,7 +45,13 @@ function actionFolloQuestion(id_answer){
     }
     }).done(function (data) {
         console.log(data);
-        location.reload();
+        if(document.getElementById("followQuestion").value == "Unfollow"){
+          document.getElementById("followQuestion").value = "Follow";
+          document.getElementById("followQuestion").innerHTML = "Follow";
+        } else{
+          document.getElementById("followQuestion").value = "Unfollow";
+          document.getElementById("followQuestion").innerHTML = "Unfollow";
+        }
         //location.reload();
     }).fail(function (data) {
       console.log(data);
@@ -213,13 +219,6 @@ function unfollowQuestion(){
 });
 }
 
-$("#followAnswer").click(function(event) { 
-  document.getElementById("followAnswer").value="Unfollow"; 
-});
-
-$("#unfollowAnswer").click(function(event) { 
-  document.getElementById("unfollowAnswer").value="Follow"; 
-});
 
 $(document).ready(function() {
   $('.collapse').on('shown.bs.collapse', function() {
