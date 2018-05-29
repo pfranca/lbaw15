@@ -12,7 +12,7 @@
       @guest
       @else
       <li class="ml-auto">
-        <a id="submitAnswerButton" href="#" data-id="{{$question->id}}" data-toggle="modal" data-target="#answerModal" data-dismiss="modal">Submit Answer</a>
+        <a id="submitAnswerButton" href="#" data-id="{{$question->id}}" data-user="{{Auth::user()->id}}" data-toggle="modal" data-target="#answerModal" data-dismiss="modal">Submit Answer</a>
      </li>
       @endguest
     </ol>

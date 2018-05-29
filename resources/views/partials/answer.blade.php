@@ -10,12 +10,28 @@
         <span class="mr-auto">{{ date("F j, Y, g:i a", strtotime($answer->date)) }}</span>
       </div>
       <div class="col-md-12">
-        <a class="pr-1" data-toggle="upvote" href="#upvote" onclick="actionUpvoteAnswer({{$answer->id}})"><i class="far fa-thumbs-up"></i></a>
-        <span id="answer_karma{{$answer->id}}" class="label label-primary pr-1">{{$answer->karma}}</span>
-        <a class="pr-4" data-toggle="upvote" href="#downvote" onclick="actionDownvoteAnswer({{$answer->id}})"><i class="far fa-thumbs-down"></i></a>
-        
         @guest
+        <a class="pr-2" id="upvote_button_answer{{$answer->id}}" data-toggle="vote"><i class="far fa-thumbs-up" ></i></a>
+       <span id="answer_karma{{$answer->id}}" class="label label-primary pr-1">{{$answer->karma}}</span>
+        <a class="pr-3" id="downvote_button_answer{{$answer->id}}" data-toggle="upvote"><i class="far fa-thumbs-down"></i></a>
         @else
+        <a class="pr-2" id="upvote_button_answer{{$answer->id}}" data-toggle="vote" onclick="actionUpvoteAnswer({{$answer->id}})"><i class="far fa-thumbs-up" ></i></a>
+       <span id="answer_karma{{$answer->id}}" class="label label-primary pr-1">{{$answer->karma}}</span>
+        <a class="pr-3" id="downvote_button_answer{{$answer->id}}" data-toggle="upvote" onclick="actionDownvoteAnswer({{$answer->id}})"><i class="far fa-thumbs-down"></i></a>
+        @if(Auth::user()->alreadyVotedAnswer($answer->id,Auth::user()->id) === 1)
+          <style type="text/css">
+            #upvote_button_answer{{$answer->id}}{
+              color : #0099cc;
+            }
+          </style>
+        @endif
+        @if(Auth::user()->alreadyVotedAnswer($answer->id,Auth::user()->id) === -1)
+          <style type="text/css">
+            #downvote_button_answer{{$answer->id}}{
+              color : #0099cc;
+            }
+          </style>
+        @endif
           @if ($answer->id_author === Auth::user()->id)
           <a href="#" data-id="{{$answer->id}}" data-message="{{$answer->message}}" data-toggle="modal" data-target="#editanswerModal" data-dismiss="modal" class="underTab colorLink">Edit</a>
           <a  href="#" data-id="{{$answer->id}}" data-toggle="modal" data-target="#deleteAnswerModal" data-dismiss="modal">Delete</a>

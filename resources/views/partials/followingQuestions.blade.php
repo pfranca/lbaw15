@@ -63,7 +63,6 @@
       </div>
 
     </div>
-    
 
     <div id="question{{$question->id}}" class="collapse bg-light pt-2 col-md-11 ml-auto mr-auto">
       <div class="md-12 pl-4 pt-2 answer-link">
@@ -71,18 +70,31 @@
       <div class="text-right pr-1">
         @if($question->getBestAnswer($question->id) != null)
           <div>{{$question->getBestAnswer($question->id)->message}}</div>
-          <a class="underTab nameInQuestion" href="../../user/{{$question->getUser($question->id)->username}}">{{$question->getUser($question->id)->username}}</a>
+          <a class="underTab nameInQuestion" href="{{asset("/user/".$question->getBestAnswer($question->id)->user->username)}}">{{$question->getBestAnswer($question->id)->user->username}}</a>
         <span class="mr-auto">{{ date("F j, Y, g:i a", strtotime($question->getBestAnswer($question->id)->date)) }}</span>
       </div>
       <div class="col-md-12">
-        <a class="pr-1" data-toggle="upvote" href="#upvote"><i class="far fa-thumbs-up"></i></a>
-        <span class="label label-primary pr-1">{{$question->getBestAnswer($question->id)->karma}}</span>
-        <a class="pr-4" data-toggle="upvote" href="#downvote"><i class="far fa-thumbs-down"></i></a>
-        <a href="" data-id="{{$question->getBestAnswer($question->id)->id}}" data-toggle="modal" data-target="#reportModalAnswer" data-dismiss="modal" class="underTab colorLink">Report</a>
-        <a href="" data-id="{{$question->getBestAnswer($question->id)->id}}" data-toggle="modal" data-target="#deleteAnswerModal" data-dismiss="modal" class="underTab colorLink">Delete</a>
+        <a class="pr-2" id="upvote_button_answer{{$question->getBestAnswer($question->id)->id}}" data-toggle="vote" onclick="actionUpvoteAnswer({{$question->getBestAnswer($question->id)->id}})"><i class="far fa-thumbs-up" ></i></a>
+       <span id="answer_karma{{$question->getBestAnswer($question->id)->id}}" class="label label-primary pr-1">{{$question->getBestAnswer($question->id)->karma}}</span>
+        <a class="pr-3" id="downvote_button_answer{{$question->getBestAnswer($question->id)->id}}" data-toggle="upvote" onclick="actionDownvoteAnswer({{$question->getBestAnswer($question->id)->id}})"><i class="far fa-thumbs-down"></i></a>
+        @if(Auth::user()->alreadyVotedAnswer($question->getBestAnswer($question->id)->id,Auth::user()->id) === 1)
+          <style type="text/css">
+            #upvote_button_answer{{$question->getBestAnswer($question->id)->id}}{
+              color : #0099cc;
+            }
+          </style>
+        @endif
+        @if(Auth::user()->alreadyVotedAnswer($question->getBestAnswer($question->id)->id,Auth::user()->id) === -1)
+          <style type="text/css">
+            #downvote_button_answer{{$question->getBestAnswer($question->id)->id}}{
+              color : #0099cc;
+            }
+          </style>
+        @endif
+        <a href="" data-id="{{$question->getBestAnswer($question->id)->id}})" data-toggle="modal" data-target="#reportModalAnswer" data-dismiss="modal" class="underTab colorLink">Report</a>
         @if ($question->getBestAnswer($question->id)->id_author === Auth::user()->id)
         <a href=""data-id="{{$question->getBestAnswer($question->id)->id}}"  data-toggle="modal" data-target="#deleteAnswerModal" data-dismiss="modal" class="underTab colorLink">Delete</a>
-        @endif
+        @endif        
       </div>
         @else
         <div>This question has no answers</div>

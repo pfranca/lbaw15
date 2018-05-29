@@ -59,7 +59,7 @@
         </li>
         @endguest
         <li class="nav-item">
-          <a id="TopicsNavBar" class="nav-link" href="{{asset('/')}}#themes" click="goToTopic">TOPICS</a>
+          <a id="TopicsNavBar" class="nav-link" href="{{asset('/')}}#themes" onclick="goToTopic">TOPICS</a>
         </li>
         <li class="nav-item">
           <a id="HelpNavBar" class="nav-link" href="{{asset('help')}}">HELP</a>
@@ -99,10 +99,8 @@
   </nav>
 
 @yield('content');
-
+  <footer class="footer text-center static-bottom">
+    <p>Cooperative Q&A <a href="#" data-toggle="tooltip" title="Cooperative q&a">www.cooperativeq&a.com</a></p>
+  </footer>
   </body>
-<footer class="footer text-center static-bottom">
-  <p>Cooperative Q&A <a href="#" data-toggle="tooltip" title="Cooperative q&a">www.cooperativeq&a.com</a></p>
-</footer>
-
 </html>
