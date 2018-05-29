@@ -111,4 +111,18 @@ class User extends Authenticatable
             return 1;
         }
     }
+
+    public function getTotalKarma($id_user){
+        $user = User::find($id_user);
+        $karma = 0;
+        foreach($user->questions as $question){
+            $karma += $question->karma;
+        }
+        return $karma;
+    }
+
+    public function getTotalAnswers($id_user){
+        $user = User::find($id_user);
+        return count($user->answers);
+    }
 }

@@ -36,7 +36,8 @@
 
     <div class=" bg-white col-md-3" style="margin-top: 70px">
       <ul class="list-group col-md-12">
-        @include('partials.questionNav',['questions'=>$Mquestions, 'topics'=>$topics])
+        @include('partials.questionNav',['questions'=>$allQuestions, 'topics'=>$allTopics])
+        }
       </ul>
     </div>
   </div>

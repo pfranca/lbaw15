@@ -50,11 +50,14 @@ function actionFollowQuestion(id_question){
           location.reload();
         }else{
             if(document.getElementById($id).value == "Unfollow"){
-            document.getElementById($id).value = "Follow";
-            document.getElementById($id).innerHTML = "Follow";
+              document.getElementById($id).value = "Follow";
+              document.getElementById($id).innerHTML = "Follow";
+              document.getElementById($id).style.background='#4da6ff';
+          
           }else{
             document.getElementById($id).value = "Unfollow";
             document.getElementById($id).innerHTML = "Unfollow";
+            document.getElementById($id).style.background='#004466';
           }
       }
         //location.reload();
