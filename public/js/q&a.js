@@ -52,12 +52,12 @@ function actionFollowQuestion(id_question){
             if(document.getElementById($id).value == "Unfollow"){
               document.getElementById($id).value = "Follow";
               document.getElementById($id).innerHTML = "Follow";
-              document.getElementById($id).style.background='#4da6ff';
+              document.getElementById($id).style.background='white';
           
           }else{
             document.getElementById($id).value = "Unfollow";
             document.getElementById($id).innerHTML = "Unfollow";
-            document.getElementById($id).style.background='#004466';
+            document.getElementById($id).style.background='#e6f2ff';
           }
       }
         //location.reload();

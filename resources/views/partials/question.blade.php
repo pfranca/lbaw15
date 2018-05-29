@@ -52,9 +52,9 @@
       <div class="row text-right text-bottom col-md-6 pull-right" >
         <div class="col-md-12 mg-b-5">
           @if(Auth::user()!=null AND Auth::user()->followQuestionId($question->id,Auth::user()->id))
-              <button id="followQuestion{{$question->id}}" onclick="actionFollowQuestion('{{$question->id}}')" type="button" class="buttonDown followCardQuestion Unfollow-btn"> Unfollow </button>
+              <button id="followQuestion{{$question->id}}" onclick="actionFollowQuestion('{{$question->id}}')" type="button" class="q-btn-unfollow buttonDown followCardQuestion unfollow-btn"> Unfollow </button>
             @else
-              <button id="followQuestion{{$question->id}}" onclick="actionFollowQuestion('{{$question->id}}')" type="button" class="buttonDown followCardQuestion follow-btn"> Follow </button>
+              <button id="followQuestion{{$question->id}}" onclick="actionFollowQuestion('{{$question->id}}')" type="button" class="q-btn-follow buttonDown followCardQuestion follow-btn"> Follow </button>
             @endif   
         </div>
         <div class="col-md-12">

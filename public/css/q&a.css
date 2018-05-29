@@ -545,26 +545,13 @@ textarea {
   margin-top: 20px;
 }
 
-.unfollow-btn{
-  margin-left: 2%;border-radius: 20px;
-  background-color: #004466;
-  color: white; border-style: none;
-  font-size: 1.8vmin; padding-right: 20px;
-  padding-left: 20px
-}
 
 .profile-bio{
   margin-left: 25%;
   margin-bottom: 40px;
 }
 
-.follow-btn{
-  margin-left: 2%;border-radius: 20px;
-  background-color: #4da6ff;
-  color: white; border-style: none;
-  font-size: 2vmin; padding-right: 20px;
-  padding-left: 20px
-} 
+
 .follow-btn:hover { 
     background-color: yellow;
 }
@@ -586,9 +573,36 @@ textarea {
   font-size: 33px;
 }
 
+.q-btn-follow{
+  background-color: white;
+  color: #4da6ff;
+  border: 1px solid #4da6ff;
+  font-size: 12px;  
+  border-radius: 2px;
+  padding-left: 20px;
+  padding-right:20px;
+} .q-btn-follow:hover{
+  background-color: #4da6ff; color:white;
+  opacity: 0.7;
+}
+
+.q-btn-unfollow{
+  background-color: #e6f2ff;
+  color: #4da6ff;
+  border: 1px solid #4da6ff;
+  font-size: 12px;  
+  border-radius: 2px;
+  padding-left: 20px;
+  padding-right:20px;
+} .q-btn-unfollow:hover{
+  background-color: #4da6ff; color:white;
+  opacity: 0.7;
+}
+
+
+
 .q-follow{
   background-color: white;
-  color: black;
   border: 1px solid #4da6ff;
   font-size: 16px;  
   border-radius: 2px;
