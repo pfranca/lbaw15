@@ -10,8 +10,8 @@
           <div class="userSide d-flex justify-content-center " >
             <ul class="fa-ul">
               <li ><i class="fa-li fas fa-envelope icon-top"></i>{{$user->email}}</li>
-              <li><i class="fa-li fa fa-spinner fa-thumbs-up icon-top"></i>Karma :  332</li>
-              <li><i class="fa-li fas fa-keyboard icon-top"></i>Answers : 28</li>
+              <li><i class="fa-li fa fa-spinner fa-thumbs-up icon-top"></i>Karma :  {{$user->getTotalKarma($user->id)}}</li>
+              <li><i class="fa-li fas fa-keyboard icon-top"></i>Answers : {{$user->getTotalAnswers($user->id)}} </li>
             </ul>
           </div>
 
