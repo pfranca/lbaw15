@@ -82,7 +82,7 @@
     </div>
 
 </li>
-  @endif
+  
   @endforeach
     @else
     <p>No Questions found!</b>
