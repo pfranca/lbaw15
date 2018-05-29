@@ -37,23 +37,24 @@
               <button id="followQuestion{{$question->id}}" onclick="actionFollowQuestion('{{$question->id}}')" type="button" class="buttonDown followCardQuestion" style="margin-left: 2%;border-radius: 20px; background-color: #4da6ff; color: white; border-style: none; font-size: 2vmin; padding-right: 20px; padding-left: 20px"> Follow </button>
             @endif   
         @endguest
-
+        <a class="underTab nameInQuestion" href="{{asset("user/".$question->user->username)}}">{{$question->user->username}}</a>
+          <span class="mr-auto">{{ date("F j, Y, g:i a", strtotime($question->date)) }}</span>
        
 
       </div>
       <div class="text-right text-bottom">
-          <a class="underTab nameInQuestion" href="asset(user/{{$question->user->username}})">{{$question->user->username}}</a>
-          <span class="mr-auto">{{ date("F j, Y, g:i a", strtotime($question->date)) }}</span>
+          
       </div>
     </div>
     
     <div id="question{{$question->id}}" class="collapse bg-light pt-2 col-md-11 ml-auto mr-auto">
       <div class="md-12 pl-4 pt-2 answer-link">
       </div>
+      <a class="underTab nameInQuestion" href="../../user/{{$question->getUser($question->id)->username}}">{{$question->getUser($question->id)->username}}</a>
       <div class="text-right pr-1">
         @if($question->getBestAnswer($question->id) != null)
           <div>{{$question->getBestAnswer($question->id)->message}}</div>
-          <a class="underTab nameInQuestion" href="../../user/{{$question->getUser($question->id)->username}}">{{$question->getUser($question->id)->username}}</a>
+         
         <span class="mr-auto">{{ date("F j, Y, g:i a", strtotime($question->getBestAnswer($question->id)->date)) }}</span>
       </div>
       <div class="col-md-12">

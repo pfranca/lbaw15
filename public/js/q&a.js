@@ -34,24 +34,34 @@ function actionFollow(id_topic){
     });
 }
 
-function actionFolloQuestion(id_answer){
+function actionFollowQuestion(id_question){
   $.ajax({
     url: '/setfollowQuestion',
     type: 'PUT',
     dataType: 'json',
     data: {
       "_token": $('#token').val(),
-      "id_topic": id_answer
+      "id_question": id_question
     }
     }).done(function (data) {
         console.log(data);
-        location.reload();
+        $id = "followQuestion" + id_question;
+        if(document.getElementById($id).value == "followingPage"){
+          location.reload();
+        }else{
+            if(document.getElementById($id).value == "Unfollow"){
+            document.getElementById($id).value = "Follow";
+            document.getElementById($id).innerHTML = "Follow";
+          }else{
+            document.getElementById($id).value = "Unfollow";
+            document.getElementById($id).innerHTML = "Unfollow";
+          }
+      }
         //location.reload();
     }).fail(function (data) {
       console.log(data);
     });
 }
-
 
 $(".card-body").click(function(event) {
   event.preventDefault();
