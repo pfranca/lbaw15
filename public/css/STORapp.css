@@ -15,11 +15,11 @@ main > header h1 {
 }
 main > header a.button {
   margin: 1em;
-  justify-self: center;
+  margin: auto;
 }
 main > header span {
   margin: 1em;
-  justify-self: center;
+  margin: auto;
 }
 #cards {
   display: grid;

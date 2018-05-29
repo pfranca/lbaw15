@@ -160,7 +160,7 @@ h3, h4 {
 }
 
 .bg-2 {
-  background: #white;
+  background-color: rgb(255, 255, 255);
   color: #bdbdbd;
 }
 
@@ -416,7 +416,8 @@ h3, h4 {
 }
 
 .navbar {
-  font: 11px !important Montserrat, sans-serif;
+  font: 11px !important;
+  font-family: Montserrat, sans-serif;
   background: #2d2d30;
   margin-bottom: 0;
   border: 0;
@@ -521,7 +522,7 @@ textarea {
 }
 
 .btn-icon {
-  background: bg-dark;
+  background: rgb(0, 0, 0);
   height: 25px;
   width: 25px;
   border-radius: 50%;
@@ -697,7 +698,9 @@ textarea {
 }
 
 .sorted{
-  border-top-style:2px solid black;
+  border-top-width: 2px;
+  border-top-style: solid;
+  border-top-color: black;
 }
 
 .setTop{
