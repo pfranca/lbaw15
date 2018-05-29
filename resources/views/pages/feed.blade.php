@@ -24,30 +24,24 @@
     </ol>
   </nav>
 
-  <div id="questions" class="bg-white">
-    <div class="text-right pr-5 mt-3">
-      <label>Sort by:</label>
-      <select>
-        <option value="Our special sauce" selected>
-          Our special sauce
-        </option>
-        <option value="Oldest to newest">
-          Oldest to newest
-        </option>
-        <option value="Newest to oldest">
-          Newest to oldest
-        </option>
-        <option value="Karma">
-          Karma
-        </option>
-      </select>
-    </div>
-    <div class="container-fluid bg-white col-md-9">
+  <div id="questions" class="row bg-white col-md-12">
+    <div class="text-right pr-1 mt-1" style="margin-left:14%"></div>
+
+    <div class=" bg-white col-md-6" style="margin-top: 35px">
       <ul class="list-group col-md-12">
         @include('partials.questionFeed')
+
+      </ul>
+    </div>
+
+    <div class=" bg-white col-md-3" style="margin-top: 70px">
+      <ul class="list-group col-md-12">
+        @include('partials.questionNav',['questions'=>$Mquestions, 'topics'=>$topics])
       </ul>
     </div>
   </div>
+
+
   </div>
   </div>
   </div>

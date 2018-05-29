@@ -64,6 +64,7 @@ h3, h4 {
 #breadcrumbs {
   z-index: 999;
   margin-top: 62px;
+  opacity: 0.7;
 }
 
 .sizeLetter {
@@ -216,14 +217,53 @@ h3, h4 {
 }
 
 .bg-profile-title {
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../img/tec.jpg') 0 0/cover;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/tec.jpg') 0 0/cover;
   width: 100%;
   overflow: hidden;
+}
+
+.nav-sort{
+  font-size:12px; margin-bottom: 8px;
+}
+
+.nav-mg{
+  margin-bottom: 15px
+}
+
+.nav-a-style{
+  font-size: 14px; padding: 5px; margin-right: 15px; margin-bottom: 22px; background-color: #eff0f1
+}
+.img-bottom{
+  margin-bottom: 20px;
+}
+.img-nav{
+  min-height: 40px;max-height: 70px; min-width: 200px; max-width: 220px;
+}
+
+.nav1{
+  font-size: 6px; padding: 0px;
+}
+
+.title-nav{
+  margin-left:1px; margin-bottom: 18px; font-size: 18px; color: #333333;
+}
+.title-voted{
+  margin-left:16px; margin-bottom: 18px; font-size: 18px; color: #333333
+}
+.title-visited{
+  margin-left:1px; margin-bottom: 18px; font-size: 18px; color: #333333
 }
 
 #band {
   min-height: calc(100vh - 62px);
   height: 100%;
+}
+
+.pagination{
+  font-size: 22px;
+    margin: auto;
+    margin-top: 15px;
+    opacity: 0.65;
 }
 
 .questionPage {
@@ -242,7 +282,8 @@ h3, h4 {
 
 .text-bottom{
   margin-bottom: -10px;
-  margin-top: -20px;
+  margin-top: -45px;
+  opacity: 0.8
 } @media only screen and (max-width: 600px) {
     .text-bottom{
       margin-bottom: -10px;
@@ -250,8 +291,12 @@ h3, h4 {
     }
 }
 
+.mg-b-5{
+  margin-bottom: 5px;
+}
+
 .bg-fav-question {
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../img/tec.jpg') 0 0/cover;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/tec.jpg') 0 0/cover;
   width: 100%;
   overflow: hidden;
 }
@@ -490,6 +535,14 @@ textarea {
 
 .add-topic-btn {
   margin-top: 20px;
+}
+
+.userSide{
+  color: black; font-size: 16px; border: 1px solid #a6a6a6; 
+  border-right-style: none; border-left-style: none; border-top-style: none;
+  margin-bottom: 14px;
+  padding: 10px;
+  color:  #595959
 }
 
 .question {

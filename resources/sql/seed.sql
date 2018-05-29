@@ -283,11 +283,11 @@ CREATE TRIGGER generate_notification_owner
 INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('DiogoaCunha', 'mailfalso@gmail.com','diogo','diogo.png','Im fine','ADMIN');
 INSERT INTO "user"(username,email,password, name,img,bio,type) VALUES ('martaTorgal', 'mailmarta@gmail.com','$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W','Marta Torgal','marta.png','Im always ok!!','ADMIN');
 INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('tibas', 'mailtibas94@gmail.com','Jose Marques','tibas.png','I like to eat icecream with my forehead','ADMIN');
-INSERT INTO "user"(username,email,password, name,img,bio,type) VALUES ('franza', 'pop@gmail.com','$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W','Pedro Franca','user.png','if I answered your question it is prolly wrong','ADMIN');
+INSERT INTO "user"(username,email,password, name,img,bio,type) VALUES ('franza', 'pop@gmail.com','$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W','Pedro F','user.png','if I answered your question it is prolly wrong','ADMIN');
 INSERT INTO "user"(username,email,name,img,bio) VALUES ('jeff', 'jeff98@gmail.com','Jeff Erson','default.png','MY NAME IS JEFFF');
 INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('potus', 'therealdonaldtrump@gmail.com','Donald Trump','potus.png','Imma build a wall','NORMAL');
 INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('johnSnow85', 'yoyo@gmail.com','MANEL','default.png','winter is comming,false','NORMAL');
-INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('throwaway1223312', 'esum@burro.com','o anonimo','default.png','','NORMAL');
+INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('throwaway12', 'esum@burro.com','o anonimo','default.png','','NORMAL');
 INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('quinhas', 'maria@gmail.com','Quinhas POmba','default.png','Universidade da vida','NORMAL');
 INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('Max', 'maxc@gmail.com','Max Caulfield','lis.png','Life is... weird','NORMAL');
 ---- Insert Topic 

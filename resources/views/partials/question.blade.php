@@ -2,15 +2,15 @@
     @foreach($questions as $question)
       @if(!$question->disabled)
 <li class="list-group-item font-theme align-items-start box-question">
-    <div class="pb-2">
-      <div class="md-12 pl-3" style="font-size: 9px">
-      @foreach($topics as $topic)
-        @if ($question->id_topic === $topic->id)
-          <a class="question-link" href="../topic/{{$topic->name}}/question/{{$question->id}}">
-            {{$question->short_message}}      
-        </a>
-        @endif
-      @endforeach
+    <div class="pb-2">  
+      <div class="md-12 pl-3" style="font-size: 9px;">
+        @foreach($topics as $topic)
+          @if ($question->id_topic === $topic->id)
+            <a class="question-link" href="../topic/{{$topic->name}}/question/{{$question->id}}">
+              {{$question->short_message}}      
+          </a>
+          @endif
+        @endforeach
       </div>
       
       <div class="col-md-12">
@@ -31,19 +31,25 @@
           @else
           <a href="" data-id="{{$question->id}}" data-toggle="modal" data-target="#reportModal" data-dismiss="modal" class="underTab colorLink">Report</a>
           @endif
+          
+        @endguest
+      </div>
+
+      <div class="row text-right text-bottom col-md-6 pull-right" >
+        <div class="col-md-12 mg-b-5">
           @if(Auth::user()->followQuestionId($question->id,Auth::user()->id))
-              <button id="followQuestion{{$question->id}}" onclick="actionFollowQuestion('{{$question->id}}')" type="button" class="buttonDown followCardQuestion" style="margin-left: 2%;border-radius: 20px; background-color: #4da6ff; color: white; border-style: none; font-size: 1.8vmin; padding-right: 20px; padding-left: 20px"> Unfollow </button>
+              <button id="followQuestion{{$question->id}}" onclick="actionFollowQuestion('{{$question->id}}')" type="button" class="buttonDown followCardQuestion" style="margin-left: 2%;border-radius: 20px; background-color: #004466; color: white; border-style: none; font-size: 1.8vmin; padding-right: 20px; padding-left: 20px"> Unfollow </button>
             @else
               <button id="followQuestion{{$question->id}}" onclick="actionFollowQuestion('{{$question->id}}')" type="button" class="buttonDown followCardQuestion" style="margin-left: 2%;border-radius: 20px; background-color: #4da6ff; color: white; border-style: none; font-size: 2vmin; padding-right: 20px; padding-left: 20px"> Follow </button>
             @endif   
+        </div>
+        <div class="col-md-12">
+          <a class="underTab nameInQuestion" href="href="{{asset("user/".$question->user->username)}}">{{$question->user->username}}</a>
+          <span class="mr-auto">{{ date("F j, Y, g:i a", strtotime($question->date)) }}</span>
+        </div>      
         @endguest
         <a class="underTab nameInQuestion" href="{{asset("user/".$question->user->username)}}">{{$question->user->username}}</a>
           <span class="mr-auto">{{ date("F j, Y, g:i a", strtotime($question->date)) }}</span>
-       
-
-      </div>
-      <div class="text-right text-bottom">
-          
       </div>
     </div>
     
@@ -57,6 +63,7 @@
          
         <span class="mr-auto">{{ date("F j, Y, g:i a", strtotime($question->getBestAnswer($question->id)->date)) }}</span>
       </div>
+
       <div class="col-md-12">
         <a class="pr-1" data-toggle="upvote" href="#upvote"><i class="far fa-thumbs-up"></i></a>
         <span class="label label-primary pr-1">{{$question->getBestAnswer($question->id)->karma}}</span>
