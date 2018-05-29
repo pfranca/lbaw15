@@ -23,8 +23,15 @@ class FeedController extends Controller
                 $question = Question::all()->where('id_topic',$topic->id);
             array_push($Mquestions, $question);
         }
+        $allTopics = Topic::all();
+        $allQuestions = Question::all();
        // dd($Mquestions);
-         return view('pages.feed', compact(['topics','Mquestions']));
+         return view('pages.feed', compact(['topics','Mquestions','allQuestions','allTopics']));
+        /*return response()->json([
+                "status" => "success",
+                "data" => $Mquestions,
+                "topics" => $allTopics,
+                "message" => "created question"]);*/
         }
 
         public function getQuestions()
