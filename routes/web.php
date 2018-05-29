@@ -130,6 +130,8 @@ Route::put('/admin/removeModerator','Admin\AdminController@removeModerator');
 Route::delete('/admin/removeReport','Admin\AdminController@deleteReport');
 
 Route::put('/admin/disableUser','Admin\AdminController@disableUser');
+
+Route::delete('/admin/removeAnswerQuestion','Admin\AdminController@removeAnswerQuestion');
 /*
 Route::patch(); //update de algumas coisas
 Route::put(); //update do modelo todo

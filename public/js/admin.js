@@ -241,7 +241,8 @@ $.get('/admin/getAllreports', function(data){
 
   for(var i=0; i < data.response.length; i++) {
     dataArray[i] = $.map(data.response[i], function(el) {return el});
-    dataArray[i][3]="<img id=\"removeBtn\" onclick=\"removeReport('" + dataArray[i][0] + "')\" class=\" mouse-pointer img-fluid nav-img-profile \" src=\"../images/no.png\" alt=\"\" />"
+    dataArray[i][4]="<img id=\"removeBtn\" onclick=\"removeReport('" + dataArray[i][0] + "')\" class=\" mouse-pointer img-fluid nav-img-profile \" src=\"../images/no.png\" alt=\"\" />"
+    dataArray[i][5]="<img id=\"removeBtn\" onclick=\"removeAnswerQuestion('" + dataArray[i][0] + "')\" class=\" mouse-pointer img-fluid nav-img-profile \" src=\"../images/no.png\" alt=\"\" />"
   }
   $('#reports').DataTable({
     data: dataArray,
@@ -249,13 +250,19 @@ $.get('/admin/getAllreports', function(data){
         title: "id"
       },
       {
-        title: "person"
+        title: "reason"
       },
       {
-        title: "type"
+        title: "id_user"
       },
       {
-        title:"delete"
+        title: "question/answer"
+      },
+      {
+        title:"delete report"
+      },
+      {
+        title:"remove answer/question"
       }
     ]
   });
@@ -423,6 +430,27 @@ function removeReport(idReport) {
 
   });
 }
+function removeAnswerQuestion(idReport) {
+
+  $.ajax({
+        url: '/admin/removeAnswerQuestion',
+        type: 'DELETE',
+        dataType: 'json',
+        data: {
+          "_token": $('#token').val(),
+            "id": idReport
+        }
+  }).done(function (data) {
+    console.log(data);
+    location.reload();
+  }).fail(function (data) {
+    //window.alert(data);
+    console.log(data);
+      // do what ever you want if the request is not ok
+
+  });
+}
+
 
 
 function removeUser(idUser) {
