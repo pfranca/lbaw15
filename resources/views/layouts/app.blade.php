@@ -59,11 +59,7 @@
         </li>
         @endguest
         <li class="nav-item">
-<<<<<<< HEAD
-          <a id="TopicsNavBar" class="nav-link" href="{{asset('/')}}#themes" onclick="goToTopic">TOPICS</a>
-=======
           <a id="TopicsNavBar" class="nav-link" href="{{asset('/')}}#themes" click="goToTopic">Topics</a>
->>>>>>> 364fda54f377e53d65293f75e2404889b1446fe5
         </li>
         <!--<li class="nav-item">
           <a id="HelpNavBar" class="nav-link" href="{{asset('help')}}">HELP</a>
