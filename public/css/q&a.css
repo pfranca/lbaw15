@@ -546,6 +546,11 @@ textarea {
   padding-left: 20px
 }
 
+.profile-bio{
+  margin-left: 25%;
+  margin-bottom: 40px;
+}
+
 .follow-btn{
   margin-left: 2%;border-radius: 20px;
   background-color: #4da6ff;

@@ -29,7 +29,7 @@
             <div class="tittle-profile">{{$user->name}}</div>
           </div>
 
-          <div class="col-md-6" style="margin-left: 25%;">
+          <div class="col-md-6 profile-bio">
             <div class="about">{{$user->bio}} </div>
           </div>
 
@@ -51,24 +51,6 @@
   @include('partials.editProfile')
 
   <div id="questions" class="bg-white">
-
-    <div class="text-right pr-5 mt-3">
-      <label>Sort by:</label>
-      <select>
-        <option value="Our special sauce" selected>
-          Our special sauce
-        </option>
-        <option value="Oldest to newest">
-          Oldest to newest
-        </option>
-        <option value="Newest to oldest">
-          Newest to oldest
-        </option>
-        <option value="Karma">
-          Karma
-        </option>
-      </select>
-    </div>
 
     <div id="questions" class="row bg-white col-md-12">
     <div class="text-right pr-1 mt-1" style="margin-left:14%"></div>

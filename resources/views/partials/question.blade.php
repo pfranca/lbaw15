@@ -58,7 +58,7 @@
             @endif   
         </div>
         <div class="col-md-12">
-          <a class="underTab nameInQuestion" href="href="{{asset("user/".$question->user->username)}}">{{$question->user->username}}</a>
+          <a class="underTab nameInQuestion" href="{{asset("user/".$question->user->username)}}">{{$question->user->username}}</a>
           <span class="mr-auto">{{ date("F j, Y, g:i a", strtotime($question->date)) }}</span>
         </div>      
         @endguest
