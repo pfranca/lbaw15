@@ -201,6 +201,7 @@ function actionDismiss(id_notification){
 
 function followQuestion(id_question){
  console.log("id_question " + id_question);
+ $html =  "<div class=\"about txt-color\">Unfollow</div>";
   $.ajax({
     url: '/topic/question/followQuestion',
     type: 'POST',
@@ -212,7 +213,7 @@ function followQuestion(id_question){
 }).done(function (data) {
     console.log(data);
         document.getElementById(id_question).value = "Unfollow";
-        document.getElementById(id_question).innerHTML = "Unfollow";
+        document.getElementById(id_question).innerHTML = $html;
 }).fail(function (data) {
   console.log(data);
 });
@@ -220,6 +221,7 @@ function followQuestion(id_question){
 
 function unfollowQuestion(id_question){
   console.log("id_question " + id_question);
+  $html =  "<div class=\"about txt-color\">Follow</div>";
   $.ajax({
     url: '/topic/question/unfollowQuestion',
     type: 'DELETE',
@@ -231,7 +233,7 @@ function unfollowQuestion(id_question){
     }
 }).done(function (data) {
     document.getElementById(id_question).value = "Follow";
-    document.getElementById(id_question).innerHTML = "Follow";
+    document.getElementById(id_question).innerHTML = $html;
     console.log(data);
 }).fail(function (data) {
   console.log(data);
