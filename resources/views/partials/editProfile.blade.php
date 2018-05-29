@@ -25,12 +25,6 @@
               <label class="nameInFormControl" for="usr">Profile:</label>
                <input type="file" name="pic" >
             </div>
-
-            <div class="form-group">
-              <label class="nameInFormControl" for="usr">Background:</label>
-                <input type="file" style="margin-top: 13px;" id="bgImage" class="add-topic-btn " name="picbg" accept="image/*">
-            </div>
-
             </div>
             <div class="form-group">
                 <label class="nameInFormControl" for="usr">Bio:</label>
