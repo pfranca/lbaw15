@@ -1,6 +1,6 @@
 @foreach($notifications as $notification)
 @if(!$notification->seen)
-       <li class="media list-group-item box-question" id="notification{{$notification->id}}" >
+       <li class="media list-group-item box-question" id="notification{{$notification->id}}" style="font-size: 2px" >
           <div class="media-body">
             <div class="row pr-4">
               <h6 class="mt-2 answer-link ml-2 col-10">

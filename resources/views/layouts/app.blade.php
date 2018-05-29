@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="{{asset('css/q&a.css')}}">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.14.0/jquery.validate.min.js"></script>
@@ -21,6 +20,7 @@
   
     <!-- Table -->
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="{{asset('css/q&a.css')}}">
 
   <script src="{{asset('js/q&a.js')}}" defer></script>
 
@@ -67,15 +67,20 @@
         
         <li >
           
-          <div class="dropdown show">
+          <div class="dropdown show" id="crlh" style=" margin-top: 12px; margin-left: 10px; margin-right: 10px">
             <a class="dropdown-toggle" href="#" role="" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="far fa-comments"></i>
             </a>
 
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="margin-left: -150px; margin-top: 20px">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="margin-left: -286px;margin-top: 12px;width: 417px;">
+              <div  class="row">
+                <div class="col-12 ">
+                  <ul class="list-group scrollable-menu ">
+                  @include('partials.notificationDrop',['notifications' => Auth::user()->notifications])
+                  <li class="col-white m-auto size-end"> <i class="fa fa-shield fa-flip-horizontal"></i> End of Notifications</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </li>
