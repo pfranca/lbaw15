@@ -22,11 +22,15 @@ class AnswersController extends Controller
     {
         
         $question = Question::find($id);
+        $allQuestions = Question::all();
+        $allTopics = Topic::all();
         $answers = Answer::where('id_question', $id)->get();
         $data=array(
             'topic_name' => $topic_name,
             'question' => $question,
-            'answers' => $answers
+            'answers' => $answers,
+            'allQuestions' => $allQuestions,
+            'allTopics' => $allTopics
         );
         return view('pages.question')->with($data);
     }

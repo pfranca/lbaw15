@@ -29,7 +29,7 @@
             <a class="nav-a-style" > 
               {{$topic->getBestQuestion($topic->id)->karma}}
             </a>
-            <a class="question-link text-right" href="../topic/{{$topic->name}}/question/{{$topic->getBestQuestion($topic->id)->id}}">
+            <a class="question-link text-right" href="{{asset("/topic/".$topic->name."/question/".$topic->getBestQuestion($topic->id)->id)}}">
               {{$topic->getBestQuestion($topic->id)->short_message}}      
             </a>
           </div>    
