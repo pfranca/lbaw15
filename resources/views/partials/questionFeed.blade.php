@@ -13,9 +13,9 @@
         <span class="mr-auto">{{ date("F j, Y, g:i a", strtotime($question->date)) }}</span>
       </div>
       <div class="col-md-12">
-        <a class="pr-2" data-toggle="upvote" href="#upvote"><i class="far fa-thumbs-up"></i></a>
-        <span class="label label-primary pr-2">{{$question->karma}}</span>
-        <a class="pr-3" data-toggle="upvote" href="#downvote"><i class="far fa-thumbs-down"></i></a>
+      <a class="pr-2" id="vote_button{{$question->id}}" data-toggle="vote" onclick="actionUpvoteQuestion({{$question->id}})"><i class="far fa-thumbs-up" ></i></a>
+        <span id="question_karma{{$question->id}}" class="label label-primary pr-2">{{$question->karma}}</span>
+        <a class="pr-3" data-toggle="upvote" onclick="actionDownvoteQuestion({{$question->id}})"><i class="far fa-thumbs-down"></i></a>
         <a id="bestAnswer" class="underTab colorLink" data-toggle="collapse" href="#question{{$question->id}}" aria-expanded="false" aria-controls="collapseExample">Best Answer</a>
          
         @guest
