@@ -121,10 +121,8 @@
   </nav>
 
 @yield('content');
-
+  <footer class="footer text-center static-bottom">
+    <p>Cooperative Q&A <a href="#" data-toggle="tooltip" title="Cooperative q&a">www.cooperativeq&a.com</a></p>
+  </footer>
   </body>
-<footer class="footer text-center static-bottom">
-  <p>Cooperative Q&A <a href="#" data-toggle="tooltip" title="Cooperative q&a">www.cooperativeq&a.com</a></p>
-</footer>
-
 </html>

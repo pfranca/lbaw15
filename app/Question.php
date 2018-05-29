@@ -59,7 +59,7 @@ class Question extends Model
         $karma = 0;
         $bestAnswer=null;
         foreach($answers as $answer){
-            if($answer->karma > $karma){
+            if($answer->karma >= $karma){
                 $karma = $answer->karma;
                 $bestAnswer = $answer;
             }

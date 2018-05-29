@@ -80,7 +80,15 @@ $(".card-body").click(function(event) {
 
 
   function actionUpvoteQuestion(id_question,karma){
-    if( $("#upvote_button"+id_question).css("color") !=  "rgb(0, 153, 204)"){
+      $karma = document.getElementById("question_karma"+id_question).innerHTML;
+      if( $("#upvote_button"+id_question).css("color") !=  "rgb(0, 153, 204)"){
+        if( $("#downvote_button"+id_question).css("color") !=  "rgb(0, 153, 204)"){
+          $karma++;
+        }else{
+          $karma++;
+          $karma++;
+        }
+      
     $.ajax({
       url: '/setUpvoteQuestion',
       type: 'PUT',
@@ -90,24 +98,30 @@ $(".card-body").click(function(event) {
         "id_question": id_question
       }
       }).done(function (data) {
-          console.log(data);
-          if(data.status == "failed"){
-            window.alert("you have already voted");
-          }else{
-            $karma = document.getElementById("question_karma"+id_question).innerHTML;
-            $karma++;
+            $("#downvote_button"+id_question).css({ 'color': "grey" });
             $("#question_karma"+id_question).html($karma);
             $("#upvote_button"+id_question).css({ 'color': "#0099cc" });
-            $("#downvote_button"+id_question).css({ 'color': "grey" });
-          }
       }).fail(function (data) {
-        console.log(data);
       });
+    }else{
+      $karma--;
+      $("#upvote_button"+id_question).css({ 'color': "grey" });
+      $("#question_karma"+id_question).html($karma);
+      $("#downvote_button"+id_question).css({ 'color': "grey" });
+      
     }
   }
 
 function actionDownvoteQuestion(id_question){
   if($("#downvote_button"+id_question).css("color") != "rgb(0, 153, 204)"){
+    $karma = document.getElementById("question_karma"+id_question).innerHTML;
+    if( $("#upvote_button"+id_question).css("color") !=  "rgb(0, 153, 204)"){
+        $karma--;
+      }else{
+        $karma--;
+        $karma--;
+      }
+    
   $.ajax({
     url: '/setDownvoteQuestion',
     type: 'PUT',
@@ -117,23 +131,29 @@ function actionDownvoteQuestion(id_question){
       "id_question": id_question
     }
     }).done(function (data) {
-        console.log(data);
-        if(data.status == "failed"){
-          window.alert("you have already voted");
-        }else{
-          $karma = document.getElementById("question_karma"+id_question).innerHTML;
-          $karma--;
         $("#question_karma"+id_question).html($karma);
         $("#upvote_button"+id_question).css({ 'color': "grey" });
         $("#downvote_button"+id_question).css({ 'color': "#0099cc" });
-        }
     }).fail(function (data) {
-      console.log(data);
     });
+  }else{
+    $karma++;
+    $("#question_karma"+id_question).html($karma);
+    $("#downvote_button"+id_question).css({ 'color': "grey" });
+    $("#upvote_button"+id_question).css({ 'color': "grey" });
   }
 }
 
 function actionUpvoteAnswer(id_answer){
+  $karma = document.getElementById("answer_karma"+id_answer).innerHTML;
+  if( $("#upvote_button_answer"+id_answer).css("color") !=  "rgb(0, 153, 204)"){
+    if( $("#downvote_button_answer"+id_answer).css("color") !=  "rgb(0, 153, 204)"){
+      $karma++;
+    }else{
+      $karma++;
+      $karma++;
+    }
+  
   $.ajax({
     url: '/setUpvoteAnswer',
     type: 'PUT',
@@ -143,20 +163,30 @@ function actionUpvoteAnswer(id_answer){
       "id_answer": id_answer
     }
     }).done(function (data) {
-        console.log(data);
-        if(data.status == "failed"){
-          window.alert("you have already voted");
-        }else{
-          $karma = document.getElementById("answer_karma"+id_answer).innerHTML;
-          $karma++;
-        $("#answer_karma"+id_answer).html($karma);
-        }
+          $("#answer_karma"+id_answer).html($karma);
+          $("#upvote_button_answer"+id_answer).css({ 'color': "#0099cc" });
+          $("#downvote_button_answer"+id_answer).css({ 'color': "grey" });
     }).fail(function (data) {
-      console.log(data);
     });
+  }else{
+    $karma--;
+    $("#upvote_button_answer"+id_answer).css({ 'color': "grey" });
+    $("#downvote_button_answer"+id_answer).css({ 'color': "grey" });
+    $("#answer_karma"+id_answer).html($karma);
+  }
 }
 
 function actionDownvoteAnswer(id_answer){
+  $allgrey = false;
+  $karma = document.getElementById("answer_karma"+id_answer).innerHTML;
+  if( $("#downvote_button_answer"+id_answer).css("color") !=  "rgb(0, 153, 204)"){
+    if( $("#upvote_button_answer"+id_answer).css("color") !=  "rgb(0, 153, 204)"){
+        $karma--;
+      }else{
+        $karma--;
+        $karma--;
+      }
+   
   $.ajax({
     url: '/setDownvoteAnswer',
     type: 'PUT',
@@ -166,17 +196,17 @@ function actionDownvoteAnswer(id_answer){
       "id_answer": id_answer
     }
     }).done(function (data) {
-        console.log(data);
-        if(data.status == "failed"){
-          window.alert("you have already voted");
-        }else{
-          $karma = document.getElementById("answer_karma"+id_answer).innerHTML;
-          $karma--;
-        $("#answer_karma"+id_answer).html($karma);
-        }
+          $("#answer_karma"+id_answer).html($karma);
+          $("#upvote_button_answer"+id_answer).css({ 'color': "grey" });
+          $("#downvote_button_answer"+id_answer).css({ 'color': "#0099cc" });
     }).fail(function (data) {
-      console.log(data);
     });
+   }else{
+      $karma++;
+      $("#downvote_button_answer"+id_answer).css({ 'color': "grey" });
+      $("#upvote_button_answer"+id_answer).css({ 'color': "grey" });
+      $("#answer_karma"+id_answer).html($karma);
+    }
 }
 
 function actionDismiss(id_notification){
@@ -388,7 +418,7 @@ $(document).ready(function() {
     }).done(function (data) {
           $("#message").val('');        
           $('#answerModal').modal('hide');
-          location.reload();
+       //   location.reload();
         console.log(data);
     }).fail(function (data) {
       console.log(data);
@@ -400,9 +430,9 @@ $(document).ready(function() {
 
 $('#editquestionModal').on('shown.bs.modal', function(e) {
   $long = e.relatedTarget.attributes['data-long'].value;
-  document.getElementById('edit_short_message').value = $long;
   $short = e.relatedTarget.attributes['data-short'].value;
-  document.getElementById('edit_long_message').value = $short;
+  document.getElementById('edit_short_message').value = $short;
+  document.getElementById('edit_long_message').value = $long;
   $id = e.relatedTarget.attributes['data-id'].value;
   $("#editquestionSubmitBtn").click(function(){
     $.ajax({
@@ -504,7 +534,6 @@ $('#reportModal').on('shown.bs.modal', function(e) {
     //reason
     //reported user
     //reported question or answer
-      window.alert("id " + $id);
       $.ajax({
         url: '/report/question',
         type: 'POST',

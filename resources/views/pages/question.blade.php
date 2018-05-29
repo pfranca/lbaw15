@@ -12,7 +12,7 @@
       @guest
       @else
       <li class="ml-auto">
-        <a id="submitAnswerButton" href="#" data-id="{{$question->id}}" data-toggle="modal" data-target="#answerModal" data-dismiss="modal">Submit Answer</a>
+        <a id="submitAnswerButton" href="#" data-id="{{$question->id}}" data-user="{{Auth::user()->id}}" data-toggle="modal" data-target="#answerModal" data-dismiss="modal">Submit Answer</a>
      </li>
       @endguest
     </ol>
@@ -41,7 +41,7 @@
                         <p>Follow Question</p>
                       </div>
                     </a>
-
+                   
                   @else
                     <a id="fllQuestion{{$question->id}}" value="Unfollow" onclick="actionFllQuestion('{{$question->id}}')" class="q-follow btn btn-circle js-scroll-trigger btn-arrow">
                       <div class="about txt-color">
@@ -50,13 +50,26 @@
                     </a>
 
                   @endif
+
+                   <a  data-id="{{$question->id}}" data-toggle="modal" data-target="#reportModal" data-dismiss="modal" class="q-follow btn js-scroll-trigger ">
+                      <div class="about txt-color">
+                        <p>Report</p>
+                      </div>
+                    </a>
+                    @if(Auth::user()->id == $question->user->id)
+                    <a data-id="{{$question->id}}" data-long="{{$question->long_message}}" data-short="{{$question->short_message}}" data-toggle="modal" data-target="#editquestionModal" data-dismiss="modal" class="q-follow btn js-scroll-trigger ">
+                      <div class="about txt-color">
+                        <p>Edit</p>
+                      </div>
+                    </a>
+
+                    @endif
                   @endguest
           </div>
         </div>
         
         <div class="col-md-7 ml-2 text-left b-line" style="font-size: 70%; color: #404040">
-            {{$question->long_message}} aokfj fig aoisgkaskdfmkndfkslnf ksmd s dls dl dl dl dlf dlmfpsodfmosidnfs fpsidmf sdpkmf psdm fpsd
-            okfj fig aoisgkaskdfmkndfkslnf ksmd s dls dl dl dl dlf dlmfpsodfmosidnfs fpsidmf sj mfspºojd fmsd
+            {{$question->long_message}}
         </div>
 
       </div>
@@ -84,7 +97,7 @@
   </div>
   
   @include('partials.submitAnsModal')
-
-
+  @include('partials.submitEditQuestion',['topics'=>$allTopics])
+  @include('partials.submitEditAnsModal')
 
 @endsection

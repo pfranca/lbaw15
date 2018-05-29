@@ -77,6 +77,7 @@
         <a href="" data-id="{{$question->getBestAnswer($question->id)->id}}" data-toggle="modal" data-target="#deleteAnswerModal" data-dismiss="modal" class="underTab colorLink">Delete</a>
           @if ($question->getBestAnswer($question->id)->id_author === Auth::user()->id)
           <a href=""data-id="{{$question->getBestAnswer($question->id)->id}}"  data-toggle="modal" data-target="#deleteAnswerModal" data-dismiss="modal" class="underTab colorLink">Delete</a>
+          <a href="#" data-id="{{$question->getBestAnswer($question->id)->id}}" data-message="{{$question->getBestAnswer($question->id)->message}}" data-toggle="modal" data-target="#editanswerModal" data-dismiss="modal" class="underTab colorLink">Edit</a>
           @endif
       </div>
         @else
@@ -94,3 +95,4 @@
   @include('partials.reportModal')
   @include('partials.reportModalAnswer')
   @include('partials.submitAnsModal')
+  @include('partials.submitEditAnsModal')

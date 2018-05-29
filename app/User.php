@@ -125,4 +125,18 @@ class User extends Authenticatable
         $user = User::find($id_user);
         return count($user->answers);
     }
+
+    public function alreadyVotedAnswer($id_answer, $id_user){
+        $vote = Vote::where([['id_user',$id_user],['id_answer',$id_answer]])->first();
+        if($vote == null){
+            return null;
+        }
+
+        if($vote->attributes['vote'] == false){
+            return -1;
+        }
+        if($vote->attributes['vote'] == true){
+            return 1;
+        }
+    }
 }
