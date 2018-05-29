@@ -46,8 +46,8 @@
           </div>    
         @endforeach
         </div>
-        <div class="title-visited">Most Visited</div>
-        @foreach($topics->slice(1,3 ) as $topic)   
+        <div class="title-visited">You May Like</div>
+        @foreach($topics->slice(5,3 ) as $topic)   
           <div class="card-image text-center img-bottom" onclick="window.location.href='{{asset("topic/". $topic->name)}}'">
             <img class="card-img-top img-nav" src="{{asset("images/". $topic->img)}}" alt="{{$topic->img}}">
 

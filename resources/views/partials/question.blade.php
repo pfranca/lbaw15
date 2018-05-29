@@ -62,9 +62,7 @@
           <span class="mr-auto">{{ date("F j, Y, g:i a", strtotime($question->date)) }}</span>
         </div>      
         @endguest
-        <a class="underTab nameInQuestion" href="{{asset("user/".$question->user->username)}}">{{$question->user->username}}</a>
-          <span class="mr-auto">{{ date("F j, Y, g:i a", strtotime($question->date)) }}</span>
-      </div>
+      
     </div>
     
     <div id="question{{$question->id}}" class="collapse bg-light pt-2 col-md-11 ml-auto mr-auto">
