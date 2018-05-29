@@ -62,6 +62,10 @@
           <a id="TopicsNavBar" class="nav-link" href="{{asset('/')}}#themes" click="goToTopic">TOPICS</a>
         </li>
         <li class="nav-item">
+          <a id="HelpNavBar" class="nav-link" href="{{asset('help')}}">HELP</a>
+        </li>
+        
+        <li class="nav-item">
             @guest
                  <a id="loginButton" class="nav-link" href="{{ route('login') }}" ">LOGIN</a>
             @else
@@ -77,6 +81,9 @@
                 <a class="dropdown-item"  href="{{asset('followQuestion')}}">Following</a>
                 <a class="dropdown-item" href="{{asset("user/".Auth::user()->username)}}">Your Profile</a>
                 <a class="dropdown-item" href="{{asset('notification')}}">Notifications ({{\Auth::user()->getNotificationsNumber(\Auth::user()->id)}})</a>
+                @if(Auth::user()->type == 'ADMIN')
+                <a class="dropdown-item"  href="{{asset('admin/topics')}}">Admin</a>
+                @endif
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

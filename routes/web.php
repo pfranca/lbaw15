@@ -29,6 +29,12 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
 
+//password reset
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');;
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+
 Route::post('/user/{username}/edit','UsersController@update')->name('edit_user');
 
 
@@ -168,3 +174,5 @@ Route::get('/followQuestion', 'FollowQuestionController@index');
 Route::get('/question/search','PagesController@search');
 
 Route::get('/search/{search}','PagesController@search');
+
+Route::get('/help', 'PagesController@help');

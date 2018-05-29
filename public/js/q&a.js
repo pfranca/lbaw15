@@ -79,7 +79,7 @@ $(".card-body").click(function(event) {
 
 
   function actionUpvoteQuestion(id_question,karma){
-    
+    if( $("#upvote_button"+id_question).css("color") !=  "rgb(0, 153, 204)"){
     $.ajax({
       url: '/setUpvoteQuestion',
       type: 'PUT',
@@ -102,9 +102,11 @@ $(".card-body").click(function(event) {
       }).fail(function (data) {
         console.log(data);
       });
+    }
   }
 
 function actionDownvoteQuestion(id_question){
+  if($("#downvote_button"+id_question).css("color") != "rgb(0, 153, 204)"){
   $.ajax({
     url: '/setDownvoteQuestion',
     type: 'PUT',
@@ -127,6 +129,7 @@ function actionDownvoteQuestion(id_question){
     }).fail(function (data) {
       console.log(data);
     });
+  }
 }
 
 function actionUpvoteAnswer(id_answer){
