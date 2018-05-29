@@ -97,4 +97,18 @@ class User extends Authenticatable
         return count(\DB::table('notification')->where([['notificated_user', $id_user], ['seen', 'false']])->get());
 
     }
+
+    public function alreadyVoted($id_question,$id_user){
+        $vote = Vote::where([['id_user',$id_user],['id_question',$id_question]])->first();
+        if($vote == null){
+            return null;
+        }
+
+        if($vote->attributes['vote'] == false){
+            return -1;
+        }
+        if($vote->attributes['vote'] == true){
+            return 1;
+        }
+    }
 }

@@ -93,6 +93,8 @@ $(".card-body").click(function(event) {
             $karma = document.getElementById("question_karma"+id_question).innerHTML;
             $karma++;
             $("#question_karma"+id_question).html($karma);
+            $("#upvote_button"+id_question).css({ 'color': "#0099cc" });
+            $("#downvote_button"+id_question).css({ 'color': "grey" });
           }
       }).fail(function (data) {
         console.log(data);
@@ -116,6 +118,8 @@ function actionDownvoteQuestion(id_question){
           $karma = document.getElementById("question_karma"+id_question).innerHTML;
           $karma--;
         $("#question_karma"+id_question).html($karma);
+        $("#upvote_button"+id_question).css({ 'color': "grey" });
+        $("#downvote_button"+id_question).css({ 'color': "#0099cc" });
         }
     }).fail(function (data) {
       console.log(data);
