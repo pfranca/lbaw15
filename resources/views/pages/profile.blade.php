@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@include('partials.submitQuestModal')
 
 @section('content')
 <nav id="breadcrumbs" class="fixed-top" aria-label="breadcrumb">
