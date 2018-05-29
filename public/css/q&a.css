@@ -541,7 +541,7 @@ textarea {
   color: black; font-size: 16px; border: 1px solid #a6a6a6; 
   border-right-style: none; border-left-style: none; border-top-style: none;
   margin-bottom: 14px;
-  padding: 10px;
+  padding: 12px;
   color:  #595959
 }
 
@@ -678,6 +678,23 @@ textarea {
 
 #TopicsNavBar {
   cursor: pointer;
+}
+
+.sorted{
+  border-top-style:2px solid black;
+}
+
+.setTop{
+  margin-top: -70px;
+}
+
+.setImage{
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+}
+
+.icon-top{
+  margin-top: 8px;
+  color:#004466;
 }
 
 .mouse-pointer{
