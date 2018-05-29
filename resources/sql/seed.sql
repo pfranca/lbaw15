@@ -20,6 +20,7 @@ DROP TABLE IF EXISTS question CASCADE;
 DROP TABLE IF EXISTS topic CASCADE;
 DROP TABLE IF EXISTS "user" CASCADE;
 DROP TABLE IF EXISTS "users" CASCADE;
+DROP TABLE IF EXISTS password_resets CASCADE;
 
 
 CREATE TYPE user_type AS ENUM ('NORMAL', 'MOD', 'ADMIN');
@@ -142,6 +143,13 @@ CREATE TABLE userBadge(
   id_user INTEGER NOT NULL REFERENCES "user"(id) ON UPDATE CASCADE,
   id_badge INTEGER NOT NULL REFERENCES badge(id) ON UPDATE CASCADE,
   PRIMARY KEY(id_user, id_badge)
+);
+
+CREATE TABLE password_resets(
+    idpasswordreset SERIAL UNIQUE,
+    email TEXT REFERENCES "user"(email),
+    token TEXT,
+    created_at timestamp without time zone
 );
 
 ------------------------------------------------------------------------
@@ -283,7 +291,7 @@ CREATE TRIGGER generate_notification_owner
 INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('DiogoaCunha', 'mailfalso@gmail.com','diogo','diogo.png','Im fine','ADMIN');
 INSERT INTO "user"(username,email,password, name,img,bio,type) VALUES ('martaTorgal', 'mailmarta@gmail.com','$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W','Marta Torgal','marta.png','Im always ok!!','ADMIN');
 INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('tibas', 'mailtibas94@gmail.com','Jose Marques','tibas.png','I like to eat icecream with my forehead','ADMIN');
-INSERT INTO "user"(username,email,password, name,img,bio,type) VALUES ('franza', 'pop@gmail.com','$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W','Pedro F','user.png','if I answered your question it is prolly wrong','ADMIN');
+INSERT INTO "user"(username,email,password, name,img,bio,type) VALUES ('franza', 'pedro.franca.1994@gmail.com','$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W','Pedro F','user.png','if I answered your question it is prolly wrong','ADMIN');
 INSERT INTO "user"(username,email,name,img,bio) VALUES ('jeff', 'jeff98@gmail.com','Jeff Erson','default.png','MY NAME IS JEFFF');
 INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('potus', 'therealdonaldtrump@gmail.com','Donald Trump','potus.png','Imma build a wall','NORMAL');
 INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('johnSnow85', 'yoyo@gmail.com','MANEL','default.png','winter is comming,false','NORMAL');
