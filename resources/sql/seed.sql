@@ -289,7 +289,7 @@ CREATE TRIGGER generate_notification_owner
 
 
 INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('DiogoaCunha', 'mailfalso@gmail.com','diogo','diogo.png','Im fine','ADMIN');
-INSERT INTO "user"(username,email,password, name,img,bio,type) VALUES ('martaTorgal', 'mailmarta@gmail.com','$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W','Marta Torgal','marta.png','Im always ok!!','ADMIN');
+INSERT INTO "user"(username,email,password, name,img,bio,type) VALUES ('martaTorgal', 'martafcp1@gmail.com','$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W','Marta Torgal','marta.png','Im always ok!!','ADMIN');
 INSERT INTO "user"(username,email,name,img,bio,type) VALUES ('tibas', 'mailtibas94@gmail.com','Jose Marques','tibas.png','I like to eat icecream with my forehead','ADMIN');
 INSERT INTO "user"(username,email,password, name,img,bio,type) VALUES ('franza', 'pedro.franca.1994@gmail.com','$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W','Pedro F','user.png','if I answered your question it is prolly wrong','ADMIN');
 INSERT INTO "user"(username,email,name,img,bio) VALUES ('jeff', 'jeff98@gmail.com','Jeff Erson','default.png','MY NAME IS JEFFF');
