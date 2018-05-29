@@ -91,4 +91,10 @@ class User extends Authenticatable
             return false;
         }
     }
+
+    public function getNotificationsNumber($id_user){
+
+        return count(\DB::table('notification')->where([['notificated_user', $id_user], ['seen', 'false']])->get());
+
+    }
 }

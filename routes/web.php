@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'PagesController@home');
-Route::get('/user/{username}', 'PagesController@profile');
+Route::get('/user/{username}', 'PagesController@profile')->name('profile');
 //Route::get('/topic/{topic_name}', 'PagesController@topic');
 //Route::get('/topic/{topic_name}/question/{id}', 'PagesController@question');
 
@@ -29,7 +29,7 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
 
-Route::put('/user/{username}/edit','UsersController@update');
+Route::post('/user/{username}/edit','UsersController@update')->name('edit_user');
 
 
 Route::put('/setfollow','TopicsController@follow');
