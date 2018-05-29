@@ -10,7 +10,7 @@ use App\Topic;
 use App\Question;
 use App\Answer;
 use Illuminate\Http\Request;
-
+use App\Report;
 
 class AdminController extends Controller
 {
@@ -144,6 +144,15 @@ class AdminController extends Controller
             "status" => "success",
             "data" => $answer,
             "message" => "created topic"]);
+    }
+
+    public function deleteReport(Request $request){
+        $report = Report::find($request->input('id'));
+        $report->delete();
+
+        return response()->json([
+            "status" => "success",
+            "message" => "report removed"]);
     }
 
 
