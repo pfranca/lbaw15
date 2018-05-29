@@ -196,6 +196,14 @@ $.get('/admin/getAllusers', function(data){
   var dataArray = [];
   for(var i=0; i < data.response.length; i++) {
     dataArray[i] = $.map(data.response[i], function(el) {return el});
+    
+   
+    if(!dataArray[i][6]){
+      dataArray[i][6]="<img id=\"removeBtn\" onclick=\"removeUser('" + dataArray[i][0] + "')\" class=\" mouse-pointer img-fluid nav-img-profile \" src=\"../images/ok.png\"/>"
+    }
+    else{
+      dataArray[i][6]="<img id=\"removeBtn\" onclick=\"removeUser('" + dataArray[i][0] + "')\" class=\" mouse-pointer img-fluid nav-img-profile \" src=\"../images/no.png\"/>"
+    }
   }
   $('#users').DataTable({
     data: dataArray,
@@ -218,7 +226,7 @@ $.get('/admin/getAllusers', function(data){
         title: "bio"
       },
       {
-        title: "disabled"
+        title: "shown"
       },
       {
         title: "type"
@@ -230,7 +238,6 @@ $.get('/admin/getAllusers', function(data){
 
 $.get('/admin/getAllreports', function(data){
   var dataArray = [];
-  console.log(data);
 
   for(var i=0; i < data.response.length; i++) {
     dataArray[i] = $.map(data.response[i], function(el) {return el});
@@ -408,7 +415,6 @@ function removeReport(idReport) {
             "id": idReport
         }
   }).done(function (data) {
-    console.log(data);
     location.reload();
   }).fail(function (data) {
     //window.alert(data);
@@ -418,4 +424,24 @@ function removeReport(idReport) {
   });
 }
 
+
+function removeUser(idUser) {
+
+  $.ajax({
+        url: '/admin/disableUser',
+        type: 'PUT',
+        dataType: 'json',
+        data: {
+          "_token": $('#token').val(),
+            "id": idUser
+        }
+  }).done(function (data) {
+    location.reload();
+  }).fail(function (data) {
+    //window.alert(data);
+    console.log(data);
+      // do what ever you want if the request is not ok
+
+  });
+}
 

@@ -48,7 +48,7 @@ class AdminController extends Controller
     }
 
     public function getUsers(){
-        $users = \DB::table('user')->get();
+        $users = User::all();
         return response()->json(['response' => $users]);
     }
 
@@ -155,6 +155,24 @@ class AdminController extends Controller
             "message" => "report removed"]);
     }
 
+
+    public function disableUser(Request $request){
+
+        $user = User::find($request->input('id'));
+
+        if($user->disabled == true)
+            $user->disabled = false;
+
+        else if($user->disabled == false)
+            $user->disabled = true;
+
+        $user->save();
+
+        return response()->json([
+            "status" => "success",
+            "data" => $user,
+            "message" => "created topic"]);
+    }
 
 }
 ?>
