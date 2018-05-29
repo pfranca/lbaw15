@@ -55,16 +55,33 @@
        @guest
        @else
         <li class="nav-item">
-          <a class="nav-link" href="{{asset('feed')}}">FEED</a>
+          <a class="nav-link" href="{{asset('feed')}}">Feed</a>
         </li>
         @endguest
         <li class="nav-item">
-          <a id="TopicsNavBar" class="nav-link" href="{{asset('/')}}#themes" click="goToTopic">TOPICS</a>
+          <a id="TopicsNavBar" class="nav-link" href="{{asset('/')}}#themes" click="goToTopic">Topics</a>
         </li>
-        <li class="nav-item">
+        <!--<li class="nav-item">
           <a id="HelpNavBar" class="nav-link" href="{{asset('help')}}">HELP</a>
+        </li>-->
+        
+        <li >
+          
+          <div class="dropdown show">
+            <a class="dropdown-toggle" href="#" role="" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="far fa-comments"></i>
+            </a>
+
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="margin-left: -150px; margin-top: 20px">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </div>
         </li>
         
+
+
         <li class="nav-item">
             @guest
                  <a id="loginButton" class="nav-link" href="{{ route('login') }}" ">LOGIN</a>
@@ -73,14 +90,14 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown">
                 @if(count(\DB::table('notification')->where([['notificated_user', \Auth::user()->id], ['seen', 'false']])->get()) > 0)
-                <i class="far fa-bell text-danger"></i>
                 @endif
                 {{ Auth::user()->name }}  <img class="img-fluid nav-img-profile" src="{{asset('images/'.Auth::user()->img)}}" alt="profilePic" />
-                </a>
+              </a>
               <div class="dropdown-menu dropdown-menu-right">
                 <a class="dropdown-item"  href="{{asset('followQuestion')}}">Following</a>
                 <a class="dropdown-item" href="{{asset("user/".Auth::user()->username)}}">Your Profile</a>
-                <a class="dropdown-item" href="{{asset('notification')}}">Notifications ({{\Auth::user()->getNotificationsNumber(\Auth::user()->id)}})</a>
+                <!--<a class="dropdown-item" href="{{asset('notification')}}">Notifications ({{\Auth::user()->getNotificationsNumber(\Auth::user()->id)}})</a>-->
+                <a id="HelpNavBar" class="dropdown-item" href="{{asset('help')}}">Help</a>
                 @if(Auth::user()->type == 'ADMIN')
                 <a class="dropdown-item"  href="{{asset('admin/topics')}}">Admin</a>
                 @endif
