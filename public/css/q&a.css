@@ -538,10 +538,11 @@ textarea {
 }
 
 .userSide{
-  color: black; font-size: 16px; border: 2px solid grey; 
+  color: black; font-size: 16px; border: 1px solid #a6a6a6; 
   border-right-style: none; border-left-style: none; border-top-style: none;
   margin-bottom: 14px;
-  margin-top: 14px;
+  padding: 10px;
+  color:  #595959
 }
 
 .question {

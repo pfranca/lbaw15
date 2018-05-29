@@ -3,14 +3,16 @@
     <div class="pb-1">
       <div class="col-md-12 pl-3 nav1" style="">
 
-        <div class="title-nav">User's Inf</div>
-         
-         <div class="userSide" >
-            {{$user->email}}
-            <br />
-            Karma :  9000
-            <br />
-            Answers : 28
+        <div class="title-nav"></div>
+          <div class="col-md-12 d-flex justify-content-center" style="margin-top: -70px;">
+            <img class="img-profile" src="{{asset('images/'.$user->img)}}">
+          </div>
+          <div class="userSide d-flex justify-content-center " >
+            <ul class="fa-ul">
+              <li><i class="fa-li fas fa-envelope"></i>{{$user->email}}</li>
+              <li><i class="fa-li fa fa-spinner fa-thumbs-up"></i>Karma :  332</li>
+              <li><i class="fa-li fas fa-keyboard"></i>Answers : 28</li>
+            </ul>
           </div>
 
         <div class="title-nav" style="border-top-style:2px solid black;">Sorted</div>
