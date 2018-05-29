@@ -2,9 +2,8 @@
     @foreach($questions as $question)
       @if(!$question->disabled)
 <li class="list-group-item font-theme align-items-start box-question">
-    <div class="pb-2">
-      
-      <div class="md-12 pl-3" style="font-size: 9px; z-index: 1000">
+    <div class="pb-2">  
+      <div class="md-12 pl-3" style="font-size: 9px;">
         @foreach($topics as $topic)
           @if ($question->id_topic === $topic->id)
             <a class="question-link" href="../topic/{{$topic->name}}/question/{{$question->id}}">

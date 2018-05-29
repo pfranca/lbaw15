@@ -48,7 +48,6 @@
     <div class=" bg-white col-md-6" style="margin-top: 35px">
       <ul class="list-group col-md-12">
         @include('partials.followingQuestions')
-        
       </ul>
     </div>
 
