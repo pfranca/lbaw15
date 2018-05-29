@@ -10,7 +10,7 @@ use App\Topic;
 use App\Question;
 use App\Answer;
 use Illuminate\Http\Request;
-
+use App\Report;
 
 class AdminController extends Controller
 {
@@ -48,7 +48,7 @@ class AdminController extends Controller
     }
 
     public function getUsers(){
-        $users = \DB::table('user')->get();
+        $users = User::all();
         return response()->json(['response' => $users]);
     }
 
@@ -146,6 +146,33 @@ class AdminController extends Controller
             "message" => "created topic"]);
     }
 
+    public function deleteReport(Request $request){
+        $report = Report::find($request->input('id'));
+        $report->delete();
+
+        return response()->json([
+            "status" => "success",
+            "message" => "report removed"]);
+    }
+
+
+    public function disableUser(Request $request){
+
+        $user = User::find($request->input('id'));
+
+        if($user->disabled == true)
+            $user->disabled = false;
+
+        else if($user->disabled == false)
+            $user->disabled = true;
+
+        $user->save();
+
+        return response()->json([
+            "status" => "success",
+            "data" => $user,
+            "message" => "created topic"]);
+    }
 
 }
 ?>

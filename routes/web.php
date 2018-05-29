@@ -126,6 +126,10 @@ Route::get('/admin/getAllreports', 'Admin\AdminController@getReports');
 Route::put('/admin/addModerator','Admin\AdminController@addModerator');
 
 Route::put('/admin/removeModerator','Admin\AdminController@removeModerator');
+
+Route::delete('/admin/removeReport','Admin\AdminController@deleteReport');
+
+Route::put('/admin/disableUser','Admin\AdminController@disableUser');
 /*
 Route::patch(); //update de algumas coisas
 Route::put(); //update do modelo todo

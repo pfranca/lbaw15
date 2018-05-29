@@ -109,4 +109,29 @@ class UsersController extends Controller
         //
     }
 
+
+    public function disable(Request $request){
+        $data = $request->all();
+        $user = User::find($data['id']);
+        if($user->disabled){
+            DB::table('user')
+            ->where('id',$data['id'])
+            ->update([
+                'disabled' => false
+            ]);
+        }else if(!$user->disabled){
+            DB::table('user')
+            ->where('id',$data['id'])
+            ->update([
+                'disabled' => true
+            ]);
+        }
+    
+        return response()->json([
+            "status" => "success",
+            "data" => $data,
+            "message" => "User disabled updated"]);
+
+    }
+
 }
