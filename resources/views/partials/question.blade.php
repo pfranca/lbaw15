@@ -17,14 +17,14 @@
         <a class="pr-2" id="upvote_button{{$question->id}}" data-toggle="vote" onclick="actionUpvoteQuestion({{$question->id}})"><i class="far fa-thumbs-up" ></i></a>
         <span id="question_karma{{$question->id}}" class="label label-primary pr-2">{{$question->karma}}</span>
         <a class="pr-3" id="downvote_button{{$question->id}}" data-toggle="upvote" onclick="actionDownvoteQuestion({{$question->id}})"><i class="far fa-thumbs-down"></i></a>
-        @if(Auth::user()->alreadyVoted($question->id,Auth::user()->id) === 1)
+        @if(Auth::user()!=null AND Auth::user()->alreadyVoted($question->id,Auth::user()->id) === 1)
           <style type="text/css">
             #upvote_button{{$question->id}}{
               color : #0099cc;
             }
           </style>
         @endif
-        @if(Auth::user()->alreadyVoted($question->id,Auth::user()->id) === -1)
+        @if(Auth::user()!=null AND Auth::user()->alreadyVoted($question->id,Auth::user()->id) === -1)
           <style type="text/css">
             #downvote_button{{$question->id}}{
               color : #0099cc;
@@ -51,7 +51,7 @@
 
       <div class="row text-right text-bottom col-md-6 pull-right" >
         <div class="col-md-12 mg-b-5">
-          @if(Auth::user()->followQuestionId($question->id,Auth::user()->id))
+          @if(Auth::user()!=null AND Auth::user()->followQuestionId($question->id,Auth::user()->id))
               <button id="followQuestion{{$question->id}}" onclick="actionFollowQuestion('{{$question->id}}')" type="button" class="buttonDown followCardQuestion Unfollow-btn"> Unfollow </button>
             @else
               <button id="followQuestion{{$question->id}}" onclick="actionFollowQuestion('{{$question->id}}')" type="button" class="buttonDown followCardQuestion follow-btn"> Follow </button>
