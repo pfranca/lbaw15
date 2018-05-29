@@ -21,7 +21,7 @@ class Answer extends Model
      * @var array
      */
     protected $fillable = [
-        'id_author', 'id_question', 'message'
+        'id_author', 'id_question', 'message', 'disabled'
     ];
 
     public function question(){
