@@ -72,13 +72,23 @@
       </select>
     </div>
 
+    <div id="questions" class="row bg-white col-md-12">
+    <div class="text-right pr-1 mt-1" style="margin-left:14%"></div>
 
-    <div class="container-fluid bg-white col-md-9">
-      <ul>
-
-           @include('partials.question')
+    <div class=" bg-white col-md-6" style="margin-top: 35px">
+      <ul class="list-group col-md-12">
+        @include('partials.question')
+        
       </ul>
     </div>
+
+    <div class=" bg-white col-md-3" style="margin-top: 70px">
+      <ul class="list-group col-md-12">
+        @include('partials.questionNav')
+      </ul>
+    </div>
+  </div>
+
   </div>
   </div>
   </div>
