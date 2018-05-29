@@ -59,4 +59,11 @@ class PagesController extends Controller
 		));
 	}
 
+	public function help(){
+		$topics = Topic::all();
+		return view('pages.help', compact(
+			'topics'
+		));
+	}
+
 }

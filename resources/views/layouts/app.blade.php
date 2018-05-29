@@ -62,6 +62,10 @@
           <a id="TopicsNavBar" class="nav-link" href="{{asset('/')}}#themes" click="goToTopic">TOPICS</a>
         </li>
         <li class="nav-item">
+          <a id="HelpNavBar" class="nav-link" href="{{asset('help')}}">HELP</a>
+        </li>
+        
+        <li class="nav-item">
             @guest
                  <a id="loginButton" class="nav-link" href="{{ route('login') }}" ">LOGIN</a>
             @else

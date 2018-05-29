@@ -174,3 +174,5 @@ Route::get('/followQuestion', 'FollowQuestionController@index');
 Route::get('/question/search','PagesController@search');
 
 Route::get('/search/{search}','PagesController@search');
+
+Route::get('/help', 'PagesController@help');
