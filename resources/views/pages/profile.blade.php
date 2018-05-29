@@ -32,14 +32,6 @@
             <div class="about">{{$user->bio}} </div>
           </div>
 
-          <div class="mt-3 about" style="color: lightblue">
-            {{$user->email}}
-            <br />
-            Overall Karma :  9000
-            <br />
-            Best Answers : 28
-          </div>
-
 
         </div>
         
@@ -84,7 +76,7 @@
 
     <div class=" bg-white col-md-3" style="margin-top: 70px">
       <ul class="list-group col-md-12">
-        @include('partials.questionNav')
+        @include('partials.profileSidebar')
       </ul>
     </div>
   </div>
