@@ -113,18 +113,27 @@ class AdminController extends Controller
     public function disableQuestion(Request $request){
 
         $question = Question::find($request->input('id'));
-
-        if($question->disabled == true)
+        $answers = $question->answers;
+        if($question->disabled == true){
             $question->disabled = false;
+            foreach($answers as $answer){
+                $answer->disabled = false;
+            }
+        }
 
-        else if($question->disabled == false)
+        else if($question->disabled == false){
             $question->disabled = true;
+            foreach($answers as $answer){
+                $answer->disabled = true;
+            }
+        }
 
         $question->save();
 
         return response()->json([
             "status" => "success",
             "data" => $question,
+            "answers" => $answers,
             "message" => "created topic"]);
     }
 
@@ -172,6 +181,27 @@ class AdminController extends Controller
             "status" => "success",
             "data" => $user,
             "message" => "created topic"]);
+    }
+
+    public function removeAnswerQuestion(Request $request){
+        $report = Report::find($request->input('id')); 
+        $answer_id = $report->id_reported_answer;
+        $question_id = $report->id_reported_question;
+        if($answer_id != null){
+            $answer = Answer::find($answer_id);
+            $answer->disabled = true;
+            $answer->save();
+        }else if($question_id != null){
+            $question = Question::find($question_id);
+            $question->disabled = true;
+            $question->save();
+        }
+        $report->delete();
+        return response()->json([
+            "status" => "success",
+            "question_id" => $question_id,
+            "answer_id" => $answer_id,
+            "message" => "deleted answer/question and report"]);
     }
 
 }
