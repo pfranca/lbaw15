@@ -537,6 +537,22 @@ textarea {
   margin-top: 20px;
 }
 
+.unfollow-btn{
+  margin-left: 2%;border-radius: 20px;
+  background-color: #004466;
+  color: white; border-style: none;
+  font-size: 1.8vmin; padding-right: 20px;
+  padding-left: 20px
+}
+
+.follow-btn{
+  margin-left: 2%;border-radius: 20px;
+  background-color: #4da6ff;
+  color: white; border-style: none;
+  font-size: 2vmin; padding-right: 20px;
+  padding-left: 20px
+}
+
 .userSide{
   color: black; font-size: 16px; border: 1px solid #a6a6a6; 
   border-right-style: none; border-left-style: none; border-top-style: none;
