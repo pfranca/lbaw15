@@ -57,7 +57,7 @@
 
         </div>
         <div class="col-md-12">
-          <a class="underTab nameInQuestion" href="../../user/{{$question->user->username}}">{{$question->user->username}}</a>
+          <a class="underTab nameInQuestion" href="{{asset("user/".$question->user->username)}}">{{$question->user->username}}</a>
           <span class="mr-auto">{{ date("F j, Y, g:i a", strtotime($question->date)) }}</span>
         </div>      
       </div>
@@ -94,6 +94,7 @@
         <a href="" data-id="{{$question->getBestAnswer($question->id)->id}})" data-toggle="modal" data-target="#reportModalAnswer" data-dismiss="modal" class="underTab colorLink">Report</a>
         @if ($question->getBestAnswer($question->id)->id_author === Auth::user()->id)
         <a href=""data-id="{{$question->getBestAnswer($question->id)->id}}"  data-toggle="modal" data-target="#deleteAnswerModal" data-dismiss="modal" class="underTab colorLink">Delete</a>
+        <a href="#" data-id="{{$question->getBestAnswer($question->id)->id}}" data-message="{{$question->getBestAnswer($question->id)->message}}" data-toggle="modal" data-target="#editanswerModal" data-dismiss="modal" class="underTab colorLink">Edit</a>
         @endif        
       </div>
         @else
@@ -109,3 +110,6 @@
   @endif
 
   @include('partials.submitAnsModal')  
+  @include('partials.submitEditAnsModal') 
+  @include('partials.submitEditQuestion') 
+  

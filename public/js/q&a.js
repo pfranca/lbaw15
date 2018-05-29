@@ -429,9 +429,9 @@ $(document).ready(function() {
 
 $('#editquestionModal').on('shown.bs.modal', function(e) {
   $long = e.relatedTarget.attributes['data-long'].value;
-  document.getElementById('edit_short_message').value = $long;
   $short = e.relatedTarget.attributes['data-short'].value;
-  document.getElementById('edit_long_message').value = $short;
+  document.getElementById('edit_short_message').value = $short;
+  document.getElementById('edit_long_message').value = $long;
   $id = e.relatedTarget.attributes['data-id'].value;
   $("#editquestionSubmitBtn").click(function(){
     $.ajax({
@@ -533,7 +533,6 @@ $('#reportModal').on('shown.bs.modal', function(e) {
     //reason
     //reported user
     //reported question or answer
-      window.alert("id " + $id);
       $.ajax({
         url: '/report/question',
         type: 'POST',
