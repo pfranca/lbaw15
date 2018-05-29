@@ -52,9 +52,9 @@
       <div class="row text-right text-bottom col-md-6 pull-right" >
         <div class="col-md-12 mg-b-5">
           @if(Auth::user()->followQuestionId($question->id,Auth::user()->id))
-              <button id="followQuestion{{$question->id}}" onclick="actionFollowQuestion('{{$question->id}}')" type="button" class="buttonDown followCardQuestion" style="margin-left: 2%;border-radius: 20px; background-color: #004466; color: white; border-style: none; font-size: 1.8vmin; padding-right: 20px; padding-left: 20px"> Unfollow </button>
+              <button id="followQuestion{{$question->id}}" onclick="actionFollowQuestion('{{$question->id}}')" type="button" class="buttonDown followCardQuestion Unfollow-btn"> Unfollow </button>
             @else
-              <button id="followQuestion{{$question->id}}" onclick="actionFollowQuestion('{{$question->id}}')" type="button" class="buttonDown followCardQuestion" style="margin-left: 2%;border-radius: 20px; background-color: #4da6ff; color: white; border-style: none; font-size: 2vmin; padding-right: 20px; padding-left: 20px"> Follow </button>
+              <button id="followQuestion{{$question->id}}" onclick="actionFollowQuestion('{{$question->id}}')" type="button" class="buttonDown followCardQuestion follow-btn"> Follow </button>
             @endif   
         </div>
         <div class="col-md-12">
@@ -62,9 +62,7 @@
           <span class="mr-auto">{{ date("F j, Y, g:i a", strtotime($question->date)) }}</span>
         </div>      
         @endguest
-        <a class="underTab nameInQuestion" href="{{asset("user/".$question->user->username)}}">{{$question->user->username}}</a>
-          <span class="mr-auto">{{ date("F j, Y, g:i a", strtotime($question->date)) }}</span>
-      </div>
+      
     </div>
     
     <div id="question{{$question->id}}" class="collapse bg-light pt-2 col-md-11 ml-auto mr-auto">
