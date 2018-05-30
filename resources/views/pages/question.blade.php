@@ -65,14 +65,16 @@
                         <p>Report</p>
                       </div>
                     </a>
+                    @guest
+                    @else
                     @if(Auth::user()->id == $question->user->id)
                     <a data-id="{{$question->id}}" data-topic="{{$question->id_topic}}" data-long="{{$question->long_message}}" data-short="{{$question->short_message}}" data-toggle="modal" data-target="#editquestionModal" data-dismiss="modal" class="q-follow btn js-scroll-trigger mb-0 ">
                       <div class="about txt-color">
                         <p>Edit</p>
                       </div>
                     </a>
-
                     @endif
+                    @endguest
         </div>
 
       </div>
