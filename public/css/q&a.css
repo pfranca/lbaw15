@@ -151,6 +151,8 @@ h3, h4 {
   background: #343a40;
 }
 
+
+
 .bg-1 {
   background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/homebg.jpg') 0 0/cover;
   max-height: 100%;
@@ -608,7 +610,7 @@ textarea {
 }
 
 .q-btn-login{
-  background-color: #00ace6;
+  background-color: #4da6ff;
   color: white;
   font-size: 12px;  
   border-radius: 2px;
@@ -849,4 +851,8 @@ li div a.close-notification:hover{
 
 .dropdown-toggle::after {
     display:none;
+}
+
+.reset-text{
+  font-size: 12px;
 }
