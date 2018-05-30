@@ -2,11 +2,7 @@
 /public/hot
 /public/storage
 /storage/*.key
-<<<<<<< HEAD
 vendor
-=======
-/vendor
->>>>>>> 071e3979a88276de34e816e405aa3d18da0b32aa
 /.idea
 /.vagrant
 Homestead.json
