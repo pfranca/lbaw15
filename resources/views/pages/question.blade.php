@@ -38,38 +38,41 @@
               @if(!Auth::user()->isFollowedQuestion($question->id, Auth::user()->id))
                     <a id="fllQuestion{{$question->id}}" value="Follow" onclick="actionFllQuestion('{{$question->id}}')" class="q-follow btn js-scroll-trigger ">
                       <div class="about txt-color">
-                        <p>Follow Question</p>
+                        <p>Follow</p>
                       </div>
                     </a>
                    
                   @else
                     <a id="fllQuestion{{$question->id}}" value="Unfollow" onclick="actionFllQuestion('{{$question->id}}')" class="q-follow btn btn-circle js-scroll-trigger btn-arrow">
                       <div class="about txt-color">
-                        <p>Unfollow Question</p>
+                        <p>Unfollow</p>
                       </div>
                     </a>
 
                   @endif
 
-                   <a  data-id="{{$question->id}}" data-toggle="modal" data-target="#reportModal" data-dismiss="modal" class="q-follow btn js-scroll-trigger ">
+                  @endguest
+          </div>
+        </div>
+        
+        <div class="col-md-7 ml-2 text-left" style="font-size: 70%; color: #404040">
+            {{$question->long_message}} This is a tema forma simples é você usar a imagem do botão como background do link, assim você pode colocar um fundo específico para cada botão, e usar uma tag própria para o texto e fazer a transição: o botão sobe e o texto desce:
+        </div>
+
+        <div class="col-md-7 ml-2 text-left b-line mt-4" style="font-size: 20%; color: #404040; opacity: 0.5">
+                   <a  data-id="{{$question->id}}" data-toggle="modal" data-target="#reportModal" data-dismiss="modal" class="q-follow btn js-scroll-trigger mb-0 mr-4">
                       <div class="about txt-color">
                         <p>Report</p>
                       </div>
                     </a>
                     @if(Auth::user()->id == $question->user->id)
-                    <a data-id="{{$question->id}}" data-long="{{$question->long_message}}" data-short="{{$question->short_message}}" data-toggle="modal" data-target="#editquestionModal" data-dismiss="modal" class="q-follow btn js-scroll-trigger ">
+                    <a data-id="{{$question->id}}" data-long="{{$question->long_message}}" data-short="{{$question->short_message}}" data-toggle="modal" data-target="#editquestionModal" data-dismiss="modal" class="q-follow btn js-scroll-trigger mb-0 ">
                       <div class="about txt-color">
                         <p>Edit</p>
                       </div>
                     </a>
 
                     @endif
-                  @endguest
-          </div>
-        </div>
-        
-        <div class="col-md-7 ml-2 text-left b-line" style="font-size: 70%; color: #404040">
-            {{$question->long_message}}
         </div>
 
       </div>
