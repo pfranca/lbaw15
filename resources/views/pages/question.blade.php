@@ -60,13 +60,14 @@
         </div>
 
         <div class="col-md-7 ml-2 text-left b-line mt-4" style="font-size: 20%; color: #404040; opacity: 0.5">
-                   <a  data-id="{{$question->id}}" data-toggle="modal" data-target="#reportModal" data-dismiss="modal" class="q-follow btn js-scroll-trigger mb-0 mr-4">
+                   
+                    @guest
+                    @else
+                    <a  data-id="{{$question->id}}" data-toggle="modal" data-target="#reportModal" data-dismiss="modal" class="q-follow btn js-scroll-trigger mb-0 mr-4">
                       <div class="about txt-color">
                         <p>Report</p>
                       </div>
                     </a>
-                    @guest
-                    @else
                     @if(Auth::user()->id == $question->user->id)
                     <a data-id="{{$question->id}}" data-topic="{{$question->id_topic}}" data-long="{{$question->long_message}}" data-short="{{$question->short_message}}" data-toggle="modal" data-target="#editquestionModal" data-dismiss="modal" class="q-follow btn js-scroll-trigger mb-0 ">
                       <div class="about txt-color">
