@@ -18,6 +18,7 @@ Route::get('/user/{username}', 'PagesController@profile')->name('profile');
 
 Route::resource('/', 'TopicsController');
 Route::get('/topic/{topic_name}', 'QuestionsController@index');
+Route::get('/topic/{topic_name}/order/{order}', 'QuestionsController@indexOrdered');
 Route::get('/topic/{topic_name}/question/{id}', 'AnswersController@index');
 //Route::resource('/topic/{topic_name}', 'TopicsController');
 
@@ -176,3 +177,7 @@ Route::get('/question/search','PagesController@search');
 Route::get('/search/{search}','PagesController@search');
 
 Route::get('/help', 'PagesController@help');
+
+Route::get('/questions/getPageSortBy','QuestionsController@getPageWithSort');
+
+Route::get('/topic/{$topic_name}/order/{$order}','QuestionsController@getPageSort');

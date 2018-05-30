@@ -15,24 +15,6 @@
             </ul>
           </div>
 
-        <div class="title-nav sorted">Sorted</div>
-        <div class="text-left pr-1 mt-1 nav-sort">        
-          <select>
-            <option value="Our special sauce" selected>
-              Our special sauce
-            </option>
-            <option value="Oldest to newest">
-              Oldest to newest
-            </option>
-            <option value="Newest to oldest">
-              Newest to oldest
-            </option>
-            <option value="Karma">
-              Karma
-            </option>
-          </select>
-        </div>
-
         <div class="row">
           <div class="title-voted">Most Voted</div>
           @foreach($topics->slice(0, 5) as $topic)   

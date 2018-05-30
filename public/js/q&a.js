@@ -426,6 +426,31 @@ $(document).ready(function() {
   });
 });
 
+$('#dropdownSort').change(function(){
+  console.log("window " + window.location);
+  var location = window.location.href;
+  var res = location.split("/");
+  var topic = "bla";
+  for(var i = 0; i < res.length; i++){
+    if(res[i]== "topic"){
+      var pos = i;
+      pos++;
+      topic = res[pos];
+    }
+    console.log("window " + res[i]);
+  }
+  console.log("topic " + topic);
+  var url = "http://localhost:8000/topic/" + topic;
+  var sortBy = $(this).find('option:selected').attr('value');
+  if(sortBy == "Oldest to newest"){
+    window.location.href= url + "/order/asc";
+  }else if(sortBy == "Newest to oldest"){
+    window.location.href= url + "/order/desc";
+  }else if(sortBy == "Karma"){
+    window.location.href= url + "/order/karma";
+  }
+  location.reload();
+});
 
 
 $('#editquestionModal').on('shown.bs.modal', function(e) {

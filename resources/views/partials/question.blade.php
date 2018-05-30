@@ -1,3 +1,4 @@
+<div id="questionsContainer">
 @if(count($questions) > 0)
     @foreach($questions as $question)
       @if(!$question->disabled)
@@ -147,6 +148,7 @@
     @else
     <p>No Questions found!</b>
   @endif
+  </div>
   @include('partials.submitEditQuestion')
   @include('partials.deleteQuestion')
   @include('partials.deleteAnswer')
