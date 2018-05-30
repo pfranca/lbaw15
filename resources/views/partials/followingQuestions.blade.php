@@ -50,9 +50,9 @@
       <div class="row text-right text-bottom col-md-6 pull-right" >
         <div class="col-md-12 mg-b-5">
           @if(Auth::user()->followQuestionId($question->id,Auth::user()->id))
-              <button id="followQuestion{{$question->id}}" onclick="actionFollowQuestion('{{$question->id}}')" value="followingPage" type="button" class="buttonDown followCardQuestion q-btn-unfollow"> Unfollow </button>
+              <button id="followQuestion{{$question->id}}" value="Unfollow" onclick="actionFollowQuestion('{{$question->id}}')" value="followingPage" type="button" class="buttonDown followCardQuestion q-btn-unfollow"> Unfollow </button>
             @else
-              <button id="followQuestion{{$question->id}}" onclick="actionFollowQuestion('{{$question->id}}')" value="followingPage" type="button" class="buttonDown followCardQuestion q-btn-follow"> Follow </button>
+              <button id="followQuestion{{$question->id}}" value="Follow" onclick="actionFollowQuestion('{{$question->id}}')" value="followingPage" type="button" class="buttonDown followCardQuestion q-btn-follow"> Follow </button>
             @endif   
 
         </div>

@@ -23,9 +23,9 @@
         <div class="col-md-4 text-right mt-1">
               @if(Auth::user()!=null)
                 @if(Auth::user()->followQuestionId($question->id,Auth::user()->id))
-                    <button id="followQuestion{{$question->id}}" onclick="actionFollowQuestion('{{$question->id}}')" type="button" class="q-btn-unfollow buttonDown followCardQuestion unfollow-btn"> Unfollow </button>
+                    <button id="followQuestion{{$question->id}}" value="Unfollow" onclick="actionFollowQuestion('{{$question->id}}')" type="button" class="q-btn-unfollow buttonDown followCardQuestion unfollow-btn"> Unfollow </button>
                   @else
-                    <button id="followQuestion{{$question->id}}" onclick="actionFollowQuestion('{{$question->id}}')" type="button" class="q-btn-follow buttonDown followCardQuestion follow-btn"> Follow </button>
+                    <button id="followQuestion{{$question->id}}" value="Follow" onclick="actionFollowQuestion('{{$question->id}}')" type="button" class="q-btn-follow buttonDown followCardQuestion follow-btn"> Follow </button>
                   @endif   
                 @endif
         </div>

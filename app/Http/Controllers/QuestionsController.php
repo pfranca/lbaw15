@@ -329,22 +329,13 @@ class QuestionsController extends Controller
     public function updateQuestion(Request $request){
         $data = $request->all();
         $long_message =  $data['long_message'];
-        if($long_message != null){
-            DB::table('question')
-                ->where('id', $data['id_question'])
-                ->update([
-                        'short_message' => $data['short_message'],
-                        'long_message' => $data['long_message'],
-                        'id_topic' => $data['id_topic']
-                ]);
-            }else{
-                DB::table('question')
-                ->where('id', $data['id_question'])
-                ->update([
-                        'short_message' => $data['short_message'],
-                        'id_topic' => $data['id_topic']
-                ]);
-            }
+        DB::table('question')
+            ->where('id', $data['id_question'])
+            ->update([
+                    'short_message' => $data['short_message'],
+                    'long_message' => $data['long_message'],
+                    'id_topic' => $data['id_topic']
+            ]);
 
         return response()->json([
             "status" => "success",

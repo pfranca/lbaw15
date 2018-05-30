@@ -29,7 +29,11 @@
 
     <div class=" bg-white col-md-6" style="margin-top: 75px">
       <ul class="list-group col-md-12">
-        @include('partials.question' , ['questions'=>$allQuestions,'topics'=>$allTopics])
+        @if(count($Mquestions) > 0)
+          @include('partials.question' , ['questions'=>$Mquestions[0],'topics'=>$allTopics])
+        @else
+        <p>No Questions found!</b>
+        @endif
 
       </ul>
     </div>
