@@ -138,7 +138,7 @@
         @endguest
       </div>
         @else
-        <div>This question has no answers</div>
+        <div class="pb-3">This question has no answers</div>
         @endif
     </div>
 
