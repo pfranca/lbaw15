@@ -66,13 +66,13 @@
         </li>-->
         
         <li >
-          
-          <div class="dropdown show" id="crlh" style=" margin-top: 12px; margin-left: 10px; margin-right: 10px">
+           @guest
+            @else
+          <div class="dropdown show" id="dropdownNot" style=" margin-top: 12px; margin-left: 10px; margin-right: 10px">
             <a class="dropdown-toggle" href="#" role="" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="far fa-comments"></i>
             </a>
-            @guest
-            @else
+           
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="margin-left: -286px;margin-top: 12px;width: 417px;">
               <div  class="row">
                 <div class="col-12 ">
@@ -83,8 +83,8 @@
                 </div>
               </div>
             </div>
-            @endguest
           </div>
+           @endguest
         </li>
         
 
@@ -125,6 +125,9 @@
 @yield('content');
   <footer class="footer text-center static-bottom">
     <p>Cooperative Q&A <a href="#" data-toggle="tooltip" title="Cooperative q&a">www.cooperativeq&a.com</a></p>
+    <p>
+    <a id="HelpNavBar" href="{{asset('help')}}">Help</a>
+    </p>
   </footer>
   </body>
 </html>
