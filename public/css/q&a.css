@@ -277,6 +277,12 @@ h3, h4 {
  
 }
 
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}
+
 .b-line{
   padding-bottom: 35px;
    border: 1px solid #8c8c8c; 
@@ -482,6 +488,8 @@ footer a:hover {
   color: #777;
   text-decoration: none;
 }
+
+
 
 .question-link {
   color: #777;
@@ -772,6 +780,8 @@ textarea {
   margin: 0%;
 }
 
+
+
 .topics:hover, .questions:hover, .answers:hover, .moderators:hover, .users:hover, .reports:hover {
   background: #006699;
   color: white;
@@ -783,4 +793,42 @@ textarea {
 
 #questions {
   min-height: calc(100vh - 173px);
+}
+.col-white{
+  color:white;
+}
+
+li div a.colorLink-notification{
+  color: white !important;
+  background-color: #66b3ff;
+  padding: 4px;
+  margin-top: 3px;
+  border-radius: 3px;
+}
+li div a.colorLink-notification:hover{
+  color: black !important;
+  text-decoration: none;
+  background-color: rgb(280, 252, 255) !important;
+}
+
+.size-end{
+  font-size: 13px;
+  padding: 13px;
+}
+
+li div a.close-notification{
+  color: white !important;
+  background-color: none;
+  padding: 4px;
+  margin-top: 3px;
+  border-radius: 3px;
+}
+li div a.close-notification:hover{
+  color: black !important;
+  text-decoration: none;
+  background-color: rgb(280, 252, 255) !important;
+}
+
+.dropdown-toggle::after {
+    display:none;
 }

@@ -18,6 +18,7 @@ function goToTopic(time) {
   }, time);
 };
 
+
 function actionFollow(id_topic){
   $.ajax({
     url: '/setfollow',
@@ -640,4 +641,8 @@ $("#buttonSearch").click(function(){
 });
 
 
+});
+
+$(document).on('click', '.dropdown', function (e) {
+  e.stopPropagation();
 });
