@@ -85,11 +85,13 @@ Route::post('register', 'Auth\RegisterController@register');
 //Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/admin/topics',  function(){
-	if(\Auth::user()->type == 'ADMIN'){
-		return view('pages.adminTopic');
-	}else{
-		return redirect('/');
-	}
+	if(\Auth::user() != null){
+		if(\Auth::user()->type == 'ADMIN'){
+			return view('pages.adminTopic');
+		}else{
+			return redirect('/');
+		}
+	}else return redirect('/');
 });
 
 Route::get('/admin/questions', function(){
