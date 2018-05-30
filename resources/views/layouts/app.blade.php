@@ -125,6 +125,9 @@
 @yield('content');
   <footer class="footer text-center static-bottom">
     <p>Cooperative Q&A <a href="#" data-toggle="tooltip" title="Cooperative q&a">www.cooperativeq&a.com</a></p>
+    <p>
+    <a id="HelpNavBar" href="{{asset('help')}}">Help</a>
+    </p>
   </footer>
   </body>
 </html>
