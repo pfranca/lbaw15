@@ -96,7 +96,7 @@
 
 
     <!-- inf -->
-    <div id="question{{$question->id}}" class="collapse bg-light pt-2 col-md-11 ml-auto mr-auto">
+    <div id="question{{$question->id}}" class="collapse bg-light pt-2 col-md-11 ml-auto mr-auto mt-2">
       <div class="md-12 pl-4 pt-2 answer-link">
       </div>
             
@@ -138,7 +138,7 @@
         @endguest
       </div>
         @else
-        <div>This question has no answers</div>
+        <div class="pb-3">This question has no answers</div>
         @endif
     </div>
 
