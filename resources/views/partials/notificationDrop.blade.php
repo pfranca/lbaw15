@@ -18,8 +18,6 @@
               <a class="col-1 answer-link ml-auto text-center close-notification" onclick="actionDismiss({{$notification->id}})" title="Dismiss"><i class="far fa-window-close"></i></a>
             </div>
           </div>
-
-         
-          
+      
 @endif
 @endforeach
