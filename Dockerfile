@@ -2,7 +2,8 @@ FROM ubuntu:17.10
 
 # Install dependencies
 RUN apt-get update
-RUN apt-get install -y --no-install-recommends libpq-dev vim nginx php-fpm php-mbstring php-xml php-pgsql php-gd
+
+RUN apt-get install -y --no-install-recommends libpq-dev vim nginx php-fpm php-mbstring php-xml php-pgsql php7-gd7.1
 
 # Copy project code and install project dependencies
 COPY . /var/www/
