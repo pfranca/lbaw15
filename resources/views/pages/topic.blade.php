@@ -34,6 +34,24 @@
 
     <div class=" bg-white col-md-3" style="margin-top: 70px">
       <ul class="list-group col-md-12">
+      <div class="title-nav">Sorted</div>
+        <div class="text-left pr-1 mt-1 nav-sort">
+         
+          <select id="dropdownSort">
+          <option>
+              Dummy
+            </option>
+            <option id="asc" value="Oldest to newest">
+              Oldest to newest
+            </option>
+            <option value="Newest to oldest">
+              Newest to oldest
+            </option>
+            <option value="Karma">
+              Karma
+            </option>
+          </select>
+        </div>  
         @include('partials.questionNav')
       </ul>
     </div>

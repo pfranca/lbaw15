@@ -3,24 +3,7 @@
     <div class="pb-1">
       <div class="col-md-12 pl-3 nav1" style="">
 
-        <div class="title-nav">Sorted</div>
-        <div class="text-left pr-1 mt-1 nav-sort">
-         
-          <select id="dropdownSort">
-          <option>
-              Dummy
-            </option>
-            <option id="asc" value="Oldest to newest">
-              Oldest to newest
-            </option>
-            <option value="Newest to oldest">
-              Newest to oldest
-            </option>
-            <option value="Karma">
-              Karma
-            </option>
-          </select>
-        </div>
+       
 
         <div class="row">
           <div class="title-voted">Most Voted</div>
