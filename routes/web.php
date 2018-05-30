@@ -84,6 +84,10 @@ Route::post('register', 'Auth\RegisterController@register');
 
 //Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/admin', function(){
+	return redirect('/admin/topics');
+});
+
 Route::get('/admin/topics',  function(){
 	if(\Auth::user() != null){
 		if(\Auth::user()->type == 'ADMIN'){
