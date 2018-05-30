@@ -6,11 +6,11 @@
         <div class="title-nav">Sorted</div>
         <div class="text-left pr-1 mt-1 nav-sort">
          
-          <select>
-            <option value="Our special sauce" selected>
-              Our special sauce
+          <select id="dropdownSort">
+          <option>
+              Dummy
             </option>
-            <option value="Oldest to newest">
+            <option id="asc" value="Oldest to newest">
               Oldest to newest
             </option>
             <option value="Newest to oldest">
