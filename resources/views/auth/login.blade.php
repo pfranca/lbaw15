@@ -16,7 +16,7 @@
                             {{ csrf_field() }}
 
                          <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
-                            <label for="username" class="col-md-4 control-label" style="color: white">Username</label>
+                            <label for="username" class="col-md-4 control-label col-white">Username</label>
 
                             <div class="col-md-6">
                                 <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required autofocus>
@@ -29,7 +29,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label" style="color: white">Password</label>
+                            <label for="password" class="col-md-4 control-label col-white">Password</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control" name="password" required>
@@ -47,15 +47,22 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4"> 
-                                <button type="submit"  class="btn btn-primary">
+                                <button type="submit"  class="btn btn-primary q-btn-login mt-2">
                                     Login
                                 </button>
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
-                                </a>
+                                
                             </div>
                         </div>
-                            <a class="button button-outline" href="{{ route('register') }} " style="color: #4da6ff">Register</a>
+                        <div class="row">
+                            <div class="col-md-12">
+                                 <a class="button button-outline col-blue under-a-line"  style="text-decoration: none;" href="{{ route('password.request') }}">Forgot Your Password?</a>
+                            </div>
+                            <div class="col-md-12">
+                                <a class="button button-outline col-blue under-a-line" style="text-decoration: none;" href="{{ route('register') }} " >Register</a>
+                            </div>
+                        </div>
+                           
+                            
                             </div>
                             </form>
                         </div>

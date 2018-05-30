@@ -38,25 +38,41 @@
               @if(!Auth::user()->isFollowedQuestion($question->id, Auth::user()->id))
                     <a id="fllQuestion{{$question->id}}" value="Follow" onclick="actionFllQuestion('{{$question->id}}')" class="q-follow btn js-scroll-trigger ">
                       <div class="about txt-color">
-                        <p>Follow Question</p>
+                        <p>Follow</p>
                       </div>
                     </a>
-
+                   
                   @else
                     <a id="fllQuestion{{$question->id}}" value="Unfollow" onclick="actionFllQuestion('{{$question->id}}')" class="q-follow btn btn-circle js-scroll-trigger btn-arrow">
                       <div class="about txt-color">
-                        <p>Unfollow Question</p>
+                        <p>Unfollow</p>
                       </div>
                     </a>
 
                   @endif
+
                   @endguest
           </div>
         </div>
         
-        <div class="col-md-7 ml-2 text-left b-line" style="font-size: 70%; color: #404040">
-            {{$question->long_message}} aokfj fig aoisgkaskdfmkndfkslnf ksmd s dls dl dl dl dlf dlmfpsodfmosidnfs fpsidmf sdpkmf psdm fpsd
-            okfj fig aoisgkaskdfmkndfkslnf ksmd s dls dl dl dl dlf dlmfpsodfmosidnfs fpsidmf sj mfspºojd fmsd
+        <div class="col-md-7 ml-2 text-left" style="font-size: 70%; color: #404040">
+            {{$question->long_message}}
+        </div>
+
+        <div class="col-md-7 ml-2 text-left b-line mt-4" style="font-size: 20%; color: #404040; opacity: 0.5">
+                   <a  data-id="{{$question->id}}" data-toggle="modal" data-target="#reportModal" data-dismiss="modal" class="q-follow btn js-scroll-trigger mb-0 mr-4">
+                      <div class="about txt-color">
+                        <p>Report</p>
+                      </div>
+                    </a>
+                    @if(Auth::user()->id == $question->user->id)
+                    <a data-id="{{$question->id}}" data-topic="{{$question->id_topic}}" data-long="{{$question->long_message}}" data-short="{{$question->short_message}}" data-toggle="modal" data-target="#editquestionModal" data-dismiss="modal" class="q-follow btn js-scroll-trigger mb-0 ">
+                      <div class="about txt-color">
+                        <p>Edit</p>
+                      </div>
+                    </a>
+
+                    @endif
         </div>
 
       </div>
@@ -74,6 +90,7 @@
 
       <div class=" bg-white col-md-3" style="margin-top: 70px">
         <ul class="list-group col-md-12">
+          
           @include('partials.questionNav' ,['questions'=>$allQuestions, 'topics'=>$allTopics])
         </ul>
       </div>
@@ -84,7 +101,7 @@
   </div>
   
   @include('partials.submitAnsModal')
-
-
+  @include('partials.submitEditQuestion',['topics'=>$allTopics])
+  @include('partials.submitEditAnsModal')
 
 @endsection

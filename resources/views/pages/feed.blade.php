@@ -27,9 +27,13 @@
   <div id="questions" class="row bg-white col-md-12">
     <div class="text-right pr-1 mt-1" style="margin-left:14%"></div>
 
-    <div class=" bg-white col-md-6" style="margin-top: 35px">
+    <div class=" bg-white col-md-6" style="margin-top: 75px">
       <ul class="list-group col-md-12">
-        @include('partials.questionFeed')
+        @if(count($Mquestions) > 0)
+          @include('partials.question' , ['questions'=>$Mquestions[0],'topics'=>$allTopics])
+        @else
+        <p>No Questions found!</b>
+        @endif
 
       </ul>
     </div>

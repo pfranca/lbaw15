@@ -18,6 +18,7 @@ Route::get('/user/{username}', 'PagesController@profile')->name('profile');
 
 Route::resource('/', 'TopicsController');
 Route::get('/topic/{topic_name}', 'QuestionsController@index');
+Route::get('/topic/{topic_name}/order/{order}', 'QuestionsController@indexOrdered');
 Route::get('/topic/{topic_name}/question/{id}', 'AnswersController@index');
 //Route::resource('/topic/{topic_name}', 'TopicsController');
 
@@ -83,12 +84,18 @@ Route::post('register', 'Auth\RegisterController@register');
 
 //Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/admin', function(){
+	return redirect('/admin/topics');
+});
+
 Route::get('/admin/topics',  function(){
-	if(\Auth::user()->type == 'ADMIN'){
-		return view('pages.adminTopic');
-	}else{
-		return redirect('/');
-	}
+	if(\Auth::user() != null){
+		if(\Auth::user()->type == 'ADMIN'){
+			return view('pages.adminTopic');
+		}else{
+			return redirect('/');
+		}
+	}else return redirect('/');
 });
 
 Route::get('/admin/questions', function(){
@@ -176,3 +183,7 @@ Route::get('/question/search','PagesController@search');
 Route::get('/search/{search}','PagesController@search');
 
 Route::get('/help', 'PagesController@help');
+
+Route::get('/questions/getPageSortBy','QuestionsController@getPageWithSort');
+
+Route::get('/topic/{$topic_name}/order/{$order}','QuestionsController@getPageSort');

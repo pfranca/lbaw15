@@ -18,6 +18,7 @@ function goToTopic(time) {
   }, time);
 };
 
+
 function actionFollow(id_topic){
   $.ajax({
     url: '/setfollow',
@@ -46,9 +47,6 @@ function actionFollowQuestion(id_question){
     }).done(function (data) {
         console.log(data);
         $id = "followQuestion" + id_question;
-        if(document.getElementById($id).value == "followingPage"){
-          location.reload();
-        }else{
             if(document.getElementById($id).value == "Unfollow"){
               document.getElementById($id).value = "Follow";
               document.getElementById($id).innerHTML = "Follow";
@@ -59,7 +57,6 @@ function actionFollowQuestion(id_question){
             document.getElementById($id).innerHTML = "Unfollow";
             document.getElementById($id).style.background='#e6f2ff';
           }
-      }
         //location.reload();
     }).fail(function (data) {
       console.log(data);
@@ -322,7 +319,7 @@ $(document).ready(function() {
   });
 
   $("#questionSubmitBtn").click(function(){
-      
+    if($("#long_message").val()!=null){      
       $.ajax({
         url: '/question/addQuestion',
         type: 'POST',
@@ -340,9 +337,29 @@ $(document).ready(function() {
         $('#questionModal').modal('hide');
         console.log(data);
     }).fail(function (data) {
-      window.alert(data);
+      console.log(data);
         // do what ever you want if the request is not ok
     });
+  }else{
+    $.ajax({
+        url: '/question/addQuestion',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+          "_token": $('#token').val(),
+          "id_topic": $("#topicSelected").val(),
+          "short_message": $("#short_message").val(),
+        }
+    }).done(function (data) {
+        // do whatever u want if the request is ok
+        $("#short_message").val('');
+        $('#questionModal').modal('hide');
+        console.log(data);
+    }).fail(function (data) {
+      console.log(data);
+        // do what ever you want if the request is not ok
+    });
+  }
   });
 /*
   $('#profileModal').on('shown.bs.modal', function(e) {
@@ -425,22 +442,55 @@ $(document).ready(function() {
   });
 });
 
+$('#dropdownSort').change(function(){
+  console.log("window " + window.location);
+  var location = window.location.href;
+  var res = location.split("/");
+  var topic = "bla";
+  for(var i = 0; i < res.length; i++){
+    if(res[i]== "topic"){
+      var pos = i;
+      pos++;
+      topic = res[pos];
+    }
+    console.log("window " + res[i]);
+  }
+  console.log("topic " + topic);
+  var url = "http://localhost:8000/topic/" + topic;
+  var sortBy = $(this).find('option:selected').attr('value');
+  if(sortBy == "Oldest to newest"){
+    window.location.href= url + "/order/asc";
+  }else if(sortBy == "Newest to oldest"){
+    window.location.href= url + "/order/desc";
+  }else if(sortBy == "Karma"){
+    window.location.href= url + "/order/karma";
+  }
+  location.reload();
+});
 
 
 $('#editquestionModal').on('shown.bs.modal', function(e) {
   $long = e.relatedTarget.attributes['data-long'].value;
-  document.getElementById('edit_short_message').value = $long;
   $short = e.relatedTarget.attributes['data-short'].value;
-  document.getElementById('edit_long_message').value = $short;
+  document.getElementById('edit_short_message').value = $short;
+  document.getElementById('edit_long_message').value = $long;
   $id = e.relatedTarget.attributes['data-id'].value;
+  $id_topic = e.relatedTarget.attributes['data-topic'].value;
+  console.log("short " + $short);
+  console.log("long " + $long);
+  if($("#edit_long_message").val() != null){
   $("#editquestionSubmitBtn").click(function(){
+    console.log("short_message " + $("#edit_short_message").val());
+    console.log("long " + $("#edit_long_message").val());
+    console.log("topic " + $id_topic);
+    console.log("id " + $id);
     $.ajax({
       url: '/question/updateQuestion',
       type: 'PUT',
       dataType: 'json',
       data: {
         "_token": $('#token').val(),
-        "id_topic": $("#edit_topicSelected").val(),
+        "id_topic": $id_topic,
         "id_question" : $id,
         "short_message": $("#edit_short_message").val(),
         "long_message": $("#edit_long_message").val()
@@ -450,10 +500,35 @@ $('#editquestionModal').on('shown.bs.modal', function(e) {
       console.log(data);
       location.reload();
   }).fail(function (data) {
-    window.alert(data);
+    console.log(data);
       // do what ever you want if the request is not ok
   });
   });
+}else{
+  $("#editquestionSubmitBtn").click(function(){
+    console.log("short_message " + $("#edit_short_message").val());
+    console.log("topic " + $id_topic);
+    console.log("id " + $id);
+    $.ajax({
+      url: '/question/updateQuestion',
+      type: 'PUT',
+      dataType: 'json',
+      data: {
+        "_token": $('#token').val(),
+        "id_topic": $id_topic,
+        "id_question" : $id,
+        "short_message": $("#edit_short_message").val(),
+      }
+  }).done(function (data) {
+      $('#editquestionModal').modal('hide');
+      console.log(data);
+      //location.reload();
+  }).fail(function (data) {
+    console.log(data);
+      // do what ever you want if the request is not ok
+  });
+});
+}
 });
 
 $('#editanswerModal').on('shown.bs.modal', function(e) {
@@ -533,7 +608,6 @@ $('#reportModal').on('shown.bs.modal', function(e) {
     //reason
     //reported user
     //reported question or answer
-      window.alert("id " + $id);
       $.ajax({
         url: '/report/question',
         type: 'POST',
@@ -616,4 +690,8 @@ $("#buttonSearch").click(function(){
 });
 
 
+});
+
+$(document).on('click', '.dropdown', function (e) {
+  e.stopPropagation();
 });

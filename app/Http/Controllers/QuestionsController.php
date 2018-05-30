@@ -18,11 +18,51 @@ class QuestionsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function indexOrdered($topic_name,$order)
+    {
+        $topic = Topic::where('name', $topic_name)->get();
+        $topics = Topic::All();
+        if($order !== "karma")
+            $questions = Question::where('id_topic', $topic[0]->id)->orderBy('date',$order)->paginate(5);
+        else
+            $questions = Question::where('id_topic', $topic[0]->id)->orderBy('karma',$order)->paginate(5);
+        $answers = Answer::All();
+       // dd($answers);
+        // $topics = Topic::orderBy('name','desc')->paginate(4);
+        //$questions = Question::orderBy('karma','desc'); 
+        if( \Auth::user() != null){
+            $data=array(
+                'topic_name' => $topic_name,
+                'questions' => $questions,
+                'answers' => $answers,
+                'topics' => $topics,
+                'order' => $order,
+                'questions_followed' => \Auth::user()->followQuestions
+            );
+        }else{ 
+            $data=array(
+            'topic_name' => $topic_name,
+            'questions' => $questions,
+            'answers' => $answers,
+            'order' => $order,
+            'topics' => $topics
+        );
+
+        }
+       return view('pages.topic')->with($data);
+    }
+
+
+     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index($topic_name)
     {
         $topic = Topic::where('name', $topic_name)->get();
         $topics = Topic::All();
-        $questions = Question::where('id_topic', $topic[0]->id)->paginate(5);
+        $questions = Question::where('id_topic', $topic[0]->id)->orderBy('date','asc')->paginate(5);
         $answers = Answer::All();
        // dd($answers);
         // $topics = Topic::orderBy('name','desc')->paginate(4);
@@ -288,13 +328,14 @@ class QuestionsController extends Controller
 
     public function updateQuestion(Request $request){
         $data = $request->all();
+        $long_message =  $data['long_message'];
         DB::table('question')
             ->where('id', $data['id_question'])
             ->update([
                     'short_message' => $data['short_message'],
                     'long_message' => $data['long_message'],
                     'id_topic' => $data['id_topic']
-              ]);
+            ]);
 
         return response()->json([
             "status" => "success",
@@ -353,4 +394,41 @@ class QuestionsController extends Controller
             "deleted" => $deleted,
             "message" => "Followed topic"]);
     }
+
+
+
+    public function getPageWithSort(Request $request){
+        $topic_name = $request->input('topic_name');
+        $order = $request->input('sortBy');
+        return redirect('/topic/'.$topic_name.'/order/'.$order);
+    }
+
+    public function getPageSort($topic_name, $order){
+        $topic = Topic::where('name', $topic_name)->get();
+        $topics = Topic::All();
+        $questions = Question::where('id_topic', $topic[0]->id)->orderBy('date',$order)->paginate(5);
+        $answers = Answer::All();
+    // dd($answers);
+        // $topics = Topic::orderBy('name','desc')->paginate(4);
+        //$questions = Question::orderBy('karma','desc'); 
+        if( \Auth::user() != null){
+            $data=array(
+                'topic_name' => $topic_name,
+                'questions' => $questions,
+                'answers' => $answers,
+                'topics' => $topics,
+                'order' => $order,
+                'questions_followed' => \Auth::user()->followQuestions
+            );
+        }else{ 
+            $data=array(
+            'topic_name' => $topic_name,
+            'questions' => $questions,
+            'answers' => $answers,
+            'order' => $order,
+            'topics' => $topics
+        );
+        return view('pages.topic')->with($data);
+    }
+}
 }

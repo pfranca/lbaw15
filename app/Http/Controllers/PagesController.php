@@ -51,11 +51,11 @@ class PagesController extends Controller
 
 		$topics = Topic::all();
 		$users = User::all();
-
+		
 		//dd($search_result);
 		return view('pages.search', compact(
 			'topics',
-			'search_result','users'
+			'search_result','users','questions'
 		));
 	}
 
