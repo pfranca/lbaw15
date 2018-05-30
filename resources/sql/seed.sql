@@ -288,16 +288,16 @@ CREATE TRIGGER generate_notification_owner
 
 
 
-INSERT INTO "user"(username,email,password, name,img,bio,type) VALUES ('DiogoaCunha', 'mailfalso@gmail.com','$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W','diogo','diogo.png','Im fine','ADMIN');
-INSERT INTO "user"(username,email,password, name,img,bio,type) VALUES ('martaTorgal', 'martafcp1@gmail.com','$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W','Marta Torgal','marta.png','Im always ok!!','ADMIN');
-INSERT INTO "user"(username,email,password, name,img,bio,type) VALUES ('manel', 'mail94@gmail.com','$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W','Jose Manuel','potus.png','I like to eat icecream with my forehead','ADMIN');
+INSERT INTO "user"(username,email,password, name,img,bio,type) VALUES ('DiogoaCunha', 'mailfalso@gmail.com','$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W','diogo','user.png','Im fine','ADMIN');
+INSERT INTO "user"(username,email,password, name,img,bio,type) VALUES ('martaTorgal', 'martafcp1@gmail.com','$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W','Marta Torgal','user.png','Im always ok!!','ADMIN');
+INSERT INTO "user"(username,email,password, name,img,bio,type) VALUES ('manel', 'mail94@gmail.com','$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W','Jose Manuel','user.png','I like to eat icecream with my forehead','ADMIN');
 INSERT INTO "user"(username,email,password, name,img,bio,type) VALUES ('franza', 'pedro.franca.1994@gmail.com','$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W','Pedro F','user.png','if I answered your question it is prolly wrong','MOD');
-INSERT INTO "user"(username,email,password, name,img,bio) VALUES ('jeff', 'jeff98@gmail.com','$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W','Jeff Erson','default.png','MY NAME IS JEFFF');
-INSERT INTO "user"(username,email,password, name,img,bio,type) VALUES ('potus', 'therealdonaldtrump@gmail.com','$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W','Donald Trump','potus.png','Imma build a wall','NORMAL');
-INSERT INTO "user"(username,email,password, name,img,bio,type) VALUES ('johnSnow85', 'yoyo@gmail.com','$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W','MANEL','default.png','winter is comming,false','NORMAL');
-INSERT INTO "user"(username,email,password, name,img,bio,type) VALUES ('throwaway12', 'esum@burro.com','$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W','o anonimo','default.png','','NORMAL');
-INSERT INTO "user"(username,email,password, name,img,bio,type) VALUES ('quinhas', 'maria@gmail.com','$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W','Quinhas POmba','default.png','Universidade da vida','NORMAL');
-INSERT INTO "user"(username,email,password, name,img,bio,type) VALUES ('Max', 'maxc@gmail.com','$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W','Max Caulfield','lis.png','Life is... weird','NORMAL');
+INSERT INTO "user"(username,email,password, name,img,bio) VALUES ('jeff', 'jeff98@gmail.com','$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W','Jeff Erson','user.png','MY NAME IS JEFFF');
+INSERT INTO "user"(username,email,password, name,img,bio,type) VALUES ('potus', 'therealdonaldtrump@gmail.com','$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W','Donald Trump','user.png','Imma build a wall','NORMAL');
+INSERT INTO "user"(username,email,password, name,img,bio,type) VALUES ('johnSnow85', 'yoyo@gmail.com','$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W','MANEL','user.png','winter is comming,false','NORMAL');
+INSERT INTO "user"(username,email,password, name,img,bio,type) VALUES ('throwaway12', 'esum@burro.com','$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W','o anonimo','user.png','','NORMAL');
+INSERT INTO "user"(username,email,password, name,img,bio,type) VALUES ('quinhas', 'maria@gmail.com','$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W','Quinhas POmba','user.png','Universidade da vida','NORMAL');
+INSERT INTO "user"(username,email,password, name,img,bio,type) VALUES ('Max', 'maxc@gmail.com','$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W','Max Caulfield','user.png','Life is... weird','NORMAL');
 ---- Insert Topic 
 
 INSERT INTO topic(id,name,img) VALUES (1,'Sports','1.jpg');

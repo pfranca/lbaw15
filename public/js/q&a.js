@@ -459,14 +459,21 @@ $('#editquestionModal').on('shown.bs.modal', function(e) {
   document.getElementById('edit_short_message').value = $short;
   document.getElementById('edit_long_message').value = $long;
   $id = e.relatedTarget.attributes['data-id'].value;
+  $id_topic = e.relatedTarget.attributes['data-topic'].value;
+  console.log("short " + $short);
+  console.log("long " + $long);
   $("#editquestionSubmitBtn").click(function(){
+    console.log("short_message " + $("#edit_short_message").val());
+    console.log("long " + $("#edit_long_message").val());
+    console.log("topic " + $id_topic);
+    console.log("id " + $id);
     $.ajax({
       url: '/question/updateQuestion',
       type: 'PUT',
       dataType: 'json',
       data: {
         "_token": $('#token').val(),
-        "id_topic": $("#edit_topicSelected").val(),
+        "id_topic": $id_topic,
         "id_question" : $id,
         "short_message": $("#edit_short_message").val(),
         "long_message": $("#edit_long_message").val()
@@ -476,7 +483,7 @@ $('#editquestionModal').on('shown.bs.modal', function(e) {
       console.log(data);
       location.reload();
   }).fail(function (data) {
-    window.alert(data);
+    console.log(data);
       // do what ever you want if the request is not ok
   });
   });

@@ -56,7 +56,7 @@
         </div>
         
         <div class="col-md-7 ml-2 text-left" style="font-size: 70%; color: #404040">
-            {{$question->long_message}} This is a tema forma simples é você usar a imagem do botão como background do link, assim você pode colocar um fundo específico para cada botão, e usar uma tag própria para o texto e fazer a transição: o botão sobe e o texto desce:
+            {{$question->long_message}}
         </div>
 
         <div class="col-md-7 ml-2 text-left b-line mt-4" style="font-size: 20%; color: #404040; opacity: 0.5">
@@ -66,7 +66,7 @@
                       </div>
                     </a>
                     @if(Auth::user()->id == $question->user->id)
-                    <a data-id="{{$question->id}}" data-long="{{$question->long_message}}" data-short="{{$question->short_message}}" data-toggle="modal" data-target="#editquestionModal" data-dismiss="modal" class="q-follow btn js-scroll-trigger mb-0 ">
+                    <a data-id="{{$question->id}}" data-topic="{{$question->id_topic}}" data-long="{{$question->long_message}}" data-short="{{$question->short_message}}" data-toggle="modal" data-target="#editquestionModal" data-dismiss="modal" class="q-follow btn js-scroll-trigger mb-0 ">
                       <div class="about txt-color">
                         <p>Edit</p>
                       </div>
