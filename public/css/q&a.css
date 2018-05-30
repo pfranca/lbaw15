@@ -607,7 +607,17 @@ textarea {
   opacity: 0.7;
 }
 
-
+.q-btn-login{
+  background-color: #00ace6;
+  color: white;
+  font-size: 12px;  
+  border-radius: 2px;
+  padding-left: 20px;
+  padding-right:20px;
+} .q-btn-login:hover{
+  background-color: #0099e6; color:white;
+  opacity: 0.7;
+}
 
 .q-follow{
   background-color: white;
@@ -683,6 +693,10 @@ textarea {
 .underTab {
   margin-right: 10px;
   color: #777;
+  text-decoration: none;
+}
+
+.under-a-line{
   text-decoration: none;
 }
 
@@ -814,6 +828,10 @@ li div a.colorLink-notification:hover{
 .size-end{
   font-size: 13px;
   padding: 13px;
+}
+
+.col-blue{
+  color: #4da6ff;
 }
 
 li div a.close-notification{
