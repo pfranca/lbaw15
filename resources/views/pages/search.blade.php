@@ -24,25 +24,27 @@
     </ol>
   </nav>
 
-  <div id="questions" class="bg-white">
-    <div class="container-fluid bg-white col-md-9">
+ <div id="questions" class="row bg-white col-md-12">
+    <div class="text-right pr-1 mt-1" style="margin-left:14%"></div>
+
+    <div class=" bg-white col-md-6" style="margin-top: 70px">
       <ul class="list-group col-md-12">
-        @include('partials.question')
+        @include('partials.question', ['questions'=>$questions, 'topics'=>$topics])
+        
       </ul>
     </div>
 
     <div class=" bg-white col-md-3" style="margin-top: 70px">
       <ul class="list-group col-md-12 ">
-
          @include('partials.questionNav', ['search_result'=>$questions, 'topics'=>$topics])
       </ul>
     </div>
   </div>
 
-    </div>
-    </div>
-    </div>
-    </div>
+  </div>
+  </div>
+  </div>
+  </div>
   </body>
 
   @endsection
